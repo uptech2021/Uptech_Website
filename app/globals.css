@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'THICCBOI';
+  src: url('../utils/fonts/thiccboi/THICCCBOI-Regular.ttf') format('truetype');
+}
+
+body, html{
+  scroll-behavior: smooth;
+  font-family: 'THICCBOI', Arial, sans-serif;
+  background-color: #46DDE6; 
+  margin: 0;
+  padding: 0;
+}

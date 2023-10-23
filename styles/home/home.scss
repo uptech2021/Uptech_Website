@@ -1,0 +1,837 @@
+// Code starts at 320px
+
+.home-main-container {
+        font-family: 'THICCCBOI';
+               
+        .outer-layer{
+            padding: 0.99rem 0.63rem;
+            margin: 1.13rem 0.44rem 0 0.44rem;
+            
+            min-width: 19.125rem;
+            max-width: 101.9375rem;
+            
+            border-radius: 2.75rem;
+            background: rgba(239, 243, 243, 0.7);
+            position: relative;
+            box-sizing: border-box;
+            overflow-x: wrap;
+
+
+        .welcome-section{
+            min-width: 17.875rem;
+            max-width: 99.125rem;
+            height: 44rem;
+            display: flex;
+            flex-direction: column;
+            border-radius: 2.75rem;
+            background: #FFF;
+            position: relative;
+            overflow: hidden;
+
+
+    
+            .header{
+                margin: 1.84rem 1.25rem 0 1.25rem;
+                min-width: 15.375rem;
+                max-width: 19rem;
+
+                display: flex;
+                justify-content: left;
+                align-items: center;
+                gap: 4rem;
+
+                .uptech-logo{
+                    max-width: 9rem;
+                    height: 100%;
+                    margin: 0;
+                    object-fit: contain;
+                }
+    
+                .menu-btn{
+                    max-width: 3rem;
+                    height: 1.5rem;
+                }
+
+                 @media(min-width: 374px){
+                    .menu-btn{
+                        margin-left: 2rem;
+                    }
+                }
+
+                @media(min-width: 424px){
+                    .menu-btn{
+                        margin-left: 5.5rem;
+                    }
+                }
+
+                @media(min-width: 479px){
+                    .menu-btn{
+                        margin-left: 8.5rem;
+                    }
+                }
+
+                
+            }
+
+            .call-to-action{
+                position: relative;
+                display: flex;
+                flex-direction: column-reverse;
+                align-items:center;
+                text-align: center;
+
+                margin-top: 2rem;
+                .call-to-action-img{
+                    width: 100vw;
+                    height: 24.5rem;
+                    object-fit: contain;
+                    margin-left: -0.4rem;
+                }
+
+                .welcome-container{
+                    width: 100%;
+                    height: 13.97875rem;
+                    position: relative;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    h1{
+                        font-family: 'THICCCBOI';
+                        font-size: 20vw;
+                        font-weight: 800;
+                        margin: 0;
+                    }
+
+                    p{
+                        margin: 0 auto;
+                        width: 17.0625rem;
+                        text-align: center;
+                        font-family: Inter;
+                        font-size: 8vw;
+                        font-style: normal;
+                        font-weight: 800;
+                        line-height: normal;
+
+                        span{
+                            color: #06E95C;
+                            font-family: Inter;
+                            font-size: 1.625rem;
+                            font-style: normal;
+                            font-weight: 800;
+                            line-height: normal;
+                        }
+                    }
+
+                    @media(min-width: 419px) {
+                        p{font-size: 6vw;}
+                    }
+
+
+                   
+                }
+                
+                @media(min-width: 479px) {
+                    .call-to-action-img{margin-top:2rem;}
+                }
+
+                @media(min-width: 549px){
+                    .call-to-action-img{
+                        margin-top: 1.5rem;
+                        width: 45vw;
+                    }
+                
+                }
+
+            }
+
+          
+    
+        }
+
+        .product-information-section{
+            min-width: 17.875rem;
+            max-width: 99.125rem;
+            height: auto;
+
+
+            display: flex;
+            flex-direction: column;
+            border-radius: 2.75rem;
+            background: #FFF;
+            position: relative;
+            overflow: hidden;
+            margin-top: 1.69rem;
+            text-align: center;
+
+            .features{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                .features-container{
+                    h2{
+                        color: #52CAC8;
+                        font-size: clamp(3.4375rem, 4.25rem, 5vw);
+                        font-weight: 700;
+                        margin: 2.75rem 0.82rem 0 0.47rem;
+                    }
+
+                    p{
+                        margin: 1.73rem 0.88rem 0 0.94rem;
+                        font-size: clamp(1.625rem, 1.9375rem, 2vw);
+                        font-weight: 700;
+                        min-width: 16.11375rem;
+                        max-width: 24.57763rem;
+                    }
+                    @media(min-width: 424px){
+                        h2{
+                            font-size: clamp(4.25rem, 6rem, 8vw);
+                        }
+                    }
+
+                    @media(min-width: 479px){
+                        p{
+                            font-size: clamp(1.9375rem, 2rem, 2vw);
+                            margin-left: 0.76rem;
+                            margin-right: 0.6rem;
+                        }
+                    }
+                }
+   
+                .education-container{
+                    display: relative;
+                    h3{
+                        min-width: 16.23963rem;
+                        max-width: 22.7445rem;
+                        height: 2.75rem;
+                        flex-shrink: 0;
+                        font-family: Inter;
+                        font-size: clamp(2rem, 3.5rem, 5vw);
+                        font-style: normal;
+                        font-weight: 800;
+                        line-height: normal;
+    
+                        margin: 2.52rem 0.75rem 0 0.94rem
+                    }
+
+                    .elearning-img{
+                        min-width: 16.787rem;
+                        max-width: 25.32444rem;
+                        min-height: 11.03788rem;
+                        max-height: 15.4375rem;
+                        object-fit: contain;
+                        z-index: 2;
+                        position: relative;
+                        margin: 3.23rem 0.91rem 3.15rem 0.24rem; //Bottom margin to be changed
+                    }
+
+                    .blue-square{
+                        min-width: 8.64106rem;
+                        max-width: 13.03563rem;
+                        min-height: 7.50756rem;
+                        max-height: 10.5rem;
+                        height: 15.4375rem;
+                        background: #52CAC8;
+                        margin: 10.52rem 8.06rem 0 0.33rem;
+                        position: absolute;
+                    }
+
+                    p{
+                        margin-top: 7.97rem;
+                        margin-left: -1rem;
+                        max-width: 15rem;
+                        max-height: 7.21094rem;;
+                        font-family: Inter;
+                        font-size: 8vw;
+                        font-weight: 900;
+                        line-height: normal;
+                    }
+
+                    @media(min-width: 419px){
+                        p{
+                            margin-left: unset;
+                            max-width: 18rem;
+
+                        }
+                    }
+
+                      @media(min-width: 479px){
+                        h3{
+                            font-size: clamp(3.5rem, 4rem, 5vw);
+                        }
+                        .elearning-img{
+                            width: 30rem;
+                            height: 15.4375rem;
+                            margin: 5rem 0.27rem 0 0.34rem;
+                        }
+
+                        .blue-square{
+                            width: 13.03563rem;
+                            height: 10.5rem;
+                            margin: 13.64rem 9rem 0 1.3rem;
+
+                        }
+
+                    }
+                }
+
+                .marketplace-container{
+                    display: relative;
+                    h3{
+                        color: #000;
+                        font-family: Inter;
+                        font-size: 10vw;
+                        font-style: normal;
+                        font-weight: 800;
+                        line-height: normal;
+    
+                        margin: 2.52rem 0.03rem 0 0.41rem
+                        }
+    
+                    .marketplace-img{
+                        width: 16.787rem;
+                        height: 11.03788rem;
+                        object-fit: contain;
+                        z-index: 2;
+                        position: relative;
+                        margin: 3.23rem 0.91rem 3.15rem 0.24rem; //Bottom margin to be changed
+                    }
+    
+                    .blue-square{
+                        width: 8.64106rem;
+                        height: 7.50756rem;
+    
+                        background: #52CAC8;
+                        margin: 10.58rem 0.53rem 0 9.4rem;
+                        position: absolute;
+                    }
+
+                    p{
+                        margin: 3.15rem 0.28rem 0 0.22rem;
+                        width: 17.43556rem;
+                        font-family: Inter;
+                        font-size: 2rem;
+                        font-style: normal;
+                        font-weight: 600;
+                        line-height: normal;
+
+                    }
+
+                    @media(min-width: 419px){
+                        .blue-square{margin: 13rem 0 0 14.5rem;}
+                        .marketplace-img{
+                            width: 23.96656rem;
+                            height: 14.625rem;
+                            margin-left: 3rem;
+                        }
+                        p{
+                            text-align: center;
+                            margin: 4rem auto;
+                        }
+
+                    }
+                }
+
+                .project-management-container{
+                    display: relative;
+                    h3{
+                        min-width: 17.28869rem;
+                        max-width: 23.55919rem;
+                        height: 5.30944rem;
+                        font-family: Inter;
+                        font-size: 9vw;
+                        font-style: normal;
+                        font-weight: 900;
+                        line-height: normal;
+                        margin: 4rem auto;
+                        }
+    
+                    .project-management-img{
+                        width: 14.93894rem;
+                        height: 10.40556rem;
+                        object-fit: contain;
+                        z-index: 2;
+                        position: relative;
+                        margin: 3.08rem 1.71rem 0 1.29rem; //Bottom margin to be changed
+                    }
+    
+                    .blue-square{
+                        width: 8.64106rem;
+                        height: 7.50756rem;
+    
+                        background: #52CAC8;
+                        margin: 9.77rem 8.09rem 0 1.29rem;
+                        position: absolute;
+                    }
+
+                    p{
+                        max-width: 20rem;
+                        height: 7.75rem;
+                        font-family: Inter;
+                        font-size: 8vw;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: normal;
+                        margin: 5.29rem auto;
+                    }
+
+                    @media(min-width: 419px){
+                        .project-management-img{
+                            min-width: 22.7445rem;
+                            min-height: 14.6875rem;
+                            margin-top: 0;
+                            margin-left: 4rem; 
+                        }
+
+                        .blue-square{
+                            min-width: 13.03563rem;
+                            min-height: 10.5rem;
+                            margin-top: 6rem;
+                            margin-left: 5rem;
+                        }
+
+                        p{
+                            font-size: 6vw;
+                        }
+                    }
+                }
+               
+            }
+
+            .objectives{
+                margin-top: -5rem;
+
+                h2{
+                    color: #52CAC8;
+                    font-size: 12vw;
+                    font-style: normal;
+                    font-weight: 900;
+                    line-height: normal;
+                }
+
+                .privacy-container{
+                    h3{
+                        font-family: Inter;
+                        font-size: 10vw;
+                        font-style: normal;
+                        font-weight: 700;
+                        line-height: normal;
+                    }
+
+                    .privacy-img{
+                        width: 25rem;
+                        height: 22rem;
+                        object-fit: contain;
+                        margin:  1rem -2rem;
+                    }
+
+                    p{
+                        font-family: Inter;
+                        font-size: 8vw;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: normal;
+                        margin-left: auto;
+                        margin-right: auto;
+                        max-width: 17.47888rem;
+                        height: 15.673rem;
+                    }
+
+                    @media(min-width: 374px){
+                        .privacy-img{
+                            margin-left: unset;
+                        }
+                    }
+
+                    @media(min-width: 419px){
+                        .privacy-img{
+                            margin-left: 1rem;
+                        }
+                    }
+
+                    @media(min-width: 479px){
+                        .privacy-img{
+                           margin-left: 4rem;
+                           min-height: 28rem;
+                        }
+
+                        p{
+                            max-width: 20rem;
+                        }
+                    }
+                }
+
+                .user-safety-container{
+                    h3{
+                        font-family: Inter;
+                        font-size: 15vw;
+                        font-style: normal;
+                        font-weight: 700;
+                        line-height: normal;
+                    }
+
+                    .user-safety-img{
+                        min-width: 24.70394rem;
+                        max-width: 37.33581rem;
+                        height: 21rem;   
+                        object-fit: contain;
+                        margin:  1rem 0 0 -3rem;
+                    }
+
+                    p{
+                        font-family: Inter;
+                        font-size: 9vw;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: normal;
+                        margin-top: 2.64rem; 
+                    }
+
+                    @media(min-width: 374px){
+                        .user-safety-img{
+                                margin-left: 0;
+                            }
+                    }
+
+                    @media(min-width: 419px){
+                        .user-safety-img{
+                                margin-left: 1rem
+                            }
+                    }
+                   
+                }
+               
+                .data-security-container{
+                    margin-top: 7.77rem;
+                    h3{
+                        font-family: Inter;
+                        font-size: 13vw;
+                        font-style: normal;
+                        font-weight: 700;
+                        line-height: normal;
+                    }
+
+                    .user-safety-img{
+                        width: 15.32231rem;
+                        height: 21.00125rem;
+
+                        object-fit: contain;
+                        margin:  1.44rem 0.46rem 0 2.15rem;
+                    }
+
+                    p{
+                        font-family: Inter;
+                        font-size: 10vw;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: normal;
+
+                        margin: 2.81rem 0.56rem 0 0.44rem; 
+                    }
+
+                    @media(min-width: 419px){
+                        margin-top: 5rem;  
+
+                            .user-safety-img{
+                                min-width: 23rem;
+                                min-height: 28rem;
+                            }
+
+                            p{font-size: 8vw;}
+
+                    }
+
+                }
+                
+            }
+
+            .products{
+                margin-top: -10rem;
+                h3{
+                    color: #2ACDE4;
+                    font-size: 15vw;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: normal;
+
+                    margin: 15.37rem 0.56rem 0 0.88rem;
+                }
+
+                .products-container{
+                    .man-holding-phone-with-logo-img{
+                        max-width: 100vw;
+                        max-height: 23rem;
+                        object-fit: contain;
+                        margin: 1.69 auto;
+                    }
+
+                    p{
+                        font-family: Inter;
+                        font-size: 8vw;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: normal;
+                        margin: 1.69rem auto; 
+                        min-width: 16.8125rem;
+                        max-width: 21.875rem;
+
+                    }
+
+                    .learn-more-btn{
+
+                        font-size: 2.1rem;
+                        font-style: normal;
+                        font-weight: 700;
+                        line-height: normal;
+
+                        width: 14.5rem;
+                        height: 4.21231rem;
+                        border-radius: 3.875rem;
+                        color: white;
+
+                        background: rgba(7, 197, 223, 0.86);
+                        padding: 0.73rem 0.8rem 0.67rem 1.01rem;
+                        margin-top: 2rem;
+                    }
+                }
+            }
+
+            .about-us{
+                margin-top: 6rem;
+                h3{
+                    font-size: 14vw;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: normal;
+                    color: #2ACDE4;
+                }
+
+                .about-us-btns{
+                    p{
+                        margin: 2.63rem auto;
+                        font-size: 9vw;
+                        font-style: normal;
+                        font-weight: 600;
+                        min-width: 16.8125rem;
+                        max-width: 24.75rem;
+                    }
+
+                    .btns-containers{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;                        
+                        margin: 4rem auto;
+                        padding: 0 2rem;
+                        .large-btn-group{
+                            color: white;
+                            font-size: 2.7rem;
+                            font-style: normal;
+                            font-weight: 700;
+
+                            min-width: 15.9375rem;
+                            max-width: 19rem;
+                            min-height: 14.57706rem;
+                            max-height: 16rem;
+
+                            margin-bottom: 4.42rem;
+
+                            border-radius: 3.125rem;
+                            background: #6CFCEE;
+                            box-shadow: 12px 17px 11px 0px rgba(0, 0, 0, 0.25), 24px 4px 30px 0px rgba(0, 0, 0, 0.25) inset;
+                        }
+                    }
+                    
+                    .man-holding-phone-with-logo-img{
+                        width: 19.4375rem;
+                        height: 22.5rem;
+                        object-fit: contain;
+                        margin: -6rem 1rem 0 -1rem;
+                        position: relative;
+                    }
+                }
+            }
+        }
+
+      
+    
+        }
+
+        footer{
+            position: relative;
+            background: black;
+            margin-top: 1rem;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            color: white;
+            .uptech-details{
+                display: flex;
+                flex-direction: column;
+                margin: 4.56rem 1.02rem 0 1.75rem;
+                .company-details{
+                    .company-name{
+                        h4{
+                            font-family: Inter;
+                            font-size: 3rem;
+                            font-style: normal;
+                            font-weight: 900;
+                            line-height: normal;
+                            margin: 0;
+                        }
+
+                        h5{
+                            font-family: Inter;
+                            font-size: 2rem;
+                            font-style: normal;
+                            font-weight: 500;
+                            line-height: normal;
+                            margin: 0;
+
+                        }
+                    }
+
+                    .swap{
+                        margin-top: 1.09rem;
+                        .footer-links{
+                            margin: 0;
+                            font-size: 1.4rem;
+                            font-style: normal;
+                            font-weight: 500;
+                            line-height: normal;
+                        }
+                    }
+
+                    
+                }
+
+                .social-icons{
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    gap: 1.37rem;
+                    margin-top: 2.5rem;
+
+                    .icon{
+                        width: 4.06463rem;
+                        height: 5.48988rem;
+                    }
+                }
+
+                
+            }
+
+            .swap-mobile{
+                margin-top: 2.53rem;
+                text-align: center;
+                font-family: Inter;
+                font-size: 1.125rem;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+            }
+        }
+
+        //TABLET/PC VIEW
+
+        @media(min-width: 768px){
+            .welcome-section{
+                min-width: 17.875rem;
+                max-width: 99.125rem;
+                height: 44rem;
+                display: flex;
+                flex-direction: column;
+                border-radius: 2.75rem;
+                background: #FFF;
+                position: relative;
+                overflow: hidden;
+    
+    
+        
+                .header{
+                    margin: 1.84rem 1.25rem 0 1.25rem;
+                    min-width: 15.375rem;
+                    max-width: 19rem;
+    
+                    display: flex;
+                    justify-content: left;
+                    align-items: center;
+                    gap: 4rem;
+    
+                    .uptech-logo{
+                        max-width: 9rem;
+                        height: 100%;
+                        margin: 0;
+                        object-fit: contain;
+                    }
+        
+                    .menu-btn{
+                        max-width: 3rem;
+                        height: 1.5rem;
+                    }
+    
+                }
+    
+                .call-to-action{
+                    position: relative;
+                    display: flex;
+                    flex-direction: column-reverse;
+                    align-items:center;
+                    text-align: center;
+    
+                    margin-top: 2rem;
+                    .call-to-action-img{
+                        width: 100vw;
+                        height: 24.5rem;
+                        object-fit: contain;
+                        margin-left: -0.4rem;
+                    }
+    
+                    .welcome-container{
+                        width: 100%;
+                        height: 13.97875rem;
+                        position: relative;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        h1{
+                            font-family: 'THICCCBOI';
+                            font-size: 20vw;
+                            font-weight: 800;
+                            margin: 0;
+                        }
+    
+                        p{
+                            margin: 0 auto;
+                            width: 17.0625rem;
+                            text-align: center;
+                            font-family: Inter;
+                            font-size: 8vw;
+                            font-style: normal;
+                            font-weight: 800;
+                            line-height: normal;
+    
+                            span{
+                                color: #06E95C;
+                                font-family: Inter;
+                                font-size: 1.625rem;
+                                font-style: normal;
+                                font-weight: 800;
+                                line-height: normal;
+                            }
+                        }
+    
+                     
+    
+    
+                       
+                    }
+                    
+                }
+    
+              
+        
+            }
+        }
+
+    }
+
+   
