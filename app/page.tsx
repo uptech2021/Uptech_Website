@@ -1,7 +1,10 @@
+'use client'
+
 import '../styles/home/home.css'
 import upTechLogo from '../public/images/uptech logo.png'
 import menu from '../public/images/menu.svg'
-import aaron from '../public/images/aaron.png'
+import aaron_mobile_view from '../public/images/aaron_mobile_view.png'
+import aaron_pc_view from '../public/images/aaron_pc_view.png'
 import elearning from '../public/images/elearning.png'
 import boxes from '../public/images/box cart.png'
 import projectManagement from '../public/images/man with project management.png'
@@ -16,13 +19,13 @@ import linkedInIcon from '../public/Icons/LinkedIn Icon.svg'
 import twitterIcon from '../public/Icons/Twitter Icon.svg'
 import facebookIcon from '../public/Icons/Facebook Icon.svg'
 
-
-
-
 import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Home() {
+
+  const pcScreenWidth: boolean = window.innerWidth === 768 ? true : false;
+
   return (
     <main className="home-main-container">
 
@@ -33,15 +36,31 @@ export default function Home() {
             <div className="logo-wrapper">
               <Image className="uptech-logo" src={upTechLogo} alt="logo"/>
             </div>
+
+            <nav className="navbar">
+              <ul className="nav-items">
+                <li className="nav-links">Home</li>
+                <li className="nav-links">Objectives</li>
+                <li className="nav-links">About us</li>
+                <li className="nav-links">Products</li>
+                <li className="nav-links">Contact us</li>
+              </ul>
+            </nav>
             
-            <div className="menu-wrapper">
-              <Image className='menu-btn' src={menu} alt="menu"/>
-            </div>
+            <Image className='menu-btn' src={menu} alt="menu"/>
+            
           </header>
 
           <div className="call-to-action">
             
-            <Image src={aaron} className="call-to-action-img" alt="Guy Holding His phone with the Ourlime logo behind him" />
+            {/* If the screen is > =768px render the pc view image, else render the mobile view image */}
+            <div className="image-wrapper">
+              <Image 
+                src={pcScreenWidth ?  aaron_pc_view : aaron_mobile_view} 
+                className="call-to-action-img" 
+                alt="Guy Holding His phone with the Ourlime logo behind him" 
+              />
+            </div>
 
             <div className="welcome-container">
               <h1>Welcome</h1>
