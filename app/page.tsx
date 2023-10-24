@@ -20,12 +20,13 @@ import twitterIcon from '../public/Icons/Twitter Icon.svg'
 import facebookIcon from '../public/Icons/Facebook Icon.svg'
 
 import Image from 'next/image'
+import { useWindowSize } from 'react-use'; //react package that checks the screen size of the device
 import Link from 'next/link'
 
 export default function Home() {
 
-  const pcScreenWidth: boolean = window.innerWidth === 768 ? true : false;
-
+  const { width } = useWindowSize();
+  
   return (
     <main className="home-main-container">
 
@@ -56,7 +57,7 @@ export default function Home() {
             {/* If the screen is > =768px render the pc view image, else render the mobile view image */}
             <div className="image-wrapper">
               <Image 
-                src={pcScreenWidth ?  aaron_pc_view : aaron_mobile_view} 
+                src={width >= 768 ?  aaron_pc_view : aaron_mobile_view} 
                 className="call-to-action-img" 
                 alt="Guy Holding His phone with the Ourlime logo behind him" 
               />
@@ -82,7 +83,7 @@ export default function Home() {
             <div className="features-container">
               <h2>FEATURES</h2>
 
-              <p>Ourlime aims to provide our users with not only the features they have come to expect from a social media platform but also introduce concepts that we think will enhance our users.</p>
+              <p>Ourlime aims to provide our users with not only the features they have come to expect from a social media platform but also introduce concepts that we think will enhance our users.</p>
             </div>
            
             <div className="education-container">
@@ -121,15 +122,14 @@ export default function Home() {
 
                 <Image src={privacy} className='privacy-img' alt="image of laptop" />
 
-                <p>These specific features would incorporate a “lock code” that only the user would know.</p>
-              </div>
+                <p>These specific features would incorporate a &quot;lock code&quot; that only the user would know.</p>              </div>
 
               <div className="user-safety-container">
                 <h3>USER SAFETY</h3>
 
                 <Image src={userSafety} className='user-safety-img' alt="image of laptop" />
 
-                <p>Implementation of algorithms, that can recognize sensitive phrases and words as well as duplicate account would improve user’s safety.</p>
+                <p>Implementation of algorithms, that can recognize sensitive phrases and words as well as duplicate account would improve user&apos;s safety.</p>
               </div>
 
               <div className="data-security-container">
