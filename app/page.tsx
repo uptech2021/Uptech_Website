@@ -174,8 +174,14 @@ export default function Home() {
                   <button className='large-btn-group'>OURLIME BROCHURE</button>
                 </div>
                 
-
-                <Image src={manWIthLogoBehindHimHoldingPhone} className="man-holding-phone-with-logo-img" alt="image of guy with ourlime logo behind him" />
+                <div className="about-us-img-wrapper">
+                <Image
+                  src={manWIthLogoBehindHimHoldingPhone} 
+                  className="man-holding-phone-with-logo-img" 
+                  alt="image of guy with ourlime logo behind him" 
+                  unoptimized
+                  />
+                </div>
               </div>
             </div>
         </section>
@@ -193,7 +199,7 @@ export default function Home() {
 
             
             <div className="swap swap-pc">
-              <p className="footer-links">Terms & Condition</p>
+              <p className="footer-links">Terms & Conditions</p>
               <p className="footer-links">Privacy Policy</p>
               <p className="footer-links">Contact Us</p>
               <p className="footer-links">Help</p>

@@ -560,12 +560,19 @@
   background: #6CFCEE;
   box-shadow: 12px 17px 11px 0px rgba(0, 0, 0, 0.25), 24px 4px 30px 0px rgba(0, 0, 0, 0.25) inset;
 }
-.home-main-container .outer-layer .product-information-section .about-us .about-us-btns .man-holding-phone-with-logo-img {
-  width: 19.4375rem;
-  height: 22.5rem;
+.home-main-container .outer-layer .product-information-section .about-us .about-us-btns .about-us-img-wrapper {
+  width: auto;
+  border: solid blue;
+  height: 100%;
+  margin-top: -6rem;
+}
+.home-main-container .outer-layer .product-information-section .about-us .about-us-btns .about-us-img-wrapper .man-holding-phone-with-logo-img {
+  width: 100%;
+  height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
-  margin: -6rem 1rem 0 -1rem;
+  margin: 0 auto;
+  border: solid black;
   position: relative;
 }
 .home-main-container footer {
