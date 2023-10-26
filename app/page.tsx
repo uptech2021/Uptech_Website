@@ -18,7 +18,7 @@ import instagramIcon from '../public/Icons/Instagram Icon.svg'
 import linkedInIcon from '../public/Icons/LinkedIn Icon.svg'
 import twitterIcon from '../public/Icons/Twitter Icon.svg'
 import facebookIcon from '../public/Icons/Facebook Icon.svg'
-import dots from '../public/Images/dots.png'
+import dots from '../public/images/dots.png'
 
 import Image from 'next/image'
 import { useWindowSize } from 'react-use'; //react package that checks the screen size of the device
