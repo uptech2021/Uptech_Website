@@ -1,9 +1,10 @@
 import './globals.css'
 import type { Metadata } from 'next'
 
-export const metadata: Metadata = {
+export const metadata = {
   title: 'Uptech Incorporated Limited',
   description: 'Corporate Website',
+  image: "/public/favicon.ico"
 }
 
 export default function RootLayout({

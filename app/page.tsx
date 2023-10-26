@@ -18,6 +18,7 @@ import instagramIcon from '../public/Icons/Instagram Icon.svg'
 import linkedInIcon from '../public/Icons/LinkedIn Icon.svg'
 import twitterIcon from '../public/Icons/Twitter Icon.svg'
 import facebookIcon from '../public/Icons/Facebook Icon.svg'
+import dots from '../public/Images/dots.png'
 
 import Image from 'next/image'
 import { useWindowSize } from 'react-use'; //react package that checks the screen size of the device
@@ -84,6 +85,10 @@ export default function Home() {
               <h2>FEATURES</h2>
 
               <p>Ourlime aims to provide our users with not only the features they have come to expect from a social media platform but also introduce concepts that we think will enhance our users.</p>
+            
+              <div className="dots-wrapper">
+                <Image src={dots} className="dots-img" alt="image of dots" />
+              </div>
             </div>
            
             <div className="education-container">

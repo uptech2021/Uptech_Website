@@ -187,6 +187,8 @@
                         min-width: 16.11375rem;
                         max-width: 24.57763rem;
                     }
+
+                    .dots-img{display: none;}
                     @media(min-width: 424px){
                         h2{
                             font-size: clamp(4.25rem, 6rem, 8vw);
@@ -743,20 +745,28 @@
                      //TODO change navbar to pc view
                      height: 70vh;
                     .header {
-                        .uptech-logo{width: 100%;max-width: unset;}
+                        justify-content: left;
+
+                        .logo-wrapper .uptech-logo{width: 100%;max-width: unset;}
+
                         .menu-btn{display: none;}
                         .navbar{
+                            width: 100%;
+                            // padding-left: 1rem;
                             display: block;
                             .nav-items{
+
                                 display: flex;
-                                flex-direction: row;
-                                gap: 2rem;
+                                justify-content: right;
+                                gap: 1rem;
                                 font-family: Inter;
                                 font-size: 1.8vw;
                                 font-style: normal;
                                 font-weight: 900;
                                 line-height: normal;
                                 list-style: none;
+                                margin: 0;
+                                padding: 0;
                             }
                             
                         }
@@ -823,8 +833,132 @@
                 
             
                 }
+
+                .product-information-section{
+                    .features {
+                        .features-container{
+                            padding-left: 1rem;
+                            padding-right: 1rem;
+                            h2{ font-size: 15vw; }
+                            p{ 
+                                margin-left: unset;
+                                margin-right: unset;
+                                font-size: 6vw;
+                                min-width: unset;
+                                max-width: unset;
+                                width: 100%; 
+                            }
+                            .dots-wrapper {
+                                width: 21vw;
+                                .dots-img{
+                                    width: 100%;
+                                    height: 100%;
+                                    object-fit: contain;
+                                    display: block;
+                                    margin: 2.61rem 0 0 1.68rem;
+                                }
+                            }
+                        }
+
+                        .education-container{
+                            display: flex;
+                            flex-direction: row-reverse; //TODO fix flexbox
+                        }
+                    }
+                }
             }
 
+        }
+        @media(min-width: 991px){
+            .outer-layer{
+
+                .welcome-section{
+                     //TODO change navbar to pc view
+                     height: 90vh;
+        
+                    .call-to-action{
+        
+                        .welcome-container{
+                            width: 20%;
+                            padding-right: 11rem;
+                        
+                            h1{
+                                font-size: 11vw;
+                                margin-left: 9rem;
+                                margin-top: 8rem;
+                            }
+        
+                            p{
+                                width: 24rem;
+                                font-size: 4.5vw;
+                                margin-left: 0rem;
+                            
+                            }
+                        
+                        }
+                        
+                    }
+            
+                }
+
+               
+            } 
+        }
+
+        @media(min-width: 1200px){
+            .outer-layer{
+
+                .welcome-section{
+        
+                    .call-to-action{
+                        .image-wrapper {
+                            .call-to-action-img{
+                                width: 100%;
+                                height: 100%;
+                                margin-top: 3rem;
+                            }
+                        }
+                        .welcome-container{
+                            width: 70%;
+                            padding-right: 0rem;
+                        
+                            h1{
+                                margin-left: 1rem;
+                            }
+        
+                            p{
+                                width: 25rem;
+                                font-size: 4.5vw;
+                                margin-left: 10rem;
+                            
+                            }
+                        
+                        }
+                        
+                    }
+            
+                }
+
+                .product-information-section{
+                     .features {
+                        .features-container{
+                            padding-left: 2rem;
+                            padding-right: 2rem;
+                            p{font-size: 4vw;}
+                            .dots-wrapper {
+                                .dots-img{
+                                    width: 100%;
+                                    height: 100%;
+                                    object-fit: contain;
+                                }
+                            }
+
+                        }
+                    }
+                }
+
+               
+            } 
         }
 }
    

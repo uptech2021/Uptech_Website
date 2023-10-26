@@ -166,6 +166,9 @@
   min-width: 16.11375rem;
   max-width: 24.57763rem;
 }
+.home-main-container .outer-layer .product-information-section .features .features-container .dots-img {
+  display: none;
+}
 @media (min-width: 424px) {
   .home-main-container .outer-layer .product-information-section .features .features-container h2 {
     font-size: clamp(4.25rem, 6rem, 8vw);
@@ -629,7 +632,10 @@
   .home-main-container .outer-layer .welcome-section {
     height: 70vh;
   }
-  .home-main-container .outer-layer .welcome-section .header .uptech-logo {
+  .home-main-container .outer-layer .welcome-section .header {
+    justify-content: left;
+  }
+  .home-main-container .outer-layer .welcome-section .header .logo-wrapper .uptech-logo {
     width: 100%;
     max-width: unset;
   }
@@ -637,18 +643,21 @@
     display: none;
   }
   .home-main-container .outer-layer .welcome-section .header .navbar {
+    width: 100%;
     display: block;
   }
   .home-main-container .outer-layer .welcome-section .header .navbar .nav-items {
     display: flex;
-    flex-direction: row;
-    gap: 2rem;
+    justify-content: right;
+    gap: 1rem;
     font-family: Inter;
     font-size: 1.8vw;
     font-style: normal;
     font-weight: 900;
     line-height: normal;
     list-style: none;
+    margin: 0;
+    padding: 0;
   }
   .home-main-container .outer-layer .welcome-section .call-to-action {
     width: auto;
@@ -695,5 +704,86 @@
     font-style: normal;
     font-weight: 800;
     line-height: normal;
+  }
+  .home-main-container .outer-layer .product-information-section .features .features-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .home-main-container .outer-layer .product-information-section .features .features-container h2 {
+    font-size: 15vw;
+  }
+  .home-main-container .outer-layer .product-information-section .features .features-container p {
+    margin-left: unset;
+    margin-right: unset;
+    font-size: 6vw;
+    min-width: unset;
+    max-width: unset;
+    width: 100%;
+  }
+  .home-main-container .outer-layer .product-information-section .features .features-container .dots-wrapper {
+    width: 21vw;
+  }
+  .home-main-container .outer-layer .product-information-section .features .features-container .dots-wrapper .dots-img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: contain;
+       object-fit: contain;
+    display: block;
+    margin: 2.61rem 0 0 1.68rem;
+  }
+  .home-main-container .outer-layer .product-information-section .features .education-container {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+}
+@media (min-width: 991px) {
+  .home-main-container .outer-layer .welcome-section {
+    height: 90vh;
+  }
+  .home-main-container .outer-layer .welcome-section .call-to-action .welcome-container {
+    width: 20%;
+    padding-right: 11rem;
+  }
+  .home-main-container .outer-layer .welcome-section .call-to-action .welcome-container h1 {
+    font-size: 11vw;
+    margin-left: 9rem;
+    margin-top: 8rem;
+  }
+  .home-main-container .outer-layer .welcome-section .call-to-action .welcome-container p {
+    width: 24rem;
+    font-size: 4.5vw;
+    margin-left: 0rem;
+  }
+}
+@media (min-width: 1200px) {
+  .home-main-container .outer-layer .welcome-section .call-to-action .image-wrapper .call-to-action-img {
+    width: 100%;
+    height: 100%;
+    margin-top: 3rem;
+  }
+  .home-main-container .outer-layer .welcome-section .call-to-action .welcome-container {
+    width: 70%;
+    padding-right: 0rem;
+  }
+  .home-main-container .outer-layer .welcome-section .call-to-action .welcome-container h1 {
+    margin-left: 1rem;
+  }
+  .home-main-container .outer-layer .welcome-section .call-to-action .welcome-container p {
+    width: 25rem;
+    font-size: 4.5vw;
+    margin-left: 10rem;
+  }
+  .home-main-container .outer-layer .product-information-section .features .features-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .home-main-container .outer-layer .product-information-section .features .features-container p {
+    font-size: 4vw;
+  }
+  .home-main-container .outer-layer .product-information-section .features .features-container .dots-wrapper .dots-img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: contain;
+       object-fit: contain;
   }
 }/*# sourceMappingURL=home.css.map */
