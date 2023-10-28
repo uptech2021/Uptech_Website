@@ -6,10 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint && html-validate app/**/*.tsx"
   },
   "dependencies": {
     "cypress": "^13.3.1",
+    "html-validate": "^8.7.0",
+    "html-validator": "^6.0.1",
     "jest": "^29.7.0",
     "next": "^14.0.0",
     "react": "^18",
