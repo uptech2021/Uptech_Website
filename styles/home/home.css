@@ -5,7 +5,6 @@
   padding: 0.99rem 0.63rem;
   margin: 1.13rem 0.44rem 0 0.44rem;
   min-width: 19.125rem;
-  max-width: 101.9375rem;
   border-radius: 2.75rem;
   background: rgba(239, 243, 243, 0.7);
   position: relative;
@@ -14,7 +13,6 @@
 }
 .home-main-container .outer-layer .welcome-section {
   min-width: 17.875rem;
-  max-width: 99.125rem;
   height: 44rem;
   display: flex;
   flex-direction: column;
@@ -137,7 +135,6 @@
 }
 .home-main-container .outer-layer .product-information-section {
   min-width: 17.875rem;
-  max-width: 99.125rem;
   height: auto;
   display: flex;
   flex-direction: column;
