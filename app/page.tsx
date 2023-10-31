@@ -5,9 +5,12 @@ import upTechLogo from '../public/images/uptech logo.png'
 import menu from '../public/images/menu.svg'
 import aaron_mobile_view from '../public/images/aaron_mobile_view.png'
 import aaron_pc_view from '../public/images/aaron_pc_view.png'
-import elearning from '../public/images/elearning_mobile_view.png'
-import boxes from '../public/images/box cart.png'
-import projectManagement from '../public/images/man with project management.png'
+import elearning_mobile_view from '../public/images/elearning_mobile_view.png'
+import elearning_pc_view from '../public/images/elearning_pc_view.png'
+import boxes_mobile_view from '../public/images/boxes_mobile_view.png'
+import boxes_pc_view from '../public/images/boxes_pc_view.png'
+import projectManagement_mobile_view from '../public/images/projectManagement_mobile_view.png'
+import projectManagement_pc_view from '../public/images/projectManagement_pc_view.png'
 import privacy from '../public/images/privacy.png'
 import userSafety from '../public/images/user safety.png'
 import dataSecurity from '../public/images/data security.png'
@@ -93,30 +96,47 @@ export default function Home() {
           </div>
         
           <div className="education-container">
-            <h3>EDUCATION</h3>
+            
+          <div className="image-wrapper">
+              <Image src={width >= 768 ? elearning_pc_view : elearning_mobile_view} className='elearning-img' alt="elearning"/>
+          </div>
 
-            <div className="image-wrapper">
-              <Image src={elearning} className='elearning-img' alt="elearning"/>
-            </div>
-          
-            <p>Virtual Library, <br/>Blogs, etc.</p>
+          <div className="information">
+           <h3>EDUCATION</h3>
+           <p>Virtual Library, <br/>Blogs, etc.</p>
+          </div>
+           
+          </div>
+
+          <div className="dots-wrapper">
+              <Image src={dots} className="dots-img" alt="image of dots" />
           </div>
 
           <div className="marketplace-container">
-            <h3>MARKETPLACE</h3>
+            <div className="image-wrapper">
+                <Image src={width >= 768 ? boxes_pc_view : boxes_mobile_view} className='marketplace-img' alt="marketplace image"/>
+            </div>
+            
+            <div className="information">
+              <h3>MARKETPLACE</h3>
+              <p><b>Buy, Sell, Trade, Explore</b></p>
+            </div>
+          </div>
 
-            <Image src={boxes} className='marketplace-img' alt="marketplace image"/>
-          
-            <p><b>Buy, Sell, Trade, Explore</b></p>
+          <div className="dots-wrapper">
+              <Image src={dots} className="dots-img" alt="image of dots" />
           </div>
 
           <div className="project-management-container">
-            <h3>PROJECT MANAGEMENT</h3>
-            <div className="blue-square"></div>
-
-            <Image src={projectManagement} className='project-management-img' alt="project management image"/>
+            <div className="image-wrapper">
+                <Image src={width >= 768 ? projectManagement_pc_view : projectManagement_mobile_view} className='project-management-img' alt="project management image"/>
+            </div>
           
-            <p>Tools for Teacher(s), Student(s), Business(es)</p>
+            <div className="information">
+              <h3>PROJECT MANAGEMENT</h3>
+              <p>Tools for Teacher(s), Student(s), Business(es)</p>
+            </div>
+            
           </div>
           
         </div>
