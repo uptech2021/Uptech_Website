@@ -241,4 +241,211 @@
                 }
             }
     }
+    @media (min-width: 768px){
+        .outer-layer{
+            .objectives-first-container{
+                .objectives-section{
+                    min-width: 44.5rem;
+                    height: 27.9375rem;
+                    max-width: 99.125rem;
+                    height: 26.625rem;
+                    display: flex;
+                    flex-direction: column;
+                    border-radius: 2.75rem;
+                    background: #FFF;
+                    position: relative;
+                    overflow: visible;
+
+                    .head{
+                        .uptech-logo{
+                            max-width: 13rem;
+                        }
+                        .navbar{
+                            display: block;
+                            width: 100%;
+                                                    
+                            .nav-items{
+                                display: flex;
+                                justify-content: right;
+                                gap: 1rem;
+                                font-family: Inter;
+                                font-size: 1.8vw;
+                                font-style: normal;
+                                font-weight: 900;
+                                line-height: normal;
+                                list-style: none;
+                                margin: 0;
+                                padding: 0;
+                            }
+                        }
+                        .menu-dropdown{                                
+                            display: none;
+                        }
+                    }
+                    .objectives-header{
+                        display: flex;
+                        position: relative;
+                        font-style: normal;
+                        font-weight: 800;
+                        line-height: normal;
+                        align-items: center;
+                        justify-content: center;
+                        margin: -3rem 1.75rem 0 1.75rem;
+
+                        h1{
+                            font-family: 'THICCCBOI';
+                            font-size: 17.0138889vw;
+                        }
+                    }    
+                    .objectives-content {
+                        display: flex;
+                        min-width: 42.51844rem;
+                        min-height: 44.99056rem;
+                        margin-left: 1rem;
+                        align-items: center;  /* Vertically center the content */
+                        justify-content: center;  /* Horizontally center the content */
+                        margin-right: 0.38rem;
+                        margin-top: -6.23rem;
+                    
+                    
+                        .cybersecurity-img {
+                            object-fit: contain;
+                            width: 100%;
+                            height: 100%;
+                            z-index: 2;
+                        }
+                    }
+                }
+            }   
+            .objectives-second-container{
+                margin-top: 2.25rem;
+
+                .objectives-info-section{
+                    min-width: 44.5rem;
+                    min-height: 481.375rem;                
+                    border-radius: 2.75rem;
+                    background: #FFF;
+                    position: relative;
+                    overflow: hidden;
+
+
+                    .usersafety-header{
+                        margin: 30rem 1.31rem 0 1.31rem;
+                        h1{
+                                min-width: 20.5625rem;
+                                min-height: 8.875rem;
+                                display: flex;
+                                color: #52CAC8;
+                                font-family: Inter;
+                                font-size: 13.02vw;
+                                font-style: normal;
+                                font-weight: 700;
+                                line-height: normal;
+                            }
+                    }
+                    .privacy-header{
+                        margin: 0 8.06rem 0 8.06rem;
+                        display: flex;
+                        text-align: center;
+                        align-items: center;
+                        h1{
+                            color: #52CAC8;
+                            font-family: Inter;
+                            font-size: 13.02vw;
+                            font-style: normal;
+                            font-weight: 700;
+                            line-height: normal;
+                        }
+                    }
+                    .datasecurity-header{
+                        display: flex;
+                        text-align: center;
+
+                        h1{
+                            color: #52CAC8;
+                            font-family: 'Inter';
+                            font-size: 13.02vw;
+                            font-style: normal;
+                            font-weight: 700;
+                            line-height: normal;
+                        }
+                    }
+                    .usersafety-content{
+                        p{
+                            color: #000;
+                            text-align: center;
+                            font-family: Inter;
+                            font-size: 6.77vw;
+                            font-style: normal;
+                            font-weight: 500;
+                            line-height: normal;
+                            margin-right: 0.19rem;
+                            margin-left: 0.62rem;
+                        }
+                    }
+                    .usersafety-img-container{
+                        min-width: 38.21656rem;
+                        min-height: 20.18113rem;
+                        .safety-img{
+                            // margin: 0 1.64rem 0 2.62rem;                    
+                            object-fit: contain;
+                            align-items: center;
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+                    .privacy-content{
+                        text-align: center;
+                        p{
+                            color: #000;
+                            font-family: Inter;
+                            font-size: 8.47vw;
+                            font-style: normal;
+                            font-weight: 500;
+                            line-height: normal;
+                            margin: 0 1rem 0 1rem;
+                        }
+                    }
+                    .privacy-img-container{
+                        min-width: 40.01575rem;
+                        min-height: 30.25rem;
+                        .privacy-img{
+                            width: 100%;
+                            height: 100%;
+                            object-fit: contain;
+                        }
+                    }
+                    .datasecurity-content{
+                        margin-right: 0.25rem;
+                        margin-left: 0.44rem;
+                        text-align: center;
+
+                        p{
+                            color: #000;
+                            font-family: Inter;
+                            font-size: 8.97vw;
+                            font-style: normal;
+                            font-weight: 500;
+                            line-height: normal;
+                            min-width: 17.75rem;
+                            min-height: 19.25rem;
+                        }
+                    }
+                    .datasecurity-img-container{
+                        min-width: 34.47956rem;
+                        min-height: 26.78594rem;
+                        .datasecurity-img{
+                            height: 100%;
+                            width: 100%;    
+                            object-fit: contain;
+                        }
+                    }
+            
+                }
+            }
+        }
+    }
+    @media (min-width: 1024px){
+
+    }
     }
