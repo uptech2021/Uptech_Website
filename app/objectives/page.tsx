@@ -8,6 +8,7 @@ import safety from '../../public/images/Objectives/user safety.png'
 import dataSecurity from '../../public/images/Objectives/data security.png'
 import privacyLock from '../../public/images/Objectives/Mask group.png'
 
+import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
 import Image from 'next/image'
@@ -23,24 +24,7 @@ export default function Objectives(){
             <div className="outer-layer">
                 <div className="objectives-first-container">
                     <div className="objectives-section">
-                        <header className="head">
-                            <div className="uptech-logo-container">
-                                <Image src={uptechLogo} className ="uptech-logo" alt="Uptech Logo"/>
-                            </div>
-
-                            <nav className="navbar">
-                                <ul className="nav-items">
-                                    <li className="nav-links">Home</li>
-                                    <li className="nav-links">Objectives</li>
-                                    <li className="nav-links">About us</li>
-                                    <li className="nav-links">Products</li>
-                                    <li className="nav-links">Contact us</li>
-                                </ul>
-                            </nav>
-
-                            <Image src={menu} className="menu-dropdown" alt="Navigation Sandwich Menu"/>
-                        
-                        </header>
+                        <Navbar/>
                         
                         <header className="objectives-header">
                             <h1>Objectives</h1>

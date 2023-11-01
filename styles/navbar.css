@@ -1,42 +1,42 @@
-.home-main-container .outer-layer .welcome-section .header {
+.home-main-container .outer-layer .welcome-section .header, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header {
   margin: 1.84rem 1.25rem 0 1.25rem;
   min-width: 15.375rem;
   display: flex;
   align-items: center;
 }
-.home-main-container .outer-layer .welcome-section .header .uptech-logo {
+.home-main-container .outer-layer .welcome-section .header .uptech-logo, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .uptech-logo {
   max-width: 9rem;
   height: 100%;
   margin: 0;
   -o-object-fit: contain;
      object-fit: contain;
 }
-.home-main-container .outer-layer .welcome-section .header .navbar {
+.home-main-container .outer-layer .welcome-section .header .navbar, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .navbar {
   display: none;
 }
-.home-main-container .outer-layer .welcome-section .header .navbar .nav-items .nav-links a {
+.home-main-container .outer-layer .welcome-section .header .navbar .nav-items .nav-links a, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .navbar .nav-items .nav-links a {
   color: black;
   text-decoration: none;
   cursor: pointer;
 }
-.home-main-container .outer-layer .welcome-section .header .menu-btn {
+.home-main-container .outer-layer .welcome-section .header .menu-btn, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .menu-btn {
   max-width: 3rem;
   max-height: 1.5rem;
   margin-left: auto;
 }
 @media (min-width: 768px) {
-  .home-main-container .outer-layer .welcome-section .header .logo-wrapper .uptech-logo {
+  .home-main-container .outer-layer .welcome-section .header .logo-wrapper .uptech-logo, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .logo-wrapper .uptech-logo {
     width: 100%;
     max-width: unset;
   }
-  .home-main-container .outer-layer .welcome-section .header .menu-btn {
+  .home-main-container .outer-layer .welcome-section .header .menu-btn, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .menu-btn {
     display: none;
   }
-  .home-main-container .outer-layer .welcome-section .header .navbar {
+  .home-main-container .outer-layer .welcome-section .header .navbar, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .navbar {
     width: 100%;
     display: block;
   }
-  .home-main-container .outer-layer .welcome-section .header .navbar .nav-items {
+  .home-main-container .outer-layer .welcome-section .header .navbar .nav-items, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .navbar .nav-items {
     display: flex;
     justify-content: right;
     gap: 1rem;
