@@ -864,10 +864,14 @@
 
                     .about-us{ 
                         .about-us-btns{
+                            min-width: unset;
+                            max-width: unset;
                             p{
                                 min-width: unset;max-width: unset;width: 90%;
                                 font-size: 6vw;
                                 margin-top: -2rem;
+                                margin-left: auto;
+                                margin-right: auto;
                             }
 
                             .btns-containers{
@@ -959,6 +963,8 @@
                                 height: auto;
                             }
                         }
+
+                        //TODO .product-information-section .about-us .about-us-btns p{font-size: 5vw;}
                         
                     }
             
