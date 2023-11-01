@@ -8,6 +8,8 @@ import safety from '../../public/images/Objectives/user safety.png'
 import dataSecurity from '../../public/images/Objectives/data security.png'
 import privacyLock from '../../public/images/Objectives/Mask group.png'
 
+import Footer from '@/components/Footer'
+
 import Image from 'next/image'
 // import { useWindowSize } from 'react-use'; //react package that checks the screen size of the device
 import Link from "next/link"
@@ -80,6 +82,7 @@ export default function Objectives(){
                         </div>
                 </div>
             </div>
+            <Footer/>
         </main>
     )
 } 
