@@ -4,16 +4,17 @@ import '../styles/home/home.css'
 
 import aaron_mobile_view from '../public/images/aaron_mobile_view.png'
 import aaron_pc_view from '../public/images/aaron_pc_view.png'
-import elearning_mobile_view from '../public/images/elearning_mobile_view.png'
+import elearning_mobile_view from '../public/images/elearning_mobile_view.jpeg'
 import elearning_pc_view from '../public/images/elearning_pc_view.png'
-import boxes_mobile_view from '../public/images/boxes_mobile_view.png'
+import landingImage from '../public/images/landingImage.png'
+import boxes_mobile_view from '../public/images/boxes_mobile_view.jpeg'
 import boxes_pc_view from '../public/images/boxes_pc_view.png'
-import projectManagement_mobile_view from '../public/images/projectManagement_mobile_view.png'
+import projectManagement_mobile_view from '../public/images/projectManagement_mobile_view.jpeg'
 import projectManagement_pc_view from '../public/images/projectManagement_pc_view.png'
-import privacy from '../public/images/privacy.png'
-import userSafety from '../public/images/user safety.png'
-import dataSecurity from '../public/images/data security.png'
-import manHoldingPhoneWithLogoBehindHim_mobile_view from '../public/images/manHoldingPhoneWithLogoBehindHim_mobile_view.png'
+import privacy from '../public/images/privacy.jpeg'
+import userSafety from '../public/images/userSafety.jpeg'
+import dataSecurity from '../public/images/dataSecurity.jpeg'
+import manHoldingPhoneWithLogoBehindHim_mobile_view from '../public/images/manHoldingPhoneWithLogoBehindHim_mobile_view.jpg'
 import manHoldingPhoneWithLogoBehindHim_pc_view from '../public/images/manHoldingPhoneWithLogoBehindHim_pc_view.png'
 import manWIthLogoBehindHimHoldingPhone from '../public/images/man with logo behind him holding phone.png'
 
@@ -50,7 +51,8 @@ export default function Home() {
 
           <div className="image-wrapper">
             <Image 
-              src={width >= 768 ?  aaron_pc_view : aaron_mobile_view} 
+              // src={width >= 768 ?  aaron_pc_view : aaron_mobile_view} 
+              src={width >= 768 ?  landingImage : landingImage} 
               className="call-to-action-img" 
               alt="Guy Holding His phone with the Ourlime logo behind him" 
               unoptimized
@@ -79,7 +81,8 @@ export default function Home() {
           <div className="education-container">
             
           <div className="image-wrapper">
-              <Image src={width >= 768 ? elearning_pc_view : elearning_mobile_view} className='elearning-img' alt="elearning"/>
+              {/* <Image src={width >= 768 ? elearning_pc_view : elearning_mobile_view} className='elearning-img' alt="elearning"/> */}
+              <Image src={width >= 768 ? elearning_mobile_view : elearning_mobile_view} className='elearning-img' alt="elearning"/>
           </div>
 
           <div className="information">
@@ -95,7 +98,8 @@ export default function Home() {
 
           <div className="marketplace-container">
             <div className="image-wrapper">
-                <Image src={width >= 768 ? boxes_pc_view : boxes_mobile_view} className='marketplace-img' alt="marketplace image"/>
+                {/* <Image src={width >= 768 ? boxes_pc_view : boxes_mobile_view} className='marketplace-img' alt="marketplace image"/> */}
+                <Image src={width >= 768 ? boxes_mobile_view : boxes_mobile_view} className='marketplace-img' alt="marketplace image"/>
             </div>
             
             <div className="information">
@@ -110,7 +114,8 @@ export default function Home() {
 
           <div className="project-management-container">
             <div className="image-wrapper">
-                <Image src={width >= 768 ? projectManagement_pc_view : projectManagement_mobile_view} className='project-management-img' alt="project management image"/>
+                {/* <Image src={width >= 768 ? projectManagement_pc_view : projectManagement_mobile_view} className='project-management-img' alt="project management image"/> */}
+                <Image src={width >= 768 ? projectManagement_mobile_view : projectManagement_mobile_view} className='project-management-img' alt="project management image"/>
             </div>
           
             <div className="information">
@@ -172,7 +177,8 @@ export default function Home() {
               <div className="products-container">
 
                   <div className="image-wrapper">
-                    <Image src={width >= 768 ? manHoldingPhoneWithLogoBehindHim_pc_view : manHoldingPhoneWithLogoBehindHim_mobile_view} className='man-holding-phone-with-logo-img' alt="image of man holding phone with logo" />
+                    {/* <Image src={width >= 768 ? manHoldingPhoneWithLogoBehindHim_pc_view : manHoldingPhoneWithLogoBehindHim_mobile_view} className='man-holding-phone-with-logo-img' alt="image of man holding phone with logo" /> */}
+                    <Image src={width >= 768 ? manHoldingPhoneWithLogoBehindHim_mobile_view : manHoldingPhoneWithLogoBehindHim_mobile_view} className='man-holding-phone-with-logo-img' alt="image of man holding phone with logo" />
                   </div>
 
                   <p>The Purpose Of Ourlime And What UpTech Incorporated Hope To Achieve With Our App.</p>
