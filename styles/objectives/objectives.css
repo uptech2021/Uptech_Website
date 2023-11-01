@@ -220,4 +220,192 @@
   width: 100%;
   -o-object-fit: contain;
      object-fit: contain;
+}
+@media (min-width: 768px) {
+  .objectives-main-container .outer-layer .objectives-first-container .objectives-section {
+    min-width: 44.5rem;
+    height: 27.9375rem;
+    max-width: 99.125rem;
+    height: 26.625rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 2.75rem;
+    background: #FFF;
+    position: relative;
+    overflow: visible;
+  }
+  .objectives-main-container .outer-layer .objectives-first-container .objectives-section .head .uptech-logo {
+    max-width: 13rem;
+  }
+  .objectives-main-container .outer-layer .objectives-first-container .objectives-section .head .navbar {
+    display: block;
+    width: 100%;
+  }
+  .objectives-main-container .outer-layer .objectives-first-container .objectives-section .head .navbar .nav-items {
+    display: flex;
+    justify-content: right;
+    gap: 1rem;
+    font-family: Inter;
+    font-size: 1.8vw;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .objectives-main-container .outer-layer .objectives-first-container .objectives-section .head .menu-dropdown {
+    display: none;
+  }
+  .objectives-main-container .outer-layer .objectives-first-container .objectives-section .objectives-header {
+    display: flex;
+    position: relative;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    align-items: center;
+    justify-content: center;
+    margin: -3rem 1.75rem 0 1.75rem;
+  }
+  .objectives-main-container .outer-layer .objectives-first-container .objectives-section .objectives-header h1 {
+    font-family: "THICCCBOI";
+    font-size: 17.0138889vw;
+  }
+  .objectives-main-container .outer-layer .objectives-first-container .objectives-section .objectives-content {
+    display: flex;
+    min-width: 42.51844rem;
+    min-height: 44.99056rem;
+    margin-left: 1rem;
+    align-items: center; /* Vertically center the content */
+    justify-content: center; /* Horizontally center the content */
+    margin-right: 0.38rem;
+    margin-top: -6.23rem;
+  }
+  .objectives-main-container .outer-layer .objectives-first-container .objectives-section .objectives-content .cybersecurity-img {
+    -o-object-fit: contain;
+       object-fit: contain;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+  }
+  .objectives-main-container .outer-layer .objectives-second-container {
+    margin-top: 2.25rem;
+  }
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section {
+    min-width: 44.5rem;
+    min-height: 481.375rem;
+    border-radius: 2.75rem;
+    background: #FFF;
+    position: relative;
+    overflow: hidden;
+  }
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .usersafety-header {
+    margin: 30rem 1.31rem 0 1.31rem;
+  }
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .usersafety-header h1 {
+    min-width: 20.5625rem;
+    min-height: 8.875rem;
+    display: flex;
+    color: #52CAC8;
+    font-family: Inter;
+    font-size: 13.02vw;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .privacy-header {
+    margin: 0 8.06rem 0 8.06rem;
+    display: flex;
+    text-align: center;
+    align-items: center;
+  }
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .privacy-header h1 {
+    color: #52CAC8;
+    font-family: Inter;
+    font-size: 13.02vw;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .datasecurity-header {
+    display: flex;
+    text-align: center;
+  }
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .datasecurity-header h1 {
+    color: #52CAC8;
+    font-family: "Inter";
+    font-size: 13.02vw;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .usersafety-content p {
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 6.77vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-right: 0.19rem;
+    margin-left: 0.62rem;
+  }
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .usersafety-img-container {
+    min-width: 38.21656rem;
+    min-height: 20.18113rem;
+  }
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .usersafety-img-container .safety-img {
+    -o-object-fit: contain;
+       object-fit: contain;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .privacy-content {
+    text-align: center;
+  }
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .privacy-content p {
+    color: #000;
+    font-family: Inter;
+    font-size: 8.47vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 0 1rem 0 1rem;
+  }
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .privacy-img-container {
+    min-width: 40.01575rem;
+    min-height: 30.25rem;
+  }
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .privacy-img-container .privacy-img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .datasecurity-content {
+    margin-right: 0.25rem;
+    margin-left: 0.44rem;
+    text-align: center;
+  }
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .datasecurity-content p {
+    color: #000;
+    font-family: Inter;
+    font-size: 8.97vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    min-width: 17.75rem;
+    min-height: 19.25rem;
+  }
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .datasecurity-img-container {
+    min-width: 34.47956rem;
+    min-height: 26.78594rem;
+  }
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .datasecurity-img-container .datasecurity-img {
+    height: 100%;
+    width: 100%;
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
 }/*# sourceMappingURL=objectives.css.map */
