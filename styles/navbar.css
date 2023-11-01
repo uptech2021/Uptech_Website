@@ -17,6 +17,7 @@
 .home-main-container .outer-layer .welcome-section .header .navbar .nav-items .nav-links a {
   color: black;
   text-decoration: none;
+  cursor: pointer;
 }
 .home-main-container .outer-layer .welcome-section .header .menu-btn {
   max-width: 3rem;
