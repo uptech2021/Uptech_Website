@@ -1,0 +1,60 @@
+footer {
+  position: relative;
+  background: black;
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+footer .uptech-details {
+  display: flex;
+  flex-direction: column;
+  margin: 4.56rem 1.02rem 0 1.75rem;
+}
+footer .uptech-details .company-details .company-name h4 {
+  font-family: Inter;
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  margin: 0;
+}
+footer .uptech-details .company-details .company-name h5 {
+  font-family: Inter;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0;
+}
+footer .uptech-details .company-details .swap {
+  margin-top: 1.09rem;
+}
+footer .uptech-details .company-details .swap .footer-links {
+  margin: 0;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+footer .uptech-details .social-icons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1.37rem;
+  margin-top: 2.5rem;
+}
+footer .uptech-details .social-icons .icon {
+  width: 4.06463rem;
+  height: 5.48988rem;
+}
+footer .swap-mobile {
+  margin-top: 2.53rem;
+  text-align: center;
+  font-family: Inter;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}/*# sourceMappingURL=footer.css.map */

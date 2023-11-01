@@ -1,5 +1,5 @@
 .home-main-container {
-  font-family: "THICCCBOI";
+  aboutfont-family: "THICCCBOI";
 }
 .home-main-container .outer-layer {
   padding: 0.99rem 0.63rem;
@@ -20,27 +20,6 @@
   background: #FFF;
   position: relative;
   overflow: hidden;
-}
-.home-main-container .outer-layer .welcome-section .header {
-  margin: 1.84rem 1.25rem 0 1.25rem;
-  min-width: 15.375rem;
-  display: flex;
-  align-items: center;
-}
-.home-main-container .outer-layer .welcome-section .header .uptech-logo {
-  max-width: 9rem;
-  height: 100%;
-  margin: 0;
-  -o-object-fit: contain;
-     object-fit: contain;
-}
-.home-main-container .outer-layer .welcome-section .header .navbar {
-  display: none;
-}
-.home-main-container .outer-layer .welcome-section .header .menu-btn {
-  max-width: 3rem;
-  max-height: 1.5rem;
-  margin-left: auto;
 }
 .home-main-container .outer-layer .welcome-section .call-to-action {
   position: relative;
@@ -72,7 +51,6 @@
   text-align: center;
   font-family: Inter;
   font-size: 8vw;
-  font-weight: 800;
 }
 .home-main-container .outer-layer .welcome-section .call-to-action .welcome-container p span {
   color: #06E95C;
@@ -143,7 +121,6 @@
 .home-main-container .outer-layer .product-information-section .features .features-container p {
   margin: 1.73rem 0.88rem 0 0.94rem;
   font-size: clamp(1.625rem, 1.9375rem, 2vw);
-  font-weight: 700;
   min-width: 16.11375rem;
   max-width: 24.57763rem;
 }
@@ -188,7 +165,6 @@
   margin-left: -4rem;
   font-family: Inter;
   font-size: 9vw;
-  font-weight: 600;
 }
 @media (min-width: 419px) {
   .home-main-container .outer-layer .product-information-section .features .education-container p {
@@ -244,9 +220,6 @@
   width: 17.43556rem;
   font-family: Inter;
   font-size: 2rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
 }
 @media (min-width: 419px) {
   .home-main-container .outer-layer .product-information-section .features .marketplace-container .blue-square {
@@ -297,9 +270,6 @@
   height: 7.75rem;
   font-family: Inter;
   font-size: 8vw;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
   margin: 5.29rem auto;
 }
 @media (min-width: 419px) {
@@ -346,9 +316,6 @@
 .home-main-container .outer-layer .product-information-section .objectives .privacy-container p {
   font-family: Inter;
   font-size: 8vw;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
   margin-left: auto;
   margin-right: auto;
   max-width: 17.47888rem;
@@ -391,9 +358,6 @@
 .home-main-container .outer-layer .product-information-section .objectives .user-safety-container p {
   font-family: Inter;
   font-size: 9vw;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
   margin-top: 2.64rem;
 }
 @media (min-width: 374px) {
@@ -426,9 +390,6 @@
 .home-main-container .outer-layer .product-information-section .objectives .data-security-container p {
   font-family: Inter;
   font-size: 10vw;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
   margin: 2.81rem 0.56rem 0 0.44rem;
 }
 @media (min-width: 419px) {
@@ -464,9 +425,6 @@
 .home-main-container .outer-layer .product-information-section .products .products-container p {
   font-family: Inter;
   font-size: 8vw;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
   margin: 1.69rem auto;
   min-width: 16.8125rem;
   max-width: 21.875rem;
@@ -475,9 +433,9 @@
   font-size: 2.1rem;
   font-style: normal;
   font-weight: 700;
-  line-height: normal;
   width: 14.5rem;
   height: 4.21231rem;
+  border: none;
   border-radius: 3.875rem;
   color: white;
   background: rgba(7, 197, 223, 0.86);
@@ -494,22 +452,20 @@
   line-height: normal;
   color: #2ACDE4;
 }
-.home-main-container .outer-layer .product-information-section .about-us .about-us-btns p {
+.home-main-container .outer-layer .product-information-section .about-us .about-us-btns {
   margin: 2.63rem auto;
   font-size: 9vw;
-  font-style: normal;
-  font-weight: 600;
   min-width: 16.8125rem;
   max-width: 24.75rem;
 }
-.home-main-container .outer-layer .product-information-section .about-us .about-us-btns .btns-containers {
+.home-main-container .outer-layer .product-information-section .about-us .btns-containers {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 4rem auto;
   padding: 0 2rem;
 }
-.home-main-container .outer-layer .product-information-section .about-us .about-us-btns .btns-containers .large-btn-group {
+.home-main-container .outer-layer .product-information-section .about-us .btns-containers .large-btn-group {
   color: white;
   font-size: 2.7rem;
   font-style: normal;
@@ -523,78 +479,18 @@
   background: #6CFCEE;
   box-shadow: 12px 17px 11px 0px rgba(0, 0, 0, 0.25), 24px 4px 30px 0px rgba(0, 0, 0, 0.25) inset;
 }
-.home-main-container .outer-layer .product-information-section .about-us .about-us-btns .about-us-img-wrapper {
+.home-main-container .outer-layer .product-information-section .about-us .about-us-img-wrapper {
   width: auto;
   height: 100%;
   margin-top: -6rem;
 }
-.home-main-container .outer-layer .product-information-section .about-us .about-us-btns .about-us-img-wrapper .man-holding-phone-with-logo-img {
+.home-main-container .outer-layer .product-information-section .about-us .about-us-img-wrapper .man-holding-phone-with-logo-img {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
   margin: 0 auto;
   position: relative;
-}
-.home-main-container footer {
-  position: relative;
-  background: black;
-  margin-top: 1rem;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  color: white;
-}
-.home-main-container footer .uptech-details {
-  display: flex;
-  flex-direction: column;
-  margin: 4.56rem 1.02rem 0 1.75rem;
-}
-.home-main-container footer .uptech-details .company-details .company-name h4 {
-  font-family: Inter;
-  font-size: 3rem;
-  font-style: normal;
-  font-weight: 900;
-  line-height: normal;
-  margin: 0;
-}
-.home-main-container footer .uptech-details .company-details .company-name h5 {
-  font-family: Inter;
-  font-size: 2rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  margin: 0;
-}
-.home-main-container footer .uptech-details .company-details .swap {
-  margin-top: 1.09rem;
-}
-.home-main-container footer .uptech-details .company-details .swap .footer-links {
-  margin: 0;
-  font-size: 1.4rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-}
-.home-main-container footer .uptech-details .social-icons {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 1.37rem;
-  margin-top: 2.5rem;
-}
-.home-main-container footer .uptech-details .social-icons .icon {
-  width: 4.06463rem;
-  height: 5.48988rem;
-}
-.home-main-container footer .swap-mobile {
-  margin-top: 2.53rem;
-  text-align: center;
-  font-family: Inter;
-  font-size: 1.125rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
 }
 @media (min-width: 768px) {
   .home-main-container .outer-layer .welcome-section {
@@ -782,7 +678,6 @@
     width: auto;
     font-size: 4vw;
     margin-top: 2rem;
-    font-weight: 600;
   }
   .home-main-container .outer-layer .product-information-section .features .dots-wrapper:first-child {
     margin-top: 3rem;
@@ -790,6 +685,93 @@
   .home-main-container .outer-layer .product-information-section .features .dots-wrapper:nth-child(2) {
     position: relative;
     right: 35%;
+  }
+  .home-main-container .outer-layer .product-information-section .objectives .privacy-container, .home-main-container .outer-layer .product-information-section .objectives .user-safety-container, .home-main-container .outer-layer .product-information-section .objectives .data-security-container {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+  }
+  .home-main-container .outer-layer .product-information-section .objectives .privacy-container .image-wrapper, .home-main-container .outer-layer .product-information-section .objectives .user-safety-container .image-wrapper, .home-main-container .outer-layer .product-information-section .objectives .data-security-container .image-wrapper {
+    width: 55%;
+    padding-left: 2rem;
+  }
+  .home-main-container .outer-layer .product-information-section .objectives .privacy-container .image-wrapper img, .home-main-container .outer-layer .product-information-section .objectives .user-safety-container .image-wrapper img, .home-main-container .outer-layer .product-information-section .objectives .data-security-container .image-wrapper img {
+    min-width: unset;
+    max-width: unset;
+    min-height: unset;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+  .home-main-container .outer-layer .product-information-section .objectives .privacy-container .information, .home-main-container .outer-layer .product-information-section .objectives .user-safety-container .information, .home-main-container .outer-layer .product-information-section .objectives .data-security-container .information {
+    width: 45%;
+  }
+  .home-main-container .outer-layer .product-information-section .objectives .privacy-container .information h3, .home-main-container .outer-layer .product-information-section .objectives .user-safety-container .information h3, .home-main-container .outer-layer .product-information-section .objectives .data-security-container .information h3 {
+    font-size: 7vw;
+  }
+  .home-main-container .outer-layer .product-information-section .objectives .privacy-container .information p, .home-main-container .outer-layer .product-information-section .objectives .user-safety-container .information p, .home-main-container .outer-layer .product-information-section .objectives .data-security-container .information p {
+    height: auto;
+    font-size: 4vw;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .home-main-container .outer-layer .product-information-section .objectives .privacy-container .image-wrapper {
+    padding-top: 3rem;
+  }
+  .home-main-container .outer-layer .product-information-section .objectives .user-safety-container .image-wrapper {
+    padding-top: 0;
+  }
+  .home-main-container .outer-layer .product-information-section .objectives .data-security-container .image-wrapper {
+    padding-top: 3rem;
+  }
+  .home-main-container .outer-layer .product-information-section .products .products-container .image-wrapper {
+    height: 65vh;
+    position: relative;
+  }
+  .home-main-container .outer-layer .product-information-section .products .products-container .image-wrapper .man-holding-phone-with-logo-img {
+    width: 100%;
+    height: 100%;
+    max-width: unset;
+    max-height: unset;
+    margin: 0 auto;
+  }
+  .home-main-container .outer-layer .product-information-section .products .products-container p {
+    max-width: unset;
+    min-width: unset;
+    width: 38rem;
+    font-size: 2rem;
+  }
+  .home-main-container .outer-layer .product-information-section .products .products-container .learn-more-btn {
+    width: 60%;
+    height: 5rem;
+    margin-top: 0;
+    box-shadow: 1rem 0.8rem 1rem rgba(0, 0, 0, 0.651);
+    font-size: 3rem;
+    /*
+        X offset: The horizontal offset of the shadow relative to the element.
+        Y offset: The vertical offset of the shadow relative to the element.
+        Blur radius: The amount of blur applied to the shadow.
+        Spread radius: The amount of spread applied to the shadow.
+        Color: The color of the shadow.
+    */
+  }
+  .home-main-container .outer-layer .product-information-section .about-us .about-us-btns p {
+    min-width: unset;
+    max-width: unset;
+    width: 90%;
+    font-size: 6vw;
+    margin-top: -2rem;
+  }
+  .home-main-container .outer-layer .product-information-section .about-us .about-us-btns .btns-containers .large-btn-group {
+    min-width: 20rem;
+    min-height: 20rem;
+    font-size: 3.2rem;
+  }
+  .home-main-container .outer-layer .product-information-section .about-us .about-us-btns .btns-containers .large-btn-group:first-child, .home-main-container .outer-layer .product-information-section .about-us .about-us-btns .btns-containers .large-btn-group:last-child {
+    margin-left: -50%;
+  }
+  .home-main-container .outer-layer .product-information-section .about-us .about-us-btns .btns-containers .large-btn-group:nth-child(2) {
+    margin-left: 50%;
   }
 }
 @media (min-width: 992px) {

@@ -1,0 +1,58 @@
+.home-main-container .outer-layer .welcome-section .header{
+    margin: 1.84rem 1.25rem 0 1.25rem;
+    min-width: 15.375rem;
+
+    display: flex;
+    align-items: center;
+
+    .uptech-logo{
+        max-width: 9rem;
+        height: 100%;
+        margin: 0;
+        object-fit: contain;
+    }
+
+    .navbar{
+        display: none;
+
+        .nav-items .nav-links a{
+            color: black;
+            text-decoration: none;
+        }
+    }
+
+    .menu-btn{
+        max-width: 3rem;
+        max-height: 1.5rem;
+        margin-left: auto;
+    }
+
+    @media(min-width: 768px){
+        .logo-wrapper .uptech-logo{width: 100%;max-width: unset;}
+
+        .menu-btn{display: none;}
+        .navbar{
+            width: 100%;
+            // padding-left: 1rem;
+            display: block;
+            .nav-items{
+
+                display: flex;
+                justify-content: right;
+                gap: 1rem;
+                font-family: Inter;
+                font-size: 1.8vw;
+                font-style: normal;
+                font-weight: 900;
+                line-height: normal;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+
+               
+            }
+            
+        }
+    }
+    
+}

@@ -1,8 +1,7 @@
 'use client'
 
 import '../styles/home/home.css'
-import upTechLogo from '../public/images/uptech logo.png'
-import menu from '../public/images/menu.svg'
+
 import aaron_mobile_view from '../public/images/aaron_mobile_view.png'
 import aaron_pc_view from '../public/images/aaron_pc_view.png'
 import elearning_mobile_view from '../public/images/elearning_mobile_view.png'
@@ -14,18 +13,17 @@ import projectManagement_pc_view from '../public/images/projectManagement_pc_vie
 import privacy from '../public/images/privacy.png'
 import userSafety from '../public/images/user safety.png'
 import dataSecurity from '../public/images/data security.png'
-import manHoldingPhoneWithLogoBehindHim from '../public/images/man holding phone with logo.png'
+import manHoldingPhoneWithLogoBehindHim_mobile_view from '../public/images/manHoldingPhoneWithLogoBehindHim_mobile_view.png'
+import manHoldingPhoneWithLogoBehindHim_pc_view from '../public/images/manHoldingPhoneWithLogoBehindHim_pc_view.png'
 import manWIthLogoBehindHimHoldingPhone from '../public/images/man with logo behind him holding phone.png'
-import whatsAppIcon from '../public/Icons/Whatsapp Icon.svg'
-import instagramIcon from '../public/Icons/Instagram Icon.svg'
-import linkedInIcon from '../public/Icons/LinkedIn Icon.svg'
-import twitterIcon from '../public/Icons/Twitter Icon.svg'
-import facebookIcon from '../public/Icons/Facebook Icon.svg'
+
 import dots from '../public/images/dots.png'
+
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 
 import Image from 'next/image'
 import { useWindowSize } from 'react-use'; //react package that checks the screen size of the device
-import Link from 'next/link'
 
 export default function Home() {
 
@@ -37,25 +35,8 @@ export default function Home() {
     <div className="outer-layer">
 
       <section className="welcome-section">
-        <header className="header">
-          <div className="logo-wrapper">
-            <Image className="uptech-logo" src={upTechLogo} alt="logo"/>
-          </div>
-
-          <nav className="navbar">
-            <ul className="nav-items">
-              <li className="nav-links">Home</li>
-              <li className="nav-links">Objectives</li>
-              <li className="nav-links">About us</li>
-              <li className="nav-links">Products</li>
-              <li className="nav-links">Contact us</li>
-            </ul>
-          </nav>
-          
-          <Image className='menu-btn' src={menu} alt="menu"/>
-          
-        </header>
-
+       
+        <Navbar />
         <div className="call-to-action">
 
           <div className="welcome-container">
@@ -142,30 +123,46 @@ export default function Home() {
         </div>
 
           <div className='objectives'>
-            <h2>OBJECTIVES</h2>
-            <div className="privacy-container">
-              <h3>PRIVACY</h3>
-
-              <Image src={privacy} className='privacy-img' alt="image of laptop" />
-
-              <p>These specific features would incorporate a &quot;lock code&quot; that only the user would know.</p>              </div>
-
-            <div className="user-safety-container">
-              <h3>USER SAFETY</h3>
-
-              <Image src={userSafety} className='user-safety-img' alt="image of laptop" />
-
-              <p>Implementation of algorithms, that can recognize sensitive phrases and words as well as duplicate account would improve user&apos;s safety.</p>
-            </div>
-
-            <div className="data-security-container">
-              <h3>DATA SECURITY</h3>
-
-              <Image src={dataSecurity} className='data-security-img' alt="image of male and female by a server room" />
-
-              <p>Data such as names, addresses, emails, contacts, and date of births would not be used for marketing purposes.</p>
-            </div>
+              <h2>OBJECTIVES</h2>
             
+              <div className="privacy-container">
+
+                <div className="image-wrapper">
+                  <Image src={privacy} className='privacy-img' alt="image of laptop" />
+                </div>                
+                
+                <div className="information">
+                  <h3>PRIVACY</h3>
+                  <p>These specific features would incorporate a &quot;lock code&quot; that only the user would know.</p> 
+                </div>
+                            
+              </div>
+
+              <div className="user-safety-container">
+
+                <div className="image-wrapper">
+                  <Image src={userSafety} className='user-safety-img' alt="image of laptop" />
+                </div>
+                
+                <div className="information">
+                  <h3>USER SAFETY</h3>
+                  <p>Implementation of algorithms, that can recognize sensitive phrases and words as well as duplicate account would improve user&apos;s safety.</p>
+                </div>
+
+              </div>
+
+              <div className="data-security-container">
+
+                <div className="image-wrapper">
+                  <Image src={dataSecurity} className='data-security-img' alt="image of male and female by a server room" />
+                </div>
+
+                <div className="information">
+                  <h3>DATA SECURITY</h3>
+                  <p>Data such as names, addresses, emails, contacts, and date of births would not be used for marketing purposes.</p>
+                </div>
+
+              </div>
 
           </div>
         
@@ -174,9 +171,11 @@ export default function Home() {
 
               <div className="products-container">
 
-                  <Image src={manHoldingPhoneWithLogoBehindHim} className='man-holding-phone-with-logo-img' alt="image of man holding phone with logo" />
+                  <div className="image-wrapper">
+                    <Image src={width >= 768 ? manHoldingPhoneWithLogoBehindHim_pc_view : manHoldingPhoneWithLogoBehindHim_mobile_view} className='man-holding-phone-with-logo-img' alt="image of man holding phone with logo" />
+                  </div>
 
-                  <p>The purpose of Ourlime and what UpTech Incorporated hope to achieve with Our App.</p>
+                  <p>The Purpose Of Ourlime And What UpTech Incorporated Hope To Achieve With Our App.</p>
               
                   <button className='learn-more-btn'>Learn More</button>
               </div>
@@ -203,6 +202,7 @@ export default function Home() {
                 unoptimized
                 />
               </div>
+
             </div>
           </div>
       </section>
@@ -210,35 +210,7 @@ export default function Home() {
 
     </div>
 
-    <footer>
-      <div className="uptech-details">
-        <div className="company-details">
-          <div className="company-name">
-            <h4>UPTECH</h4>
-            <h5>Incorported Ltd</h5>
-          </div>
-
-          
-          <div className="swap swap-pc">
-            <p className="footer-links">Terms & Conditions</p>
-            <p className="footer-links">Privacy Policy</p>
-            <p className="footer-links">Contact Us</p>
-            <p className="footer-links">Help</p>
-          </div>
-        </div>
-
-        <div className="social-icons">
-          <Image src={whatsAppIcon} className='icon' alt="whatsapp icon" />
-          <Image src={instagramIcon} className='icon' alt="Instagram icon" />
-          <Image src={linkedInIcon} className='icon' alt="LinkedIn icon" />
-          <Image src={twitterIcon} className='icon' alt="Twitter icon" />
-          <Image src={facebookIcon} className='icon' alt="Facebook icon" />
-        </div>
-
-      </div>
-
-        <p className='swap swap-mobile'>Cooperation, Communication, Teamwork and Commitment</p>
-    </footer>
+    <Footer />
 
     </main>  
 )
