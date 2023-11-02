@@ -256,32 +256,6 @@
                     position: relative;
                     overflow: visible;
 
-                    .head{
-                        .uptech-logo{
-                            max-width: 13rem;
-                        }
-                        .navbar{
-                            display: block;
-                            width: 100%;
-                                                    
-                            .nav-items{
-                                display: flex;
-                                justify-content: right;
-                                gap: 1rem;
-                                font-family: Inter;
-                                font-size: 1.8vw;
-                                font-style: normal;
-                                font-weight: 900;
-                                line-height: normal;
-                                list-style: none;
-                                margin: 0;
-                                padding: 0;
-                            }
-                        }
-                        .menu-dropdown{                                
-                            display: none;
-                        }
-                    }
                     .objectives-header{
                         display: flex;
                         position: relative;

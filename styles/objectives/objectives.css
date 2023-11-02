@@ -234,29 +234,6 @@
     position: relative;
     overflow: visible;
   }
-  .objectives-main-container .outer-layer .objectives-first-container .objectives-section .head .uptech-logo {
-    max-width: 13rem;
-  }
-  .objectives-main-container .outer-layer .objectives-first-container .objectives-section .head .navbar {
-    display: block;
-    width: 100%;
-  }
-  .objectives-main-container .outer-layer .objectives-first-container .objectives-section .head .navbar .nav-items {
-    display: flex;
-    justify-content: right;
-    gap: 1rem;
-    font-family: Inter;
-    font-size: 1.8vw;
-    font-style: normal;
-    font-weight: 900;
-    line-height: normal;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  .objectives-main-container .outer-layer .objectives-first-container .objectives-section .head .menu-dropdown {
-    display: none;
-  }
   .objectives-main-container .outer-layer .objectives-first-container .objectives-section .objectives-header {
     display: flex;
     position: relative;
