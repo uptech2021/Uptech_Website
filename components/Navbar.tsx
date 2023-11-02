@@ -12,7 +12,12 @@ export default function Navbar() {
   return (
     <header className="header">
         <div className="logo-wrapper">
-        <Image className="uptech-logo" src={upTechLogo} alt="logo"/>
+        <Image 
+          className="uptech-logo" 
+          src={upTechLogo} 
+          alt="logo"
+          priority={true}
+          />
         </div>
 
         <nav className="navbar">

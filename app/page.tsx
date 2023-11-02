@@ -14,9 +14,9 @@ import projectManagement_pc_view from '../public/images/projectManagement_pc_vie
 import privacy from '../public/images/privacy.jpeg'
 import userSafety from '../public/images/userSafety.jpeg'
 import dataSecurity from '../public/images/dataSecurity.jpeg'
-import manHoldingPhoneWithLogoBehindHim_mobile_view from '../public/images/manHoldingPhoneWithLogoBehindHim_mobile_view.jpg'
+import manHoldingPhoneWithLogoBehindHim_mobile_view from '../public/images/manHoldingPhoneWithLogoBehindHim_mobile_view.jpg' 
 import manHoldingPhoneWithLogoBehindHim_pc_view from '../public/images/manHoldingPhoneWithLogoBehindHim_pc_view.png'
-import manWIthLogoBehindHimHoldingPhone from '../public/images/man with logo behind him holding phone.png'
+import manWIthLogoBehindHimHoldingPhone from '../public/images/aboutUsImage.svg'//TODO rename file 
 
 import dots from '../public/images/dots.png'
 
@@ -56,6 +56,8 @@ export default function Home() {
               className="call-to-action-img" 
               alt="Guy Holding His phone with the Ourlime logo behind him" 
               unoptimized
+              placeholder='blur'
+
             />
           </div>
 
@@ -74,7 +76,13 @@ export default function Home() {
             <p>Ourlime aims to provide our users with not only the features they have come to expect from a social media platform but also introduce concepts that we think will enhance our users.</p>
           
             <div className="dots-wrapper">
-              <Image src={dots} className="dots-img" alt="image of dots" />
+              <Image 
+                src={dots} 
+                className="dots-img" 
+                alt="image of dots" 
+                unoptimized
+                placeholder='blur'
+                />
             </div>
           </div>
         
@@ -82,7 +90,13 @@ export default function Home() {
             
           <div className="image-wrapper">
               {/* <Image src={width >= 768 ? elearning_pc_view : elearning_mobile_view} className='elearning-img' alt="elearning"/> */}
-              <Image src={width >= 768 ? elearning_mobile_view : elearning_mobile_view} className='elearning-img' alt="elearning"/>
+              <Image 
+                src={width >= 768 ? elearning_mobile_view : elearning_mobile_view} 
+                className='elearning-img' 
+                alt="elearning"
+                unoptimized
+                placeholder='blur'
+                />
           </div>
 
           <div className="information">
@@ -93,13 +107,25 @@ export default function Home() {
           </div>
 
           <div className="dots-wrapper">
-              <Image src={dots} className="dots-img" alt="image of dots" />
+              <Image 
+                src={dots} 
+                className="dots-img" 
+                alt="image of dots" 
+                unoptimized
+                placeholder='blur'
+                />
           </div>
 
           <div className="marketplace-container">
             <div className="image-wrapper">
                 {/* <Image src={width >= 768 ? boxes_pc_view : boxes_mobile_view} className='marketplace-img' alt="marketplace image"/> */}
-                <Image src={width >= 768 ? boxes_mobile_view : boxes_mobile_view} className='marketplace-img' alt="marketplace image"/>
+                <Image 
+                  src={width >= 768 ? boxes_mobile_view : boxes_mobile_view} 
+                  className='marketplace-img' 
+                  alt="marketplace image"
+                  unoptimized
+                  placeholder='blur'
+                  />
             </div>
             
             <div className="information">
@@ -109,13 +135,25 @@ export default function Home() {
           </div>
 
           <div className="dots-wrapper">
-              <Image src={dots} className="dots-img" alt="image of dots" />
+              <Image 
+                src={dots} 
+                className="dots-img" 
+                alt="image of dots" 
+                unoptimized
+                placeholder='blur'
+                />
           </div>
 
           <div className="project-management-container">
             <div className="image-wrapper">
                 {/* <Image src={width >= 768 ? projectManagement_pc_view : projectManagement_mobile_view} className='project-management-img' alt="project management image"/> */}
-                <Image src={width >= 768 ? projectManagement_mobile_view : projectManagement_mobile_view} className='project-management-img' alt="project management image"/>
+                <Image 
+                  src={width >= 768 ? projectManagement_mobile_view : projectManagement_mobile_view} 
+                  className='project-management-img' 
+                  alt="project management image"
+                  unoptimized
+                  placeholder='blur'
+                  />
             </div>
           
             <div className="information">
@@ -133,7 +171,13 @@ export default function Home() {
               <div className="privacy-container">
 
                 <div className="image-wrapper">
-                  <Image src={privacy} className='privacy-img' alt="image of laptop" />
+                  <Image 
+                    src={privacy} 
+                    className='privacy-img' 
+                    alt="image of laptop" 
+                    unoptimized
+                    placeholder='blur'
+                    />
                 </div>                
                 
                 <div className="information">
@@ -146,7 +190,13 @@ export default function Home() {
               <div className="user-safety-container">
 
                 <div className="image-wrapper">
-                  <Image src={userSafety} className='user-safety-img' alt="image of laptop" />
+                  <Image 
+                    src={userSafety}
+                    className='user-safety-img' 
+                    alt="image of laptop" 
+                    unoptimized
+                    placeholder='blur'
+                    />
                 </div>
                 
                 <div className="information">
@@ -159,7 +209,13 @@ export default function Home() {
               <div className="data-security-container">
 
                 <div className="image-wrapper">
-                  <Image src={dataSecurity} className='data-security-img' alt="image of male and female by a server room" />
+                  <Image 
+                    src={dataSecurity} 
+                    className='data-security-img' 
+                    alt="image of male and female by a server room"
+                    unoptimized
+                    placeholder='blur' 
+                    />
                 </div>
 
                 <div className="information">
@@ -178,7 +234,13 @@ export default function Home() {
 
                   <div className="image-wrapper">
                     {/* <Image src={width >= 768 ? manHoldingPhoneWithLogoBehindHim_pc_view : manHoldingPhoneWithLogoBehindHim_mobile_view} className='man-holding-phone-with-logo-img' alt="image of man holding phone with logo" /> */}
-                    <Image src={width >= 768 ? manHoldingPhoneWithLogoBehindHim_mobile_view : manHoldingPhoneWithLogoBehindHim_mobile_view} className='man-holding-phone-with-logo-img' alt="image of man holding phone with logo" />
+                    <Image 
+                      src={width >= 768 ? manHoldingPhoneWithLogoBehindHim_mobile_view : manHoldingPhoneWithLogoBehindHim_mobile_view} 
+                      className='man-holding-phone-with-logo-img' 
+                      alt="image of man holding phone with logo" 
+                      unoptimized
+                      placeholder='blur'
+                      />
                   </div>
 
                   <p>The Purpose Of Ourlime And What UpTech Incorporated Hope To Achieve With Our App.</p>
@@ -201,12 +263,13 @@ export default function Home() {
               </div>
               
               <div className="about-us-img-wrapper">
-              <Image
-                src={manWIthLogoBehindHimHoldingPhone} 
-                className="man-holding-phone-with-logo-img" 
-                alt="image of guy with ourlime logo behind him" 
-                unoptimized
-                />
+                <Image
+                  src={manWIthLogoBehindHimHoldingPhone} 
+                  className="man-holding-phone-with-logo-img" 
+                  alt="image of guy with ourlime logo behind him" 
+                  quality={100}
+                  unoptimized={true}
+                  />
               </div>
 
             </div>
