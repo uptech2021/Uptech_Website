@@ -1,5 +1,5 @@
 .home-main-container {
-  aboutfont-family: "THICCCBOI";
+  font-family: "THICCCBOI";
 }
 .home-main-container .outer-layer {
   padding: 0.99rem 0.63rem;
@@ -74,13 +74,18 @@
 .home-main-container .outer-layer .welcome-section .call-to-action .image-wrapper {
   width: 100%;
   height: 100%;
-  margin: 1.5rem auto 0;
+  margin: -3rem auto 0;
 }
 .home-main-container .outer-layer .welcome-section .call-to-action .image-wrapper .call-to-action-img {
-  width: auto;
+  width: 100%;
   height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
+}
+@media (min-width: 360px) {
+  .home-main-container .outer-layer .welcome-section .call-to-action .image-wrapper {
+    margin-top: 3rem;
+  }
 }
 @media (min-width: 549px) {
   .home-main-container .outer-layer .welcome-section .call-to-action .welcome-container h1 {
@@ -92,7 +97,7 @@
 }
 @media (min-width: 549px) {
   .home-main-container .outer-layer .welcome-section {
-    height: 46rem;
+    height: 90vh;
   }
 }
 .home-main-container .outer-layer .product-information-section {
@@ -152,7 +157,7 @@
 }
 .home-main-container .outer-layer .product-information-section .features .education-container .image-wrapper {
   width: 95%;
-  margin: 3rem 0.91rem 0 0.24rem;
+  margin: 3rem auto 0;
 }
 .home-main-container .outer-layer .product-information-section .features .education-container .image-wrapper .elearning-img {
   width: 100%;
@@ -188,7 +193,8 @@
   }
 }
 .home-main-container .outer-layer .product-information-section .features .marketplace-container {
-  display: relative;
+  display: flex;
+  flex-direction: column;
 }
 .home-main-container .outer-layer .product-information-section .features .marketplace-container h3 {
   color: #000;
@@ -199,21 +205,16 @@
   line-height: normal;
   margin: 2.52rem 0.03rem 0 0.41rem;
 }
-.home-main-container .outer-layer .product-information-section .features .marketplace-container .marketplace-img {
-  width: 16.787rem;
-  height: 11.03788rem;
+.home-main-container .outer-layer .product-information-section .features .marketplace-container .image-wrapper {
+  width: 95%;
+  margin: 3rem auto 0 0;
+}
+.home-main-container .outer-layer .product-information-section .features .marketplace-container .image-wrapper .marketplace-img {
+  width: 100%;
+  height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
-  z-index: 2;
   position: relative;
-  margin: 3.23rem 0.91rem 3.15rem 0.24rem;
-}
-.home-main-container .outer-layer .product-information-section .features .marketplace-container .blue-square {
-  width: 8.64106rem;
-  height: 7.50756rem;
-  background: #52CAC8;
-  margin: 10.58rem 0.53rem 0 9.4rem;
-  position: absolute;
 }
 .home-main-container .outer-layer .product-information-section .features .marketplace-container p {
   margin: 3.15rem 0.28rem 0 0.22rem;
@@ -249,21 +250,16 @@
   line-height: normal;
   margin: 4rem auto;
 }
-.home-main-container .outer-layer .product-information-section .features .project-management-container .project-management-img {
-  width: 14.93894rem;
-  height: 10.40556rem;
+.home-main-container .outer-layer .product-information-section .features .project-management-container .image-wrapper {
+  width: 95%;
+  margin: 2rem auto 0;
+}
+.home-main-container .outer-layer .product-information-section .features .project-management-container .image-wrapper .project-management-img {
+  width: 100%;
+  height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
-  z-index: 2;
   position: relative;
-  margin: 3.08rem 1.71rem 0 1.29rem;
-}
-.home-main-container .outer-layer .product-information-section .features .project-management-container .blue-square {
-  width: 8.64106rem;
-  height: 7.50756rem;
-  background: #52CAC8;
-  margin: 9.77rem 8.09rem 0 1.29rem;
-  position: absolute;
 }
 .home-main-container .outer-layer .product-information-section .features .project-management-container p {
   max-width: 20rem;
@@ -306,12 +302,15 @@
   font-weight: 700;
   line-height: normal;
 }
-.home-main-container .outer-layer .product-information-section .objectives .privacy-container .privacy-img {
-  width: 25rem;
-  height: 22rem;
+.home-main-container .outer-layer .product-information-section .objectives .privacy-container .image-wrapper {
+  width: 90%;
+  margin: 2rem 0 0 auto;
+}
+.home-main-container .outer-layer .product-information-section .objectives .privacy-container .image-wrapper .privacy-img {
+  width: 100%;
+  height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
-  margin: 1rem -2rem;
 }
 .home-main-container .outer-layer .product-information-section .objectives .privacy-container p {
   font-family: Inter;
@@ -415,12 +414,15 @@
   line-height: normal;
   margin: 15.37rem 0.56rem 0 0.88rem;
 }
-.home-main-container .outer-layer .product-information-section .products .products-container .man-holding-phone-with-logo-img {
-  max-width: 100vw;
-  max-height: 23rem;
+.home-main-container .outer-layer .product-information-section .products .products-container .image-wrapper {
+  width: 98%;
+  margin: 1rem auto 0;
+}
+.home-main-container .outer-layer .product-information-section .products .products-container .image-wrapper .man-holding-phone-with-logo-img {
+  width: 100%;
+  height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
-  margin: 1.69 auto;
 }
 .home-main-container .outer-layer .product-information-section .products .products-container p {
   font-family: Inter;
@@ -492,9 +494,12 @@
   margin: 0 auto;
   position: relative;
 }
+.home-main-container .outer-layer .dots-wrapper {
+  display: none;
+}
 @media (min-width: 768px) {
   .home-main-container .outer-layer .welcome-section {
-    height: 70vh;
+    height: 80vh;
   }
   .home-main-container .outer-layer .welcome-section .header .logo-wrapper .uptech-logo {
     width: 100%;
@@ -778,6 +783,9 @@
   }
   .home-main-container .outer-layer .product-information-section .about-us .about-us-btns .btns-containers .large-btn-group:nth-child(2) {
     margin-left: 50%;
+  }
+  .home-main-container .outer-layer .product-information-section .dots-wrapper {
+    display: block;
   }
 }
 @media (min-width: 992px) {

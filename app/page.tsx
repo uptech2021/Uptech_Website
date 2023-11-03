@@ -2,19 +2,19 @@
 
 import '../styles/home/home.css'
 
-import aaron_mobile_view from '../public/images/aaron_mobile_view.png'
+import aaron_mobile_view from '../public/images/aaron_mobile_view.svg'
 import aaron_pc_view from '../public/images/aaron_pc_view.png'
-import elearning_mobile_view from '../public/images/elearning_mobile_view.jpeg'
+import elearning_mobile_view from '../public/images/elearning_mobile_view.svg'
 import elearning_pc_view from '../public/images/elearning_pc_view.png'
-import landingImage from '../public/images/landingImage.png'
-import boxes_mobile_view from '../public/images/boxes_mobile_view.jpeg'
+import landingImage from '../public/images/landingImage.svg'
+import boxes_mobile_view from '../public/images/boxes_mobile_view.svg'
 import boxes_pc_view from '../public/images/boxes_pc_view.png'
-import projectManagement_mobile_view from '../public/images/projectManagement_mobile_view.jpeg'
+import projectManagement_mobile_view from '../public/images/projectManagement_mobile_view.svg'
 import projectManagement_pc_view from '../public/images/projectManagement_pc_view.png'
-import privacy from '../public/images/privacy.jpeg'
-import userSafety from '../public/images/userSafety.jpeg'
-import dataSecurity from '../public/images/dataSecurity.jpeg'
-import manHoldingPhoneWithLogoBehindHim_mobile_view from '../public/images/manHoldingPhoneWithLogoBehindHim_mobile_view.jpg' 
+import privacy from '../public/images/privacy.svg'
+import userSafety from '../public/images/userSafety.svg'
+import dataSecurity from '../public/images/dataSecurity.svg'
+import manHoldingPhoneWithLogoBehindHim_mobile_view from '../public/images/manHoldingPhoneWithLogoBehindHim_mobile_view.svg' 
 import manHoldingPhoneWithLogoBehindHim_pc_view from '../public/images/manHoldingPhoneWithLogoBehindHim_pc_view.png'
 import manWIthLogoBehindHimHoldingPhone from '../public/images/aboutUsImage.svg'//TODO rename file 
 
@@ -25,6 +25,7 @@ import Footer from '@/components/Footer'
 
 import Image from 'next/image'
 import { useWindowSize } from 'react-use'; //react package that checks the screen size of the device
+import React from 'react'
 
 export default function Home() {
 
@@ -56,8 +57,7 @@ export default function Home() {
               className="call-to-action-img" 
               alt="Guy Holding His phone with the Ourlime logo behind him" 
               unoptimized
-              placeholder='blur'
-
+              quality={100}
             />
           </div>
 
@@ -81,7 +81,7 @@ export default function Home() {
                 className="dots-img" 
                 alt="image of dots" 
                 unoptimized
-                placeholder='blur'
+                
                 />
             </div>
           </div>
@@ -95,7 +95,7 @@ export default function Home() {
                 className='elearning-img' 
                 alt="elearning"
                 unoptimized
-                placeholder='blur'
+                // quality={100}
                 />
           </div>
 
@@ -112,26 +112,53 @@ export default function Home() {
                 className="dots-img" 
                 alt="image of dots" 
                 unoptimized
-                placeholder='blur'
+                
                 />
           </div>
 
           <div className="marketplace-container">
-            <div className="image-wrapper">
-                {/* <Image src={width >= 768 ? boxes_pc_view : boxes_mobile_view} className='marketplace-img' alt="marketplace image"/> */}
-                <Image 
-                  src={width >= 768 ? boxes_mobile_view : boxes_mobile_view} 
-                  className='marketplace-img' 
-                  alt="marketplace image"
-                  unoptimized
-                  placeholder='blur'
-                  />
-            </div>
+            {width >= 768 ? (
+              <React.Fragment>
+                <div className="image-wrapper">
+                  {/* <Image src={width >= 768 ? boxes_pc_view : boxes_mobile_view} className='marketplace-img' alt="marketplace image"/> */}
+                  <Image 
+                    // src={width >= 768 ? boxes_mobile_view : boxes_mobile_view} 
+                    src={boxes_mobile_view} 
+                    className='marketplace-img' 
+                    alt="marketplace image"
+                    unoptimized
+                    quality={100}
+                    />
+                </div>
             
-            <div className="information">
-              <h3>MARKETPLACE</h3>
-              <p><b>Buy, Sell, Trade, Explore</b></p>
-            </div>
+                <div className="information">
+                  <h3>MARKETPLACE</h3>
+                  <p><b>Buy, Sell, Trade, Explore</b></p>
+                </div>
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                  <h3>MARKETPLACE</h3>
+
+                  <div className="image-wrapper">
+                    {/* <Image src={width >= 768 ? boxes_pc_view : boxes_mobile_view} className='marketplace-img' alt="marketplace image"/> */}
+                    <Image 
+                      src={width >= 768 ? boxes_mobile_view : boxes_mobile_view} 
+                      className='marketplace-img' 
+                      alt="marketplace image"
+                      unoptimized
+                      quality={100}
+                      
+                      />
+                  </div>
+          
+                  <div className="information">
+                    <p><b>Buy, Sell, Trade, Explore</b></p>
+                  </div> 
+              </React.Fragment>
+            )
+
+            }
           </div>
 
           <div className="dots-wrapper">
@@ -140,27 +167,56 @@ export default function Home() {
                 className="dots-img" 
                 alt="image of dots" 
                 unoptimized
-                placeholder='blur'
+                
                 />
           </div>
 
           <div className="project-management-container">
-            <div className="image-wrapper">
-                {/* <Image src={width >= 768 ? projectManagement_pc_view : projectManagement_mobile_view} className='project-management-img' alt="project management image"/> */}
-                <Image 
-                  src={width >= 768 ? projectManagement_mobile_view : projectManagement_mobile_view} 
-                  className='project-management-img' 
-                  alt="project management image"
-                  unoptimized
-                  placeholder='blur'
-                  />
-            </div>
-          
-            <div className="information">
-              <h3>PROJECT MANAGEMENT</h3>
-              <p>Tools for Teacher(s), Student(s), Business(es)</p>
-            </div>
+          {width >= 768 ? (
+              <React.Fragment>
+                <div className="image-wrapper">
+                    {/* <Image src={width >= 768 ? projectManagement_pc_view : projectManagement_mobile_view} className='project-management-img' alt="project management image"/> */}
+                    <Image 
+                      src={width >= 768 ? projectManagement_mobile_view : projectManagement_mobile_view} 
+                      className='project-management-img' 
+                      alt="project management image"
+                      unoptimized
+                      quality={100}
+                      
+                      />
+                </div>
+              
+                <div className="information">
+                  <h3>PROJECT MANAGEMENT</h3>
+                  <p>Tools for Teacher(s), Student(s), Business(es)</p>
+                </div>
+              </React.Fragment>
+
+            ) : (
+              <React.Fragment>
+                <h3>PROJECT MANAGEMENT</h3>
+
+                <div className="image-wrapper">
+                  
+                  {/* <Image src={width >= 768 ? projectManagement_pc_view : projectManagement_mobile_view} className='project-management-img' alt="project management image"/> */}
+                  <Image 
+                    // src={width >= 768 ? projectManagement_mobile_view : projectManagement_mobile_view} 
+                    src={projectManagement_mobile_view} 
+                    className='project-management-img' 
+                    alt="project management image"
+                    unoptimized
+                    quality={100}
+                    
+                    />
+                </div>
             
+                <div className="information">
+                  <p>Tools for Teacher(s), Student(s), Business(es)</p>
+                </div>
+              </React.Fragment>
+            )
+
+            }
           </div>
           
         </div>
@@ -176,7 +232,8 @@ export default function Home() {
                     className='privacy-img' 
                     alt="image of laptop" 
                     unoptimized
-                    placeholder='blur'
+                    quality={100}
+                    
                     />
                 </div>                
                 
@@ -195,7 +252,8 @@ export default function Home() {
                     className='user-safety-img' 
                     alt="image of laptop" 
                     unoptimized
-                    placeholder='blur'
+                    quality={100}
+                    
                     />
                 </div>
                 
@@ -214,7 +272,8 @@ export default function Home() {
                     className='data-security-img' 
                     alt="image of male and female by a server room"
                     unoptimized
-                    placeholder='blur' 
+                    quality={100}
+                     
                     />
                 </div>
 
@@ -239,7 +298,8 @@ export default function Home() {
                       className='man-holding-phone-with-logo-img' 
                       alt="image of man holding phone with logo" 
                       unoptimized
-                      placeholder='blur'
+                      quality={100}
+                      
                       />
                   </div>
 
