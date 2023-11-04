@@ -14,9 +14,8 @@ import projectManagement_pc_view from '../public/images/projectManagement_pc_vie
 import privacy from '../public/images/privacy.svg'
 import userSafety from '../public/images/userSafety.svg'
 import dataSecurity from '../public/images/dataSecurity.svg'
-import manHoldingPhoneWithLogoBehindHim_mobile_view from '../public/images/manHoldingPhoneWithLogoBehindHim_mobile_view.svg' 
-import manHoldingPhoneWithLogoBehindHim_pc_view from '../public/images/manHoldingPhoneWithLogoBehindHim_pc_view.png'
-import manWIthLogoBehindHimHoldingPhone from '../public/images/aboutUsImage.svg'//TODO rename file 
+import productsImage from '../public/images/manHoldingPhone.svg' 
+import aboutUsImage from '../public/images/aboutUsImage.svg'//TODO rename file 
 
 import dots from '../public/images/dots.png'
 
@@ -37,7 +36,6 @@ export default function Home() {
     <div className="outer-layer">
 
       <section className="welcome-section">
-       
         <Navbar />
         <div className="call-to-action">
 
@@ -233,7 +231,6 @@ export default function Home() {
                     alt="image of laptop" 
                     unoptimized
                     quality={100}
-                    
                     />
                 </div>                
                 
@@ -294,7 +291,7 @@ export default function Home() {
                   <div className="image-wrapper">
                     {/* <Image src={width >= 768 ? manHoldingPhoneWithLogoBehindHim_pc_view : manHoldingPhoneWithLogoBehindHim_mobile_view} className='man-holding-phone-with-logo-img' alt="image of man holding phone with logo" /> */}
                     <Image 
-                      src={width >= 768 ? manHoldingPhoneWithLogoBehindHim_mobile_view : manHoldingPhoneWithLogoBehindHim_mobile_view} 
+                      src={productsImage} 
                       className='man-holding-phone-with-logo-img' 
                       alt="image of man holding phone with logo" 
                       unoptimized
@@ -324,8 +321,8 @@ export default function Home() {
               
               <div className="about-us-img-wrapper">
                 <Image
-                  src={manWIthLogoBehindHimHoldingPhone} 
-                  className="man-holding-phone-with-logo-img" 
+                  src={aboutUsImage} 
+                  className="about-us-img" 
                   alt="image of guy with ourlime logo behind him" 
                   quality={100}
                   unoptimized={true}
