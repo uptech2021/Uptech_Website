@@ -6,7 +6,7 @@ export default function About() {
       <Link href="/">Home</Link>
 
 
-      <h1 style={{textAlign: 'center'}}>About us</h1>
+      <h1>About us</h1>
     </div>
   )
 }

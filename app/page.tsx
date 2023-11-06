@@ -33,310 +33,310 @@ export default function Home() {
   return (
     <main className="home-main-container">
 
-    <div className="outer-layer">
+      <div className="outer-layer">
 
-      <section className="welcome-section">
-        <Navbar />
-        <div className="call-to-action">
+        <section className="welcome-section">
+          <Navbar />
+          <div className="call-to-action">
 
-          <div className="welcome-container">
-            <h1>Welcome</h1>
+            <div className="welcome-container">
+              <h1>Welcome</h1>
 
-            <p>Sign Up for the 
-              <br /><span style={{color: '#06E95C'}}>OURLIME</span><br />
-              communities network TODAY!</p>
-          </div>
-          {/* If the screen is > =768px render the pc view image, else render the mobile view image */}
-
-          <div className="image-wrapper">
-            <Image 
-              // src={width >= 768 ?  aaron_pc_view : aaron_mobile_view} 
-              src={width >= 768 ?  landingImage : landingImage} 
-              className="call-to-action-img" 
-              alt="Guy Holding His phone with the Ourlime logo behind him" 
-              unoptimized
-              quality={100}
-            />
-          </div>
-
-
-        </div>
-
-
-      </section>
-
-      <section className="product-information-section">
-        <div className='features'>
-
-          <div className="features-container">
-            <h2>FEATURES</h2>
-
-            <p>Ourlime aims to provide our users with not only the features they have come to expect from a social media platform but also introduce concepts that we think will enhance our users.</p>
-          
-            <div className="dots-wrapper">
-              <Image 
-                src={dots} 
-                className="dots-img" 
-                alt="image of dots" 
-                unoptimized
-                
-                />
+              <p>Sign Up for the 
+                <br /><span style={{color: '#06E95C'}}>OURLIME</span><br />
+                communities network TODAY!</p>
             </div>
-          </div>
-        
-          <div className="education-container">
-            
-          <div className="image-wrapper">
-              {/* <Image src={width >= 768 ? elearning_pc_view : elearning_mobile_view} className='elearning-img' alt="elearning"/> */}
+            {/* If the screen is > =768px render the pc view image, else render the mobile view image */}
+
+            <div className="image-wrapper">
               <Image 
-                src={width >= 768 ? elearning_mobile_view : elearning_mobile_view} 
-                className='elearning-img' 
-                alt="elearning"
+                // src={width >= 768 ?  aaron_pc_view : aaron_mobile_view} 
+                src={width >= 768 ?  landingImage : landingImage} 
+                className="call-to-action-img" 
+                alt="Guy Holding His phone with the Ourlime logo behind him" 
                 unoptimized
-                // quality={100}
-                />
+                quality={100}
+              />
+            </div>
+
+
           </div>
 
-          <div className="information">
-           <h3>EDUCATION</h3>
-           <p>Virtual Library, <br/>Blogs, etc.</p>
-          </div>
-           
-          </div>
 
-          <div className="dots-wrapper">
-              <Image 
-                src={dots} 
-                className="dots-img" 
-                alt="image of dots" 
-                unoptimized
-                
-                />
-          </div>
+        </section>
 
-          <div className="marketplace-container">
-            {width >= 768 ? (
-              <React.Fragment>
-                <div className="image-wrapper">
-                  {/* <Image src={width >= 768 ? boxes_pc_view : boxes_mobile_view} className='marketplace-img' alt="marketplace image"/> */}
-                  <Image 
-                    // src={width >= 768 ? boxes_mobile_view : boxes_mobile_view} 
-                    src={boxes_mobile_view} 
-                    className='marketplace-img' 
-                    alt="marketplace image"
-                    unoptimized
-                    quality={100}
-                    />
-                </div>
+        <section className="product-information-section">
+          <div className='features'>
+
+            <div className="features-container">
+              <h2>FEATURES</h2>
+
+              <p>Ourlime aims to provide our users with not only the features they have come to expect from a social media platform but also introduce concepts that we think will enhance our users.</p>
             
-                <div className="information">
-                  <h3>MARKETPLACE</h3>
-                  <p><b>Buy, Sell, Trade, Explore</b></p>
-                </div>
-              </React.Fragment>
-            ) : (
-              <React.Fragment>
-                  <h3>MARKETPLACE</h3>
+              <div className="dots-wrapper">
+                <Image 
+                  src={dots} 
+                  className="dots-img" 
+                  alt="image of dots" 
+                  unoptimized
+                  
+                  />
+              </div>
+            </div>
+          
+            <div className="education-container">
+              
+            <div className="image-wrapper">
+                {/* <Image src={width >= 768 ? elearning_pc_view : elearning_mobile_view} className='elearning-img' alt="elearning"/> */}
+                <Image 
+                  src={width >= 768 ? elearning_mobile_view : elearning_mobile_view} 
+                  className='elearning-img' 
+                  alt="elearning"
+                  unoptimized
+                  // quality={100}
+                  />
+            </div>
 
+            <div className="information">
+            <h3>EDUCATION</h3>
+            <p>Virtual Library, <br/>Blogs, etc.</p>
+            </div>
+            
+            </div>
+
+            <div className="dots-wrapper">
+                <Image 
+                  src={dots} 
+                  className="dots-img" 
+                  alt="image of dots" 
+                  unoptimized
+                  
+                  />
+            </div>
+
+            <div className="marketplace-container">
+              {width >= 768 ? (
+                <React.Fragment>
                   <div className="image-wrapper">
                     {/* <Image src={width >= 768 ? boxes_pc_view : boxes_mobile_view} className='marketplace-img' alt="marketplace image"/> */}
                     <Image 
-                      src={width >= 768 ? boxes_mobile_view : boxes_mobile_view} 
+                      // src={width >= 768 ? boxes_mobile_view : boxes_mobile_view} 
+                      src={boxes_mobile_view} 
                       className='marketplace-img' 
                       alt="marketplace image"
                       unoptimized
                       quality={100}
-                      
                       />
                   </div>
-          
+              
                   <div className="information">
+                    <h3>MARKETPLACE</h3>
                     <p><b>Buy, Sell, Trade, Explore</b></p>
-                  </div> 
-              </React.Fragment>
-            )
+                  </div>
+                </React.Fragment>
+              ) : (
+                <React.Fragment>
+                    <h3>MARKETPLACE</h3>
 
-            }
-          </div>
+                    <div className="image-wrapper">
+                      {/* <Image src={width >= 768 ? boxes_pc_view : boxes_mobile_view} className='marketplace-img' alt="marketplace image"/> */}
+                      <Image 
+                        src={width >= 768 ? boxes_mobile_view : boxes_mobile_view} 
+                        className='marketplace-img' 
+                        alt="marketplace image"
+                        unoptimized
+                        quality={100}
+                        
+                        />
+                    </div>
+            
+                    <div className="information">
+                      <p><b>Buy, Sell, Trade, Explore</b></p>
+                    </div> 
+                </React.Fragment>
+              )
 
-          <div className="dots-wrapper">
-              <Image 
-                src={dots} 
-                className="dots-img" 
-                alt="image of dots" 
-                unoptimized
+              }
+            </div>
+
+            <div className="dots-wrapper">
+                <Image 
+                  src={dots} 
+                  className="dots-img" 
+                  alt="image of dots" 
+                  unoptimized
+                  
+                  />
+            </div>
+
+            <div className="project-management-container">
+            {width >= 768 ? (
+                <React.Fragment>
+                  <div className="image-wrapper">
+                      {/* <Image src={width >= 768 ? projectManagement_pc_view : projectManagement_mobile_view} className='project-management-img' alt="project management image"/> */}
+                      <Image 
+                        src={width >= 768 ? projectManagement_mobile_view : projectManagement_mobile_view} 
+                        className='project-management-img' 
+                        alt="project management image"
+                        unoptimized
+                        quality={100}
+                        
+                        />
+                  </div>
                 
-                />
-          </div>
+                  <div className="information">
+                    <h3>PROJECT MANAGEMENT</h3>
+                    <p>Tools for Teacher(s), Student(s), Business(es)</p>
+                  </div>
+                </React.Fragment>
 
-          <div className="project-management-container">
-          {width >= 768 ? (
-              <React.Fragment>
-                <div className="image-wrapper">
+              ) : (
+                <React.Fragment>
+                  <h3>PROJECT MANAGEMENT</h3>
+
+                  <div className="image-wrapper">
+                    
                     {/* <Image src={width >= 768 ? projectManagement_pc_view : projectManagement_mobile_view} className='project-management-img' alt="project management image"/> */}
                     <Image 
-                      src={width >= 768 ? projectManagement_mobile_view : projectManagement_mobile_view} 
+                      // src={width >= 768 ? projectManagement_mobile_view : projectManagement_mobile_view} 
+                      src={projectManagement_mobile_view} 
                       className='project-management-img' 
                       alt="project management image"
                       unoptimized
                       quality={100}
                       
                       />
-                </div>
+                  </div>
               
-                <div className="information">
-                  <h3>PROJECT MANAGEMENT</h3>
-                  <p>Tools for Teacher(s), Student(s), Business(es)</p>
-                </div>
-              </React.Fragment>
+                  <div className="information">
+                    <p>Tools for Teacher(s), Student(s), Business(es)</p>
+                  </div>
+                </React.Fragment>
+              )
 
-            ) : (
-              <React.Fragment>
-                <h3>PROJECT MANAGEMENT</h3>
-
-                <div className="image-wrapper">
-                  
-                  {/* <Image src={width >= 768 ? projectManagement_pc_view : projectManagement_mobile_view} className='project-management-img' alt="project management image"/> */}
-                  <Image 
-                    // src={width >= 768 ? projectManagement_mobile_view : projectManagement_mobile_view} 
-                    src={projectManagement_mobile_view} 
-                    className='project-management-img' 
-                    alt="project management image"
-                    unoptimized
-                    quality={100}
-                    
-                    />
-                </div>
+              }
+            </div>
             
-                <div className="information">
-                  <p>Tools for Teacher(s), Student(s), Business(es)</p>
-                </div>
-              </React.Fragment>
-            )
-
-            }
           </div>
-          
-        </div>
 
-          <div className='objectives'>
-              <h2>OBJECTIVES</h2>
-            
-              <div className="privacy-container">
-
-                <div className="image-wrapper">
-                  <Image 
-                    src={privacy} 
-                    className='privacy-img' 
-                    alt="image of laptop" 
-                    unoptimized
-                    quality={100}
-                    />
-                </div>                
-                
-                <div className="information">
-                  <h3>PRIVACY</h3>
-                  <p>These specific features would incorporate a &quot;lock code&quot; that only the user would know.</p> 
-                </div>
-                            
-              </div>
-
-              <div className="user-safety-container">
-
-                <div className="image-wrapper">
-                  <Image 
-                    src={userSafety}
-                    className='user-safety-img' 
-                    alt="image of laptop" 
-                    unoptimized
-                    quality={100}
-                    
-                    />
-                </div>
-                
-                <div className="information">
-                  <h3>USER SAFETY</h3>
-                  <p>Implementation of algorithms, that can recognize sensitive phrases and words as well as duplicate account would improve user&apos;s safety.</p>
-                </div>
-
-              </div>
-
-              <div className="data-security-container">
-
-                <div className="image-wrapper">
-                  <Image 
-                    src={dataSecurity} 
-                    className='data-security-img' 
-                    alt="image of male and female by a server room"
-                    unoptimized
-                    quality={100}
-                     
-                    />
-                </div>
-
-                <div className="information">
-                  <h3>DATA SECURITY</h3>
-                  <p>Data such as names, addresses, emails, contacts, and date of births would not be used for marketing purposes.</p>
-                </div>
-
-              </div>
-
-          </div>
-        
-          <div className='products'>
-              <h3>PRODUCTS</h3>
-
-              <div className="products-container">
+            <div className='objectives'>
+                <h2>OBJECTIVES</h2>
+              
+                <div className="privacy-container">
 
                   <div className="image-wrapper">
-                    {/* <Image src={width >= 768 ? manHoldingPhoneWithLogoBehindHim_pc_view : manHoldingPhoneWithLogoBehindHim_mobile_view} className='man-holding-phone-with-logo-img' alt="image of man holding phone with logo" /> */}
                     <Image 
-                      src={productsImage} 
-                      className='man-holding-phone-with-logo-img' 
-                      alt="image of man holding phone with logo" 
+                      src={privacy} 
+                      className='privacy-img' 
+                      alt="image of laptop" 
+                      unoptimized
+                      quality={100}
+                      />
+                  </div>                
+                  
+                  <div className="information">
+                    <h3>PRIVACY</h3>
+                    <p>These specific features would incorporate a &quot;lock code&quot; that only the user would know.</p> 
+                  </div>
+                              
+                </div>
+
+                <div className="user-safety-container">
+
+                  <div className="image-wrapper">
+                    <Image 
+                      src={userSafety}
+                      className='user-safety-img' 
+                      alt="image of laptop" 
+                      unoptimized
+                      quality={100}
+                      
+                      />
+                  </div>
+                  
+                  <div className="information">
+                    <h3>USER SAFETY</h3>
+                    <p>Implementation of algorithms, that can recognize sensitive phrases and words as well as duplicate account would improve user&apos;s safety.</p>
+                  </div>
+
+                </div>
+
+                <div className="data-security-container">
+
+                  <div className="image-wrapper">
+                    <Image 
+                      src={dataSecurity} 
+                      className='data-security-img' 
+                      alt="image of male and female by a server room"
                       unoptimized
                       quality={100}
                       
                       />
                   </div>
 
-                  <p>The Purpose Of Ourlime And What UpTech Incorporated Hope To Achieve With Our App.</p>
-              
-                  <button className='learn-more-btn'>Learn More</button>
-              </div>
-          </div>
+                  <div className="information">
+                    <h3>DATA SECURITY</h3>
+                    <p>Data such as names, addresses, emails, contacts, and date of births would not be used for marketing purposes.</p>
+                  </div>
 
-          <div className="about-us">
-            <h3>ABOUT US</h3>
-
-            <div className="about-us-btns">
-
-              <p>Uptech Incorporated created Ourlime and Ourlime Messenger to give our users a new experience.</p>
-              
-              <div className="btns-containers">
-                <button className='large-btn-group'>OUR STORY</button>
-                <button className='large-btn-group'>THE WAY FORWARD</button>
-                <button className='large-btn-group'>OURLIME BROCHURE</button>
-              </div>
-              
-              <div className="about-us-img-wrapper">
-                <Image
-                  src={aboutUsImage} 
-                  className="about-us-img" 
-                  alt="image of guy with ourlime logo behind him" 
-                  quality={100}
-                  unoptimized={true}
-                  />
-              </div>
+                </div>
 
             </div>
-          </div>
-      </section>
+          
+            <div className='products'>
+                <h3>PRODUCTS</h3>
+
+                <div className="products-container">
+
+                    <div className="image-wrapper">
+                      {/* <Image src={width >= 768 ? manHoldingPhoneWithLogoBehindHim_pc_view : manHoldingPhoneWithLogoBehindHim_mobile_view} className='man-holding-phone-with-logo-img' alt="image of man holding phone with logo" /> */}
+                      <Image 
+                        src={productsImage} 
+                        className='man-holding-phone-with-logo-img' 
+                        alt="image of man holding phone with logo" 
+                        unoptimized
+                        quality={100}
+                        
+                        />
+                    </div>
+
+                    <p>The Purpose Of Ourlime And What UpTech Incorporated Hope To Achieve With Our App.</p>
+                
+                    <button className='learn-more-btn'>Learn More</button>
+                </div>
+            </div>
+
+            <div className="about-us">
+              <h3>ABOUT US</h3>
+
+              <div className="about-us-btns">
+
+                <p>Uptech Incorporated created Ourlime and Ourlime Messenger to give our users a new experience.</p>
+                
+                <div className="btns-containers">
+                  <button className='large-btn-group'>OUR STORY</button>
+                  <button className='large-btn-group'>THE WAY FORWARD</button>
+                  <button className='large-btn-group'>OURLIME BROCHURE</button>
+                </div>
+                
+                <div className="about-us-img-wrapper">
+                  <Image
+                    src={aboutUsImage} 
+                    className="about-us-img" 
+                    alt="image of guy with ourlime logo behind him" 
+                    quality={100}
+                    unoptimized={true}
+                    />
+                </div>
+
+              </div>
+            </div>
+        </section>
 
 
-    </div>
+      </div>
 
-    <Footer />
+      <Footer />
 
     </main>  
 )
