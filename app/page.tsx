@@ -31,7 +31,7 @@ export default function Home() {
   const { width } = useWindowSize();
   
   return (
-    <main className="home-main-container">
+    <div className="home-main-container">
 
       <div className="outer-layer">
 
@@ -65,7 +65,7 @@ export default function Home() {
 
         </section>
 
-        <section className="product-information-section">
+        <main className="product-information-section">
           <div className='features'>
 
             <div className="features-container">
@@ -116,7 +116,7 @@ export default function Home() {
 
             <div className="marketplace-container">
               {width >= 768 ? (
-                <React.Fragment>
+                <>
                   <div className="image-wrapper">
                     {/* <Image src={width >= 768 ? boxes_pc_view : boxes_mobile_view} className='marketplace-img' alt="marketplace image"/> */}
                     <Image 
@@ -133,9 +133,9 @@ export default function Home() {
                     <h3>MARKETPLACE</h3>
                     <p><b>Buy, Sell, Trade, Explore</b></p>
                   </div>
-                </React.Fragment>
+                </>
               ) : (
-                <React.Fragment>
+                <>
                     <h3>MARKETPLACE</h3>
 
                     <div className="image-wrapper">
@@ -153,7 +153,7 @@ export default function Home() {
                     <div className="information">
                       <p><b>Buy, Sell, Trade, Explore</b></p>
                     </div> 
-                </React.Fragment>
+                </>
               )
 
               }
@@ -171,7 +171,7 @@ export default function Home() {
 
             <div className="project-management-container">
             {width >= 768 ? (
-                <React.Fragment>
+                <>
                   <div className="image-wrapper">
                       {/* <Image src={width >= 768 ? projectManagement_pc_view : projectManagement_mobile_view} className='project-management-img' alt="project management image"/> */}
                       <Image 
@@ -188,10 +188,10 @@ export default function Home() {
                     <h3>PROJECT MANAGEMENT</h3>
                     <p>Tools for Teacher(s), Student(s), Business(es)</p>
                   </div>
-                </React.Fragment>
+                </>
 
               ) : (
-                <React.Fragment>
+                <>
                   <h3>PROJECT MANAGEMENT</h3>
 
                   <div className="image-wrapper">
@@ -211,7 +211,7 @@ export default function Home() {
                   <div className="information">
                     <p>Tools for Teacher(s), Student(s), Business(es)</p>
                   </div>
-                </React.Fragment>
+                </>
               )
 
               }
@@ -331,13 +331,13 @@ export default function Home() {
 
               </div>
             </div>
-        </section>
+        </main>
 
 
       </div>
 
       <Footer />
 
-    </main>  
+    </div>  
 )
 }

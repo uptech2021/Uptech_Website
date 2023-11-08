@@ -1,0 +1,32 @@
+@font-face {
+  font-family: "THICCBOI-ExtraBold";
+  src: url("../../utils/fonts/thiccboi/THICCCBOI-ExtraBold.ttf") format("truetype");
+}
+.contact-main-container .outer-layer {
+  padding: 0.99rem 0.63rem;
+  margin: 1.13rem 0.44rem 0 0.44rem;
+  min-width: 19.125rem;
+  border-radius: 2.75rem;
+  background: rgba(239, 243, 243, 0.7);
+  position: relative;
+  box-sizing: border-box;
+  overflow-x: wrap;
+}
+.contact-main-container .outer-layer .top-section {
+  min-width: 17.875rem;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 2.75rem;
+  background: #FFF;
+  position: relative;
+  overflow: hidden;
+}
+.contact-main-container .outer-layer .top-section .wrapper h1 {
+  font-family: "THICCBOI-ExtraBold";
+  font-size: 15vw;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  margin-top: 5rem;
+}/*# sourceMappingURL=contact.css.map */
