@@ -21,11 +21,19 @@ export default function Contact() {
                         <h1>Contact Us</h1>
 
                         <div className='image-wrapper'>
-                            <Image 
-                                src={width >= 1200 ? contactUsImage_pcView : contactUsImage}
-                                className='contact-us-img'
-                                alt='picture of a black woman holding her headphones'
-                            />
+                            {width >= 1200 ? (
+                                <Image 
+                                    src={contactUsImage_pcView}
+                                    className='contact-us-img'
+                                    alt='picture of a black woman holding her headphones'
+                                />
+                            ) : (
+                                <Image 
+                                    src={contactUsImage}
+                                    className='contact-us-img'
+                                    alt='picture of a black woman holding her headphones'
+                                />
+                            )}
                         </div>
                     </div>
 
