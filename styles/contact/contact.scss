@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'THICCBOI-ExtraBold';
     src: url('../../utils/fonts/thiccboi/THICCCBOI-ExtraBold.ttf') format('truetype');
-  }
+}
 .contact-main-container{
 
     .outer-layer{
@@ -29,6 +29,7 @@
                 overflow: hidden;
 
                 .wrapper{
+                
                     h1{
                         font-family: 'THICCBOI-ExtraBold';
                         font-size: 15vw;
@@ -38,6 +39,244 @@
                         margin-top: 5rem;
                     }
                 }
+            }
+
+            .main-section{
+                border-radius: 1.25rem;
+                background: #FFF;
+                padding-left: 1rem;
+                padding-top: 0.5rem;
+                margin-top: 1.44rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                .contact-information{
+                    .information{
+                        display: flex;
+                        flex-direction: column;
+
+                        .email-contact .email-us, .phone-contact .phone{
+                            font-family: 'THICCBOI-ExtraBold';
+                            font-size: 8vw;
+                            font-weight: 800;
+                            text-decoration: underline;
+                        }
+
+                        .email-contact .gmail, .phone-contact .phone-number{
+                            font-size: 5vw;
+                            margin-top: -1rem;
+                        }
+
+                        .phone-contact{margin-top: -1rem;}
+
+                    
+                    }
+
+                    .image-wrapper{
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        justify-content: left;
+
+                        .envelope-img{
+                            width: 50%;
+                            height: 50%;
+                            object-fit: contain;
+                        }
+                    }
+                }
+
+                .contact-form{
+                    display: flex;
+                    flex-direction: column;
+                    text-align: left;
+                    width: 90%;
+                    margin-bottom: 2rem;
+
+                    .wrapper:not(:last-of-type){
+                        display: flex;
+                        flex-direction: column;
+
+                        input[type='text']{
+                            border-radius: 1.25rem;
+                            border: none;
+                            background: #B4F1F5;
+                            height: 1.5rem;
+                            padding-left: 0.5rem;
+                            font-family: 'THICCBOI';
+                        }
+
+                        textarea{
+                            border-radius: 1.25rem;
+                            border: none;
+                            background: #B4F1F5; 
+                            // width: 90%;
+                            padding: 0.5rem;
+                            font-size: 1.5rem;
+                            font-family: 'THICCBOI';
+
+                        }
+                    }
+
+                    .btn-wrapper{
+                        display: flex;
+                        flex-direction: row;
+                        gap: 50%;
+                        margin-top: 2rem;
+
+                        button{
+                            border-radius: 1.25rem;
+                            border: none;
+                            height: 2rem;
+                            width: 6.6875rem;
+                            font-family: 'THICCBOI';
+                        }
+
+                        .submit-btn{
+                            background: #B4F1F5;
+
+                        }
+
+                        .reset-btn{
+                            background: #52CAC8;
+                        }
+                    }
+
+                    @media(min-width: 412px){
+
+                        p{
+                            font-size: 5vw;
+                        }
+
+                        .wrapper:not(:last-of-type){
+                            font-size: 5vw;
+                            margin-top: 1rem;
+                            input[type='text']{
+                                height: 2.3rem;
+                                margin-top: 0.5rem;
+                                font-size: 4.5vw;
+
+                            }
+                        }
+
+                        .btn-wrapper button{font-size: 4vw}
+                    }
+                }
+
+            }
+
+            @media(min-width: 768px){
+                .top-section{
+                    .wrapper{
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: right;
+
+                        h1{
+                            font-size: 12vw;
+                            right: 5rem;
+                        }
+                    }
+                }
+
+                .main-section{
+                    .contact-information{
+                        display: flex;
+                        flex-direction: row;
+                        position: relative;
+                        .information{
+                            width: 50%;
+
+                            .email-contact .email-us, .phone-contact .phone{font-size: 5vw;}
+    
+                            .email-contact .gmail, .phone-contact .phone-number{font-size: 3.5vw;}
+                        }
+    
+                        .image-wrapper{
+                            width: 38%;
+                            height: 100%;
+                            display: flex;
+                            margin: 8rem 0 0 3rem;
+                            .envelope-img{
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+                    }
+
+                    .contact-form {
+                        .wrapper button{
+                            border-radius: 1rem;
+                            border: none;
+                            height:3rem;
+                            width: 8rem;
+                        }
+
+                        .btn-wrapper{
+                            gap: 58%;
+                        }
+                    }
+                }
+            }
+
+            @media(min-width: 992px){
+                .top-section{
+                    .wrapper{
+                        width: 100%;
+
+                        h1{font-size: 11vw;right:6rem;}
+                        .image-wrapper{
+                            width: 100%;
+                            height: 100%;
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: right;
+                            .contact-us-img{
+                                width: 60%;
+                                height: 100%;
+                                object-fit: contain;
+                            }
+                        }
+                        
+                    }
+                    
+                }
+
+                .main-section{
+                    .contact-information{
+                        .information{
+                            .email-contact .email-us, .phone-contact .phone{font-size: 4vw;}
+                            .email-contact .gmail, .phone-contact .phone-number{font-size: 3vw;}
+                        }
+                        .image-wrapper {
+                            margin-top: 15rem;
+                            .envelope-img{
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+                    }
+
+                    .contact-form {
+                        width: 80%;
+                        p{font-size: 3vw;}
+
+                        .wrapper:not(:last-of-type) {
+                            input[type='text']{height: 4.5rem;}
+                            label{font-size: 3vw;}
+                        }
+                        .wrapper button{
+                            height:5rem;
+                            width: 11rem;
+                        }
+
+                        .btn-wrapper{gap: 60%;}
+                    }
+                }
+            }
+
+            @media(min-width: 2560px){
+                .main-section .contact-form .wrapper button{width: 25rem;height: 10rem;}
             }
     }
 }
