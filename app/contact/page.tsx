@@ -2,8 +2,8 @@
 
 import '@/styles/contact/contact.css'
 
-import contactUsImage from '@/public/images/Contact Us/ContactUsImage.png'
-import contactUsImage_pcView from '@/public/images/Contact Us/ContactUsImage_pcView.png'
+import contactUsImage from '@/public/images/Contact Us/contactUsImage.png'
+import contactUsImage_pcView from '@/public/images/Contact Us/contactUsImage_pcView.png'
 import envelope from '@/public/images/Contact Us/envelope.svg'
 import Navbar from '@/components/Navbar'
 import Image from 'next/image'
