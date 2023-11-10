@@ -6,11 +6,32 @@ import contactUsImage from '@/public/images/Contact Us/contactUsImage.png'
 import contactUsImage_pcView from '@/public/images/Contact Us/contactUsImage_pcView.png'
 import envelope from '@/public/images/Contact Us/envelope.svg'
 import Navbar from '@/components/Navbar'
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import Footer from '@/components/Footer'
 import { useWindowSize } from 'react-use'
+import React, { useState, useEffect } from 'react';
 export default function Contact() {
-    const { width } = useWindowSize()
+    const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    // Handler to call on window resize
+    function handleResize() {
+      // Set window width to state
+      setWidth(window.innerWidth);
+    }
+    
+    // Add event listener
+    window.addEventListener("resize", handleResize);
+    
+    // Call handler right away so state gets updated with initial window size
+    handleResize();
+    
+    // Remove event listener on cleanup
+    return () => window.removeEventListener("resize", handleResize);
+  }, []); // Empty array ensures that effect is only run on mount and unmount
+
+  const imageUrl = width >= 1200 ? contactUsImage_pcView : contactUsImage;
+
     return (
         <div className='contact-main-container'>
             <div className="outer-layer">
@@ -21,19 +42,11 @@ export default function Contact() {
                         <h1>Contact Us</h1>
 
                         <div className='image-wrapper'>
-                            {width >= 1200 ? (
-                                <Image 
-                                    src={contactUsImage_pcView}
-                                    className='contact-us-img'
-                                    alt='picture of a black woman holding her headphones'
-                                />
-                            ) : (
-                                <Image 
-                                    src={contactUsImage}
-                                    className='contact-us-img'
-                                    alt='picture of a black woman holding her headphones'
-                                />
-                            )}
+                            <Image 
+                                src={imageUrl}
+                                className='contact-us-img'
+                                alt='picture of a black woman holding her headphones'
+                            />
                         </div>
                     </div>
 

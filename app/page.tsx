@@ -15,7 +15,7 @@ import privacy from '../public/images/privacy.svg'
 import userSafety from '../public/images/userSafety.svg'
 import dataSecurity from '../public/images/dataSecurity.svg'
 import productsImage from '../public/images/manHoldingPhone.svg' 
-import aboutUsImage from '../public/images/aboutUsImage.svg'//TODO rename file 
+import aboutUsImage from '../public/images/aboutUsImage.svg' 
 
 import dots from '../public/images/dots.png'
 
