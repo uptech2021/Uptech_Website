@@ -1,4 +1,13 @@
 // code starts at 320px
+@font-face {
+    font-family: 'THICCBOI-ExtraBold';
+    src: url('../../utils/fonts/thiccboi/THICCCBOI-ExtraBold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'THICCBOI-SemiBold';
+    src: url('../../utils/fonts/thiccboi/THICCCBOI-SemiBold.ttf') format('truetype');
+}
+
 .objectives-main-container {
         font-family: 'THICCCBOI';
         position: relative;
@@ -60,7 +69,8 @@
                         line-height: normal;
                         align-items: center;
                         justify-content: center;
-                        margin: 2.88rem 0.19rem 0 0.19rem;
+                        margin: 0 0.19rem 0 0.19rem;
+                        border: solid black 2px;
 
                         h1{
                             font-family: 'THICCCBOI';
@@ -272,7 +282,7 @@
                         line-height: normal;
                         align-items: center;
                         justify-content: center;
-                        margin: -3rem 1.75rem 0 1.75rem;
+                        margin: -1rem 1.75rem 0 1.75rem;
 
                         h1{
                             font-family: 'THICCCBOI';
