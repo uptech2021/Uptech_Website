@@ -121,7 +121,7 @@
   display: flex;
   color: #52CAC8;
   font-family: Inter;
-  font-size: 18.4375vw;
+  font-size: 3.6875rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -140,7 +140,7 @@
 .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .privacy-header h1 {
   color: #52CAC8;
   font-family: Inter;
-  font-size: 18.75vw;
+  font-size: 3.75rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -152,7 +152,7 @@
 .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .datasecurity-header h1 {
   color: #52CAC8;
   font-family: "Inter";
-  font-size: 15vw;
+  font-size: 3rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -161,7 +161,7 @@
   color: #000;
   text-align: center;
   font-family: Inter;
-  font-size: 12.5vw;
+  font-size: 2.1875rem;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -185,7 +185,7 @@
 .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .privacy-content p {
   color: #000;
   font-family: Inter;
-  font-size: 12.5vw;
+  font-size: 2.5rem;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -209,7 +209,7 @@
 .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .datasecurity-content p {
   color: #000;
   font-family: Inter;
-  font-size: 9.9vw;
+  font-size: 2.1875rem;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -290,7 +290,7 @@
     display: flex;
     color: #52CAC8;
     font-family: Inter;
-    font-size: 13.02vw;
+    font-size: 6.25rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -304,7 +304,7 @@
   .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .privacy-header h1 {
     color: #52CAC8;
     font-family: Inter;
-    font-size: 13.02vw;
+    font-size: 6.25rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -316,7 +316,7 @@
   .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .datasecurity-header h1 {
     color: #52CAC8;
     font-family: "Inter";
-    font-size: 13.02vw;
+    font-size: 6.25rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -325,7 +325,7 @@
     color: #000;
     text-align: center;
     font-family: Inter;
-    font-size: 6.77vw;
+    font-size: 3.25rem;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -349,7 +349,7 @@
   .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .privacy-content p {
     color: #000;
     font-family: Inter;
-    font-size: 8.47vw;
+    font-size: 4.0625rem;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -373,7 +373,7 @@
   .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .datasecurity-content p {
     color: #000;
     font-family: Inter;
-    font-size: 8.97vw;
+    font-size: 4.3125rem;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
