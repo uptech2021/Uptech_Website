@@ -473,30 +473,6 @@
   .home-main-container .outer-layer .welcome-section {
     height: auto;
   }
-  .home-main-container .outer-layer .welcome-section .header .logo-wrapper .uptech-logo {
-    width: 100%;
-    max-width: unset;
-  }
-  .home-main-container .outer-layer .welcome-section .header .menu-btn {
-    display: none;
-  }
-  .home-main-container .outer-layer .welcome-section .header .navbar {
-    width: 100%;
-    display: block;
-  }
-  .home-main-container .outer-layer .welcome-section .header .navbar .nav-items {
-    display: flex;
-    justify-content: right;
-    gap: 1rem;
-    font-family: Inter;
-    font-size: 1.8vw;
-    font-style: normal;
-    font-weight: 900;
-    line-height: normal;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
   .home-main-container .outer-layer .welcome-section .call-to-action {
     width: auto;
     margin-top: -1rem;
