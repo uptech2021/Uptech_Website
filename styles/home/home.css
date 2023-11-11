@@ -57,34 +57,16 @@
   font-weight: 600;
   font-size: 1.8rem;
 }
-@media (min-width: 412px) {
-  .home-main-container .outer-layer .welcome-section .call-to-action .welcome-container p {
-    font-size: 2.1rem;
-  }
-}
 .home-main-container .outer-layer .welcome-section .call-to-action .image-wrapper {
   width: 100%;
   height: 100%;
-  margin: 0 auto;
+  margin: -2rem auto;
 }
 .home-main-container .outer-layer .welcome-section .call-to-action .image-wrapper .call-to-action-img {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
-}
-@media (min-width: 360px) {
-  .home-main-container .outer-layer .welcome-section .call-to-action .image-wrapper {
-    margin-top: 3rem;
-  }
-}
-@media (min-width: 549px) {
-  .home-main-container .outer-layer .welcome-section .call-to-action .welcome-container h1 {
-    font-size: 17vw;
-  }
-  .home-main-container .outer-layer .welcome-section .call-to-action .welcome-container p {
-    font-size: 5.5vw;
-  }
 }
 .home-main-container .outer-layer .main-section {
   min-width: 17.875rem;
@@ -98,33 +80,31 @@
   margin-top: 1.69rem;
   text-align: center;
 }
+.home-main-container .outer-layer .main-section h2 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #2ACDE4;
+}
+.home-main-container .outer-layer .main-section h3 {
+  font-size: 2.6rem;
+}
+.home-main-container .outer-layer .main-section p {
+  font-size: 1.6rem;
+  text-align: center;
+}
 .home-main-container .outer-layer .main-section .features {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .home-main-container .outer-layer .main-section .features .features-container h2 {
-  color: #52CAC8;
-  font-size: 3.4rem;
-  font-weight: 700;
   margin-top: 2.75rem;
 }
 .home-main-container .outer-layer .main-section .features .features-container p {
   margin: 1.73rem 0.88rem 0 0.94rem;
-  font-size: 1.6rem;
 }
 .home-main-container .outer-layer .main-section .features .features-container .dots-img {
   display: none;
-}
-@media (min-width: 479px) {
-  .home-main-container .outer-layer .main-section .features .features-container h1 {
-    font-size: 4.25rem;
-  }
-  .home-main-container .outer-layer .main-section .features .features-container p {
-    font-size: 2rem;
-    margin-left: 2rem;
-    margin-right: 2rem;
-  }
 }
 .home-main-container .outer-layer .main-section .features .education-container {
   display: flex;
@@ -142,53 +122,25 @@
      object-fit: contain;
 }
 .home-main-container .outer-layer .main-section .features .education-container .information h3 {
-  font-family: Inter;
-  font-size: 3.5rem;
   font-weight: 800;
   margin: 2.52rem 0.75rem 0 0.94rem;
 }
 .home-main-container .outer-layer .main-section .features .education-container .information p {
   margin-top: 2rem;
   margin-left: 4rem;
-  font-family: Inter;
-  font-size: 2.5rem;
-}
-@media (min-width: 419px) {
-  .home-main-container .outer-layer .main-section .features .education-container p {
-    margin-left: unset;
-    max-width: 18rem;
-  }
-}
-@media (min-width: 479px) {
-  .home-main-container .outer-layer .main-section .features .education-container h3 {
-    font-size: clamp(3.5rem, 4rem, 5vw);
-  }
-  .home-main-container .outer-layer .main-section .features .education-container .elearning-img {
-    width: 30rem;
-    height: 15.4375rem;
-    margin: 5rem 0.27rem 0 0.34rem;
-  }
-  .home-main-container .outer-layer .main-section .features .education-container .blue-square {
-    width: 13.03563rem;
-    height: 10.5rem;
-    margin: 13.64rem 9rem 0 1.3rem;
-  }
 }
 .home-main-container .outer-layer .main-section .features .marketplace-container {
   display: flex;
   flex-direction: column;
 }
 .home-main-container .outer-layer .main-section .features .marketplace-container h3 {
-  font-family: Inter;
-  font-size: 2.8rem;
-  font-weight: 800;
   margin: 2.52rem 0.75rem 0 0.94rem;
 }
 .home-main-container .outer-layer .main-section .features .marketplace-container p {
   margin-top: 2rem;
-  margin-left: 4rem;
-  font-family: Inter;
-  font-size: 2.6rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
 }
 .home-main-container .outer-layer .main-section .features .marketplace-container .image-wrapper {
   width: 95%;
@@ -201,24 +153,7 @@
      object-fit: contain;
   position: relative;
 }
-@media (min-width: 419px) {
-  .home-main-container .outer-layer .main-section .features .marketplace-container .blue-square {
-    margin: 13rem 0 0 14.5rem;
-  }
-  .home-main-container .outer-layer .main-section .features .marketplace-container .marketplace-img {
-    width: 23.96656rem;
-    height: 14.625rem;
-    margin-left: 3rem;
-  }
-  .home-main-container .outer-layer .main-section .features .marketplace-container p {
-    text-align: center;
-    margin: 4rem auto;
-  }
-}
 .home-main-container .outer-layer .main-section .features .project-management-container h3 {
-  font-family: Inter;
-  font-size: 9vw;
-  font-weight: 900;
   margin-top: 3rem;
 }
 .home-main-container .outer-layer .main-section .features .project-management-container .image-wrapper {
@@ -235,160 +170,29 @@
      object-fit: contain;
 }
 .home-main-container .outer-layer .main-section .features .project-management-container p {
-  font-family: Inter;
-  font-size: 2/3rem;
-  font-weight: 500;
-  width: 65%;
-  margin: 5.29rem auto;
-}
-@media (min-width: 419px) {
-  .home-main-container .outer-layer .main-section .features .project-management-container .project-management-img {
-    min-width: 22.7445rem;
-    min-height: 14.6875rem;
-    margin-top: 0;
-    margin-left: 4rem;
-  }
-  .home-main-container .outer-layer .main-section .features .project-management-container .blue-square {
-    min-width: 13.03563rem;
-    min-height: 10.5rem;
-    margin-top: 6rem;
-    margin-left: 5rem;
-  }
-  .home-main-container .outer-layer .main-section .features .project-management-container p {
-    font-size: 6vw;
-  }
-}
-.home-main-container .outer-layer .main-section .objectives {
-  margin-top: -5rem;
-}
-.home-main-container .outer-layer .main-section .objectives h2 {
-  color: #52CAC8;
-  font-size: 12vw;
-  font-style: normal;
-  font-weight: 900;
-  line-height: normal;
-}
-.home-main-container .outer-layer .main-section .objectives .privacy-container h3 {
-  font-family: Inter;
-  font-size: 10vw;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-}
-.home-main-container .outer-layer .main-section .objectives .privacy-container .image-wrapper {
   width: 90%;
-  margin: 2rem 0 0 auto;
+  margin: 4rem auto 0;
 }
-.home-main-container .outer-layer .main-section .objectives .privacy-container .image-wrapper .privacy-img {
+.home-main-container .outer-layer .main-section .objectives .image-wrapper {
+  width: 90%;
+  margin: 2rem auto 0;
+}
+.home-main-container .outer-layer .main-section .objectives .image-wrapper .privacy-img {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
 }
-.home-main-container .outer-layer .main-section .objectives .privacy-container p {
-  font-family: Inter;
-  font-size: 8vw;
+.home-main-container .outer-layer .main-section .objectives .image-wrapper:first-child {
+  width: 70%;
+}
+.home-main-container .outer-layer .main-section .objectives p {
+  width: 90%;
   margin-left: auto;
   margin-right: auto;
-  max-width: 17.47888rem;
-  height: 15.673rem;
-}
-@media (min-width: 374px) {
-  .home-main-container .outer-layer .main-section .objectives .privacy-container .privacy-img {
-    margin-left: unset;
-  }
-}
-@media (min-width: 419px) {
-  .home-main-container .outer-layer .main-section .objectives .privacy-container .privacy-img {
-    margin-left: 1rem;
-  }
-}
-@media (min-width: 479px) {
-  .home-main-container .outer-layer .main-section .objectives .privacy-container .privacy-img {
-    margin-left: 4rem;
-    min-height: 28rem;
-  }
-  .home-main-container .outer-layer .main-section .objectives .privacy-container p {
-    max-width: 20rem;
-  }
-}
-.home-main-container .outer-layer .main-section .objectives .user-safety-container h3 {
-  font-family: Inter;
-  font-size: 15vw;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-}
-.home-main-container .outer-layer .main-section .objectives .user-safety-container .user-safety-img {
-  min-width: 24.70394rem;
-  max-width: 37.33581rem;
-  height: 21rem;
-  -o-object-fit: contain;
-     object-fit: contain;
-  margin: 1rem 0 0 -3rem;
-}
-.home-main-container .outer-layer .main-section .objectives .user-safety-container p {
-  font-family: Inter;
-  font-size: 9vw;
-  margin-top: 2.64rem;
-}
-@media (min-width: 374px) {
-  .home-main-container .outer-layer .main-section .objectives .user-safety-container .user-safety-img {
-    margin-left: 0;
-  }
-}
-@media (min-width: 419px) {
-  .home-main-container .outer-layer .main-section .objectives .user-safety-container .user-safety-img {
-    margin-left: 1rem;
-  }
-}
-.home-main-container .outer-layer .main-section .objectives .data-security-container {
-  margin-top: 7.77rem;
-}
-.home-main-container .outer-layer .main-section .objectives .data-security-container h3 {
-  font-family: Inter;
-  font-size: 13vw;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-}
-.home-main-container .outer-layer .main-section .objectives .data-security-container .user-safety-img {
-  width: 15.32231rem;
-  height: 21.00125rem;
-  -o-object-fit: contain;
-     object-fit: contain;
-  margin: 1.44rem 0.46rem 0 2.15rem;
-}
-.home-main-container .outer-layer .main-section .objectives .data-security-container p {
-  font-family: Inter;
-  font-size: 10vw;
-  margin: 2.81rem 0.56rem 0 0.44rem;
-}
-@media (min-width: 419px) {
-  .home-main-container .outer-layer .main-section .objectives .data-security-container {
-    margin-top: 5rem;
-  }
-  .home-main-container .outer-layer .main-section .objectives .data-security-container .user-safety-img {
-    min-width: 23rem;
-    min-height: 28rem;
-  }
-  .home-main-container .outer-layer .main-section .objectives .data-security-container p {
-    font-size: 8vw;
-  }
-}
-.home-main-container .outer-layer .main-section .products {
-  margin-top: -10rem;
-}
-.home-main-container .outer-layer .main-section .products h3 {
-  color: #2ACDE4;
-  font-size: 15vw;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  margin: 15.37rem 0.56rem 0 0.88rem;
 }
 .home-main-container .outer-layer .main-section .products .products-container .image-wrapper {
-  width: 98%;
+  width: 100%;
   margin: 1rem auto 0;
 }
 .home-main-container .outer-layer .main-section .products .products-container .image-wrapper .man-holding-phone-with-logo-img {
@@ -398,13 +202,11 @@
      object-fit: contain;
 }
 .home-main-container .outer-layer .main-section .products .products-container p {
-  font-family: Inter;
-  font-size: 8vw;
-  margin: 1.69rem auto;
-  min-width: 16.8125rem;
-  max-width: 21.875rem;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }
-.home-main-container .outer-layer .main-section .products .products-container .learn-more-btn {
+.home-main-container .outer-layer .main-section .products .products-container .sign-up-btn {
   font-size: 2.1rem;
   font-style: normal;
   font-weight: 700;
@@ -413,19 +215,12 @@
   border: none;
   border-radius: 3.875rem;
   color: white;
-  background: rgba(7, 197, 223, 0.86);
+  background: #06E95C;
   padding: 0.73rem 0.8rem 0.67rem 1.01rem;
   margin-top: 2rem;
 }
 .home-main-container .outer-layer .main-section .about-us {
   margin-top: 6rem;
-}
-.home-main-container .outer-layer .main-section .about-us h3 {
-  font-size: 14vw;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  color: #2ACDE4;
 }
 .home-main-container .outer-layer .main-section .about-us .about-us-btns {
   margin: 4rem 0 auto;
@@ -475,23 +270,24 @@
   }
   .home-main-container .outer-layer .welcome-section .call-to-action {
     width: auto;
-    margin-top: -1rem;
     flex-direction: row-reverse;
-    position: relative;
+    padding-left: 5%;
+    padding-right: 5%;
   }
   .home-main-container .outer-layer .welcome-section .call-to-action .welcome-container {
     width: 100%;
-    height: 20rem;
+    height: auto;
     flex-direction: column;
+    margin: -8rem 0 0 0;
     align-items: unset;
   }
   .home-main-container .outer-layer .welcome-section .call-to-action .welcome-container h1 {
     text-align: right;
-    font-size: 5.6rem;
+    font-size: 4.2rem;
   }
   .home-main-container .outer-layer .welcome-section .call-to-action .welcome-container p {
     text-align: right;
-    font-size: 3.1rem;
+    font-size: 1.5rem;
   }
   .home-main-container .outer-layer .welcome-section .call-to-action .image-wrapper {
     width: 60%;
@@ -501,21 +297,15 @@
     width: 100%;
     height: auto;
   }
-  .home-main-container .outer-layer .main-section .features .features-container {
-    padding-left: 1rem;
-    padding-right: 1rem;
+  .home-main-container .outer-layer .main-section h2 {
+    font-size: 5rem;
   }
-  .home-main-container .outer-layer .main-section .features .features-container h2 {
-    font-size: 14vw;
+  .home-main-container .outer-layer .main-section p {
+    font-size: 2rem;
   }
   .home-main-container .outer-layer .main-section .features .features-container p {
-    margin-top: -3rem;
-    margin-left: unset;
-    margin-right: unset;
-    font-size: 6vw;
-    min-width: unset;
-    max-width: unset;
-    width: 100%;
+    width: 80%;
+    margin: 0 auto;
   }
   .home-main-container .outer-layer .main-section .features .features-container .dots-wrapper {
     width: 21vw;
@@ -529,26 +319,15 @@
     margin: 2.61rem 0 0 1.68rem;
   }
   .home-main-container .outer-layer .main-section .features .education-container {
-    display: flex;
     flex-direction: row;
     margin-top: 3rem;
   }
   .home-main-container .outer-layer .main-section .features .education-container .image-wrapper {
     margin: 0;
-  }
-  .home-main-container .outer-layer .main-section .features .education-container .image-wrapper .elearning-img {
-    margin-top: 0rem;
+    width: 50%;
   }
   .home-main-container .outer-layer .main-section .features .education-container .information {
-    padding-top: 1rem;
-  }
-  .home-main-container .outer-layer .main-section .features .education-container .information h3 {
-    margin-top: 0rem;
-  }
-  .home-main-container .outer-layer .main-section .features .education-container .information p {
-    max-width: unset;
-    width: auto;
-    font-size: 6vw;
+    margin-left: 2rem;
   }
   .home-main-container .outer-layer .main-section .features .marketplace-container {
     display: flex;
@@ -570,13 +349,13 @@
     width: 100%;
   }
   .home-main-container .outer-layer .main-section .features .marketplace-container .information h3 {
-    font-size: 5.5vw;
+    font-size: 3rem;
     margin-top: 0rem auto;
   }
   .home-main-container .outer-layer .main-section .features .marketplace-container .information p {
     max-width: unset;
     width: 80%;
-    font-size: 5vw;
+    font-size: 2rem;
     margin-top: 2rem;
   }
   .home-main-container .outer-layer .main-section .features .project-management-container {
@@ -604,15 +383,18 @@
     width: 100%;
   }
   .home-main-container .outer-layer .main-section .features .project-management-container .information h3 {
-    font-size: 4vw;
+    font-size: 3rem;
     margin-top: 0rem auto;
-    width: auto;
   }
   .home-main-container .outer-layer .main-section .features .project-management-container .information p {
-    max-width: unset;
-    width: auto;
-    font-size: 4vw;
+    width: 100%;
+    font-size: 2rem;
     margin-top: 2rem;
+  }
+  .home-main-container .outer-layer .main-section .features .education-container .information p,
+  .home-main-container .outer-layer .main-section .features .marketplace-container .information p,
+  .home-main-container .outer-layer .main-section .features .project-management-container .information p {
+    font-size: 1.8rem;
   }
   .home-main-container .outer-layer .main-section .features .dots-wrapper:first-child {
     margin-top: 3rem;
@@ -640,15 +422,12 @@
   }
   .home-main-container .outer-layer .main-section .objectives .privacy-container .information, .home-main-container .outer-layer .main-section .objectives .user-safety-container .information, .home-main-container .outer-layer .main-section .objectives .data-security-container .information {
     width: 45%;
+    margin: 5rem auto;
   }
   .home-main-container .outer-layer .main-section .objectives .privacy-container .information h3, .home-main-container .outer-layer .main-section .objectives .user-safety-container .information h3, .home-main-container .outer-layer .main-section .objectives .data-security-container .information h3 {
-    font-size: 7vw;
-  }
-  .home-main-container .outer-layer .main-section .objectives .privacy-container .information p, .home-main-container .outer-layer .main-section .objectives .user-safety-container .information p, .home-main-container .outer-layer .main-section .objectives .data-security-container .information p {
-    height: auto;
-    font-size: 4vw;
-    margin-left: 0;
-    margin-right: 0;
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
   }
   .home-main-container .outer-layer .main-section .objectives .privacy-container .image-wrapper {
     padding-top: 3rem;
@@ -660,8 +439,8 @@
     padding-top: 3rem;
   }
   .home-main-container .outer-layer .main-section .products .products-container .image-wrapper {
-    height: 65vh;
     position: relative;
+    height: 40rem;
   }
   .home-main-container .outer-layer .main-section .products .products-container .image-wrapper .man-holding-phone-with-logo-img {
     width: 100%;
@@ -671,12 +450,9 @@
     margin: 0 auto;
   }
   .home-main-container .outer-layer .main-section .products .products-container p {
-    max-width: unset;
-    min-width: unset;
-    width: 38rem;
-    font-size: 2rem;
+    width: 90%;
   }
-  .home-main-container .outer-layer .main-section .products .products-container .learn-more-btn {
+  .home-main-container .outer-layer .main-section .products .products-container .sign-up-btn {
     width: 60%;
     height: 5rem;
     margin-top: 0;
@@ -693,15 +469,6 @@
   .home-main-container .outer-layer .main-section .about-us .about-us-btns {
     min-width: unset;
     max-width: unset;
-  }
-  .home-main-container .outer-layer .main-section .about-us .about-us-btns p {
-    min-width: unset;
-    max-width: unset;
-    width: 90%;
-    font-size: 6vw;
-    margin-top: -2rem;
-    margin-left: auto;
-    margin-right: auto;
   }
   .home-main-container .outer-layer .main-section .about-us .about-us-btns .btns-containers .large-btn-group {
     min-width: 20rem;
@@ -724,142 +491,74 @@
     display: block;
   }
 }
-@media (min-width: 992px) {
-  .home-main-container .outer-layer .welcome-section .call-to-action .welcome-container {
-    width: 20%;
-    padding-right: 11rem;
-  }
-  .home-main-container .outer-layer .welcome-section .call-to-action .welcome-container h1 {
-    font-size: 10vw;
-    margin-left: 13rem;
-  }
-  .home-main-container .outer-layer .welcome-section .call-to-action .welcome-container p {
-    width: 24rem;
-    font-size: 4vw;
-    margin-left: 0rem;
-  }
-  .home-main-container .outer-layer .welcome-section .call-to-action .image-wrapper {
-    margin-top: 6.5rem;
-  }
-  .home-main-container .outer-layer .main-section .features h3, .home-main-container .outer-layer .main-section .products h3, .home-main-container .outer-layer .main-section .about-us h3 {
-    font-size: 10vw;
-  }
-  .home-main-container .outer-layer .main-section .features .features-container p {
-    font-size: 4.5vw;
-  }
-  .home-main-container .outer-layer .main-section .features .education-container .image-wrapper {
-    width: 50%;
-  }
-  .home-main-container .outer-layer .main-section .features .education-container .information {
-    padding-left: 2rem;
-  }
-  .home-main-container .outer-layer .main-section .objectives {
-    margin-top: 4rem;
-  }
-  .home-main-container .outer-layer .main-section .objectives h2 {
-    margin: 0;
-    font-size: 12vw;
-  }
-  .home-main-container .outer-layer .main-section .objectives .privacy-container, .home-main-container .outer-layer .main-section .objectives .user-safety-container, .home-main-container .outer-layer .main-section .objectives .data-security-container {
-    padding-left: 3rem;
-  }
-  .home-main-container .outer-layer .main-section .objectives .privacy-container .information p, .home-main-container .outer-layer .main-section .objectives .user-safety-container .information p, .home-main-container .outer-layer .main-section .objectives .data-security-container .information p {
-    margin-top: -2rem;
-    font-size: 3vw;
-  }
-  .home-main-container .outer-layer .main-section .products .products-container p {
-    width: 93%;
-    font-size: 4.5vw;
-  }
-  .home-main-container .outer-layer .main-section .products .products-container .learn-more-btn {
-    font-size: 5rem;
-    height: 8rem;
-  }
-  .home-main-container .outer-layer .main-section .about-us .about-us-btns p {
-    font-size: 5vw;
-  }
-  .home-main-container .outer-layer .main-section .about-us .about-us-btns .btns-containers .large-btn-group {
-    min-width: 25rem;
-    min-height: 25rem;
-  }
-  .home-main-container .outer-layer .main-section .about-us .about-us-btns .btns-containers .large-btn-group:first-child {
-    font-size: 5rem;
-  }
-  .home-main-container .outer-layer .main-section .about-us .about-us-btns .btns-containers .large-btn-group:nth-child(2) {
-    font-size: 4.5rem;
-  }
-  .home-main-container .outer-layer .main-section .about-us .about-us-btns .btns-containers .large-btn-group:last-child {
-    font-size: 4rem;
-  }
-}
 @media (min-width: 1200px) {
-  .home-main-container .outer-layer .welcome-section .call-to-action .welcome-container {
-    width: 45%;
-    padding-right: 0rem;
+  .home-main-container .outer-layer .welcome-section .call-to-action {
+    padding-left: 5%;
+    padding-right: 5%;
   }
-  .home-main-container .outer-layer .welcome-section .call-to-action .welcome-container h1 {
-    margin-left: -3rem;
-  }
-  .home-main-container .outer-layer .welcome-section .call-to-action .welcome-container p {
-    width: 31rem;
-    font-size: 3.5vw;
-    margin-left: 0rem;
-    margin-top: 10rem;
-  }
-  .home-main-container .outer-layer .welcome-section .call-to-action .image-wrapper {
-    width: 100%;
-    height: auto;
-    margin-top: 1.5rem;
-  }
-  .home-main-container .outer-layer .welcome-section .call-to-action .image-wrapper .call-to-action-img {
-    width: 100%;
-    margin-top: 3rem;
-    height: auto;
-  }
-}
-@media (min-width: 1440px) {
-  .home-main-container .outer-layer .main-section .features .features-container h2 {
-    font-size: 9vw;
-  }
-  .home-main-container .outer-layer .main-section .features .features-container p {
-    font-size: 3.5rem;
-    width: 95%;
-    margin-top: -5rem;
-  }
-  .home-main-container .outer-layer .main-section .objectives h2 {
-    font-size: 9vw;
+  .home-main-container .outer-layer .main-section .education-container .project-management-container {
+    justify-content: center;
+    width: 90%;
   }
   .home-main-container .outer-layer .main-section .objectives .privacy-container .image-wrapper,
   .home-main-container .outer-layer .main-section .objectives .user-safety-container .image-wrapper,
   .home-main-container .outer-layer .main-section .objectives .data-security-container .image-wrapper {
-    display: flex;
-    justify-content: center;
-  }
-  .home-main-container .outer-layer .main-section .objectives .privacy-container .information h3,
-  .home-main-container .outer-layer .main-section .objectives .user-safety-container .information h3,
-  .home-main-container .outer-layer .main-section .objectives .data-security-container .information h3 {
-    font-size: 5vw;
-  }
-  .home-main-container .outer-layer .main-section .objectives .privacy-container .information p,
-  .home-main-container .outer-layer .main-section .objectives .user-safety-container .information p,
-  .home-main-container .outer-layer .main-section .objectives .data-security-container .information p {
-    max-width: unset;
-  }
-  .home-main-container .outer-layer .main-section .objectives .privacy-container .image-wrapper .privacy-img,
-  .home-main-container .outer-layer .main-section .objectives .user-safety-container .image-wrapper .user-safety-img,
-  .home-main-container .outer-layer .main-section .objectives .data-security-container .image-wrapper .data-security-img {
-    width: 60%;
-  }
-  .home-main-container .outer-layer .main-section .products .products-container p {
-    font-size: 4vw;
-  }
-  .home-main-container .outer-layer .main-section .products .products-container .learn-more-btn {
-    margin-top: 2rem;
-    width: 50%;
-    height: 10rem;
+    width: 40%;
   }
   .home-main-container .outer-layer .main-section .about-us .about-us-btns p {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 1920px) {
+  .home-main-container .outer-layer .welcome-section .call-to-action {
+    padding-left: 8%;
+    padding-right: 8%;
+  }
+  .home-main-container .outer-layer .welcome-section .call-to-action .welcome-container h1 {
+    font-size: 8rem;
+  }
+  .home-main-container .outer-layer .welcome-section .call-to-action .welcome-container p {
+    font-size: 5rem;
+  }
+  .home-main-container .outer-layer .main-section .features .features-container p {
     margin-top: -5rem;
-    font-size: 4vw;
+  }
+  .home-main-container .outer-layer .main-section .features .project-management-container, .home-main-container .outer-layer .main-section .features .education-container {
+    justify-content: unset;
+    width: 100%;
+  }
+  .home-main-container .outer-layer .main-section .features .education-container p, .home-main-container .outer-layer .main-section .features .marketplace-container p, .home-main-container .outer-layer .main-section .features .project-management-container p {
+    font-size: 3rem !important;
+  }
+  .home-main-container .outer-layer .main-section .features, .home-main-container .outer-layer .main-section .objectives, .home-main-container .outer-layer .main-section .products {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .home-main-container .outer-layer .main-section .features h2, .home-main-container .outer-layer .main-section .objectives h2, .home-main-container .outer-layer .main-section .products h2 {
+    font-size: 8rem;
+  }
+  .home-main-container .outer-layer .main-section .features h3, .home-main-container .outer-layer .main-section .objectives h3, .home-main-container .outer-layer .main-section .products h3 {
+    font-size: 4rem;
+  }
+  .home-main-container .outer-layer .main-section .objectives .privacy-container .information h3, .home-main-container .outer-layer .main-section .objectives .user-safety-container .information h3, .home-main-container .outer-layer .main-section .objectives .data-security-container .information h3 {
+    font-size: 5rem;
+    width: 100%;
+  }
+  .home-main-container .outer-layer .main-section .objectives .privacy-container .information p, .home-main-container .outer-layer .main-section .objectives .user-safety-container .information p, .home-main-container .outer-layer .main-section .objectives .data-security-container .information p {
+    font-size: 2.5rem;
+  }
+  .home-main-container .outer-layer .main-section .products-container p {
+    font-size: 3rem;
+  }
+  .home-main-container .outer-layer .main-section .products-container .sign-up-btn {
+    width: 50%;
+    height: 13rem;
+  }
+  .home-main-container .outer-layer .main-section .about-us .about-us-btns p {
+    width: 80%;
+    margin: 0 auto;
+    font-size: 3rem;
   }
 }/*# sourceMappingURL=home.css.map */

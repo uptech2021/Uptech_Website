@@ -52,7 +52,8 @@
                         align-items: center;
                         h1{
                             font-family: 'THICCBOI-ExtraBold';
-                            font-size: 4rem;                            font-weight: 800;
+                            font-size: 4rem;                            
+                            font-weight: 800;
                             margin: 0;
                         }
 
@@ -63,34 +64,18 @@
                             font-weight: 600;
                             font-size: 1.8rem;
                         }
-
-                        @media(min-width: 412px) { p{font-size: 2.1rem;} }
                     }
 
                     .image-wrapper{
                         width: 100%;
                         height: 100%;
-                        margin: 0 auto;
+                        margin: -2rem auto;
                         .call-to-action-img{
                             width: 100%;
                             height: 100%;
                             object-fit: contain;
                         }
-                        @media(min-width: 360px){
-                            margin-top: 3rem;
-                        }
                     }
-                   
-                    @media(min-width: 549px){
-                       
-                        .welcome-container  {
-                            h1{font-size: 17vw;}
-                            p{font-size: 5.5vw;}
-                        }
-                    
-                    }
-
-                    
 
                 }
             }
@@ -98,8 +83,6 @@
             .main-section{
                 min-width: 17.875rem;
                 height: auto;
-
-
                 display: flex;
                 flex-direction: column;
                 border-radius: 2.75rem;
@@ -108,35 +91,24 @@
                 overflow: hidden;
                 margin-top: 1.69rem;
                 text-align: center;
-
+                h2 {font-size: 3.5rem;font-weight: 700;color: #2ACDE4;}
+                h3{font-size: 2.6rem;}
+                p {font-size: 1.6rem;text-align: center;}
+                
                 .features{
                     display: flex;
                     flex-direction: column;
                     align-items: center;
                     .features-container{
                         h2{
-                            color: #52CAC8;
-                            font-size: 3.4rem;
-                            font-weight: 700;
                             margin-top: 2.75rem;
                         }
 
                         p{
                             margin: 1.73rem 0.88rem 0 0.94rem;
-                            font-size: 1.6rem;
                         }
 
                         .dots-img{display: none;}
-
-                        @media(min-width: 479px){
-                            h1{font-size: 4.25rem;}
-                            p{
-                                font-size: 2rem;
-                                margin-left: 2rem;
-                                margin-right: 2rem;
-                                
-                            }
-                        }
                     }
     
                     .education-container{
@@ -157,63 +129,29 @@
                         }
                         .information{
                             h3{
-                                font-family: Inter;
-                                font-size: 3.5rem;
                                 font-weight: 800;
                                 margin: 2.52rem 0.75rem 0 0.94rem
                             }
                             p{
                                 margin-top: 2rem;
                                 margin-left: 4rem;
-                                font-family: Inter;
-                                font-size: 2.5rem;
                             }
                         }
 
-                        @media(min-width: 419px){
-                            p{
-                                margin-left: unset;
-                                max-width: 18rem;
-
-                            }
-                        }
-
-                        @media(min-width: 479px){
-                            h3{
-                                font-size: clamp(3.5rem, 4rem, 5vw);
-                            }
-                            .elearning-img{
-                                width: 30rem;
-                                height: 15.4375rem;
-                                margin: 5rem 0.27rem 0 0.34rem;
-                            }
-
-                            .blue-square{
-                                width: 13.03563rem;
-                                height: 10.5rem;
-                                margin: 13.64rem 9rem 0 1.3rem;
-
-                            }
-
-                        }
                     }
 
                     .marketplace-container{
                         display: flex;
                         flex-direction: column;
                         h3{
-                            font-family: Inter;
-                            font-size: 2.8rem;
-                            font-weight: 800;
                             margin: 2.52rem 0.75rem 0 0.94rem
                         }
                             
                         p{
                             margin-top: 2rem;
-                            margin-left: 4rem;
-
-                            font-family: Inter;
-                            font-size: 2.6rem;
+                            margin-left: auto;
+                            margin-right: auto;
+                            width: 90%;
                         }
         
                         .image-wrapper{
@@ -226,30 +164,10 @@
                                 position: relative;
                             }
                         }
-        
-
-                        @media(min-width: 419px){
-                            .blue-square{margin: 13rem 0 0 14.5rem;}
-                            .marketplace-img{
-                                width: 23.96656rem;
-                                height: 14.625rem;
-                                margin-left: 3rem;
-                            }
-                            p{
-                                text-align: center;
-                                margin: 4rem auto;
-                            }
-
-                        }
                     }
 
                     .project-management-container{
-                        h3{
-                            font-family: Inter;
-                            font-size: 9vw;
-                            font-weight: 900;
-                            margin-top: 3rem;
-                        }
+                        h3{margin-top: 3rem;}
         
                         .image-wrapper{
                             width: 80%;
@@ -265,191 +183,32 @@
                         }
         
                         p{
-                            font-family: Inter;
-                            font-size: 2/3rem;
-                            font-weight: 500;
-                            width: 65%;
-                            margin: 5.29rem auto;
+                            width: 90%;
+                            margin: 4rem auto 0;
                         }
 
-                        @media(min-width: 419px){
-                            .project-management-img{
-                                min-width: 22.7445rem;
-                                min-height: 14.6875rem;
-                                margin-top: 0;
-                                margin-left: 4rem; 
-                            }
-
-                            .blue-square{
-                                min-width: 13.03563rem;
-                                min-height: 10.5rem;
-                                margin-top: 6rem;
-                                margin-left: 5rem;
-                            }
-
-                            p{
-                                font-size: 6vw;
-                            }
-                        }
                     }
                 
                 }
 
                 .objectives{
-                    margin-top: -5rem;
-
-                    h2{
-                        color: #52CAC8;
-                        font-size: 12vw;
-                        font-style: normal;
-                        font-weight: 900;
-                        line-height: normal;
-                    }
-
-                    .privacy-container{
-                        h3{
-                            font-family: Inter;
-                            font-size: 10vw;
-                            font-style: normal;
-                            font-weight: 700;
-                            line-height: normal;
-                        }
-
-                        .image-wrapper{
-                            width: 90%;
-                            margin: 2rem 0 0 auto;
-                            .privacy-img{
-                                width: 100%;
-                                height: 100%;
-                                object-fit: contain;
-                            }
-                        }
-
-                        p{
-                            font-family: Inter;
-                            font-size: 8vw;
-                            margin-left: auto;
-                            margin-right: auto;
-                            max-width: 17.47888rem;
-                            height: 15.673rem;
-                        }
-
-                        @media(min-width: 374px){
-                            .privacy-img{
-                                margin-left: unset;
-                            }
-                        }
-
-                        @media(min-width: 419px){
-                            .privacy-img{
-                                margin-left: 1rem;
-                            }
-                        }
-
-                        @media(min-width: 479px){
-                            .privacy-img{
-                                margin-left: 4rem;
-                                min-height: 28rem;
-                            }
-
-                            p{
-                                max-width: 20rem;
-                            }
-                        }
-                    }
-
-                    .user-safety-container{
-                        h3{
-                            font-family: Inter;
-                            font-size: 15vw;
-                            font-style: normal;
-                            font-weight: 700;
-                            line-height: normal;
-                        }
-
-                        .user-safety-img{
-                            min-width: 24.70394rem;
-                            max-width: 37.33581rem;
-                            height: 21rem;   
+                    .image-wrapper{
+                        width: 90%;
+                        margin: 2rem auto 0;
+                        .privacy-img{
+                            width: 100%;
+                            height: 100%;
                             object-fit: contain;
-                            margin:  1rem 0 0 -3rem;
                         }
-
-                        p{
-                            font-family: Inter;
-                            font-size: 9vw;
-                            margin-top: 2.64rem; 
-                        }
-
-                        @media(min-width: 374px){
-                            .user-safety-img{
-                                    margin-left: 0;
-                                }
-                        }
-
-                        @media(min-width: 419px){
-                            .user-safety-img{
-                                    margin-left: 1rem
-                                }
-                        }
-                    
                     }
-                
-                    .data-security-container{
-                        margin-top: 7.77rem;
-                        h3{
-                            font-family: Inter;
-                            font-size: 13vw;
-                            font-style: normal;
-                            font-weight: 700;
-                            line-height: normal;
-                        }
-
-                        .user-safety-img{
-                            width: 15.32231rem;
-                            height: 21.00125rem;
-
-                            object-fit: contain;
-                            margin:  1.44rem 0.46rem 0 2.15rem;
-                        }
-
-                        p{
-                            font-family: Inter;
-                            font-size: 10vw;
-                            margin: 2.81rem 0.56rem 0 0.44rem; 
-                        }
-
-                        @media(min-width: 419px){
-                            margin-top: 5rem;  
-
-                                .user-safety-img{
-                                    min-width: 23rem;
-                                    min-height: 28rem;
-                                }
-
-                                p{font-size: 8vw;}
-
-                        }
-
-                    }
-                    
+                    .image-wrapper:first-child{width: 70%;}
+                    p{width: 90%;margin-left: auto;margin-right: auto;}
                 }
 
                 .products{
-                    margin-top: -10rem;
-                    h3{
-                        color: #2ACDE4;
-                        font-size: 15vw;
-                        font-style: normal;
-                        font-weight: 700;
-                        line-height: normal;
-
-                        margin: 15.37rem 0.56rem 0 0.88rem;
-                    }
-
                     .products-container{
                         .image-wrapper{
-                            width: 98%;
+                            width: 100%;
                             margin: 1rem auto 0;
                             .man-holding-phone-with-logo-img{
                                 width: 100%;
@@ -459,15 +218,12 @@
                         }
 
                         p{
-                            font-family: Inter;
-                            font-size: 8vw;
-                            margin: 1.69rem auto; 
-                            min-width: 16.8125rem;
-                            max-width: 21.875rem;
-
+                            width: 90%;
+                            margin-left: auto;
+                            margin-right: auto;
                         }
 
-                        .learn-more-btn{
+                        .sign-up-btn{
 
                             font-size: 2.1rem;
                             font-style: normal;
@@ -478,7 +234,7 @@
                             border-radius: 3.875rem;
                             color: white;
 
-                            background: rgba(7, 197, 223, 0.86);
+                            background: #06E95C;
                             padding: 0.73rem 0.8rem 0.67rem 1.01rem;
                             margin-top: 2rem;
                         }
@@ -487,14 +243,6 @@
 
                 .about-us{
                     margin-top: 6rem;
-                    h3{
-                        font-size: 14vw;
-                        font-style: normal;
-                        font-weight: 700;
-                        line-height: normal;
-                        color: #2ACDE4;
-                    }
-
                     .about-us-btns{
                         
                             margin: 4rem 0 auto;
@@ -540,447 +288,304 @@
                                 object-fit: contain;
                             }
                         }   
-                    }
-                }
-
-                .dots-wrapper{
-                    display: none;
                 }
             }
+
+            .dots-wrapper{
+                display: none;
+            }
+
+
+
+
+
 
 
         //TABLET/PC VIEW
         @media(min-width: 768px){
-            .outer-layer{
-
-                .welcome-section{
-                    height: auto;
-        
-                    .call-to-action{
-                        width: auto;
-                        margin-top: -1rem;
-                        flex-direction: row-reverse;
-                        // padding-right: 5rem;
-                        position: relative;
-                        .welcome-container{
+            .welcome-section{
+                height: auto;
+                .call-to-action{
+                    width: auto;
+                    flex-direction: row-reverse;
+                    padding-left: 5%;
+                    padding-right: 5%;
+                    .welcome-container{
+                        width: 100%;
+                        height: auto;
+                        flex-direction: column;
+                        margin: -8rem 0 0 0;
+                        align-items: unset;
+                        h1{text-align: right;font-size: 4.2rem;}
+                        p{text-align: right;font-size: 1.5rem;}
+                    }
+                    .image-wrapper {
+                        width: 60%;
+                        height: auto;
+                        .call-to-action-img{
                             width: 100%;
-                            height: 20rem;
-                            flex-direction: column;
-                            align-items: unset;
-                            h1{text-align: right;font-size: 5.6rem;}
-                            p{text-align: right;font-size: 3.1rem;}
-                        }
-                        .image-wrapper {
-                            width: 60%;
                             height: auto;
-                            .call-to-action-img{
-                                width: 100%;
-                                height: auto;
-                            }
                         }
                     }
-        
-                
-            
-                }
-
-                .main-section{
-                    .features {
-                        .features-container{
-                            padding-left: 1rem;
-                            padding-right: 1rem;
-                            h2{ font-size: 14vw; }
-                            p{ 
-                                margin-top: -3rem;
-                                margin-left: unset;
-                                margin-right: unset;
-                                font-size: 6vw;
-                                min-width: unset;
-                                max-width: unset;
-                                width: 100%; 
-                            }
-                            .dots-wrapper {
-                                width: 21vw;
-                                .dots-img{
-                                    width: 100%;
-                                    height: 100%;
-                                    object-fit: contain;
-                                    display: block;
-                                    margin: 2.61rem 0 0 1.68rem;
-                                }
-                            }
-                        }
-
-                        .education-container{
-                            display: flex;
-                            flex-direction: row;
-                            margin-top: 3rem;
-
-                            .image-wrapper{
-                                margin: 0;
-                                .elearning-img{margin-top: 0rem;}
-                            }
-
-                            .information{
-                                padding-top: 1rem;
-                                h3{margin-top: 0rem;}
-                                p{max-width: unset;width: auto;font-size: 6vw;}
-                            }
-                        }
-
-                        .marketplace-container{
-                            display: flex;
-                            flex-direction: row-reverse;
-                            margin-top: 3rem;
-                            width: 100%;
-                     
-                            .image-wrapper{
-                                margin: 0;
-                                width: 90%;
-                                .marketplace-img{margin: 0rem;width: 100%; height: 100%;}
-                            }
-
-                            .information{
-                                padding-top: 1rem;
-                                width: 100%;
-                                h3{font-size: 5.5vw;margin-top: 0rem auto;}
-                                p{max-width: unset;width: 80%;font-size: 5vw;margin-top: 2rem;}
-                            }
-                        }
-
-                        .project-management-container{
-                            display: flex;
-                            flex-direction: row;
-                            margin-top: 3rem;
-                            width: 100%;
-                         
-                     
-                            .image-wrapper{
-                                margin: 0;
-                                width: 90%;
-                                padding-left: 1rem;
-                                .project-management-img{
-                                    margin: 0;
-                                    max-height: unset;
-                                    max-width: unset;
-                                    min-height: unset;
-                                    min-width: unset;
-                                    width: 100%; 
-                                    height: 100%;
-                                }
-                            }
-
-                            .information{
-                                padding-top: 1rem;
-                                width: 100%;
-                                h3{
-                                    font-size: 4vw;
-                                    margin-top: 0rem auto;
-                                    width: auto;
-                                }
-                                p{
-                                    max-width: unset;
-                                    width: auto;
-                                    font-size: 4vw;
-                                    margin-top: 2rem;
-
-                                }
-                            }
-                        }
-
-                        .dots-wrapper:first-child{margin-top: 3rem;}
-                        .dots-wrapper:nth-child(2){position: relative;right: 35%;}
-
-                        
-
-                        
-                    }
-
-                    .objectives{
-                            .privacy-container, .user-safety-container, .data-security-container{
-                                display: flex; flex-direction: row;
-                                text-align: left;
-                            
-                                .image-wrapper{
-                                    width: 55%;
-                                    padding-left: 2rem;
-                                    img{
-                                        min-width: unset;max-width: unset;min-height: unset;
-                                        width: 100%;
-                                        height: 100%;
-                                        margin: 0;
-                                    }
-                                }
-                                .information{
-                                    width: 45%;
-                                    h3{font-size: 7vw;}
-                                    p{height: auto;font-size: 4vw;margin-left: 0;margin-right: 0;}
-                                }
-                             
-                            }
-
-                                .privacy-container .image-wrapper{padding-top: 3rem;}
-                                .user-safety-container .image-wrapper{padding-top: 0;}
-                                .data-security-container .image-wrapper{padding-top: 3rem;}
-
-                    }
-
-                    .products .products-container{
-                        .image-wrapper{
-                            height: 65vh;
-                            position: relative;
-                          
-                            .man-holding-phone-with-logo-img{
-                                width: 100%;
-                                height: 100%;
-                                max-width: unset;
-                                max-height: unset;
-                                margin: 0 auto;
-                            }
-
-                         
-                        }
-
-                        p{
-                            max-width: unset;
-                            min-width: unset;
-                            width: 38rem;
-                            font-size: 2rem;
-                        }
-
-                        .learn-more-btn{
-                            width: 60%;
-                            height: 5rem;
-                            margin-top: 0;
-                            box-shadow: 1rem .8rem 1rem rgba(0, 0, 0, 0.651);
-                            font-size: 3rem;
-                            /*
-                                X offset: The horizontal offset of the shadow relative to the element.
-                                Y offset: The vertical offset of the shadow relative to the element.
-                                Blur radius: The amount of blur applied to the shadow.
-                                Spread radius: The amount of spread applied to the shadow.
-                                Color: The color of the shadow.
-                            */
-                        }
-
-                    }
-
-                    .about-us{ 
-                        .about-us-btns{
-                            min-width: unset;
-                            max-width: unset;
-                            p{
-                                min-width: unset;max-width: unset;width: 90%;
-                                font-size: 6vw;
-                                margin-top: -2rem;
-                                margin-left: auto;
-                                margin-right: auto;
-                            }
-
-                            .btns-containers{
-                                .large-btn-group{min-width: 20rem;min-height: 20rem;font-size: 3.2rem;}
-                                .large-btn-group:first-child, .large-btn-group:last-child{margin-left: -50%;}
-                                .large-btn-group:nth-child(2){margin-left: 50%;}
-                            }
-                        }
-                        .about-us-img-wrapper{
-                            justify-content: center;
-                            .about-us-img{width: 50%;}
-                        }
-                    }
-
-                    .dots-wrapper{display: block;}
-                    
                 }
             }
 
-        }
-        @media(min-width: 992px){
-            .outer-layer{
-                .welcome-section{
-                    .call-to-action{
-        
-                        .welcome-container{
-                            width: 20%;
-                            padding-right: 11rem;
-                        
-                            h1{
-                                font-size: 10vw;
-                                margin-left: 13rem;
+            .main-section{
+                h2{font-size: 5rem;}
+                p{font-size: 2rem;}
+                .features {
+                    .features-container{
+                        p{width: 80%;margin: 0 auto;}
+                        .dots-wrapper {
+                            width: 21vw;
+                            .dots-img{
+                                width: 100%;
+                                height: 100%;
+                                object-fit: contain;
+                                display: block;
+                                margin: 2.61rem 0 0 1.68rem;
                             }
-        
+                        }
+                    }
+                    .education-container{
+                        flex-direction: row;
+                        margin-top: 3rem;
+
+                        .image-wrapper{
+                            margin: 0;
+                            width: 50%;
+                        }
+
+                        .information{
+                            margin-left: 2rem;
+                        }
+
+                    }
+
+                    .marketplace-container{
+                        display: flex;
+                        flex-direction: row-reverse;
+                        margin-top: 3rem;
+                        width: 100%;
+
+                        .image-wrapper{
+                            margin: 0;
+                            width: 90%;
+                            .marketplace-img{margin: 0rem;width: 100%; height: 100%;}
+                        }
+
+                        .information{
+                            padding-top: 1rem;
+                            width: 100%;
+                            h3{font-size: 3rem;margin-top: 0rem auto;}
+                            p{max-width: unset;width: 80%;font-size: 2rem;margin-top: 2rem;}
+                        }
+                    }
+
+                    .project-management-container{
+                        display: flex;
+                        flex-direction: row;
+                        margin-top: 3rem;
+                        width: 100%;
+
+                        .image-wrapper{
+                            margin: 0;
+                            width: 90%;
+                            padding-left: 1rem;
+                            .project-management-img{
+                                margin: 0;
+                                max-height: unset;
+                                max-width: unset;
+                                min-height: unset;
+                                min-width: unset;
+                                width: 100%; 
+                                height: 100%;
+                            }
+                        }
+
+                        .information{
+                            padding-top: 1rem;
+                            width: 100%;
+                            h3{
+                                font-size: 3rem;
+                                margin-top: 0rem auto;
+                            }
                             p{
-                                width: 24rem;
-                                font-size: 4vw;
-                                margin-left: 0rem;
-                            
+                                width: 100%;
+                                font-size: 2rem;
+                                margin-top: 2rem;
                             }
-                        
                         }
-
-                        .image-wrapper {
-                            margin-top: 6.5rem;
-                        }
-                        
                     }
-            
+
+                    .education-container .information p, 
+                    .marketplace-container .information p, 
+                    .project-management-container .information p {font-size: 1.8rem;}
+
+                    .dots-wrapper:first-child{margin-top: 3rem;}
+                    .dots-wrapper:nth-child(2){position: relative;right: 35%;}
                 }
 
-                .main-section{
-                    .features h3, .products h3, .about-us h3{font-size: 10vw;}
-                    .features {
-                        .features-container{
-                            p{font-size: 4.5vw;}
-                        }
-
-                        .education-container{
-                            .image-wrapper{width: 50%}
-                            .information{padding-left: 2rem;}
-                        }
-                    }
-
-                    .objectives{
-                        margin-top: 4rem;
-                        h2{margin: 0;font-size: 12vw;}
-
+                .objectives{
                         .privacy-container, .user-safety-container, .data-security-container{
-                            padding-left: 3rem;
-                            .information p{margin-top: -2rem;font-size: 3vw;}
-                        }
-                    }
-
-                    .products{
-                        .products-container {
-                            p{width: 93%;font-size: 4.5vw;}
-                            .learn-more-btn{
-                                font-size: 5rem;
-                                height: 8rem;
-                            }
-                        }
-                    }
-
-                    .about-us{
-                        .about-us-btns{
-                            p{font-size: 5vw;}
-
-                            .btns-containers{
-                                .large-btn-group{
-                                    min-width: 25rem;
-                                    min-height: 25rem;
+                            display: flex; flex-direction: row;
+                            text-align: left;
+                        
+                            .image-wrapper{
+                                width: 55%;
+                                padding-left: 2rem;
+                                img{
+                                    min-width: unset;max-width: unset;min-height: unset;
+                                    width: 100%;
+                                    height: 100%;
+                                    margin: 0;
                                 }
-                                .large-btn-group:first-child{font-size:5rem;}
-                                .large-btn-group:nth-child(2){font-size:4.5rem;}
-                                .large-btn-group:last-child{font-size:4rem;}
+                            }
+                            .information{
+                                width: 45%;
+                                margin: 5rem auto;
+                                h3{width: 60%;margin: 0 auto;text-align: center;}
                             }
                             
                         }
+
+                            .privacy-container .image-wrapper{padding-top: 3rem;}
+                            .user-safety-container .image-wrapper{padding-top: 0;}
+                            .data-security-container .image-wrapper{padding-top: 3rem;}
+
+                }
+
+                .products .products-container{
+                    .image-wrapper{
+                        position: relative;
+                        height: 40rem;
+                        .man-holding-phone-with-logo-img{
+                            width: 100%;
+                            height: 100%;
+                            max-width: unset;
+                            max-height: unset;
+                            margin: 0 auto;
+                        }
+
+                        
+                    }
+
+                    p{
+                        width: 90%;
+                    }
+
+                    .sign-up-btn{
+                        width: 60%;
+                        height: 5rem;
+                        margin-top: 0;
+                        box-shadow: 1rem .8rem 1rem rgba(0, 0, 0, 0.651);
+                        font-size: 3rem;
+                        /*
+                            X offset: The horizontal offset of the shadow relative to the element.
+                            Y offset: The vertical offset of the shadow relative to the element.
+                            Blur radius: The amount of blur applied to the shadow.
+                            Spread radius: The amount of spread applied to the shadow.
+                            Color: The color of the shadow.
+                        */
+                    }
+
+                }
+
+                .about-us{ 
+                    .about-us-btns{
+                        min-width: unset;
+                        max-width: unset;
+                        .btns-containers{
+                            .large-btn-group{min-width: 20rem;min-height: 20rem;font-size: 3.2rem;}
+                            .large-btn-group:first-child, .large-btn-group:last-child{margin-left: -50%;}
+                            .large-btn-group:nth-child(2){margin-left: 50%;}
+                        }
+                    }
+                    .about-us-img-wrapper{
+                        justify-content: center;
+                        .about-us-img{width: 50%;}
                     }
                 }
-            } 
+
+                .dots-wrapper{display: block;}
+                
+            }
+
         }
+        
 
         @media(min-width: 1200px){
-            .outer-layer .welcome-section{
-        
-                    .call-to-action{
-                        .welcome-container{
-                            width: 45%;
-                            padding-right: 0rem;
-                        
-                            h1{
-                                margin-left: -3rem;
-                            }
-        
-                            p{
-                                width: 31rem;
-                                font-size: 3.5vw;
-                                margin-left: 0rem;
-                                margin-top: 10rem;
-                            }
-                        
-                        }
+            .welcome-section .call-to-action{
+                padding-left: 5%;
+                padding-right: 5%;
+            }
 
-                        .image-wrapper {
-                            width: 100%;
-                            height: auto;
-                            margin-top: 1.5rem;
-                            .call-to-action-img{
-                                width: 100%;
-                                margin-top: 3rem;
-                                height: auto;
-                            }
-                        }
-
-                        //TODO .main-section .about-us .about-us-btns p{font-size: 5vw;}
-                        
-                    }
-            
+            .main-section {
+                .education-container .project-management-container{justify-content: center;width: 90%;}
+                
+                .objectives{ 
+                    .privacy-container .image-wrapper, 
+                    .user-safety-container .image-wrapper, 
+                    .data-security-container .image-wrapper{width: 40%;}
                 }
-        }
 
-        @media(min-width: 1440px){
-            .outer-layer .main-section{
-                .features .features-container {
-                    h2{font-size: 9vw;}
-                    p{
-                        font-size: 3.5rem;width: 95%;margin-top: -5rem;
+                .about-us .about-us-btns p{width: 80%;margin: 0 auto;}
+            }
+
+        }
+        @media(min-width: 1920px){
+            .welcome-section .call-to-action{
+                padding-left: 8%;
+                padding-right: 8%;
+                    
+                .welcome-container{
+                    h1{font-size: 8rem;}
+                    p{font-size: 5rem;}
+                }
+            }
+
+            .main-section {
+                .features {
+              
+
+                    .features-container p{margin-top: -5rem;}
+                    .project-management-container, .education-container{
+                        justify-content: unset;width: 100%;
                     }
+
+                    .education-container, .marketplace-container, .project-management-container{
+                        p{font-size: 3rem !important;}
+                    }
+
+                }
+
+                .features, .objectives, .products{ 
+                    width: 70%;
+                    margin-left: auto;
+                    margin-right: auto;
+
+                    h2{font-size: 8rem;}
+                    h3{font-size: 4rem;}
                 }
 
                 .objectives {
-                    h2{font-size: 9vw;}
-                    .privacy-container,  
-                    .user-safety-container, 
-                    .data-security-container {
-                        .image-wrapper{
-                            display: flex; justify-content: center;
-                        }
-                        .information {
-                            h3{font-size: 5vw;}
-                            p{max-width: unset;}
-                        }
-                        
-                    }
-                    .privacy-container .image-wrapper .privacy-img, 
-                    .user-safety-container .image-wrapper .user-safety-img, 
-                    .data-security-container .image-wrapper .data-security-img{
-                        width: 60%;
-                    }
-                
-                } 
-
-                .products .products-container {
-                    p{font-size: 4vw;}
-                    .learn-more-btn{
-                        margin-top: 2rem;
-                        width: 50%;
-                        height: 10rem;
-                    }
+                    .privacy-container .information h3, .user-safety-container .information h3, .data-security-container .information h3{font-size: 5rem;width: 100%;}
+                    .privacy-container .information p, .user-safety-container .information p, .data-security-container .information p{font-size: 2.5rem;}
                 }
 
-                .about-us {
-                    .about-us-btns {
-                        p{margin-top: -5rem;font-size: 4vw;}
-                    }
+                .products-container{
+                    p{font-size: 3rem;}
+                    .sign-up-btn{width: 50%;height: 13rem;}
                 }
+            
+                .about-us .about-us-btns {
+                    p{width: 80%;margin: 0 auto;font-size: 3rem;}
+                }
+
+
             }
+
         }
+    }
 
-        @media(min-width: 1523px){
-            .outer-layer{
-
-              
-
-               
-            } 
-        }
-
-        @media(min-width: 2560px){
-            .outer-layer{
-
-
-                
-
-            } 
-        }
 }

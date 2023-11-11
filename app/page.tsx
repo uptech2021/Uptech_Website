@@ -61,73 +61,72 @@ export default function Home() {
         </section>
 
         <main className="main-section">
-          <div className='features'>
+            <section className='features'>
 
-            <div className="features-container">
-              <h2>FEATURES</h2>
+              <div className="features-container">
+                <h2>FEATURES</h2>
 
-              <p>Ourlime aims to provide our users with not only the features they have come to expect from a social media platform but also introduce concepts that we think will enhance our users.</p>
-            
-              <div className="dots-wrapper">
-                <Image 
-                  src={dots} 
-                  className="dots-img" 
-                  alt="image of dots" 
-                  />
-              </div>
-            </div>
-          
-            <div className="education-container">
+                <p>Ourlime aims to provide our users with not only the features they have come to expect from a social media platform but also introduce concepts that we think will enhance our users.</p>
               
-              <div className="image-wrapper">
-                  {/* <Image src={width >= 768 ? elearning_pc_view : elearning_mobile_view} className='elearning-img' alt="elearning"/> */}
+                <div className="dots-wrapper">
                   <Image 
-                    src={width >= 768 ? elearning_mobile_view : elearning_mobile_view} 
-                    className='elearning-img' 
-                    alt="elearning"
+                    src={dots} 
+                    className="dots-img" 
+                    alt="image of dots" 
+                    />
+                </div>
+              </div>
+            
+              <div className="education-container">
+                {width >= 768 ? (
+                  <>
+                    <div className="image-wrapper">
+                      <Image 
+                        src={elearning_mobile_view} 
+                        className='elearning-img' 
+                        alt="elearning"
+                        quality={100}
+                      />
+                    </div>
+
+                  <div className="information">
+                    <h3>EDUCATION</h3>
+                    <p>Virtual Library, <br/>Blogs, etc.</p>
+                  </div>
+                  </>
+                ) : (
+                  <>
+                    <h3>EDUCATION</h3>
+
+                    <div className="image-wrapper">
+                      <Image 
+                        src={elearning_mobile_view} 
+                        className='elearning-img' 
+                        alt="elearning"
+                        quality={100}
+                      />
+                    </div>
+
+                    <p>Virtual Library, <br/>Blogs, etc.</p>
+                  </>
+                )}
+                
+              
+              </div>
+
+              <div className="dots-wrapper">
+                  <Image 
+                    src={dots} 
+                    className="dots-img" 
+                    alt="image of dots" 
                     
-                    // quality={100}
+                    
                     />
               </div>
 
-              <div className="information">
-                <h3>EDUCATION</h3>
-                <p>Virtual Library, <br/>Blogs, etc.</p>
-              </div>
-            
-            </div>
-
-            <div className="dots-wrapper">
-                <Image 
-                  src={dots} 
-                  className="dots-img" 
-                  alt="image of dots" 
-                  
-                  
-                  />
-            </div>
-
-            <div className="marketplace-container">
-              {width >= 768 ? (
-                <>
-                  <div className="image-wrapper">
-                    <Image 
-                      src={boxes_mobile_view} 
-                      className='marketplace-img' 
-                      alt="marketplace image"
-                      quality={100}
-                      />
-                  </div>
-              
-                  <div className="information">
-                    <h3>MARKETPLACE</h3>
-                    <p>Buy, Sell, Trade, Explore</p>
-                  </div>
-                </>
-              ) : (
-                <>
-                    <h3>MARKETPLACE</h3>
-
+              <div className="marketplace-container">
+                {width >= 768 ? (
+                  <>
                     <div className="image-wrapper">
                       <Image 
                         src={boxes_mobile_view} 
@@ -136,69 +135,87 @@ export default function Home() {
                         quality={100}
                         />
                     </div>
-            
+                
+                    <div className="information">
+                      <h3>MARKETPLACE</h3>
                       <p>Buy, Sell, Trade, Explore</p>
-                </>
-              )
+                    </div>
+                  </>
+                ) : (
+                  <>
+                      <h3>MARKETPLACE</h3>
 
-              }
-            </div>
+                      <div className="image-wrapper">
+                        <Image 
+                          src={boxes_mobile_view} 
+                          className='marketplace-img' 
+                          alt="marketplace image"
+                          quality={100}
+                          />
+                      </div>
+              
+                        <p>Buy, Sell, Trade, Explore</p>
+                  </>
+                )
 
-            <div className="dots-wrapper">
-                <Image 
-                  src={dots} 
-                  className="dots-img" 
-                  alt="image of dots" 
+                }
+              </div>
+
+              <div className="dots-wrapper">
+                  <Image 
+                    src={dots} 
+                    className="dots-img" 
+                    alt="image of dots" 
+                    
+                    
+                    />
+              </div>
+
+              <div className="project-management-container">
+              {width >= 768 ? (
+                  <>
+                    <div className="image-wrapper">
+                        {/* <Image src={width >= 768 ? projectManagement_pc_view : projectManagement_mobile_view} className='project-management-img' alt="project management image"/> */}
+                        <Image 
+                          src={width >= 768 ? projectManagement_mobile_view : projectManagement_mobile_view} 
+                          className='project-management-img' 
+                          alt="project management image"
+                          
+                          quality={100}
+                          
+                          />
+                    </div>
                   
-                  
-                  />
-            </div>
+                    <div className="information">
+                      <h3>PROJECT MANAGEMENT</h3>
+                      <p>Tools for Teacher(s), Student(s), Business(es)</p>
+                    </div>
+                  </>
 
-            <div className="project-management-container">
-            {width >= 768 ? (
-                <>
-                  <div className="image-wrapper">
-                      {/* <Image src={width >= 768 ? projectManagement_pc_view : projectManagement_mobile_view} className='project-management-img' alt="project management image"/> */}
+                ) : (
+                  <>
+                    <h3>PROJECT MANAGEMENT</h3>
+
+                    <div className="image-wrapper">
+                      
                       <Image 
-                        src={width >= 768 ? projectManagement_mobile_view : projectManagement_mobile_view} 
+                        src={projectManagement_mobile_view} 
                         className='project-management-img' 
                         alt="project management image"
-                        
                         quality={100}
-                        
                         />
-                  </div>
+                    </div>
                 
-                  <div className="information">
-                    <h3>PROJECT MANAGEMENT</h3>
-                    <p>Tools for Teacher(s), Student(s), Business(es)</p>
-                  </div>
-                </>
+                      <p>Tools for Teacher(s), Student(s), Business(es)</p>
+                  </>
+                )
 
-              ) : (
-                <>
-                  <h3>PROJECT MANAGEMENT</h3>
-
-                  <div className="image-wrapper">
-                    
-                    <Image 
-                      src={projectManagement_mobile_view} 
-                      className='project-management-img' 
-                      alt="project management image"
-                      quality={100}
-                      />
-                  </div>
+                }
+              </div>
               
-                    <p>Tools for Teacher(s), Student(s), Business(es)</p>
-                </>
-              )
+            </section>
 
-              }
-            </div>
-            
-          </div>
-
-            <div className='objectives'>
+            <section className='objectives'>
                 <h2>OBJECTIVES</h2>
               
                 <div className="privacy-container">
@@ -208,7 +225,6 @@ export default function Home() {
                       src={privacy} 
                       className='privacy-img' 
                       alt="image of laptop" 
-                      
                       quality={100}
                       />
                   </div>                
@@ -260,20 +276,18 @@ export default function Home() {
 
                 </div>
 
-            </div>
+            </section>
           
-            <div className='products'>
-                <h3>PRODUCTS</h3>
+            <section className='products'>
+                <h2>PRODUCTS</h2>
 
                 <div className="products-container">
 
                     <div className="image-wrapper">
-                      {/* <Image src={width >= 768 ? manHoldingPhoneWithLogoBehindHim_pc_view : manHoldingPhoneWithLogoBehindHim_mobile_view} className='man-holding-phone-with-logo-img' alt="image of man holding phone with logo" /> */}
                       <Image 
                         src={productsImage} 
                         className='man-holding-phone-with-logo-img' 
                         alt="image of man holding phone with logo" 
-                        
                         quality={100}
                         
                         />
@@ -281,12 +295,12 @@ export default function Home() {
 
                     <p>The Purpose Of Ourlime And What UpTech Incorporated Hope To Achieve With Our App.</p>
                 
-                    <button className='learn-more-btn'>Learn More</button>
+                    <button className='sign-up-btn'>Sign Up</button>
                 </div>
-            </div>
+            </section>
 
-            <div className="about-us">
-              <h3>ABOUT US</h3>
+            <section className="about-us">
+              <h2>ABOUT US</h2>
 
               <div className="about-us-btns">
 
@@ -307,7 +321,8 @@ export default function Home() {
                 </div>
 
               </div>
-            </div>
+
+            </section>
         </main>
 
 
