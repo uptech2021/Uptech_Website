@@ -1,12 +1,19 @@
 // Code starts at 320px mobile view
+@font-face {
+    font-family: 'THICCBOI-ExtraBold';
+    src: url('../../utils/fonts/thiccboi/THICCCBOI-ExtraBold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'THICCBOI-SemiBold';
+    src: url('../../utils/fonts/thiccboi/THICCCBOI-SemiBold.ttf') format('truetype');
+}
+
 .home-main-container {
-        font-family: 'THICCCBOI';
         .outer-layer{
             padding: 0.99rem 0.63rem;
             margin: 1.13rem 0.44rem 0 0.44rem;
             
             min-width: 19.125rem;
-            // max-width: 101.9375rem;
             
             border-radius: 2.75rem;
             background: rgba(239, 243, 243, 0.7);
@@ -17,7 +24,6 @@
 
             .welcome-section{
                 min-width: 17.875rem;
-                // max-width: 99.125rem;
                 height: auto;
                 display: flex;
                 flex-direction: column;
@@ -25,10 +31,6 @@
                 background: #FFF;
                 position: relative;
                 overflow: hidden;
-
-
-        
-                
 
                 .call-to-action{
                     position: relative;
@@ -49,38 +51,20 @@
                         flex-direction: column;
                         align-items: center;
                         h1{
-                            font-family: 'THICCCBOI';
-                            font-size: 20vw;
-                            font-weight: 800;
+                            font-family: 'THICCBOI-ExtraBold';
+                            font-size: 4rem;                            font-weight: 800;
                             margin: 0;
                         }
 
                         p{
-                            margin: 1.73rem auto;
-                            width: 17.0625rem;
+                            margin-top: 1.73rem;
                             text-align: center;
-                            font-family: Inter;
-                            font-size: 8vw;
-
-                            span{
-                                color: #06E95C;
-                                font-family: Inter;
-                                font-size: 1.625rem;
-                                font-style: normal;
-                                font-weight: 800;
-                                line-height: normal;
-                            }
+                            font-family: 'THICCBOI-SemiBold';
+                            font-weight: 600;
+                            font-size: 1.8rem;
                         }
 
-                        @media(min-width: 412px) {
-                            p{font-size: 7vw;margin-top: 0rem;}
-
-                        }
-
-                        @media(min-width: 480px) {
-                            p{width: 19rem;}
-                        }
-                    
+                        @media(min-width: 412px) { p{font-size: 2.1rem;} }
                     }
 
                     .image-wrapper{
@@ -109,16 +93,10 @@
                     
 
                 }
-                @media(min-width: 549px){
-                    height: 90vh;
-                }
-            
-        
             }
 
-            .product-information-section{
+            .main-section{
                 min-width: 17.875rem;
-                // max-width: 99.125rem;
                 height: auto;
 
 
@@ -138,30 +116,25 @@
                     .features-container{
                         h2{
                             color: #52CAC8;
-                            font-size: 14vw;
+                            font-size: 3.4rem;
                             font-weight: 700;
                             margin-top: 2.75rem;
                         }
 
                         p{
                             margin: 1.73rem 0.88rem 0 0.94rem;
-                            font-size: clamp(1.625rem, 1.9375rem, 2vw);
-                            min-width: 16.11375rem;
-                            max-width: 24.57763rem;
+                            font-size: 1.6rem;
                         }
 
                         .dots-img{display: none;}
-                        @media(min-width: 424px){
-                            h2{
-                                font-size: clamp(4.25rem, 6rem, 8vw);
-                            }
-                        }
 
                         @media(min-width: 479px){
+                            h1{font-size: 4.25rem;}
                             p{
-                                font-size: clamp(1.9375rem, 2rem, 2vw);
-                                margin-left: 0.76rem;
-                                margin-right: 0.6rem;
+                                font-size: 2rem;
+                                margin-left: 2rem;
+                                margin-right: 2rem;
+                                
                             }
                         }
                     }
@@ -170,13 +143,6 @@
                         display: flex;
                         flex-direction: column;
                         width: 100%;
-                       
-                        h3{
-                            font-family: Inter;
-                            font-size: clamp(2rem, 3.5rem, 5vw);
-                            font-weight: 800;
-                            margin: 2.52rem 0.75rem 0 0.94rem
-                        }
 
                         .image-wrapper{
                             width: 95%;
@@ -189,12 +155,19 @@
                             }
     
                         }
-                       
-                        p{
-                            margin-top: 2rem;
-                            margin-left: -4rem;
-                            font-family: Inter;
-                            font-size: 9vw;
+                        .information{
+                            h3{
+                                font-family: Inter;
+                                font-size: 3.5rem;
+                                font-weight: 800;
+                                margin: 2.52rem 0.75rem 0 0.94rem
+                            }
+                            p{
+                                margin-top: 2rem;
+                                margin-left: 4rem;
+                                font-family: Inter;
+                                font-size: 2.5rem;
+                            }
                         }
 
                         @media(min-width: 419px){
@@ -229,19 +202,23 @@
                         display: flex;
                         flex-direction: column;
                         h3{
-                            color: #000;
                             font-family: Inter;
-                            font-size: 10vw;
-                            font-style: normal;
+                            font-size: 2.8rem;
                             font-weight: 800;
-                            line-height: normal;
-        
-                            margin: 2.52rem 0.03rem 0 0.41rem
-                            }
+                            margin: 2.52rem 0.75rem 0 0.94rem
+                        }
+                            
+                        p{
+                            margin-top: 2rem;
+                            margin-left: 4rem;
+
+                            font-family: Inter;
+                            font-size: 2.6rem;
+                        }
         
                         .image-wrapper{
                             width: 95%;
-                            margin: 3rem auto 0 0;
+                            margin: 3rem -2rem 0;
                             .marketplace-img{
                                 width: 100%;
                                 height: 100%;
@@ -250,14 +227,6 @@
                             }
                         }
         
-                       
-
-                        p{
-                            margin: 3.15rem 0.28rem 0 0.22rem;
-                            width: 17.43556rem;
-                            font-family: Inter;
-                            font-size: 2rem;
-                        }
 
                         @media(min-width: 419px){
                             .blue-square{margin: 13rem 0 0 14.5rem;}
@@ -275,36 +244,31 @@
                     }
 
                     .project-management-container{
-                        display: relative;
                         h3{
-                            min-width: 17.28869rem;
-                            max-width: 23.55919rem;
-                            height: 5.30944rem;
                             font-family: Inter;
                             font-size: 9vw;
-                            font-style: normal;
                             font-weight: 900;
-                            line-height: normal;
-                            margin: 4rem auto;
-                            }
+                            margin-top: 3rem;
+                        }
         
                         .image-wrapper{
-                            width: 95%;
+                            width: 80%;
                             margin: 2rem auto 0;
-
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
                             .project-management-img{
                                 width: 100%;
                                 height: 100%;
                                 object-fit: contain;
-                                position: relative;
                             }
                         }
         
                         p{
-                            max-width: 20rem;
-                            height: 7.75rem;
                             font-family: Inter;
-                            font-size: 8vw;
+                            font-size: 2/3rem;
+                            font-weight: 500;
+                            width: 65%;
                             margin: 5.29rem auto;
                         }
 
@@ -497,7 +461,6 @@
                         p{
                             font-family: Inter;
                             font-size: 8vw;
-                         
                             margin: 1.69rem auto; 
                             min-width: 16.8125rem;
                             max-width: 21.875rem;
@@ -614,8 +577,6 @@
                                 list-style: none;
                                 margin: 0;
                                 padding: 0;
-
-                               
                             }
                             
                         }
@@ -625,70 +586,31 @@
                         width: auto;
                         margin-top: -1rem;
                         flex-direction: row-reverse;
-                        padding-right: 5rem;
+                        // padding-right: 5rem;
                         position: relative;
+                        .welcome-container{
+                            width: 100%;
+                            height: 20rem;
+                            flex-direction: column;
+                            align-items: unset;
+                            h1{text-align: right;font-size: 5.6rem;}
+                            p{text-align: right;font-size: 3.1rem;}
+                        }
                         .image-wrapper {
-                            width: 50vw;
+                            width: 60%;
                             height: auto;
-                            margin-top: 4.5rem;
-                            // position: absolute;
-                            // bottom: 0;
-                            // left: 0;
                             .call-to-action-img{
                                 width: 100%;
-                                margin-top: 3rem;
                                 height: auto;
                             }
                         }
-        
-                        .welcome-container{
-                            width: 13%;
-                            height: 100%;
-                            flex-direction: column;
-                            align-items: center;
-                            justify-content: center;
-                            padding-right: 11rem;
-                        
-                            h1{
-                                font-size: 12vw;
-                                margin-left: 11rem;
-                                position: absolute;
-                                top: 0;
-                                margin-top: -3rem;
-                            }
-        
-                            p{
-                                width: 24rem;
-                                height: auto;
-                                font-size: 5vw;
-                                text-align: right;
-                                margin-top: 3rem;
-                                margin-left: -4rem;
-
-        
-                                span{
-                                    color: #06E95C;
-                                    font-family: Inter;
-                                    font-size: 4.8vw;
-                                    font-style: normal;
-                                    font-weight: 800;
-                                    line-height: normal;
-                                }
-                            }
-        
-                        
-        
-        
-                        
-                        }
-                        
                     }
         
                 
             
                 }
 
-                .product-information-section{
+                .main-section{
                     .features {
                         .features-container{
                             padding-left: 1rem;
@@ -930,7 +852,7 @@
             
                 }
 
-                .product-information-section{
+                .main-section{
                     .features h3, .products h3, .about-us h3{font-size: 10vw;}
                     .features {
                         .features-container{
@@ -1000,11 +922,6 @@
                                 font-size: 3.5vw;
                                 margin-left: 0rem;
                                 margin-top: 10rem;
-
-                                span{
-                                    font-size: 4vw;
-                                }
-                            
                             }
                         
                         }
@@ -1020,7 +937,7 @@
                             }
                         }
 
-                        //TODO .product-information-section .about-us .about-us-btns p{font-size: 5vw;}
+                        //TODO .main-section .about-us .about-us-btns p{font-size: 5vw;}
                         
                     }
             
@@ -1028,7 +945,7 @@
         }
 
         @media(min-width: 1440px){
-            .outer-layer .product-information-section{
+            .outer-layer .main-section{
                 .features .features-container {
                     h2{font-size: 9vw;}
                     p{

@@ -42,30 +42,25 @@ export default function Home() {
             <div className="welcome-container">
               <h1>Welcome</h1>
 
-              <p>Sign Up for the 
-                <br /><span style={{color: '#06E95C'}}>OURLIME</span><br />
-                communities network TODAY!</p>
+              <p>To UPTECH Incorp. Ltd.</p>
             </div>
             {/* If the screen is > =768px render the pc view image, else render the mobile view image */}
 
             <div className="image-wrapper">
               <Image 
-                // src={width >= 768 ?  aaron_pc_view : aaron_mobile_view} 
                 src={width >= 768 ?  landingImage : landingImage} 
                 className="call-to-action-img" 
                 alt="Guy Holding His phone with the Ourlime logo behind him" 
-                unoptimized
                 quality={100}
               />
             </div>
-
 
           </div>
 
 
         </section>
 
-        <main className="product-information-section">
+        <main className="main-section">
           <div className='features'>
 
             <div className="features-container">
@@ -78,29 +73,27 @@ export default function Home() {
                   src={dots} 
                   className="dots-img" 
                   alt="image of dots" 
-                  unoptimized
-                  
                   />
               </div>
             </div>
           
             <div className="education-container">
               
-            <div className="image-wrapper">
-                {/* <Image src={width >= 768 ? elearning_pc_view : elearning_mobile_view} className='elearning-img' alt="elearning"/> */}
-                <Image 
-                  src={width >= 768 ? elearning_mobile_view : elearning_mobile_view} 
-                  className='elearning-img' 
-                  alt="elearning"
-                  unoptimized
-                  // quality={100}
-                  />
-            </div>
+              <div className="image-wrapper">
+                  {/* <Image src={width >= 768 ? elearning_pc_view : elearning_mobile_view} className='elearning-img' alt="elearning"/> */}
+                  <Image 
+                    src={width >= 768 ? elearning_mobile_view : elearning_mobile_view} 
+                    className='elearning-img' 
+                    alt="elearning"
+                    
+                    // quality={100}
+                    />
+              </div>
 
-            <div className="information">
-            <h3>EDUCATION</h3>
-            <p>Virtual Library, <br/>Blogs, etc.</p>
-            </div>
+              <div className="information">
+                <h3>EDUCATION</h3>
+                <p>Virtual Library, <br/>Blogs, etc.</p>
+              </div>
             
             </div>
 
@@ -109,7 +102,7 @@ export default function Home() {
                   src={dots} 
                   className="dots-img" 
                   alt="image of dots" 
-                  unoptimized
+                  
                   
                   />
             </div>
@@ -118,20 +111,17 @@ export default function Home() {
               {width >= 768 ? (
                 <>
                   <div className="image-wrapper">
-                    {/* <Image src={width >= 768 ? boxes_pc_view : boxes_mobile_view} className='marketplace-img' alt="marketplace image"/> */}
                     <Image 
-                      // src={width >= 768 ? boxes_mobile_view : boxes_mobile_view} 
                       src={boxes_mobile_view} 
                       className='marketplace-img' 
                       alt="marketplace image"
-                      unoptimized
                       quality={100}
                       />
                   </div>
               
                   <div className="information">
                     <h3>MARKETPLACE</h3>
-                    <p><b>Buy, Sell, Trade, Explore</b></p>
+                    <p>Buy, Sell, Trade, Explore</p>
                   </div>
                 </>
               ) : (
@@ -139,20 +129,15 @@ export default function Home() {
                     <h3>MARKETPLACE</h3>
 
                     <div className="image-wrapper">
-                      {/* <Image src={width >= 768 ? boxes_pc_view : boxes_mobile_view} className='marketplace-img' alt="marketplace image"/> */}
                       <Image 
-                        src={width >= 768 ? boxes_mobile_view : boxes_mobile_view} 
+                        src={boxes_mobile_view} 
                         className='marketplace-img' 
                         alt="marketplace image"
-                        unoptimized
                         quality={100}
-                        
                         />
                     </div>
             
-                    <div className="information">
-                      <p><b>Buy, Sell, Trade, Explore</b></p>
-                    </div> 
+                      <p>Buy, Sell, Trade, Explore</p>
                 </>
               )
 
@@ -164,7 +149,7 @@ export default function Home() {
                   src={dots} 
                   className="dots-img" 
                   alt="image of dots" 
-                  unoptimized
+                  
                   
                   />
             </div>
@@ -178,7 +163,7 @@ export default function Home() {
                         src={width >= 768 ? projectManagement_mobile_view : projectManagement_mobile_view} 
                         className='project-management-img' 
                         alt="project management image"
-                        unoptimized
+                        
                         quality={100}
                         
                         />
@@ -196,21 +181,15 @@ export default function Home() {
 
                   <div className="image-wrapper">
                     
-                    {/* <Image src={width >= 768 ? projectManagement_pc_view : projectManagement_mobile_view} className='project-management-img' alt="project management image"/> */}
                     <Image 
-                      // src={width >= 768 ? projectManagement_mobile_view : projectManagement_mobile_view} 
                       src={projectManagement_mobile_view} 
                       className='project-management-img' 
                       alt="project management image"
-                      unoptimized
                       quality={100}
-                      
                       />
                   </div>
               
-                  <div className="information">
                     <p>Tools for Teacher(s), Student(s), Business(es)</p>
-                  </div>
                 </>
               )
 
@@ -229,7 +208,7 @@ export default function Home() {
                       src={privacy} 
                       className='privacy-img' 
                       alt="image of laptop" 
-                      unoptimized
+                      
                       quality={100}
                       />
                   </div>                
@@ -248,7 +227,7 @@ export default function Home() {
                       src={userSafety}
                       className='user-safety-img' 
                       alt="image of laptop" 
-                      unoptimized
+                      
                       quality={100}
                       
                       />
@@ -268,7 +247,7 @@ export default function Home() {
                       src={dataSecurity} 
                       className='data-security-img' 
                       alt="image of male and female by a server room"
-                      unoptimized
+                      
                       quality={100}
                       
                       />
@@ -294,7 +273,7 @@ export default function Home() {
                         src={productsImage} 
                         className='man-holding-phone-with-logo-img' 
                         alt="image of man holding phone with logo" 
-                        unoptimized
+                        
                         quality={100}
                         
                         />
@@ -324,8 +303,6 @@ export default function Home() {
                     src={aboutUsImage} 
                     className="about-us-img" 
                     alt="image of guy with ourlime logo behind him" 
-                    quality={100}
-                    unoptimized={true}
                     />
                 </div>
 

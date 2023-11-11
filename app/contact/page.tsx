@@ -13,24 +13,24 @@ import React, { useState, useEffect } from 'react';
 export default function Contact() {
     const [width, setWidth] = useState(0);
 
-  useEffect(() => {
+    useEffect(() => {
     // Handler to call on window resize
     function handleResize() {
-      // Set window width to state
-      setWidth(window.innerWidth);
+        // Set window width to state
+        setWidth(window.innerWidth);
     }
-    
+
     // Add event listener
     window.addEventListener("resize", handleResize);
-    
+
     // Call handler right away so state gets updated with initial window size
     handleResize();
-    
+
     // Remove event listener on cleanup
     return () => window.removeEventListener("resize", handleResize);
-  }, []); // Empty array ensures that effect is only run on mount and unmount
+    }, []); // Empty array ensures that effect is only run on mount and unmount
 
-  const imageUrl = width >= 1200 ? contactUsImage_pcView : contactUsImage;
+    const imageUrl = width >= 1200 ? contactUsImage_pcView : contactUsImage;
 
     return (
         <div className='contact-main-container'>
