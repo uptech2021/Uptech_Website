@@ -121,7 +121,7 @@ export default function Home() {
               
                   <div className="information">
                     <h3>MARKETPLACE</h3>
-                    <p><b>Buy, Sell, Trade, Explore</b></p>
+                    <p>Buy, Sell, Trade, Explore</p>
                   </div>
                 </>
               ) : (
@@ -137,9 +137,7 @@ export default function Home() {
                         />
                     </div>
             
-                    <div className="information">
-                      <p><b>Buy, Sell, Trade, Explore</b></p>
-                    </div> 
+                      <p>Buy, Sell, Trade, Explore</p>
                 </>
               )
 
@@ -183,21 +181,15 @@ export default function Home() {
 
                   <div className="image-wrapper">
                     
-                    {/* <Image src={width >= 768 ? projectManagement_pc_view : projectManagement_mobile_view} className='project-management-img' alt="project management image"/> */}
                     <Image 
-                      // src={width >= 768 ? projectManagement_mobile_view : projectManagement_mobile_view} 
                       src={projectManagement_mobile_view} 
                       className='project-management-img' 
                       alt="project management image"
-                      
                       quality={100}
-                      
                       />
                   </div>
               
-                  <div className="information">
                     <p>Tools for Teacher(s), Student(s), Business(es)</p>
-                  </div>
                 </>
               )
 

@@ -207,14 +207,13 @@
                             font-weight: 800;
                             margin: 2.52rem 0.75rem 0 0.94rem
                         }
-                        .information{
                             
-                            p{
-                                margin-top: 2rem;
-                                margin-left: 4rem;
-                                font-family: Inter;
-                                font-size: 2.5rem;
-                            }
+                        p{
+                            margin-top: 2rem;
+                            margin-left: 4rem;
+
+                            font-family: Inter;
+                            font-size: 2.6rem;
                         }
         
                         .image-wrapper{
@@ -245,36 +244,31 @@
                     }
 
                     .project-management-container{
-                        display: relative;
                         h3{
-                            min-width: 17.28869rem;
-                            max-width: 23.55919rem;
-                            height: 5.30944rem;
                             font-family: Inter;
                             font-size: 9vw;
-                            font-style: normal;
                             font-weight: 900;
-                            line-height: normal;
-                            margin: 4rem auto;
-                            }
+                            margin-top: 3rem;
+                        }
         
                         .image-wrapper{
-                            width: 95%;
+                            width: 80%;
                             margin: 2rem auto 0;
-
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
                             .project-management-img{
                                 width: 100%;
                                 height: 100%;
                                 object-fit: contain;
-                                position: relative;
                             }
                         }
         
                         p{
-                            max-width: 20rem;
-                            height: 7.75rem;
                             font-family: Inter;
-                            font-size: 8vw;
+                            font-size: 2/3rem;
+                            font-weight: 500;
+                            width: 65%;
                             margin: 5.29rem auto;
                         }
 
