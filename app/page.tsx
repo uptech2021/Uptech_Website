@@ -44,11 +44,10 @@ export default function Home() {
 
               <p>To UPTECH Incorp. Ltd.</p>
             </div>
-            {/* If the screen is > =768px render the pc view image, else render the mobile view image */}
 
             <div className="image-wrapper">
               <Image 
-                src={width >= 768 ?  landingImage : landingImage} 
+                src={landingImage} 
                 className="call-to-action-img" 
                 alt="Guy Holding His phone with the Ourlime logo behind him" 
                 quality={100}
@@ -66,7 +65,7 @@ export default function Home() {
               <div className="features-container">
                 <h2>FEATURES</h2>
 
-                <p>Ourlime aims to provide our users with not only the features they have come to expect from a social media platform but also introduce concepts that we think will enhance our users.</p>
+                <p>&quot;Ourlime&quot; aim&apos;s to provide our users with not only the features they have come to expect from a social media platform but also introduce concepts that we think will enhance our users.</p>
               
                 <div className="dots-wrapper">
                   <Image 

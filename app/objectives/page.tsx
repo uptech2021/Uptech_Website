@@ -29,6 +29,7 @@ export default function Objectives(){
                         <header className="objectives-header">
                             <h1>Objectives</h1>
                         </header>
+                        
                         <section className="objectives-content">
                             <Image src={cyberSecurity} className="cybersecurity-img" alt="Cyber Security Image"/>
                         </section>
@@ -66,6 +67,7 @@ export default function Objectives(){
                         </div>
                 </div>
             </div>
+
             <Footer/>
         </main>
     )
