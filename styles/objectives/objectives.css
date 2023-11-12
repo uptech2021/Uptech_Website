@@ -145,6 +145,7 @@
   display: flex;
   text-align: center;
   align-items: center;
+  justify-content: center;
 }
 .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .privacy-header h1 {
   color: #52CAC8;
@@ -154,9 +155,15 @@
   font-weight: 700;
   line-height: normal;
 }
+@media (min-width: 425px) {
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .privacy-header {
+    margin: 0 3.75rem 0 3.75rem;
+  }
+}
 .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .datasecurity-header {
   display: flex;
   text-align: center;
+  justify-content: center;
 }
 .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .datasecurity-header h1 {
   color: #52CAC8;
@@ -421,9 +428,31 @@
     height: 100%;
     z-index: 2;
   }
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .privacy-header {
+    margin: 0 26.31rem 0 31.31rem;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .privacy-header h1 {
+    min-width: 41.5rem;
+    min-height: 11.375rem;
+    font-size: 9.375rem;
+  }
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .datasecurity-header {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin: 0 12.69rem 0 11.56rem;
+    white-space: nowrap;
+  }
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .datasecurity-header h1 {
+    font-size: 9.375rem;
+  }
 }
 @media (min-width: 2560px) {
-  .outer-layer {
+  .objectives-main-container .outer-layer {
     min-width: auto;
   }
 }/*# sourceMappingURL=objectives.css.map */

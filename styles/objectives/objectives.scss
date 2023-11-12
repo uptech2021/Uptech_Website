@@ -163,6 +163,7 @@
                         display: flex;
                         text-align: center;
                         align-items: center;
+                        justify-content: center;
                         h1{
                             color: #52CAC8;
                             font-family: Inter;
@@ -171,10 +172,15 @@
                             font-weight: 700;
                             line-height: normal;
                         }
+
+                        @media (min-width: 425px){
+                            margin: 0 3.75rem 0 3.75rem
+                        }
                     }
                     .datasecurity-header{
                         display: flex;
                         text-align: center;
+                        justify-content: center;
 
                         h1{
                             color: #52CAC8;
@@ -464,6 +470,34 @@
                     }
                     }
                 }
+                .objectives-second-container{
+                    .objectives-info-section{
+                        .privacy-header{
+                            margin: 0 26.31rem 0 31.31rem;
+                            display: flex;
+                            text-align: center;
+                            align-items: center;
+                            justify-content: center;
+
+                            h1{
+                                min-width: 41.5rem;
+                                min-height: 11.375rem;
+                                font-size: 9.375rem;
+                            }
+                        }
+                        .datasecurity-header{
+                            display: flex;
+                            text-align: center;
+                            justify-content: center;
+                            margin: 0 12.69rem 0 11.56rem;
+                            white-space: nowrap;
+
+                            h1{
+                                font-size: 9.375rem;
+                            }
+                        }
+                    }
+                }
                 
             }
     }
@@ -471,11 +505,12 @@
     @media (min-width: 1440px){
         
     }
-    }
+    
     
     @media (min-width: 2560px){
         .outer-layer{
             min-width: auto;
         }
     }
+}
     
