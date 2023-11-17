@@ -470,6 +470,10 @@
     
     
     @media (min-width: 2560px){
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;;
         .outer-layer{
             width: 51%;
             align-items: center;

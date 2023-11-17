@@ -417,6 +417,12 @@
   }
 }
 @media (min-width: 2560px) {
+  .objectives-main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
   .objectives-main-container .outer-layer {
     width: 51%;
     align-items: center;
