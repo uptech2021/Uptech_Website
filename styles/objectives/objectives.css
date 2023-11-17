@@ -418,7 +418,10 @@
 }
 @media (min-width: 2560px) {
   .objectives-main-container .outer-layer {
-    width: auto;
+    width: 51%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
   }
   .objectives-main-container .outer-layer .objectives-first-container {
     align-items: center;
@@ -548,8 +551,8 @@
     min-height: 19.25rem;
   }
   .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .datasecurity-img-container {
-    min-width: 34.47956rem;
-    min-height: 26.78594rem;
+    min-width: 15.54138rem;
+    min-height: 14.22156rem;
   }
   .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .datasecurity-img-container .datasecurity-img {
     height: 100%;
