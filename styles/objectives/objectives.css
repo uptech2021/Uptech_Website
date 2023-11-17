@@ -223,7 +223,6 @@
   .objectives-main-container .outer-layer .objectives-first-container .objectives-section {
     min-width: 44.5rem;
     height: 27.9375rem;
-    max-width: 99.125rem;
     height: 26.625rem;
     display: flex;
     flex-direction: column;
@@ -416,7 +415,7 @@
     white-space: nowrap;
   }
 }
-@media (min-width: 2560px) {
+@media (min-width: 1920px) {
   .objectives-main-container {
     display: flex;
     align-items: center;

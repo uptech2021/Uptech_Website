@@ -245,7 +245,7 @@
                 .objectives-section{
                     min-width: 44.5rem;
                     height: 27.9375rem;
-                    max-width: 99.125rem;
+                    // max-width: 99.125rem;
                     height: 26.625rem;
                     display: flex;
                     flex-direction: column;
@@ -469,7 +469,7 @@
     }
     
     
-    @media (min-width: 2560px){
+    @media (min-width: 1920px){
         display: flex;
         align-items: center;
         justify-content: center;
