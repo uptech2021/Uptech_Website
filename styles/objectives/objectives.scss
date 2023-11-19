@@ -100,7 +100,7 @@
                 .objectives-info-section{
                     min-width: 17.9375rem;
                     flex-shrink: 0;
-                    min-height: 303.5rem;                
+                    min-height: auto;                
                     border-radius: 2.75rem;
                     background: #FFF;
                     position: relative;
@@ -291,7 +291,7 @@
 
                 .objectives-info-section{
                     min-width: 44.5rem;
-                    min-height: 481.375rem;                
+                    // min-height: 481.375rem;                
                     border-radius: 2.75rem;
                     background: #FFF;
                     position: relative;
