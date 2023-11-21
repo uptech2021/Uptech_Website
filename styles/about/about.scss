@@ -1,23 +1,25 @@
 .about-main-container {
     font-family: 'THICCCBOI';
 
-    
 
 
-    .outer-layer{
+
+    .outer-layer {
         padding: 0.99rem 0.63rem;
         margin: 1rem 1rem 4rem 1rem;
-        
+
         min-width: 18rem;
-       
-        
+
+
         border-radius: 2.75rem;
         background: rgba(239, 243, 243, 0.7);
         position: relative;
         box-sizing: border-box;
         overflow-x: wrap;
-    
-        .about-container{
+
+
+
+        .about-container {
             min-width: 17rem;
             height: auto;
             display: flex;
@@ -25,18 +27,30 @@
             border-radius: 2.75rem;
             background: #FFF;
             position: relative;
+            text-align: center;
             overflow: hidden;
-            align-items: center;
-            justify-content: center;
             margin-bottom: 2rem;
-            .about-img{
+
+            .header {
+                margin: 1.84rem 1.25rem 0;
+                min-width: 15.375rem;
+                display: flex;
+                align-items: center;
+            }
+
+
+
+            .about-img {
                 width: 100%;
                 height: 15rem;
             }
-            h1{
-                font-size: 17vw;
+
+            h1 {
+                font: THICCBOI-ExtraBold;
+                font-size: 3.5rem;
             }
-            .air-img{
+
+            .air-img {
                 object-fit: contain;
                 width: 100%;
                 height: 100%;
@@ -44,59 +58,251 @@
             }
 
         }
-        .second-main-container{
+
+        .second-main-container {
             min-width: 17rem;
             height: auto;
             display: flex;
             flex-direction: column;
             border-radius: 2.75rem;
             background: #FFF;
-            position: relative;   
+            position: relative;
             align-items: center;
             text-align: center;
             margin-bottom: 1rem;
             padding-bottom: 1rem;
-            
-            h1{
-                font-family: Inter;
-                font-size: 8vw;
+
+            h2 {
+                font-family: "THICCBOI-ExtraBold";
+                font-size: 2rem;
                 color: #52CAC8;
-                font-weight:900;
                 text-transform: uppercase;
-                
+
             }
-            p{
-                font-family: Inter;
-                font-size: 8.3vw;
+
+            p {
+                font-family: THICCBOI, Inter;
+                font-size: 1.2rem;
                 padding-bottom: 5rem;
-                
+
             }
-        
-       
-     }
+
+
+        }
     }
-    @media ( min-width: 375px ){
-        .outer-layer .about-container .about-img{
+
+    @media (min-width: 375px) {
+        .outer-layer .about-container .about-img {
             width: 100%;
             height: 18rem;
-            
-     
+
+
         }
-     }
-     @media ( min-width: 430px ){
-        .outer-layer .about-container .about-img{
-            width: 100%;
+    }
+
+    @media (min-width: 430px) {
+        .outer-layer .about-container .about-img {
+
             height: 20rem;
-            
-     
         }
-     }
-     @media ( min-width: 480px ){
-        .outer-layer .about-container .about-img{
-            width: 100%;
+
+    }
+
+    @media (min-width: 480px) {
+        .outer-layer .about-container .about-img {
+
             height: 23rem;
-            
-     
+
+
         }
-     }
+    }
+
+    @media (min-width: 768px) {
+
+
+        .outer-layer {
+
+
+            .about-container {
+                .wrapper {
+                    display: flex;
+                    flex-wrap: nowrap;
+                    justify-content: space-between;
+
+                }
+
+                h1 {
+                    font-size: 4rem;
+                    width: 64%;
+                    text-align: center;
+
+                }
+
+                .about-img {
+                    width: 80%;
+                    height: 23rem;
+
+
+
+                }
+            }
+
+            .second-main-container {
+
+                h2 {
+                    font-size: 2.5rem;
+                }
+
+                p {
+                    padding-left: 2rem;
+                    padding-right: 3rem;
+
+                    padding-bottom: 10rem;
+                }
+            }
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .outer-layer {
+            padding: 3rem 1rem;
+            margin: 4rem 1rem 4rem 1rem;
+            border-radius: 2.75rem;
+            margin-bottom: 25rem;
+
+
+            .about-container {
+                margin-bottom: 6rem;
+
+
+
+                h1 {
+                    font-size: 7rem;
+                    width: 50%;
+
+                    padding-top: 7rem;
+
+
+
+                }
+
+                .about-img {
+                    width: 60%;
+                    height: 35.8rem;
+                    margin-bottom: 0;
+                    padding-top: 4rem;
+                }
+            }
+        }
+
+
+    }
+    @media(min-width: 1440px) {
+        .outer-layer{
+            margin: 0 auto;
+            width: 50vw;
+        
+        .about-container {
+
+
+
+            h1 {
+                font-size: 4rem;
+                width: 50%;
+                padding-top: 7rem;
+
+
+
+            }
+
+            .about-img {
+                width: 50%;
+                height: 19.8rem;
+                padding-top: 4rem;
+            }
+        }
+        .second-main-container {
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1.2rem;
+                width: 70%;
+                padding-bottom: 10rem;
+            }
+        }
+
+    }
+}
+@media(min-width: 1920px) {
+    .outer-layer{
+    
+    .about-container {
+
+
+
+        h1 {
+            font-size: 7rem;
+            width: 50%;
+            padding-top: 7rem;
+
+
+
+        }
+
+        .about-img {
+            width: 50%;
+            height: 29.5rem;
+            padding-top: 4rem;
+        }
+    }
+    .second-main-container {
+
+        h2 {
+            font-size: 3rem;
+        }
+
+        p {
+            font-size: 2rem;
+          
+          
+        }
+    }
+
+}
+}
+
+    @media (min-width: 2560px) {
+        .outer-layer {
+            padding: 8rem 4rem;
+            border-radius: 1.75rem;
+            margin-bottom: 25rem;
+
+
+            .about-container {
+                  
+
+                h1 {
+                    font-size: 7rem;
+                    
+                   
+
+
+
+
+                }
+
+                .about-img {
+                   
+                    height: 33rem;
+                    
+                }
+            }
+
+           
+
+        }
+    }
 }
