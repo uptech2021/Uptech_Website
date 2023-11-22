@@ -7,7 +7,6 @@
   src: url("../../utils/fonts/thiccboi/THICCCBOI-SemiBold.ttf") format("truetype");
 }
 .terms-main-container {
-  font-family: "THICCCBOI";
   position: relative;
 }
 .terms-main-container .outer-layer {
@@ -72,40 +71,45 @@
 .terms-main-container .outer-layer .terms-second-container .terms-info-section .last-updated {
   color: #000;
   text-align: center;
-  font-family: THICCCBOI;
+  font-family: "THICCCBOI-SemiBold";
   font-size: 1.2rem;
   font-style: normal;
   font-weight: 800;
   line-height: normal;
   text-decoration-line: underline;
 }
-.terms-main-container .outer-layer .terms-second-container .terms-info-section h2 {
+.terms-main-container .outer-layer .terms-second-container .terms-info-section ol li {
+  list-style-type: none;
+  margin-right: 2rem;
+}
+.terms-main-container .outer-layer .terms-second-container .terms-info-section ol li h2 {
   font-family: Inter;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-style: normal;
   font-weight: 800;
   line-height: normal;
   color: black;
-  margin-right: 0.5rem;
-  margin-left: 0.62rem;
 }
-.terms-main-container .outer-layer .terms-second-container .terms-info-section p {
+.terms-main-container .outer-layer .terms-second-container .terms-info-section ol li p {
   color: #000;
   font-family: Inter;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-style: normal;
   font-weight: 200;
   line-height: normal;
-  margin-right: 0.5rem;
-  margin-left: 0.62rem;
 }
 @media (min-width: 2560px) {
-  .terms-main-container .outer-layer .terms-second-container .terms-info-section h2 {
-    margin-right: 35.73rem;
-    margin-left: 32.58rem;
+  .terms-main-container .outer-layer .terms-second-container .terms-info-section .last-updated {
+    font-size: 2rem;
   }
-  .terms-main-container .outer-layer .terms-second-container .terms-info-section p {
+  .terms-main-container .outer-layer .terms-second-container .terms-info-section ol li h2 {
     margin-right: 35.73rem;
     margin-left: 32.58rem;
+    font-size: 2rem;
+  }
+  .terms-main-container .outer-layer .terms-second-container .terms-info-section ol li p {
+    margin-right: 35.73rem;
+    margin-left: 32.58rem;
+    font-size: 2rem;
   }
 }/*# sourceMappingURL=terms.css.map */
