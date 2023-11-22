@@ -1,1 +1,111 @@
-/*# sourceMappingURL=terms.css.map */
+@font-face {
+  font-family: "THICCBOI-ExtraBold";
+  src: url("../../utils/fonts/thiccboi/THICCCBOI-ExtraBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "THICCBOI-SemiBold";
+  src: url("../../utils/fonts/thiccboi/THICCCBOI-SemiBold.ttf") format("truetype");
+}
+.terms-main-container {
+  font-family: "THICCCBOI";
+  position: relative;
+}
+.terms-main-container .outer-layer {
+  padding: 0.99rem 0.63rem;
+  margin: 1.31rem 0.44rem 0 0.44rem;
+  min-width: 19.125rem;
+  border-radius: 2.75rem;
+  background: rgba(239, 243, 243, 0.7);
+  position: relative;
+  box-sizing: border-box;
+  overflow-x: wrap;
+}
+.terms-main-container .outer-layer .terms-first-container {
+  min-width: 17.875rem;
+  height: 16.56038rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 2.75rem;
+  background: #FFF;
+  position: relative;
+  overflow: visible;
+}
+.terms-main-container .outer-layer .terms-first-container .terms-header {
+  display: flex;
+  position: relative;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0.19rem 0 0.75rem;
+}
+.terms-main-container .outer-layer .terms-first-container .terms-header h1 {
+  font-family: "THICCCBOI";
+  font-size: 3.3125rem;
+}
+@media (min-width: 375px) {
+  .terms-main-container .outer-layer .terms-first-container .terms-header {
+    margin: 0 4.12rem 0 4.25rem;
+  }
+}
+@media (min-width: 480px) {
+  .terms-main-container .outer-layer .terms-first-container {
+    min-width: 27.1875rem;
+  }
+  .terms-main-container .outer-layer .terms-first-container .terms-header {
+    margin: 0 4.12rem 0 5.56rem;
+  }
+}
+.terms-main-container .outer-layer .terms-second-container {
+  margin-top: 2.25rem;
+}
+.terms-main-container .outer-layer .terms-second-container .terms-info-section {
+  min-width: 17.9375rem;
+  flex-shrink: 0;
+  min-height: auto;
+  border-radius: 2.75rem;
+  background: #FFF;
+  position: relative;
+  overflow: hidden;
+}
+.terms-main-container .outer-layer .terms-second-container .terms-info-section .last-updated {
+  color: #000;
+  text-align: center;
+  font-family: THICCCBOI;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  text-decoration-line: underline;
+}
+.terms-main-container .outer-layer .terms-second-container .terms-info-section h2 {
+  font-family: Inter;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  color: black;
+  margin-right: 0.5rem;
+  margin-left: 0.62rem;
+}
+.terms-main-container .outer-layer .terms-second-container .terms-info-section p {
+  color: #000;
+  font-family: Inter;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 200;
+  line-height: normal;
+  margin-right: 0.5rem;
+  margin-left: 0.62rem;
+}
+@media (min-width: 2560px) {
+  .terms-main-container .outer-layer .terms-second-container .terms-info-section h2 {
+    margin-right: 35.73rem;
+    margin-left: 32.58rem;
+  }
+  .terms-main-container .outer-layer .terms-second-container .terms-info-section p {
+    margin-right: 35.73rem;
+    margin-left: 32.58rem;
+  }
+}/*# sourceMappingURL=terms.css.map */

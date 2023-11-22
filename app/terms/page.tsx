@@ -2,6 +2,7 @@
 
 import '../../styles/terms/terms.css'
 
+
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
@@ -21,8 +22,12 @@ export default function Terms(){
                 </div>
                 <main className="terms-second-container">
                     <div className="terms-info-section">
-                        <p>Last updated: 2022-01-06</p>
-                        <p>1. Introduction</p>
+                        
+                        <div className="last-updated">
+                            <p>Last updated: 2022-01-06</p>
+                        </div>
+                    
+                        <h2>1. Introduction</h2>
                         <p>Welcome to Uptech Incorporated Ltd (&quot;Company&quot;, &quot;we&quot;, &quot;our&quot;, &quot;us&quot;)!</p>
 
                         <p>These Terms of Service (&quot;Terms&quot;, &quot;Terms of Service&quot;) govern your use of our website located at ourlime.com (together or individually &quot;Service&quot;) operated by Uptech Incorporated Ltd.</p>
@@ -34,11 +39,11 @@ export default function Terms(){
                         <p>If you do not agree with (or cannot comply with) Agreements, then you may not use the Service, but please let us know by emailing at uptechincorp@protonmail.com so we can try to find a solution. These Terms apply to all visitors, users and others who wish to access or use the Service.
                         </p>
 
-                        <p>2. Communications</p>
+                        <h2>2. Communications</h2>
 
                         <p>By using our Service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send. However, you may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or by emailing at uptechincorp@protonmail.com.</p>
 
-                        <p>3. Purchases</p>
+                        <h2>3. Purchases</h2>
 
                         <p>If you wish to purchase any product or service made available through Service (&quot;Purchase&quot;), you may be asked to supply certain information relevant to your Purchase including but not limited to, your credit or debit card number, the expiration date of your card, your billing address, and your shipping information.</p>
 
@@ -50,11 +55,11 @@ export default function Terms(){
 
                         <p>We reserve the right to refuse or cancel your order if fraud or an unauthorized or illegal transaction is suspected.</p>
 
-                        <p>4. Contests, Sweepstakes and Promotions</p>
+                        <h2>4. Contests, Sweepstakes and Promotions</h2>
 
                         <p>Any contests, sweepstakes or other promotions (collectively, &quot;Promotions&quot;) made available through Service may be governed by rules that are separate from these Terms of Service. If you participate in any Promotions, please review the applicable rules as well as our Privacy Policy. If the rules for a Promotion conflict with these Terms of Service, Promotion rules will apply.</p>
 
-                        <p>5. Subscriptions</p>
+                        <h2>5. Subscriptions</h2>
 
                         <p>Some parts of Service are billed on a subscription basis (&quot;Subscription(s)&quot;). You will be billed in advance on a recurring and periodic basis (&quot;Billing Cycle&quot;). Billing cycles will be set depending on the type of subscription plan you select when purchasing a Subscription.</p>
 
@@ -64,7 +69,7 @@ export default function Terms(){
 
                         <p>Should automatic billing fail to occur for any reason, Uptech Incorporated Ltd reserves the right to terminate your access to the Service with immediate effect.</p>
 
-                        <p>6. Free Trial</p>
+                        <h2>6. Free Trial</h2>
 
                         <p>Uptech Incorporated Ltd may, at its sole discretion, offer a Subscription with a free trial for a limited period of time (&quot;Free Trial&quot;).</p>
 
@@ -74,7 +79,7 @@ export default function Terms(){
 
                         <p>At any time and without notice, Uptech Incorporated Ltd reserves the right to (i) modify Terms of Service of Free Trial offer, or (ii) cancel such Free Trial offer.</p>
 
-                        <p>7. Fee Changes</p>
+                        <h2>7. Fee Changes</h2>
 
                         <p>Uptech Incorporated Ltd, in its sole discretion and at any time, may modify Subscription fees for the Subscriptions. Any Subscription fee change will become effective at the end of the then-current Billing Cycle.</p>
 
@@ -82,15 +87,15 @@ export default function Terms(){
 
                         <p>Your continued use of Service after Subscription fee change comes into effect constitutes your agreement to pay the modified Subscription fee amount.</p>
 
-                        <p>8. Refunds</p>
+                        <h2>8. Refunds</h2>
 
                         <p>We issue refunds for Contracts within 7 days of the original purchase of the Contract.</p>
 
-                        <p>9. Content</p>
+                        <h2>9. Content</h2>
 
                         <p>Content found on or through this Service are the property of Uptech Incorporated Ltd or used with permission. You may not distribute, modify, transmit, reuse, download, repost, copy, or use said Content, whether in whole or in part, for commercial purposes or for personal gain, without express advance written permission from us.</p>
 
-                        <p>10. Prohibited Uses</p>
+                        <h2>10. Prohibited Uses</h2>
 
                         <p>You may use Service only for lawful purposes and in accordance with Terms. You agree not to use Service:</p>
 
@@ -126,16 +131,16 @@ export default function Terms(){
 
                         <p>0.9. Otherwise attempt to interfere with the proper working of Service.</p>
 
-                        <p>11. Analytics</p>
+                        <h2>11. Analytics</h2>
 
                         <p>We may use third-party Service Providers to monitor and analyze the use of our Service.</p>
                         
                         
-                        <p>12. Use by Minors</p>
+                        <h2>12. Use by Minors</h2>
 
                         <p>Service is intended only for access and use by individuals at least thirteen (13) years old. By accessing or using Service, you warrant and represent that you are at least thirteen (13) years of age and with the full authority, right, and capacity to enter into this agreement and abide by all of the terms and conditions of Terms. If you are not at least thirteen (13) years old, you are prohibited from both the access and usage of Service.</p>
 
-                        <p>13. Accounts</p>
+                        <h2>13. Accounts</h2>
 
                         <p>When you create an account with us, you guarantee that you are above the age of thirteen (13), and that the information you provide us is accurate, complete, and current at all times. Inaccurate, incomplete, or obsolete information may result in the immediate termination of your account on Service.</p>
 
@@ -144,17 +149,17 @@ export default function Terms(){
 
                         <p>We reserve the right to refuse service, terminate accounts, remove or edit content, or cancel orders in our sole discretion.</p>
 
-                        <p>14. Intellectual Property</p>
+                        <h2>14. Intellectual Property</h2>
 
                         <p>Service and its original content (excluding Content provided by users), features and functionality are and will remain the exclusive property of Uptech Incorporated Ltd and its licensors. Service is protected by copyright, trademark, and other laws of and foreign countries. Our trademarks may not be used in connection with any product or service without the prior written consent of Uptech Incorporated Ltd.</p>
 
-                        <p>15. Copyright Policy</p>
+                        <h2>15. Copyright Policy</h2>
 
                         <p>We respect the intellectual property rights of others. It is our policy to respond to any claim that Content posted on Service infringes on the copyright or other intellectual property rights (&quot;Infringement&quot;) of any person or entity.</p>
 
                         <p>If you are a copyright owner, or authorized on behalf of one, and you believe that the copyright work has been copied in a way that constitutes copyright infringement, please submit your claim via email to uptechincorp@protonmail.com, with the subject line, “Copyright Infringement” and include in your claim a detailed description of the alleged Infringement as detailed below, under “DMCA Notice and Procedure for Copyright Infringement Claims”. You may be held accountable for damages (including costs and attorneys&apos; fees) for misrepresentation or bad-faith claims on the infringement of any Content found on and/or through Service on your copyright.</p>
 
-                        <p>16. DMCA Notice and Procedure for Copyright Infringement Claims</p>
+                        <h2>16. DMCA Notice and Procedure for Copyright Infringement Claims</h2>
 
                         <p>You may submit a notification pursuant to the Digital Millennium Copyright Act (DMCA) by providing our Copyright Agent with the following information in writing (see 17 U.S.C 512(c)(3) for further detail):</p>
 
@@ -170,11 +175,11 @@ export default function Terms(){
 
                         <p>0.6. a statement by you, made under penalty of perjury, that the above information in your notice is accurate and that you are the copyright owner or authorized to act on the copyright owner&apos;s behalf. You can contact our Copyright Agent via email at uptechincorp@protonmail.com.</p>
 
-                        <p>17. Error Reporting and Feedback</p>
+                        <h2>17. Error Reporting and Feedback</h2>
 
                         <p>You may provide us either directly at uptechincorp@protonmail.com or via third party sites and tools with information and feedback concerning errors, suggestions for improvements, ideas, problems, complaints, and other matters related to our Service (“Feedback”). You acknowledge and agree that: (i) you shall not retain, acquire or assert any intellectual property right or other right, title or interest in or to the Feedback; (ii) Company may have development ideas similar to the Feedback; (iii) Feedback does not contain confidential information or proprietary information from you or any third party; and (iv) Company is not under any obligation of confidentiality with respect to the Feedback. In the event the transfer of the ownership to the Feedback is not possible due to applicable mandatory laws, you grant Company and its affiliates an exclusive, transferable, irrevocable, free-of-charge, sub-licensable, unlimited and perpetual right to use (including copy, modify, create derivative works, publish, distribute and commercialize) Feedback in any manner and for any purpose.</p>
 
-                        <p>18. Links to Other Websites</p>
+                        <h2>18. Links to Other Websites</h2>
 
                         <p>Our Service may contain links to third party web sites or services that are not owned or controlled by Uptech Incorporated Ltd. Uptech Incorporated Ltd has no control over, and assumes no responsibility for the content, privacy policies, or practices of any third-party web sites or services. We do not warrant the offerings of any of these entities/individuals or their websites.</p>
 
@@ -182,7 +187,7 @@ export default function Terms(){
 
                         <p>WE STRONGLY ADVISE YOU TO READ THE TERMS OF SERVICE AND PRIVACY POLICIES OF ANY THIRD-PARTY WEB SITES OR SERVICES THAT YOU VISIT.</p>
 
-                        <p>19. Disclaimer of Warranty</p>
+                        <h2>19. Disclaimer of Warranty</h2>
 
                         <p>THESE SERVICES ARE PROVIDED BY COMPANY ON AN &quot;AS IS&quot; AND &quot;AS AVAILABLE&quot; BASIS. COMPANY MAKES NO REPRESENTATIONS OR WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, AS TO THE OPERATION OF THEIR SERVICES, OR THE INFORMATION, CONTENT OR MATERIALS INCLUDED THEREIN. YOU EXPRESSLY AGREE THAT YOUR USE OF THESE SERVICES, THEIR CONTENT, AND ANY SERVICES OR ITEMS OBTAINED FROM US IS AT YOUR SOLE RISK.</p>
 
@@ -192,11 +197,11 @@ export default function Terms(){
 
                         <p>THE FOREGOING DOES NOT AFFECT ANY WARRANTIES WHICH CANNOT BE EXCLUDED OR LIMITED UNDER APPLICABLE LAW.</p>
                         
-                        <p>20. Limitation of Liability</p>
+                        <h2>20. Limitation of Liability</h2>
                         
                         <p>EXCEPT AS PROHIBITED BY LAW, YOU WILL HOLD US AND OUR OFFICERS, DIRECTORS, EMPLOYEES, AND AGENTS HARMLESS FOR ANY INDIRECT, PUNITIVE, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGE, HOWEVER IT ARISES (INCLUDING ATTORNEYS&apos; FEES AND ALL RELATED COSTS AND EXPENSES OF LITIGATION AND ARBITRATION, OR AT TRIAL OR ON APPEAL, IF ANY, WHETHER OR NOT LITIGATION OR ARBITRATION IS INSTITUTED), WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE, OR OTHER TORTIOUS ACTION, OR ARISING OUT OF OR IN CONNECTION WITH THIS AGREEMENT, INCLUDING WITHOUT LIMITATION ANY CLAIM FOR PERSONAL INJURY OR PROPERTY DAMAGE, ARISING FROM THIS AGREEMENT AND ANY VIOLATION BY YOU OF ANY FEDERAL, STATE, OR LOCAL LAWS, STATUTES, RULES, OR REGULATIONS, EVEN IF COMPANY HAS BEEN PREVIOUSLY ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. EXCEPT AS PROHIBITED BY LAW, IF THERE IS LIABILITY FOUND ON THE PART OF COMPANY, IT WILL BE LIMITED TO THE AMOUNT PAID FOR THE PRODUCTS AND/OR SERVICES, AND UNDER NO CIRCUMSTANCES WILL THERE BE CONSEQUENTIAL OR PUNITIVE DAMAGES. SOME STATES DO NOT ALLOW THE EXCLUSION OR LIMITATION OF PUNITIVE, INCIDENTAL OR CONSEQUENTIAL DAMAGES, SO THE PRIOR LIMITATION OR EXCLUSION MAY NOT APPLY TO YOU.</p>
                         
-                        <p>21. Termination</p>
+                        <h2>21. Termination</h2>
 
                         <p>We may terminate or suspend your account and bar access to Service immediately, without prior notice or liability, under our sole discretion, for any reason whatsoever and without limitation, including but not limited to a breach of Terms.</p>
 
@@ -204,40 +209,39 @@ export default function Terms(){
 
                         <p>All provisions of Terms which by their nature should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity and limitations of liability.</p>
 
-                        <p>22. Governing Law</p>
+                        <h2>22. Governing Law</h2>
 
                         <p>These Terms shall be governed and construed in accordance with the laws of Trinidad and Tobago, which governing law applies to agreement without regard to its conflict of law provisions.</p>
 
                         <p>Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions of these Terms will remain in effect. These Terms constitute the entire agreement between us regarding our Service and supersede and replace any prior agreements we might have had between us regarding Service.</p>
 
-                        <p>23. Changes to Service</p>
+                        <h2>23. Changes to Service</h2>
 
                         <p>We reserve the right to withdraw or amend our Service, and any service or material we provide via Service, in our sole discretion without notice. We will not be liable if for any reason all or any part of Service is unavailable at any time or for any period. From time to time, we may restrict access to some parts of Service, or the entire Service, to users, including registered users.</p>
                         
-                        <p>24. Amendments to Terms</p>
+                        <h2>24. Amendments to Terms</h2>
 
                         <p>We may amend Terms at any time by posting the amended terms on this site. It is your responsibility to review these Terms periodically. Your continued use of the Platform following the posting of revised Terms means that you accept and agree to the changes. You are expected to check this page frequently so you are aware of any changes, as they are binding on you.</p>
 
                         <p>By continuing to access or use our Service after any revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, you are no longer authorized to use Service.</p>
 
-                        <p>25. Waiver and Severability</p>
+                        <h2>25. Waiver and Severability</h2>
 
                         <p>No waiver by Company of any term or condition set forth in Terms shall be deemed a further or continuing waiver of such term or condition or a waiver of any other term or condition, and any failure of Company to assert a right or provision under Terms shall not constitute a waiver of such right or provision.</p>
 
                         <p>If any provision of Terms is held by a court or other tribunal of competent jurisdiction to be invalid, illegal or unenforceable for any reason, such provision shall be eliminated or limited to the minimum extent such that the remaining provisions of Terms will continue in full force and effect.</p>
 
-                        <p>26. Acknowledgement </p>
+                        <h2>26. Acknowledgement </h2>
 
                         <p>BY USING SERVICE OR OTHER SERVICES PROVIDED BY US, YOU ACKNOWLEDGE THAT YOU HAVE READ THESE TERMS OF SERVICE AND AGREE TO BE BOUND BY THEM.</p>
 
-                        <p>27. Contact Us</p>
+                        <h2>27. Contact Us</h2>
 
                         <p>Please send your feedback, comments, requests for technical support by email: uptechincorp@protonmail.com.</p>
                     </div>
                 </main>
             </div>
-
-
+            <Footer/>
         </div>
     )
 }
