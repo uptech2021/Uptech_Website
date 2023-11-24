@@ -62,19 +62,21 @@
             overflow-wrap: break-word;
             font-size: 1.1rem;
 
-            .bold {
+
+
+
+            span {
                 font-weight: 800;
-            }
 
-            .less-bold {
-                font-weight: 600;
             }
 
 
 
-            .mini-container {
 
-                padding-bottom: 5rem;
+            ol {
+                padding-left: 27px;
+                text-align: left;
+
 
                 p {
                     font-family: THICCBOI, Inter;
@@ -82,52 +84,55 @@
                     text-align: left;
 
 
-                    span {
-                        font-weight: 800;
+
+                }
+
+
+                li {
+                    padding-bottom: 5rem;
+                    padding-left: 5px;
+                    padding-right: 25px;
+
+                }
+
+                ul {
+                    padding-left: 16px;
+
+                    li {
+                        font-weight: 400;
+                        list-style: disc;
+                        padding: 0;
 
                     }
-
-                }
-
-            }
-
-            ol {
-                padding-right: 5px;
-
-                text-align: left;
-
-                li {
-                    font-weight: 800;
-
                 }
             }
 
-            ul {
-                li {
-                    font-weight: 500;
-                    list-style: disc;
 
-                }
-            }
 
             .bigger {
                 font-size: 1.5rem;
             }
-
-
-
-
-
         }
+
+
+
+
     }
+
 
     @media (min-width: 768px) {
-        .outer-layer .second-main-container .mini-container {
+        .outer-layer .second-main-container ol {
             padding-left: 6rem;
-            padding-right: 6rem;
+            padding-right: 4rem;
         }
-
     }
+
+    @media(min-width: 1200px) {
+        .outer-layer .second-main-container ol li {
+            padding-bottom: 10rem;
+        }
+    }
+
 
     @media(min-width: 1440px) {
         .outer-layer {
@@ -146,11 +151,6 @@
                 h1 {
                     font-size: 4rem;
 
-
-
-
-
-
                 }
             }
 
@@ -158,14 +158,18 @@
 
                 font-size: 2rem;
 
-                .mini-container {
-                    padding-left: 10rem;
-                    padding-right: 10rem;
-                    padding-bottom: 15rem;
+                ol {
+                    padding-left: 15rem;
+                    padding-right: 12rem;
 
-                    .bigger {
-                        font-size: 2.5rem;
+                    li {
+                        padding-bottom: 20rem;
                     }
+
+                }
+
+                .bigger {
+                    font-size: 2.5rem;
                 }
             }
 
