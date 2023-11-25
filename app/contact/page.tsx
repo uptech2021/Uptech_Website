@@ -1,7 +1,8 @@
 'use client'
 
 import '@/styles/contact/contact.css'
-
+import  { useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import contactUsImage from '@/public/images/Contact Us/contactUsImage.png'
 import contactUsImage_pcView from '@/public/images/Contact Us/contactUsImage_pcView.png'
 import envelope from '@/public/images/Contact Us/envelope.svg'
@@ -12,22 +13,41 @@ import { useWindowSize } from 'react-use'
 import React, { useState, useEffect } from 'react';
 export default function Contact() {
     const [width, setWidth] = useState(0);
+    const form = useRef<HTMLFormElement>(null);
+    const sendEmail = (e: any) => {
+        e.preventDefault();
+    
+        if (form.current) {
+            emailjs.sendForm('service_lzcpd2v', 'template_4jto7cb', form.current, '1AWCXF3pb_N1_VzJn')
+                .then((result) => {
+                    console.log(result.text);
+                    alert(result.text);
+                }, (error) => {
+                    console.log(error.text);
+                    alert(error.text);
 
+                });
+        } else {
+            console.error('Form reference is undefined');
+        }
+    };
+    
     useEffect(() => {
     // Handler to call on window resize
-    function handleResize() {
-        // Set window width to state
-        setWidth(window.innerWidth);
-    }
+        function handleResize() {
+            // Set window width to state
+            setWidth(window.innerWidth);
+        }
 
-    // Add event listener
-    window.addEventListener("resize", handleResize);
+  
+        // Add event listener
+        window.addEventListener("resize", handleResize);
 
-    // Call handler right away so state gets updated with initial window size
-    handleResize();
+        // Call handler right away so state gets updated with initial window size
+        handleResize();
 
-    // Remove event listener on cleanup
-    return () => window.removeEventListener("resize", handleResize);
+        // Remove event listener on cleanup
+        return () => window.removeEventListener("resize", handleResize);
     }, []); // Empty array ensures that effect is only run on mount and unmount
 
     const imageUrl = width >= 1200 ? contactUsImage_pcView : contactUsImage;
@@ -75,7 +95,7 @@ export default function Contact() {
                         </div>
                     </div>
 
-                    <form className='contact-form'>
+                    <form className='contact-form' ref={form} onSubmit={sendEmail}> 
                         <p className='form-message'>Leave us a message and we will get back to you</p>
                         
                             <div className="first-name-wrapper wrapper">
@@ -99,7 +119,7 @@ export default function Contact() {
                             </div>
 
                             <div className="btn-wrapper wrapper">
-                                <button className="form-btn submit-btn">Submit</button>
+                                <button className="form-btn submit-btn" onClick={sendEmail}>Submit</button>
                                 <button className="form-btn reset-btn">Reset</button>
                             </div>
                 
