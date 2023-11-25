@@ -44,41 +44,43 @@
   overflow-wrap: break-word;
   font-size: 1.1rem;
 }
-.privacy-main-container .outer-layer .second-main-container .bold {
+.privacy-main-container .outer-layer .second-main-container span {
   font-weight: 800;
 }
-.privacy-main-container .outer-layer .second-main-container .less-bold {
-  font-weight: 600;
+.privacy-main-container .outer-layer .second-main-container ol {
+  padding-left: 27px;
+  text-align: left;
 }
-.privacy-main-container .outer-layer .second-main-container .mini-container {
-  padding-bottom: 5rem;
-}
-.privacy-main-container .outer-layer .second-main-container .mini-container p {
+.privacy-main-container .outer-layer .second-main-container ol p {
   font-family: THICCBOI, Inter;
   font-weight: 400;
   text-align: left;
 }
-.privacy-main-container .outer-layer .second-main-container .mini-container p span {
-  font-weight: 800;
-}
-.privacy-main-container .outer-layer .second-main-container ol {
-  padding-right: 5px;
-  text-align: left;
-}
 .privacy-main-container .outer-layer .second-main-container ol li {
-  font-weight: 800;
+  padding-bottom: 5rem;
+  padding-left: 5px;
+  padding-right: 25px;
 }
-.privacy-main-container .outer-layer .second-main-container ul li {
-  font-weight: 500;
+.privacy-main-container .outer-layer .second-main-container ol ul {
+  padding-left: 16px;
+}
+.privacy-main-container .outer-layer .second-main-container ol ul li {
+  font-weight: 400;
   list-style: disc;
+  padding: 0;
 }
 .privacy-main-container .outer-layer .second-main-container .bigger {
   font-size: 1.5rem;
 }
 @media (min-width: 768px) {
-  .privacy-main-container .outer-layer .second-main-container .mini-container {
+  .privacy-main-container .outer-layer .second-main-container ol {
     padding-left: 6rem;
-    padding-right: 6rem;
+    padding-right: 4rem;
+  }
+}
+@media (min-width: 1200px) {
+  .privacy-main-container .outer-layer .second-main-container ol li {
+    padding-bottom: 10rem;
   }
 }
 @media (min-width: 1440px) {
@@ -94,12 +96,14 @@
   .privacy-main-container .outer-layer .second-main-container {
     font-size: 2rem;
   }
-  .privacy-main-container .outer-layer .second-main-container .mini-container {
-    padding-left: 10rem;
-    padding-right: 10rem;
-    padding-bottom: 15rem;
+  .privacy-main-container .outer-layer .second-main-container ol {
+    padding-left: 15rem;
+    padding-right: 12rem;
   }
-  .privacy-main-container .outer-layer .second-main-container .mini-container .bigger {
+  .privacy-main-container .outer-layer .second-main-container ol li {
+    padding-bottom: 20rem;
+  }
+  .privacy-main-container .outer-layer .second-main-container .bigger {
     font-size: 2.5rem;
   }
 }/*# sourceMappingURL=privacy.css.map */
