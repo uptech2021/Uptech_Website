@@ -18,7 +18,7 @@ export default function Contact() {
         e.preventDefault();
     
         if (form.current) {
-            emailjs.sendForm('service_lzcpd2v', 'template_4jto7cb', form.current, '1AWCXF3pb_N1_VzJn')
+            emailjs.sendForm('service_xfnsql8', 'template_mh2p7so', form.current, '5AmHByg4twxtIu8ct')
                 .then((result) => {
                     console.log(result.text);
                     alert(result.text);
