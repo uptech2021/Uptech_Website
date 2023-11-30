@@ -77,6 +77,10 @@
                 position: relative;
                 overflow: hidden;
 
+                .sidenav{
+                    display: none;
+                }
+
                 .last-updated{
                     color: #000;
                     text-align: center;
@@ -119,6 +123,66 @@
         .outer-layer{
             .terms-second-container{
                 .terms-info-section{
+
+                    .sidenav{
+                        position: fixed;
+                        top: 27.5rem;
+                        left: 5rem;
+                        bottom: auto;
+                        background: #B4F1F5; /* Adjust color as needed */
+                        overflow-y: auto;
+                        padding: 20px;
+                        height: 52.375rem;
+                        width: 32.8125rem;
+                        border-radius: 1.25rem;
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        overflow-y: auto;
+                        padding: 20px;
+
+                        h2{
+                            color: #FFF;
+                            text-align: center;
+                            font-family: Inter;
+                            font-size: 1.875rem;
+                            background: #007B83;
+                            text-align: center;
+                            width: 33.9375rem;
+                            border-radius: 1.5rem;
+                        }
+
+                        .contact-btn{
+                            display: block;
+                            justify-content: center;
+                            align-items: center;
+                            margin: auto;
+                        }
+                        .link-buttons{
+                            display: flex;
+                            flex-direction: row;
+                            width: 14.74619rem;
+                            height: 2.75rem;
+                            padding: 0.625rem 1.25rem;
+                            justify-content: center;
+                            align-items: center;
+                            gap: 2.625rem;
+                            border-radius: 1.25rem;
+                            background: #FFF;
+                            margin: 0.25rem;
+
+                        
+
+                            a{
+                                color: #007B83;
+                                text-align: center;
+                                font-family: Inter;
+                                font-size: 1.25rem;
+                                text-decoration: none;
+                            }
+                        }
+                    }
+
                     .last-updated{
                         font-size: 2rem;
                     }
@@ -127,13 +191,13 @@
                         li{
                             h2{
                                 margin-right: 35.73rem;
-                                margin-left: 32.58rem;
+                                margin-left: 42.58rem;
                                 font-size: 2rem;
                             }
 
                             p{
                                 margin-right: 35.73rem;
-                                margin-left: 32.58rem;
+                                margin-left: 42.58rem;
                                 font-size: 2rem;
                             }
                         }
