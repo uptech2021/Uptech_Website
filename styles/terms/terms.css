@@ -82,6 +82,7 @@
   text-decoration-line: underline;
 }
 .terms-main-container .outer-layer .terms-second-container .terms-info-section ol li {
+  list-style-type: none;
   margin-right: 2rem;
 }
 .terms-main-container .outer-layer .terms-second-container .terms-info-section ol li h2 {
@@ -100,6 +101,63 @@
   font-weight: 200;
   line-height: normal;
 }
+@media (min-width: 1024px) {
+  .terms-main-container .outer-layer .terms-second-container .terms-info-section .sidenav {
+    position: fixed;
+    top: 25.5rem;
+    left: 2rem;
+    bottom: auto;
+    background: #B4F1F5; /* Adjust color as needed */
+    overflow-y: auto;
+    padding: 20px;
+    height: 62.375rem;
+    width: 21.8125rem;
+    border-radius: 1.25rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    padding: 20px;
+  }
+  .terms-main-container .outer-layer .terms-second-container .terms-info-section .sidenav .bookmark {
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1.875rem;
+    background: #007B83;
+    text-align: center;
+    width: 33.9375rem;
+    border-radius: 1.5rem;
+  }
+  .terms-main-container .outer-layer .terms-second-container .terms-info-section .sidenav .link-buttons {
+    display: flex;
+    flex-direction: row;
+    width: 14.74619rem;
+    height: 2.75rem;
+    padding: 0.625rem 1.25rem;
+    justify-content: center;
+    align-items: center;
+    gap: 2.625rem;
+    border-radius: 1.25rem;
+    background: #FFF;
+    margin: 0.25rem;
+  }
+  .terms-main-container .outer-layer .terms-second-container .terms-info-section .sidenav .link-buttons a {
+    color: #007B83;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1.25rem;
+    text-decoration: none;
+  }
+  .terms-main-container .outer-layer .terms-second-container .terms-info-section ol li h2 {
+    margin-left: 23.58rem;
+    font-size: 2rem;
+  }
+  .terms-main-container .outer-layer .terms-second-container .terms-info-section ol li p {
+    margin-left: 23.58rem;
+    font-size: 2rem;
+  }
+}
 @media (min-width: 2560px) {
   .terms-main-container .outer-layer .terms-second-container .terms-info-section .sidenav {
     position: fixed;
@@ -109,7 +167,7 @@
     background: #B4F1F5; /* Adjust color as needed */
     overflow-y: auto;
     padding: 20px;
-    height: 52.375rem;
+    height: 49.375rem;
     width: 32.8125rem;
     border-radius: 1.25rem;
     display: flex;
