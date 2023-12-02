@@ -1,5 +1,4 @@
 import '@/styles/privacy/privacy.css'
-import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
@@ -94,7 +93,7 @@ export default function Privacy() {
                   <a href="#Secure"> Security of Data</a>
                 </div>
                 <div className="box">
-                  <a href="#Child">Children's Privacy</a>
+                  <a href="#Child">Children&&apos;s Privacy</a>
                 </div>
               </div>
               <div className='box-container'>
@@ -106,9 +105,6 @@ export default function Privacy() {
                 </div>
               </div>
             </div>
-
-
-
 
 
             <ol>
@@ -530,12 +526,12 @@ export default function Privacy() {
               </li>
 
             </ol>
+          
+          
           </main>
         </div>
         <Footer />
       </div>
-
-
     </>
 
   )
