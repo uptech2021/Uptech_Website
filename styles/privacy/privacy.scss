@@ -229,9 +229,9 @@
                         padding: 0.63rem 1.25rem;
                         display: block;
                         text-decoration: none;
-                        width: 6rem;
+                        width: 7rem;
                         height: 1rem;
-                        font-size: .75rem;
+                        font-size: .8rem;
                         display: flex;
                         align-items: center;
                         justify-content: center;
@@ -321,7 +321,15 @@
             .second-main-container {
 
                 font-size: 2rem;
-
+                .bookmark-container .btns-container{
+                    .top-btns .left-btns li a, 
+                    .top-btns .right-btns li a,
+                    .bottom-btn a{
+                        font-size: 1.2rem;
+                        width: 10rem;
+                        height: 1.5rem;
+                    }
+                }
                 ol {
                     padding-left: 15rem;
                     padding-right: 12rem;

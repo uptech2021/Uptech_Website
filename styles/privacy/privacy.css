@@ -162,9 +162,9 @@
     padding: 0.63rem 1.25rem;
     display: block;
     text-decoration: none;
-    width: 6rem;
+    width: 7rem;
     height: 1rem;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -226,6 +226,13 @@
   }
   .privacy-main-container .outer-layer .second-main-container {
     font-size: 2rem;
+  }
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .btns-container .top-btns .left-btns li a,
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .btns-container .top-btns .right-btns li a,
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .btns-container .bottom-btn a {
+    font-size: 1.2rem;
+    width: 10rem;
+    height: 1.5rem;
   }
   .privacy-main-container .outer-layer .second-main-container ol {
     padding-left: 15rem;

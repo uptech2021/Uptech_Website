@@ -41,12 +41,17 @@
     justify-content: right;
     gap: 1rem;
     font-family: Inter;
-    font-size: 2.5vw;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 900;
     line-height: normal;
     list-style: none;
     margin: 0;
     padding: 0;
+  }
+}
+@media (min-width: 1024px) {
+  .header .navbar .nav-items, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .navbar .nav-items {
+    font-size: 1.2rem;
   }
 }/*# sourceMappingURL=navbar.css.map */
