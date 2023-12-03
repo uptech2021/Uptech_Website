@@ -46,7 +46,7 @@ export default function Privacy() {
                   <li><a href="#" className="btn">Behavioral Marketing</a></li>
                   <li><a href="#" className="btn">Payments</a></li>
                   <li><a href="#" className="btn">Links to other websites</a></li>
-                  <li><a href="#" className="btn">Children's privacy</a></li>
+                  <li><a href="#" className="btn">Children&apos;s privacy</a></li>
                   <li><a href="#" className="btn">Changes to this privacy policy</a></li>
                 </ul>
               </div>
