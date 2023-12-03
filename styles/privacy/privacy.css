@@ -1,0 +1,247 @@
+.privacy-main-container {
+  font-family: "THICCCBOI";
+}
+.privacy-main-container .outer-layer {
+  padding: 0.99rem 0.63rem;
+  margin: 1rem 1rem 4rem 1rem;
+  min-width: 18rem;
+  border-radius: 2.75rem;
+  background: rgba(239, 243, 243, 0.7);
+  position: relative;
+  box-sizing: border-box;
+  overflow-x: wrap;
+}
+.privacy-main-container .outer-layer .privacy-container {
+  min-width: 16.5rem;
+  height: auto;
+  border-radius: 2rem;
+  background: #FFF;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+.privacy-main-container .outer-layer .privacy-container .header {
+  margin: 1.84rem 1.25rem 0;
+  min-width: 15.375rem;
+  display: flex;
+  align-items: center;
+}
+.privacy-main-container .outer-layer .privacy-container h1 {
+  font: THICCBOI-ExtraBold;
+  font-size: 2.5rem;
+}
+.privacy-main-container .outer-layer .second-main-container {
+  min-width: 16.5rem;
+  height: auto;
+  border-radius: 2rem;
+  background: #FFF;
+  position: relative;
+  text-align: center;
+  padding-top: 0.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  overflow-wrap: break-word;
+  font-size: 1.1rem;
+}
+.privacy-main-container .outer-layer .second-main-container .bookmark-container {
+  display: none;
+}
+.privacy-main-container .outer-layer .second-main-container span {
+  font-weight: 800;
+}
+.privacy-main-container .outer-layer .second-main-container ol {
+  padding-left: 27px;
+  text-align: left;
+}
+.privacy-main-container .outer-layer .second-main-container ol p {
+  font-family: THICCBOI, Inter;
+  font-weight: 400;
+  text-align: left;
+}
+.privacy-main-container .outer-layer .second-main-container ol li {
+  padding-bottom: 5rem;
+  padding-left: 5px;
+  padding-right: 25px;
+}
+.privacy-main-container .outer-layer .second-main-container ol ul {
+  padding-left: 16px;
+}
+.privacy-main-container .outer-layer .second-main-container ol ul li {
+  font-weight: 400;
+  list-style: disc;
+  padding: 0;
+}
+.privacy-main-container .outer-layer .second-main-container .bigger {
+  font-size: 1.5rem;
+}
+@media (min-width: 768px) {
+  .privacy-main-container .outer-layer .second-main-container .card {
+    width: 30%;
+    margin: 50px;
+    background: #B4F1F5;
+    text-align: center;
+    border-radius: 20px;
+    position: relative;
+    float: left;
+  }
+  .privacy-main-container .outer-layer .second-main-container .card .top-card {
+    width: 100%;
+    background-color: rgb(0, 123, 131);
+    color: white;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    padding: 5px 0;
+    justify-content: center;
+    align-items: center;
+  }
+  .privacy-main-container .outer-layer .second-main-container .card .top-card p {
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+  .privacy-main-container .outer-layer .second-main-container .card .box-container {
+    display: flex;
+    margin-bottom: 2px;
+    gap: 10px;
+  }
+  .privacy-main-container .outer-layer .second-main-container .card .box {
+    padding: 0px 10px;
+    width: 232px;
+    height: 20px;
+    border-radius: 20px;
+    background: white;
+  }
+  .privacy-main-container .outer-layer .second-main-container .card .box a {
+    color: rgb(0, 123, 131);
+    font-size: 0.2rem;
+    text-decoration: none;
+  }
+  .privacy-main-container .outer-layer .second-main-container ol {
+    padding-left: 6rem;
+    padding-right: 4rem;
+  }
+}
+@media (min-width: 1024px) {
+  .privacy-main-container .outer-layer .second-main-container {
+    display: flex;
+    flex-direction: row;
+  }
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container {
+    display: flex;
+    background-color: #B4F1F5;
+    flex-direction: column;
+    border-radius: 20px;
+    height: 40%;
+    box-sizing: content-box; /* For Safari */
+    position: sticky;
+    margin-left: 2%;
+    top: 1%;
+  }
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .bookmark-header {
+    background-color: #007B83;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+  }
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .bookmark-header h3 {
+    color: white;
+    font-size: 1.5rem;
+  }
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .btns-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .btns-container .top-btns .left-btns li a,
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .btns-container .top-btns .right-btns li a,
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .btns-container .bottom-btn a {
+    color: #007B83;
+    background-color: white;
+    border-radius: 1.25rem;
+    padding: 0.63rem 1.25rem;
+    display: block;
+    text-decoration: none;
+    width: 7rem;
+    height: 1rem;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .btns-container .top-btns .left-btns,
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .btns-container .top-btns .right-btns {
+    padding: 0;
+    margin: 0 auto;
+    list-style-type: none;
+  }
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .btns-container .top-btns {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .btns-container .top-btns .left-btns, .privacy-main-container .outer-layer .second-main-container .bookmark-container .btns-container .top-btns .right-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .btns-container .bottom-btn {
+    margin: 1rem auto;
+    margin-bottom: 1.7rem;
+  }
+  .privacy-main-container .outer-layer .second-main-container .main-content {
+    width: 80%;
+    margin-left: 0;
+  }
+}
+@media (min-width: 1200px) {
+  .privacy-main-container .outer-layer .second-main-container ol li {
+    padding-bottom: 10rem;
+  }
+}
+@media (min-width: 1440px) {
+  .privacy-main-container .outer-layer {
+    margin: 0 auto;
+    width: 70vw;
+  }
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container {
+    margin-left: 1%;
+    margin-top: 5%;
+  }
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .btns-container .top-btns .left-btns li a,
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .btns-container .top-btns .right-btns li a,
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .btns-container .bottom-btn a {
+    font-size: 0.87rem;
+    width: 7rem;
+    height: 1.5rem;
+  }
+  .privacy-main-container .outer-layer .second-main-container .main-content {
+    width: 100%;
+    margin-left: -5%;
+  }
+}
+@media (min-width: 2560px) {
+  .privacy-main-container .outer-layer .privacy-container h1 {
+    font-size: 4rem;
+  }
+  .privacy-main-container .outer-layer .second-main-container {
+    font-size: 2rem;
+  }
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .btns-container .top-btns .left-btns li a,
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .btns-container .top-btns .right-btns li a,
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .btns-container .bottom-btn a {
+    font-size: 1.2rem;
+    width: 10rem;
+    height: 1.5rem;
+  }
+  .privacy-main-container .outer-layer .second-main-container ol {
+    padding-left: 15rem;
+    padding-right: 12rem;
+  }
+  .privacy-main-container .outer-layer .second-main-container ol li {
+    padding-bottom: 20rem;
+  }
+  .privacy-main-container .outer-layer .second-main-container .bigger {
+    font-size: 2.5rem;
+  }
+}/*# sourceMappingURL=privacy.css.map */

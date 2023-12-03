@@ -41,7 +41,7 @@
                 justify-content: right;
                 gap: 1rem;
                 font-family: Inter;
-                font-size: 2.5vw;
+                font-size: 1rem;
                 font-style: normal;
                 font-weight: 900;
                 line-height: normal;
@@ -53,6 +53,6 @@
         }
     }
 
-    
-    
+    @media(min-width: 1024px){.navbar .nav-items{font-size: 1.2rem;}}
+
 }

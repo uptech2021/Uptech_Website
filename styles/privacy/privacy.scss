@@ -1,0 +1,350 @@
+.privacy-main-container {
+    font-family: 'THICCCBOI';
+
+
+
+
+    .outer-layer {
+        padding: 0.99rem 0.63rem;
+        margin: 1rem 1rem 4rem 1rem;
+
+        min-width: 18rem;
+
+
+        border-radius: 2.75rem;
+        background: rgba(239, 243, 243, 0.7);
+        position: relative;
+        box-sizing: border-box;
+        overflow-x: wrap;
+
+
+
+        .privacy-container {
+            min-width: 16.5rem;
+            height: auto;
+            border-radius: 2rem;
+            background: #FFF;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+            margin-bottom: 2rem;
+
+            .header {
+                margin: 1.84rem 1.25rem 0;
+                min-width: 15.375rem;
+                display: flex;
+                align-items: center;
+            }
+
+
+
+
+
+            h1 {
+                font: THICCBOI-ExtraBold;
+                font-size: 2.5rem;
+            }
+
+
+
+        }
+
+        .second-main-container {
+            min-width: 16.5rem;
+            height: auto;
+            border-radius: 2rem;
+            background: #FFF;
+            position: relative;
+            text-align: center;
+            padding-top: 0.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            overflow-wrap: break-word;
+            font-size: 1.1rem;
+
+
+            .bookmark-container{
+                display: none;
+                
+            }
+
+
+            span {
+                font-weight: 800;
+
+            }
+
+
+
+
+            ol {
+                padding-left: 27px;
+                text-align: left;
+
+
+                p {
+                    font-family: THICCBOI, Inter;
+                    font-weight: 400;
+                    text-align: left;
+
+
+
+                }
+
+
+                li {
+                    padding-bottom: 5rem;
+                    padding-left: 5px;
+                    padding-right: 25px;
+
+                }
+
+                ul {
+                    padding-left: 16px;
+
+                    li {
+                        font-weight: 400;
+                        list-style: disc;
+                        padding: 0;
+
+                    }
+                }
+            }
+
+
+
+            .bigger {
+                font-size: 1.5rem;
+            }
+        }
+
+
+
+
+    }
+
+
+    @media (min-width: 768px) {
+        .outer-layer .second-main-container {
+
+            .card {
+                width: 30%;
+                margin: 50px;
+                background: #B4F1F5;
+                text-align: center;
+                border-radius: 20px;
+                position: relative;
+                float: left;
+
+
+                .top-card {
+                    width: 100%;
+                    background-color: rgba(0, 123, 131, 1);
+                    color: white;
+                    border-top-right-radius: 20px;
+                    border-top-left-radius: 20px;
+                    padding: 5px 0;
+                    justify-content: center;
+                    align-items: center;
+
+                    p {
+                        font-size: 1.1rem;
+                        font-weight: bold;
+
+                    }
+                }
+
+                .box-container {
+                    display: flex;
+                    margin-bottom: 2px;
+                    gap: 10px;
+
+                }
+
+                .box {
+                    padding: 0px 10px;
+                    width: 232px;
+                    height: 20px;
+                    border-radius: 20px;
+                    background: white;
+
+
+
+                    a {
+                        color: rgba(0, 123, 131, 1);
+                        font-size: 0.2rem;
+                        text-decoration: none;
+
+
+
+                    }
+                }
+
+            }
+
+            ol {
+                padding-left: 6rem;
+                padding-right: 4rem;
+            }
+        }
+    }
+
+    @media (min-width: 1024px){
+        .outer-layer .second-main-container{
+            display: flex;
+            flex-direction: row;
+            .bookmark-container{
+                display: flex;
+                background-color: #B4F1F5;
+                flex-direction: column;
+                border-radius: 20px;
+                height: 40%;
+                box-sizing: content-box;
+                position: -webkit-sticky; /* For Safari */
+                position: sticky;
+                margin-left: 2%;
+                top: 1%;
+                .bookmark-header{
+                    background-color: #007B83;
+                    border-top-right-radius: 20px;
+                    border-top-left-radius: 20px;
+                    h3{
+                        color: white;
+                        font-size:  1.5rem;
+                    }
+                }
+
+                .btns-container{
+                    display: flex;
+                    flex-direction: column;
+                    padding-top: 1rem;
+                    padding-left: 1rem;
+                    padding-right: 1rem;
+                    .top-btns .left-btns li a, 
+                    .top-btns .right-btns li a,
+                    .bottom-btn a{
+                        color: #007B83;
+                        background-color: white;
+                        border-radius: 1.25rem;
+                        padding: 0.63rem 1.25rem;
+                        display: block;
+                        text-decoration: none;
+                        width: 7rem;
+                        height: 1rem;
+                        font-size: .8rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+
+                    .top-btns .left-btns, 
+                    .top-btns .right-btns{
+                        padding: 0;
+                        margin: 0 auto;
+                        list-style-type: none;
+                    }
+                    .top-btns{
+                        display: flex;
+                        flex-direction: row;
+                        gap: 1rem;
+                        .left-btns, .right-btns{
+                            display: flex;
+                            flex-direction: column;
+                            gap: .2rem;
+                        }
+                    }
+
+                    .bottom-btn{
+                        margin: 1rem auto;
+                        margin-bottom: 1.7rem;
+                    }
+
+                    
+                }
+            }
+
+            .main-content{
+                width: 80%;
+                margin-left: 0;
+            }
+        }
+    }
+
+    @media(min-width: 1200px) {
+        .outer-layer .second-main-container ol li {
+            padding-bottom: 10rem;
+        }
+    }
+
+
+    @media(min-width: 1440px) {
+        .outer-layer {
+            margin: 0 auto;
+            width: 70vw;
+            .second-main-container{
+                .bookmark-container{
+                    margin-left: 1%;
+                    margin-top: 5%;
+                    .btns-container{
+                        .top-btns .left-btns li a, 
+                        .top-btns .right-btns li a,
+                        .bottom-btn a{
+                            font-size: .87rem;
+                            width: 7rem;
+                            height: 1.5rem;
+                        }
+                    }
+                }
+
+                .main-content{
+                    width: 100%;
+                    margin-left: -5%;
+                }
+            }
+        }
+    }
+
+
+
+    @media (min-width: 2560px) {
+        .outer-layer {
+
+            .privacy-container {
+
+
+                h1 {
+                    font-size: 4rem;
+
+                }
+            }
+
+            .second-main-container {
+
+                font-size: 2rem;
+                .bookmark-container .btns-container{
+                    .top-btns .left-btns li a, 
+                    .top-btns .right-btns li a,
+                    .bottom-btn a{
+                        font-size: 1.2rem;
+                        width: 10rem;
+                        height: 1.5rem;
+                    }
+                }
+                ol {
+                    padding-left: 15rem;
+                    padding-right: 12rem;
+
+                    li {
+                        padding-bottom: 20rem;
+                    }
+
+                }
+
+                .bigger {
+                    font-size: 2.5rem;
+                }
+            }
+
+        }
+    }
+}
