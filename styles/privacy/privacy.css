@@ -44,6 +44,9 @@
   overflow-wrap: break-word;
   font-size: 1.1rem;
 }
+.privacy-main-container .outer-layer .second-main-container .bookmark-container {
+  display: none;
+}
 .privacy-main-container .outer-layer .second-main-container span {
   font-weight: 800;
 }
@@ -73,9 +76,122 @@
   font-size: 1.5rem;
 }
 @media (min-width: 768px) {
+  .privacy-main-container .outer-layer .second-main-container .card {
+    width: 30%;
+    margin: 50px;
+    background: #B4F1F5;
+    text-align: center;
+    border-radius: 20px;
+    position: relative;
+    float: left;
+  }
+  .privacy-main-container .outer-layer .second-main-container .card .top-card {
+    width: 100%;
+    background-color: rgb(0, 123, 131);
+    color: white;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    padding: 5px 0;
+    justify-content: center;
+    align-items: center;
+  }
+  .privacy-main-container .outer-layer .second-main-container .card .top-card p {
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+  .privacy-main-container .outer-layer .second-main-container .card .box-container {
+    display: flex;
+    margin-bottom: 2px;
+    gap: 10px;
+  }
+  .privacy-main-container .outer-layer .second-main-container .card .box {
+    padding: 0px 10px;
+    width: 232px;
+    height: 20px;
+    border-radius: 20px;
+    background: white;
+  }
+  .privacy-main-container .outer-layer .second-main-container .card .box a {
+    color: rgb(0, 123, 131);
+    font-size: 0.2rem;
+    text-decoration: none;
+  }
   .privacy-main-container .outer-layer .second-main-container ol {
     padding-left: 6rem;
     padding-right: 4rem;
+  }
+}
+@media (min-width: 1024px) {
+  .privacy-main-container .outer-layer .second-main-container {
+    display: flex;
+    flex-direction: row;
+  }
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container {
+    display: flex;
+    background-color: #B4F1F5;
+    flex-direction: column;
+    border-radius: 20px;
+    height: 40%;
+    box-sizing: content-box; /* For Safari */
+    position: sticky;
+    margin-left: 2%;
+    top: 1%;
+  }
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .bookmark-header {
+    background-color: #007B83;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+  }
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .bookmark-header h3 {
+    color: white;
+    font-size: 1.5rem;
+  }
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .btns-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .btns-container .top-btns .left-btns li a,
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .btns-container .top-btns .right-btns li a,
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .btns-container .bottom-btn a {
+    color: #007B83;
+    background-color: white;
+    border-radius: 1.25rem;
+    padding: 0.63rem 1.25rem;
+    display: block;
+    text-decoration: none;
+    width: 6rem;
+    height: 1rem;
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .btns-container .top-btns .left-btns,
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .btns-container .top-btns .right-btns {
+    padding: 0;
+    margin: 0 auto;
+    list-style-type: none;
+  }
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .btns-container .top-btns {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .btns-container .top-btns .left-btns, .privacy-main-container .outer-layer .second-main-container .bookmark-container .btns-container .top-btns .right-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .btns-container .bottom-btn {
+    margin: 1rem auto;
+    margin-bottom: 1.7rem;
+  }
+  .privacy-main-container .outer-layer .second-main-container .main-content {
+    width: 80%;
+    margin-left: 0;
   }
 }
 @media (min-width: 1200px) {
@@ -86,7 +202,22 @@
 @media (min-width: 1440px) {
   .privacy-main-container .outer-layer {
     margin: 0 auto;
-    width: 50vw;
+    width: 70vw;
+  }
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container {
+    margin-left: 1%;
+    margin-top: 5%;
+  }
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .btns-container .top-btns .left-btns li a,
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .btns-container .top-btns .right-btns li a,
+  .privacy-main-container .outer-layer .second-main-container .bookmark-container .btns-container .bottom-btn a {
+    font-size: 0.87rem;
+    width: 7rem;
+    height: 1.5rem;
+  }
+  .privacy-main-container .outer-layer .second-main-container .main-content {
+    width: 100%;
+    margin-left: -5%;
   }
 }
 @media (min-width: 2560px) {

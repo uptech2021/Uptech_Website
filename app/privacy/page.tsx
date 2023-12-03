@@ -15,97 +15,52 @@ export default function Privacy() {
             <h1>Privacy Policy</h1>
 
           </section>
-          <main className='second-main-container'>
+          <div className='second-main-container'>
 
-
-            <p style={{ fontWeight: 800 }}>Effective date: 2022-01-06</p>
-
-            <div className="card">
-              <div className='top-card'>
-                <p>BookMark</p>
-              </div>
-              <div className='box-container'>
-                <div className='box'>
-                  <a href="#Info">Introduction</a>
-                </div>
-                <div className="box">
-                  <a href="#Cali">California Privacy Protection</a>
-                </div>
-              </div>
-              <div className='box-container'>
-                <div className="box">
-                  <a href="#Definitions">Definitions</a>
-                </div>
-                <div className="box">
-                  <a href="#ServiceP">Service Providers</a>
-                </div>
-              </div>
-              <div className='box-container'>
-                <div className="box">
-                  <a href="#InfoCollect">Information collection of data</a>
-                </div>
-                <div className="box">
-                  <a href="#Ana">Analytics</a>
-                </div>
-              </div>
-              <div className='box-container'>
-                <div className="box">
-                  <a href="">Types of data collected</a>
-                </div>
-                <div className="box">
-                  <a href="#CI'">CI/CD Tools</a>
-                </div>
-              </div>
-              <div className='box-container'>
-                <div className="box">
-                  <a href="#Data">Use of data</a>
-                </div>
-                <div className="box">
-                  <a href="#Ad">Advertising</a>
-                </div>
-              </div>
-              <div className='box-container'>
-                <div className="box">
-                  <a href="#Ren">Retention of data</a>
-                </div>
-                <div className="box">
-                  <a href="#Behave">Behavioral Marketing</a>
-                </div>
-              </div>
-              <div className='box-container'>
-                <div className="box">
-                  <a href="#Trans">Transfer of data</a>
-                </div>
-                <div className="box">
-                  <a href="#Pay">Payments</a>
-                </div>
-              </div>
-              <div className='box-container'>
-                <div className="box">
-                  <a href="#Disclose">Disclosure of data</a>
-                </div>
-                <div className="box">
-                  <a href="#Link">Links to other webstes</a>
-                </div>
-              </div>
-              <div className='box-container'>
-                <div className="box">
-                  <a href="#Secure"> Security of Data</a>
-                </div>
-                <div className="box">
-                  <a href="#Child">Children&&apos;s Privacy</a>
-                </div>
-              </div>
-              <div className='box-container'>
-                <div className="box">
-                  <a href="#Intro">Introduction</a>
-                </div>
-                <div className="box">
-                  <a href="#Change">Changes to this privacy policy</a>
-                </div>
-              </div>
+          <aside className='bookmark-container'>
+            <div className="bookmark-header">
+              <h3>BookMark</h3>
             </div>
 
+            <div className="btns-container">
+              <div className="top-btns">
+                <ul className="left-btns">
+                  <li><a href="#" className="btn">Introduction</a></li>
+                  <li><a href="#" className="btn">Definitions</a></li>
+                  <li><a href="#" className="btn">Information collection of data</a></li>
+                  <li><a href="#" className="btn">Types of data collected</a></li>
+                  <li><a href="#" className="btn">Use of data</a></li>
+                  <li><a href="#" className="btn">Retention of data</a></li>
+                  <li><a href="#" className="btn">Transfer of data</a></li>
+                  <li><a href="#" className="btn">Disclosure of data</a></li>
+                  <li><a href="#" className="btn">Security of data</a></li>
+                  <li><a href="#" className="btn">Introduction</a></li>
+                </ul>
+
+                <ul className="right-btns">
+                  <li><a href="#" className="btn">California privacy protection</a></li>
+                  <li><a href="#" className="btn">Service providers</a></li>
+                  <li><a href="#" className="btn">Analytics</a></li>
+                  <li><a href="#" className="btn">CI/CD Tools</a></li>
+                  <li><a href="#" className="btn">Advertising</a></li>
+                  <li><a href="#" className="btn">Behavioral Marketing</a></li>
+                  <li><a href="#" className="btn">Payments</a></li>
+                  <li><a href="#" className="btn">Links to other websites</a></li>
+                  <li><a href="#" className="btn">Children's privacy</a></li>
+                  <li><a href="#" className="btn">Changes to this privacy policy</a></li>
+                </ul>
+              </div>
+
+              <div className="bottom-btn">
+                  <a href="" className="contact-btn">Contact Us</a>
+              </div>
+
+            </div>
+          </aside>
+
+
+          <main className='main-content'>
+            <p style={{ fontWeight: 800 }}>Effective date: 2022-01-06</p>
 
             <ol>
               <li>
@@ -526,9 +481,10 @@ export default function Privacy() {
               </li>
 
             </ol>
-          
-          
           </main>
+          
+          
+          </div>
         </div>
         <Footer />
       </div>
