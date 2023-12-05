@@ -31,12 +31,31 @@ footer .uptech-details .company-details .company-name h5 {
 footer .uptech-details .company-details .swap {
   margin-top: 1.09rem;
 }
-footer .uptech-details .company-details .swap .footer-links {
+footer .uptech-details .company-details .swap li {
+  list-style-type: none;
+}
+footer .uptech-details .company-details .swap li .footer-links {
   margin: 0;
   font-size: 1.4rem;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  color: white;
+  text-decoration: none;
+}
+footer .uptech-details .company-details .swap li .footer-links:hover {
+  color: #6CFCEE;
+  animation: hoverAnimation 0.5s forwards;
+}
+@keyframes hoverAnimation {
+  0% {
+    color: initial;
+    font-size: initial;
+  }
+  100% {
+    color: #6CFCEE;
+    font-size: 1.5rem;
+  }
 }
 footer .uptech-details .social-icons {
   display: flex;
@@ -45,9 +64,20 @@ footer .uptech-details .social-icons {
   gap: 1.37rem;
   margin-top: 2.5rem;
 }
-footer .uptech-details .social-icons .icon {
+footer .uptech-details .social-icons li {
+  list-style-type: none;
+}
+footer .uptech-details .social-icons li .icon {
   width: 4.06463rem;
   height: 5.48988rem;
+  cursor: pointer;
+  color: initial;
+  font-size: initial;
+  transition: color 0.3s, font-size 0.3s;
+}
+footer .uptech-details .social-icons li .icon:hover {
+  color: #6CFCEE;
+  font-size: 1.3rem;
 }
 footer .swap-mobile {
   margin-top: 2.53rem;

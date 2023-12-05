@@ -34,12 +34,35 @@ footer{
 
             .swap{
                 margin-top: 1.09rem;
-                .footer-links{
-                    margin: 0;
-                    font-size: 1.4rem;
-                    font-style: normal;
-                    font-weight: 500;
-                    line-height: normal;
+                
+                li{
+                    list-style-type: none;
+                    .footer-links{
+                        margin: 0;
+                        font-size: 1.4rem;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: normal;
+                        color: white;
+                        text-decoration: none;
+
+                        &:hover{
+                            color: #6CFCEE;
+                            animation: hoverAnimation 0.5s forwards;
+                        }
+            
+                        @keyframes hoverAnimation {
+                            0% {
+                                color: initial;
+                                font-size: initial;
+                            }
+                            100% {
+                                color: #6CFCEE;
+                                font-size: 1.5rem;
+                            }
+                        }
+            
+                    }
                 }
             }
 
@@ -53,9 +76,22 @@ footer{
             gap: 1.37rem;
             margin-top: 2.5rem;
 
-            .icon{
-                width: 4.06463rem;
-                height: 5.48988rem;
+            li{
+                list-style-type: none;
+                .icon{
+                    width: 4.06463rem;
+                    height: 5.48988rem;
+                    cursor: pointer;
+                    color: initial;
+                    font-size: initial;
+                    transition: color 0.3s, font-size 0.3s;
+                  
+                    &:hover {
+                      color: #6CFCEE;
+                      font-size: 1.3rem;
+                    }
+        
+                }
             }
         }
 

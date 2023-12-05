@@ -18,6 +18,13 @@
   color: black;
   text-decoration: none;
   cursor: pointer;
+  color: initial;
+  font-size: initial;
+  transition: color 0s, font-size 1.3s;
+}
+.header .navbar .nav-items .nav-links a:hover, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .navbar .nav-items .nav-links a:hover {
+  color: #6CFCEE;
+  font-size: 1.3rem;
 }
 .header .menu-btn, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .menu-btn {
   max-width: 3rem;

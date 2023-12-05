@@ -37,6 +37,7 @@ export default function Home() {
 
         <section className="welcome-section">
           <Navbar />
+
           <div className="call-to-action">
 
             <div className="welcome-container">
@@ -55,7 +56,6 @@ export default function Home() {
             </div>
 
           </div>
-
 
         </section>
 
@@ -294,7 +294,9 @@ export default function Home() {
 
                     <p>The Purpose Of Ourlime And What UpTech Incorporated Hope To Achieve With Our App.</p>
                 
-                    <button className='sign-up-btn'>Sign Up</button>
+                    <button className='sign-up-btn' onClick={()=>{
+                      window.open('https://ourlime.com', '_blank');}
+                    }>Sign Up</button>
                 </div>
             </section>
 

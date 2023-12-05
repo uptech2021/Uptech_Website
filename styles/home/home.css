@@ -55,7 +55,15 @@
   text-align: center;
   font-family: "THICCBOI-SemiBold";
   font-weight: 600;
-  font-size: 1.8rem;
+  font-size: 1rem;
+}
+@media (min-width: 1024px) {
+  .home-main-container .outer-layer .welcome-section .call-to-action .welcome-container h1 {
+    font-size: 6rem;
+  }
+  .home-main-container .outer-layer .welcome-section .call-to-action .welcome-container p {
+    font-size: 1.5rem;
+  }
 }
 .home-main-container .outer-layer .welcome-section .call-to-action .image-wrapper {
   width: 100%;
@@ -81,15 +89,15 @@
   text-align: center;
 }
 .home-main-container .outer-layer .main-section h2 {
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: 700;
   color: #2ACDE4;
 }
 .home-main-container .outer-layer .main-section h3 {
-  font-size: 2.6rem;
+  font-size: 2rem;
 }
 .home-main-container .outer-layer .main-section p {
-  font-size: 1.6rem;
+  font-size: 1rem;
   text-align: center;
 }
 .home-main-container .outer-layer .main-section .features {
@@ -101,7 +109,8 @@
   margin-top: 2.75rem;
 }
 .home-main-container .outer-layer .main-section .features .features-container p {
-  margin: 1.73rem 0.88rem 0 0.94rem;
+  text-align: left;
+  margin: 1.73rem 0 0 0.5rem;
 }
 .home-main-container .outer-layer .main-section .features .features-container .dots-img {
   display: none;
@@ -215,6 +224,7 @@
   border: none;
   border-radius: 3.875rem;
   color: white;
+  text-decoration: none;
   background: #06E95C;
   padding: 0.73rem 0.8rem 0.67rem 1.01rem;
   margin-top: 2rem;
@@ -240,6 +250,7 @@
   font-size: 2.7rem;
   font-style: normal;
   font-weight: 700;
+  cursor: pointer;
   min-width: 15.9375rem;
   max-width: 19rem;
   min-height: 14.57706rem;
@@ -248,6 +259,15 @@
   border-radius: 3.125rem;
   background: #6CFCEE;
   box-shadow: 12px 17px 11px 0px rgba(0, 0, 0, 0.25), 24px 4px 30px 0px rgba(0, 0, 0, 0.25) inset;
+  transition: color 0.3s, font-size 0.3s;
+}
+.home-main-container .outer-layer .main-section .about-us .btns-containers .large-btn-group:hover {
+  background-color: #89FC6C;
+  font-size: 1.5rem;
+  min-width: 16rem;
+  max-width: 19.5rem;
+  min-height: 15rem;
+  max-height: 16.5rem;
 }
 .home-main-container .outer-layer .main-section .about-us .about-us-img-wrapper {
   width: auto;
@@ -260,6 +280,11 @@
   height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
+}
+@media (min-width: 1024px) {
+  .home-main-container .outer-layer .main-section p {
+    font-size: 1.3rem;
+  }
 }
 .home-main-container .outer-layer .dots-wrapper {
   display: none;
@@ -279,15 +304,7 @@
     height: auto;
     flex-direction: column;
     margin: -8rem 0 0 0;
-    align-items: unset;
-  }
-  .home-main-container .outer-layer .welcome-section .call-to-action .welcome-container h1 {
-    text-align: right;
-    font-size: 4.2rem;
-  }
-  .home-main-container .outer-layer .welcome-section .call-to-action .welcome-container p {
-    text-align: right;
-    font-size: 1.5rem;
+    align-items: end;
   }
   .home-main-container .outer-layer .welcome-section .call-to-action .image-wrapper {
     width: 60%;
@@ -296,12 +313,6 @@
   .home-main-container .outer-layer .welcome-section .call-to-action .image-wrapper .call-to-action-img {
     width: 100%;
     height: auto;
-  }
-  .home-main-container .outer-layer .main-section h2 {
-    font-size: 5rem;
-  }
-  .home-main-container .outer-layer .main-section p {
-    font-size: 2rem;
   }
   .home-main-container .outer-layer .main-section .features .features-container p {
     width: 80%;
@@ -474,6 +485,13 @@
     min-width: 20rem;
     min-height: 20rem;
     font-size: 3.2rem;
+    transition: color 0.3s, font-size 0.3s;
+  }
+  .home-main-container .outer-layer .main-section .about-us .about-us-btns .btns-containers .large-btn-group:hover {
+    background-color: #89FC6C;
+    font-size: 3rem;
+    min-width: 22rem;
+    min-height: 22rem;
   }
   .home-main-container .outer-layer .main-section .about-us .about-us-btns .btns-containers .large-btn-group:first-child, .home-main-container .outer-layer .main-section .about-us .about-us-btns .btns-containers .large-btn-group:last-child {
     margin-left: -50%;
@@ -495,6 +513,9 @@
   .home-main-container .outer-layer .welcome-section .call-to-action {
     padding-left: 5%;
     padding-right: 5%;
+  }
+  .home-main-container .outer-layer .main-section .main-section p {
+    font-size: 1.5rem;
   }
   .home-main-container .outer-layer .main-section .education-container .project-management-container {
     justify-content: center;
