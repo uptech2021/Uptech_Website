@@ -1,0 +1,99 @@
+@media (min-width: 1024px){
+    .bookmark-container{
+        display: flex;
+        background-color: #B4F1F5;
+        flex-direction: column;
+        border-radius: 20px;
+        height: 40%;
+        box-sizing: content-box;
+        position: -webkit-sticky; /* For Safari */
+        position: sticky;
+        margin-left: 2%;
+        top: 1%;
+        .bookmark-header{
+            background-color: #007B83;
+            border-top-right-radius: 20px;
+            border-top-left-radius: 20px;
+            h3{
+                color: white;
+                font-size:  1.5rem;
+            }
+        }
+
+        .btns-container{
+            display: flex;
+            flex-direction: column;
+            padding-top: 1rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            .top-btns .left-btns li a, 
+            .top-btns .right-btns li a,
+            .bottom-btn a{
+                color: #007B83;
+                background-color: white;
+                border-radius: 1.25rem;
+                padding: 0.63rem 1.25rem;
+                display: block;
+                text-decoration: none;
+                width: 7rem;
+                height: 1rem;
+                font-size: .8rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .top-btns .left-btns, 
+            .top-btns .right-btns{
+                padding: 0;
+                margin: 0 auto;
+                list-style-type: none;
+            }
+            .top-btns{
+                display: flex;
+                flex-direction: row;
+                gap: 1rem;
+                .left-btns, .right-btns{
+                    display: flex;
+                    flex-direction: column;
+                    gap: .2rem;
+                }
+            }
+
+            .bottom-btn{
+                margin: 1rem auto;
+                margin-bottom: 1.7rem;
+            }
+
+            
+        }
+    }
+}
+
+@media (min-width: 1024px){
+    .bookmark-container{
+        margin-left: 1%;
+        margin-top: 5%;
+        .btns-container{
+            .top-btns .left-btns li a, 
+            .top-btns .right-btns li a,
+            .bottom-btn a{
+                font-size: .87rem;
+                width: 7rem;
+                height: 1.5rem;
+            }
+        }
+    }
+}
+
+@media (min-width: 2560px) {
+    .bookmark-container .btns-container{
+        .top-btns .left-btns li a, 
+        .top-btns .right-btns li a,
+        .bottom-btn a{
+            font-size: 1.2rem;
+            width: 10rem;
+            height: 1.5rem;
+        }
+    }
+}
