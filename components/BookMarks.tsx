@@ -16,34 +16,34 @@ export default function BookMarks() {
                 <div className="btns-container">
                     <div className="top-btns">
                     <ul className="left-btns">
-                        <li><a href="#" className="btn">Introduction</a></li>
-                        <li><a href="#" className="btn">Definitions</a></li>
-                        <li><a href="#" className="btn">Information collection of data</a></li>
+                        <li><a href="#Info" className="btn">Introduction</a></li>
+                        <li><a href="#Definitions" className="btn">Definitions</a></li>
+                        <li><a href="#InfoCollect" className="btn">Information collection of data</a></li>
                         <li><a href="#" className="btn">Types of data collected</a></li>
-                        <li><a href="#" className="btn">Use of data</a></li>
-                        <li><a href="#" className="btn">Retention of data</a></li>
-                        <li><a href="#" className="btn">Transfer of data</a></li>
-                        <li><a href="#" className="btn">Disclosure of data</a></li>
-                        <li><a href="#" className="btn">Security of data</a></li>
+                        <li><a href="#Data" className="btn">Use of data</a></li>
+                        <li><a href="#Ren" className="btn">Retention of data</a></li>
+                        <li><a href="#Trans" className="btn">Transfer of data</a></li>
+                        <li><a href="#Disclose" className="btn">Disclosure of data</a></li>
+                        <li><a href="#Secure" className="btn">Security of data</a></li>
                         <li><a href="#" className="btn">Introduction</a></li>
                     </ul>
 
                     <ul className="right-btns">
-                        <li><a href="#" className="btn">California privacy protection</a></li>
-                        <li><a href="#" className="btn">Service providers</a></li>
-                        <li><a href="#" className="btn">Analytics</a></li>
-                        <li><a href="#" className="btn">CI/CD Tools</a></li>
-                        <li><a href="#" className="btn">Advertising</a></li>
-                        <li><a href="#" className="btn">Behavioral Marketing</a></li>
-                        <li><a href="#" className="btn">Payments</a></li>
-                        <li><a href="#" className="btn">Links to other websites</a></li>
-                        <li><a href="#" className="btn">Children&apos;s privacy</a></li>
-                        <li><a href="#" className="btn">Changes to this privacy policy</a></li>
+                        <li><a href="#Cali" className="btn">California privacy protection</a></li>
+                        <li><a href="#ServiceP" className="btn">Service providers</a></li>
+                        <li><a href="#Ana" className="btn">Analytics</a></li>
+                        <li><a href="#CI" className="btn">CI/CD Tools</a></li>
+                        <li><a href="#Ad" className="btn">Advertising</a></li>
+                        <li><a href="#Behave" className="btn">Behavioral Marketing</a></li>
+                        <li><a href="#Pay" className="btn">Payments</a></li>
+                        <li><a href="#Link" className="btn">Links to other websites</a></li>
+                        <li><a href="#Child" className="btn">Children&apos;s privacy</a></li>
+                        <li><a href="#Change" className="btn">Changes to this privacy policy</a></li>
                     </ul>
                     </div>
 
                     <div className="bottom-btn">
-                        <a href="" className="contact-btn">Contact Us</a>
+                        <a href="#Contact" className="contact-btn">Contact Us</a>
                     </div>
                 </div>
             ) : (
