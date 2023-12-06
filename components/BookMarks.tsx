@@ -50,40 +50,40 @@ export default function BookMarks() {
                 <div className="btns-container">
                     <div className="top-btns">
                         <ul className="left-btns">
-                            <li><a href="#" className="btn">Introduction</a></li>
-                            <li><a href="#" className="btn">Communication</a></li>
-                            <li><a href="#" className="btn">Purchases</a></li>
-                            <li><a href="#" className="btn">Contests, Sweepstakes and protion</a></li>
-                            <li><a href="#" className="btn">Subscription</a></li>
-                            <li><a href="#" className="btn">Free Trial</a></li>
-                            <li><a href="#" className="btn">Fee Changes</a></li>
-                            <li><a href="#" className="btn">Refunds</a></li>
-                            <li><a href="#" className="btn">Contents</a></li>
-                            <li><a href="#" className="btn">Prohibited Users</a></li>
-                            <li><a href="#" className="btn">Analytics</a></li>
-                            <li><a href="#" className="btn">Use by Minors</a></li>
-                            <li><a href="#" className="btn">Accounts</a></li>
+                            <li><a href="#intro" className="btn">Introduction</a></li>
+                            <li><a href="#comms" className="btn">Communication</a></li>
+                            <li><a href="#purchases" className="btn">Purchases</a></li>
+                            <li><a href="#contests" className="btn">Contests, Sweepstakes and protion</a></li>
+                            <li><a href="#subscriptions" className="btn">Subscription</a></li>
+                            <li><a href="#free-tl" className="btn">Free Trial</a></li>
+                            <li><a href="#fee-cges" className="btn">Fee Changes</a></li>
+                            <li><a href="#refunds" className="btn">Refunds</a></li>
+                            <li><a href="#content" className="btn">Contents</a></li>
+                            <li><a href="#prohibited-u" className="btn">Prohibited Users</a></li>
+                            <li><a href="#analytics" className="btn">Analytics</a></li>
+                            <li><a href="#minor-u" className="btn">Use by Minors</a></li>
+                            <li><a href="#accounts" className="btn">Accounts</a></li>
                         </ul>
 
                         <ul className="right-btns">
-                            <li><a href="#" className="btn">Intellectual Property</a></li>
-                            <li><a href="#" className="btn">Copy Right Policy</a></li>
-                            <li><a href="#" className="btn">DMCA</a></li>
-                            <li><a href="#" className="btn">Error Reporting and Feedback</a></li>
-                            <li><a href="#" className="btn">Links to other Websites</a></li>
-                            <li><a href="#" className="btn">Disclaimer of Warranty</a></li>
-                            <li><a href="#" className="btn">Limitation of Liability</a></li>
-                            <li><a href="#" className="btn">Termination</a></li>
-                            <li><a href="#" className="btn">Governing the Law</a></li>
-                            <li><a href="#" className="btn">Changes to Services</a></li>
-                            <li><a href="#" className="btn">Amendments to Terms</a></li>
-                            <li><a href="#" className="btn">Waiver and Severability</a></li>
-                            <li><a href="#" className="btn">Acknowledgment</a></li>
+                            <li><a href="#intellectual-perty" className="btn">Intellectual Property</a></li>
+                            <li><a href="#copyright-pcy" className="btn">Copy Right Policy</a></li>
+                            <li><a href="#dmca" className="btn">DMCA</a></li>
+                            <li><a href="#error-rrt" className="btn">Error Reporting and Feedback</a></li>
+                            <li><a href="#links" className="btn">Links to other Websites</a></li>
+                            <li><a href="#disclaimer" className="btn">Disclaimer of Warranty</a></li>
+                            <li><a href="#liability" className="btn">Limitation of Liability</a></li>
+                            <li><a href="#termination" className="btn">Termination</a></li>
+                            <li><a href="#governing-l" className="btn">Governing Law</a></li>
+                            <li><a href="#service-cge" className="btn">Changes to Services</a></li>
+                            <li><a href="#amendments" className="btn">Amendments to Terms</a></li>
+                            <li><a href="#waiver" className="btn">Waiver and Severability</a></li>
+                            <li><a href="#acknowledgement" className="btn">Acknowledgment</a></li>
                         </ul>
                     </div>
 
                     <div className="bottom-btn">
-                        <a href="" className="contact-btn">Contact Us</a>
+                        <a href="#contact" className="contact-btn">Contact Us</a>
                     </div>
                 </div>
             )}
