@@ -61,7 +61,7 @@ export default function BookMarks() {
                             <li><a href="#" className="btn">Contents</a></li>
                             <li><a href="#" className="btn">Prohibited Users</a></li>
                             <li><a href="#" className="btn">Analytics</a></li>
-                            <li><a href="#" className="btn">User by Minors</a></li>
+                            <li><a href="#" className="btn">Use by Minors</a></li>
                             <li><a href="#" className="btn">Accounts</a></li>
                         </ul>
 
