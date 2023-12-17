@@ -33,11 +33,13 @@
   transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out; /* Transition effect */
   position: absolute;
   top: 10%; /* Adjust this based on your header height */
-  right: 0;
-  width: 50%;
+  right: 1rem;
+  width: 70%;
   z-index: 3;
   background-color: #6CFCEE;
   border-radius: 2.75rem;
+  height: 80%;
+  overflow: hidden;
 }
 .header .dropdown .dropdown-menu, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .dropdown .dropdown-menu {
   display: flex;
