@@ -3,16 +3,15 @@
   min-width: 15.375rem;
   display: flex;
   align-items: center;
+  position: relative;
   /* Hide the regular navbar on small screens */
-  /* Hide the dropdown by default */
-  /* Styles for when the dropdown is visible */
 }
-.header .uptech-logo, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .uptech-logo {
-  max-width: 9rem;
+.header .logo-wrapper, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .logo-wrapper {
+  width: 100%;
+}
+.header .logo-wrapper img, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .logo-wrapper img {
+  width: 100%;
   height: 100%;
-  margin: 0;
-  -o-object-fit: contain;
-     object-fit: contain;
 }
 .header .navbar, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .navbar {
   display: none;
@@ -28,96 +27,72 @@
   font-size: 1.3rem;
 }
 .header .dropdown, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .dropdown {
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out; /* Transition effect */
-  position: absolute;
-  top: 10%; /* Adjust this based on your header height */
-  right: 1rem;
-  width: 70%;
-  z-index: 3;
-  background-color: #6CFCEE;
-  border-radius: 2.75rem;
-  height: 80%;
-  overflow: hidden;
-}
-.header .dropdown .dropdown-menu, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .dropdown .dropdown-menu {
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-  width: auto;
-}
-.header .dropdown .dropdown-menu .top-line, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .dropdown .dropdown-menu .top-line {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.header .dropdown .dropdown-menu .top-line .nav-head, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .dropdown .dropdown-menu .top-line .nav-head {
-  color: #fff;
-  margin-left: 0.5rem;
-}
-.header .dropdown .dropdown-menu .top-line .nav-close-btn, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .dropdown .dropdown-menu .top-line .nav-close-btn {
-  max-width: 1.5rem;
-  max-height: 1.5rem;
-  background: transparent;
-  border: none;
-}
-.header .dropdown .dropdown-menu .nav-links, .header .dropdown .dropdown-menu .nav-links a, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .dropdown .dropdown-menu .nav-links, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .dropdown .dropdown-menu .nav-links a {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-  background-color: white;
-  border-radius: 1.5rem;
-  width: auto;
-  transition: color 0s, font-size 1.3s;
-}
-.header .dropdown .dropdown-menu .nav-links:hover, .header .dropdown .dropdown-menu .nav-links a:hover, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .dropdown .dropdown-menu .nav-links:hover, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .dropdown .dropdown-menu .nav-links a:hover {
-  background-color: #6CFCEE;
-  font-size: 1.3rem;
-  color: #fff;
+  display: none;
 }
 .header .show-dropdown, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .show-dropdown {
+  background-color: #6CFCEE;
+  border-radius: 1rem;
+  position: absolute;
+  margin-top: 17rem;
+  margin-left: 1rem;
+  z-index: 3;
+  height: 15rem;
+  width: 15rem;
   display: block;
-  visibility: visible;
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out, visibility 0s 0s; /* No delay for showing */
-  /* Styles for the dropdown menu items */
-  /* Styles for each link in the dropdown */
-  /* Hover effect for links */
 }
 .header .show-dropdown .dropdown-menu, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .show-dropdown .dropdown-menu {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  display: flex;
+  flex-direction: column;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
-.header .show-dropdown .nav-links, .header .show-dropdown .nav-links a, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .show-dropdown .nav-links, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .show-dropdown .nav-links a {
-  background-color: white; /* White background for each link */
-  color: black; /* Text color */
+.header .show-dropdown .dropdown-menu .nav-links, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .show-dropdown .dropdown-menu .nav-links {
+  background-color: white;
+  list-style-type: none;
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  text-align: center;
+}
+.header .show-dropdown .dropdown-menu .nav-links a, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .show-dropdown .dropdown-menu .nav-links a {
   text-decoration: none;
-  padding: 0.5rem 1rem; /* Padding inside each link */
-  margin: 0.5rem 0; /* Margin between links */
-  border-radius: 1.5rem; /* Rounded corners for each link */
-  display: block; /* Make the link fill its container */
-  text-align: center; /* Center the text */
-  font-size: 1rem;
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
-}
-.header .show-dropdown .nav-links:hover, .header .show-dropdown .nav-links a:hover, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .show-dropdown .nav-links:hover, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .show-dropdown .nav-links a:hover {
-  background-color: #6CFCEE; /* Cyan background on hover */
-  color: white; /* White text on hover */
+  color: black;
+  font-weight: 900;
+  font-family: Inter;
 }
 .header .nav-btn, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .nav-btn {
-  max-width: 3rem;
-  max-height: 1.5rem;
   cursor: pointer;
   background: transparent;
   border: none;
-  justify-content: right;
-  margin-left: 80%;
+  margin-left: 30%;
+}
+.header .nav-btn img, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .nav-btn img {
+  width: 2rem;
+}
+@media (min-width: 360px) {
+  .header .show-dropdown, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .show-dropdown {
+    margin-left: 4rem;
+  }
+}
+@media (min-width: 375px) {
+  .header .show-dropdown, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .show-dropdown {
+    margin-left: 3rem;
+  }
+}
+@media (min-width: 412px) {
+  .header .show-dropdown, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .show-dropdown {
+    margin-left: 6rem;
+  }
+}
+@media (min-width: 425px) {
+  .header .show-dropdown, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .show-dropdown {
+    margin-left: 6rem;
+  }
 }
 @media (min-width: 768px) {
-  .header .logo-wrapper .uptech-logo, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .logo-wrapper .uptech-logo {
-    width: 100%;
+  .header .logo-wrapper img, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .logo-wrapper img {
+    width: 70%;
     max-width: unset;
   }
   .header .nav-btn, .objectives-main-container .outer-layer .objectives-first-container .objectives-section .header .nav-btn {
