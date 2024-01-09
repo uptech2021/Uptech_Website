@@ -21,7 +21,7 @@ export default function Objectives(){
 
     // const { width } = useWindowSize();
 
-    //Refs and inView states for each section   
+    //Refs and inView states for each section
     const [cyberRef, cyberInView] = useInView({triggerOnce: true, threshold: 0.1});
     const [datasecurityRef, dataSecurityInView] = useInView({triggerOnce: true, threshold: 0.1});
     const [datasecurityImageRef, dataSecurityImageInView] = useInView({triggerOnce: true, threshold: 0.5});

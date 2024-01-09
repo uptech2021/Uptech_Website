@@ -24,7 +24,7 @@ export default function Navbar() {
     
     const verticalVariants = {
         hidden: { y: '-100%', opacity: 0 }, // Starts above the screen and invisible
-        visible: { y: 0, x: 0, opacity: 1 },      // Ends at its normal position and visible
+        visible: { y: 0, opacity: 1 },      // Ends at its normal position and visible
       };
 
     const toggleNav = () => {
