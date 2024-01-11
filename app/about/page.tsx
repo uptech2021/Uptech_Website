@@ -1,11 +1,38 @@
+'use client'
+
 import Image from "next/image";
 import airBrush from '@/public/images/About Us/aboutUsImg.svg'
 import "@/styles/about/about.css"
-import React from "react";
+import React from 'react';
 import Navbar from "@/components/Navbar";
 import Footer from '@/components/Footer';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+
 
 export default function About() {
+
+    //Refs and inView states for each section
+    const [aboutRef, aboutInView] = useInView({triggerOnce: true, threshold: 0.1});
+    const [aboutImageRef, aboutImageInView] = useInView({triggerOnce: true, threshold: 0.1});
+    const [founderRef, founderInView] = useInView({triggerOnce: true, threshold: 0.1});
+
+
+    const verticalVariants = {
+        hidden: { y: '-100%', color: "#32CD32", opacity: 0 },  // Starts above the screen and invisible
+        visible: { y: 0, color: "#000", opacity: 1 },    // Ends at its normal position and visible
+    };
+
+    const middleVariants = {
+        hidden: { scale: 0, opacity: 0 },
+        visible: { scale: 1, opacity: 1 }
+    };
+
+    const fadeVariants = {
+        hidden: {opacity: 0},
+        visible: {opacity: 1},
+      };
+
     return (
         <>
             <div className="about-main-container">
@@ -15,19 +42,39 @@ export default function About() {
                             <Navbar />
                         </header>
                         <div className="wrapper">
+                        <motion.div
+                            ref={aboutRef}
+                            initial="hidden"
+                            animate={aboutInView ? "visible" : "hidden"}
+                            variants={verticalVariants}
+                            transition={{duration: 1, ease: "easeInOut"}}>
                             <h1>About Us</h1>
+                        </motion.div>
 
-
+                           
                             <div className="about-img">
+                            <motion.div
+                            ref={aboutImageRef}
+                            initial="hidden"
+                            animate={aboutImageInView ? "visible" : "hidden"}
+                            variants={fadeVariants}
+                            transition={{duration: 3, ease: "easeInOut"}}>
                                 <Image src={airBrush} alt="air" className="air-img" />
+                                </motion.div>
                             </div>
+                            
 
                         </div>
                     </section>
                     <main className="second-main-container">
-
+                    <motion.div
+                            ref={founderRef}
+                            initial="hidden"
+                            animate={founderInView ? "visible" : "hidden"}
+                            variants={middleVariants}
+                            transition={{duration: 3, ease: "easeInOut"}}>
                         <h2>founder&apos;s message</h2>
-
+                    </motion.div>
                         <p>In 2014, I began Ourlime with a focus on sustainable relationships and dating. Facing challenges and an initial setback in 2016, I revisited and revamped the concept. After seven dedicated years, Ourlime is now a reality, reflecting my enduring vision. I hope users see its potential as a safe space for content and community management in their daily lives.</p>
 
 

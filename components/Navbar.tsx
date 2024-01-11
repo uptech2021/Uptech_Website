@@ -53,21 +53,21 @@ export default function Navbar() {
             </button>
 
             {width >= 768 ? (
-                <motion.div
+                <nav className='navbar'>
+                    <motion.div
                 ref={navRef}
                 initial="hidden"
                 animate={navInView ? "visible" : "hidden"}
                 variants={verticalVariants}
                 transition={{duration: 1}}>
-                <nav className='navbar'>
                     <ul className="nav-items">
                         <li className="nav-links"><Link href="/">Home</Link></li>
                         <li className="nav-links"><Link href="/objectives">Objectives</Link></li>
                         <li className="nav-links"><Link href="/about">About us</Link></li>
                         <li className="nav-links"><Link href="/contact">Contact us</Link></li>
                     </ul>
+                    </motion.div>
                 </nav>
-                </motion.div>
             ) : (
                 <nav className={`dropdown ${isNavVisible ? 'show-dropdown' : ''}`}>
                     <ul className="dropdown-menu">
