@@ -34,13 +34,12 @@ export default function Home() {
 
   const [welcomeRef, welcomeInView] = useInView({triggerOnce: true, threshold: 0.1});  
   const [educationRef, educationInView] = useInView({triggerOnce: true, threshold: 0.1});
+  const [educationImgRef, educationImgInView] = useInView({triggerOnce: true, threshold: 0.01 });
   const [projectRef, projectInView] = useInView({triggerOnce: true, threshold: 0.01});
-  const [marketImgRef, marketImgInView] = useInView({triggerOnce: true, threshold: 0.1 });
-  const [aboutInfoRef, aboutInfoInView] = useInView({triggerOnce: true, threshold: 0.1});
+  const [projectImgRef, projectImgInView] = useInView({triggerOnce: true, threshold: 0.01});
+  const [marketRef, marketInView] = useInView({triggerOnce: true, threshold: 0.1 });
+  const [marketImgRef, marketImgInView] = useInView({triggerOnce: true, threshold: 0.01 });
   const [objectivesRef, objectivesInView] = useInView({triggerOnce: true, threshold: 0.1});
-  const [storyRef, storyInView] = useInView({triggerOnce: true, threshold: 0.1});
-  const [forwardRef, forwardInView] = useInView({triggerOnce: true, threshold: 0.1});
-  const [brochureRef, brochureInView] = useInView({triggerOnce: true, threshold: 0.1});
   const [safetyRef, safetyInView] = useInView({triggerOnce: true, threshold: 0.1});
   const [privacyRef, privacyInView] = useInView({triggerOnce: true, threshold: 0.1});
   const [securityRef, securityInView] = useInView({triggerOnce: true, threshold: 0.1});
@@ -66,9 +65,15 @@ export default function Home() {
   };
 
   const belowVariants = {
-    hidden: { x: -100, y: 100, opacity: 0 }, // Starts above the screen and invisible
+    hidden: { x: -100, y: 100, opacity: 0 }, 
     visible: { x: 0, y: 0, opacity: 1 },      // Ends at its normal position and visible
   };
+
+  const rightBelowVariants = {
+    hidden: {x: 100, y: 100, opacity: 0},
+    visible: {x:0, y:0, opacity: 1}
+  }
+  
 
   return (
     <div className="home-main-container">
@@ -136,12 +141,20 @@ export default function Home() {
                 {width >= 768 ? (
                   <>
                     <div className="image-wrapper">
+                    <motion.div
+              ref={educationImgRef}
+              initial="hidden"
+              animate={educationImgInView ? "visible" : "hidden"}
+              variants={belowVariants}
+              transition={{ duration: 0.5, ease: "easeInOut"}} // Adjust the duration and easing
+            >
                       <Image 
                         src={elearning_mobile_view} 
                         className='elearning-img' 
                         alt="elearning"
                         quality={100}
                       />
+                      </motion.div>
                     </div>
 
                   <div className="information">
@@ -194,8 +207,8 @@ export default function Home() {
                     <motion.div
                     ref={marketImgRef}
                     initial="hidden"
-                    animate={marketImgInView ? "visible" : "hidden"}
-                    variants={rightVariants}
+                    animate={marketImgInView ? (console.log("Animating market image"), "visible") : (console.log("Market image hidden"), "hidden")}
+                    variants={rightBelowVariants}
                     transition={{ duration: 1, ease: "easeOut"}} // Adjust the duration and easing
                   >
                       <Image 
@@ -246,6 +259,15 @@ export default function Home() {
               {width >= 768 ? (
                   <>
                     <div className="image-wrapper">
+
+                      {/* <motion.div
+                      ref={projectRef}
+                      initial="hidden"
+                    animate={marketImgInView ? (console.log("Animating market image"), "visible") : (console.log("Market image hidden"), "hidden")}
+                    variants={belowVariants}
+                    transition={{ duration: 1, ease: "easeOut"}} // Adjust the duration and easing
+                  > */}
+                      
                         {/* <Image src={width >= 768 ? projectManagement_pc_view : projectManagement_mobile_view} className='project-management-img' alt="project management image"/> */}
                         <Image 
                           src={width >= 768 ? projectManagement_mobile_view : projectManagement_mobile_view} 
@@ -255,6 +277,7 @@ export default function Home() {
                           quality={100}
                           
                           />
+                          {/* </motion.div> */}
                     </div>
                   
                     <div className="information">
