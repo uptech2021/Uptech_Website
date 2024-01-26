@@ -10,8 +10,6 @@ import Team from "@/components/Team";
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
-
-
 export default function About() {
 
         //Refs and inView states for each section
