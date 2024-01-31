@@ -19,7 +19,7 @@ export default function Team() {
                             <div className="name">
                             <p>Rishi Kowlessar</p>
                             </div>
-                            <p>CHAIRMAN/ CEO/MARKETING AND BRAND MANAGEMENT</p>
+                            <p>FOUNDER /CHAIRMAN/ CEO/MARKETING AND BRAND MANAGEMENT</p>
                             <div className="profile-img">
                                 <Image src={rishi} alt = "Image of Rishi" />
                             </div>
