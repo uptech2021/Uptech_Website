@@ -1,21 +1,44 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Uptech Website
+This repository contains the source code for the Uptech website, a Next.js application. It's set up to work with Docker to ensure a consistent development and production environment.
 
 ## Getting Started
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-First, run the development server:
+### Prerequisites
+- [Git](https://git-scm.com/)
+- [Docker](https://www.docker.com/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Installing
+1. **Clone the Repository**  
+Clone this repository to your local machine:
 ```
+git clone https://github.com/uptechinc/Uptech_Website.git
+cd Uptech_Website
+```
+2. **Building the Docker Image**  
+Build the Docker image using the following command:  
+```
+docker build -t uptech-website .
+```
+3. **Running the Application**  
+- For development (with hot reloading):
+```
+docker run -p 3000:3000 -v $(pwd):/app uptech-website
+```
+- For production:
+```
+docker run -p 3000:3000 uptech-website
+```
+The application will be available at **http://localhost:3000**.  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Workflow for Collaboration
+1. **Pull the Latest Changes**
+Regularly pull the latest changes from the main repository:
+```
+git pull origin main
+```
+2. **Making Changes**
+- Create a new branch for your updates.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. **Creating a Pull Request**
+Go to the repository on GitHub and create a pull request for your branch.
