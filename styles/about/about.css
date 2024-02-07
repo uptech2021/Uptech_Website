@@ -67,6 +67,8 @@
   font-family: THICCBOI, Inter;
   font-size: 1.2rem;
   padding-bottom: 5rem;
+  margin-left: -4rem;
+  width: 70%;
 }
 @media (min-width: 375px) {
   .about-main-container .outer-layer .about-container .about-img {
@@ -106,6 +108,7 @@
     padding-left: 2rem;
     padding-right: 3rem;
     padding-bottom: 10rem;
+    margin-left: 0;
   }
 }
 @media (min-width: 1200px) {
