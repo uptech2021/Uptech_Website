@@ -3,7 +3,7 @@
 import '../../styles/objectives/objectives.css'
 import uptechLogo from '../../public/images/uptech logo.png'
 import menu from '../../public/images/menu.svg'
-import cyberSecurity from '../../public/images/Objectives/header images.png'
+import cyberSecurity from '../../public/images/Objectives/header images.svg'
 import safety from '../../public/images/Objectives/user safety.svg'
 import dataSecurity from '../../public/images/Objectives/data security.svg'
 import privacyLock from '../../public/images/Objectives/Mask group.svg'

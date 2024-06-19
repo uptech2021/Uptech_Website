@@ -29,7 +29,7 @@
                 .objectives-section{
                     min-width: 17.875rem;
                     max-width: 99.125rem;
-                    height: 26.625rem;
+                    height: 29.625rem;
                     display: flex;
                     flex-direction: column;
                     border-radius: 2.75rem;
@@ -56,26 +56,26 @@
 
                     .objectives-content {
                         display: flex;
-                        min-width: 17.12144rem;
-                        min-height: 18.11694rem;
+                        min-width: 13.12144rem;
+                        max-height: 12.11694rem;
                         align-items: center;  /* Vertically center the content */
                         justify-content: center;  /* Horizontally center the content */
                         margin-left: 0.43rem;
                         margin-right: 0.38rem;
-                        margin-top: 4.5rem;
+                        // border: solid black 1px;
                     
                     
                     .cybersecurity-img {
-                        object-fit: contain;
+                        object-fit: contain;    
                         width: 100%;
                         height: 100%;
-                        z-index: 2;
+                        // z-index: 2;
                     }
                     
                     @media (min-width: 425px){
                         
-                            min-width: 22.49556rem;
-                            min-height: 23.295rem;
+                            min-width: 20.49556rem;
+                            min-height: 17.295rem;
                         .cybersecurity-img{
                            height: 100%;
                            width: 100%;
@@ -95,7 +95,7 @@
             
                 }
             .objectives-second-container{
-                margin-top: 2.25rem;
+                margin-top: 1.5rem;
 
                 .objectives-info-section{
                     min-width: 17.9375rem;
@@ -110,7 +110,7 @@
 
 
                     .usersafety-header{
-                        margin: 9.5rem 1.31rem 0 1.31rem;
+                        margin: 0 1.31rem 0 1.31rem;
                         display: flex;
                         text-align: center;
                         align-items: center;
@@ -121,7 +121,7 @@
                                 display: flex;
                                 color: #52CAC8;
                                 font-family: Inter;
-                                font-size: 3.6875rem;
+                                font-size: 3rem;
                                 font-style: normal;
                                 font-weight: 700;
                                 line-height: normal;
@@ -141,7 +141,7 @@
                         h2{
                             color: #52CAC8;
                             font-family: Inter;
-                            font-size: 3.75rem;
+                            font-size: 3rem;
                             font-style: normal;
                             font-weight: 700;
                             line-height: normal;
@@ -170,7 +170,7 @@
                             color: #000;
                             text-align: center;
                             font-family: Inter;
-                            font-size: 1.75rem;
+                            font-size: 1.5rem;
                             font-style: normal;
                             font-weight: 500;
                             line-height: normal;
@@ -179,8 +179,10 @@
                         }
                     }
                     .usersafety-img-container{
-                        min-width: 18.05069rem;
+                        min-width: 11.05069rem;
                         min-height: 9.53206rem;
+                        margin: 1rem;
+
                         .safety-img{
                             object-fit: contain;
                             align-items: center;
@@ -193,7 +195,7 @@
                         p{
                             color: #000;
                             font-family: Inter;
-                            font-size: 1.75rem;
+                            font-size: 1.5rem;
                             font-style: normal;
                             font-weight: 500;
                             line-height: normal;
@@ -217,7 +219,7 @@
                         p{
                             color: #000;
                             font-family: Inter;
-                            font-size: 1.75rem;
+                            font-size: 1.5rem;
                             font-style: normal;
                             font-weight: 500;
                             line-height: normal;
@@ -228,6 +230,8 @@
                     .datasecurity-img-container{
                         min-width: 15.54138rem;
                         min-height: 14.22156rem;
+                        margin: 1rem;
+
                         .datasecurity-img{
                             height: 100%;
                             width: 100%;    
