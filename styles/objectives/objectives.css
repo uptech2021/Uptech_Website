@@ -7,7 +7,7 @@
   src: url("../../utils/fonts/thiccboi/THICCCBOI-SemiBold.ttf") format("truetype");
 }
 .objectives-main-container {
-  font-family: "THICCCBOI";
+  font-family: "THICCCBOI-SemiBold";
   position: relative;
 }
 .objectives-main-container .outer-layer {
@@ -29,7 +29,7 @@
   border-radius: 2.75rem;
   background: #FFF;
   position: relative;
-  overflow: visible;
+  overflow: hidden;
 }
 .objectives-main-container .outer-layer .objectives-first-container .objectives-section .objectives-header {
   display: flex;
@@ -70,6 +70,11 @@
     width: 100%;
   }
 }
+@media (min-width: 525px) {
+  .objectives-main-container .outer-layer .objectives-first-container .objectives-section .objectives-content {
+    margin-top: 1.5rem;
+  }
+}
 @media (min-width: 425px) {
   .objectives-main-container .outer-layer .objectives-first-container .objectives-section {
     height: 34.696rem;
@@ -93,7 +98,7 @@
   overflow: hidden;
 }
 .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .usersafety-header {
-  margin: 0 1.31rem 0 1.31rem;
+  margin: 2.5rem 1.31rem 0 1.31rem;
   display: flex;
   text-align: center;
   align-items: center;
@@ -109,11 +114,6 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-}
-@media (min-width: 960px) {
-  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .usersafety-header {
-    margin: 60rem 1.31rem 0 1.31rem !important;
-  }
 }
 .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .privacy-header {
   margin: 0 0.62rem 0 0.69rem;
@@ -222,14 +222,12 @@
 @media (min-width: 768px) {
   .objectives-main-container .outer-layer .objectives-first-container .objectives-section {
     min-width: 44.5rem;
-    height: 27.9375rem;
-    height: 26.625rem;
+    height: auto;
     display: flex;
     flex-direction: column;
     border-radius: 2.75rem;
     background: #FFF;
     position: relative;
-    overflow: visible;
   }
   .objectives-main-container .outer-layer .objectives-first-container .objectives-section .objectives-header {
     display: flex;
@@ -239,15 +237,15 @@
     line-height: normal;
     align-items: center;
     justify-content: center;
-    margin: -1rem 1.75rem 0 1.75rem;
+    margin: 0 1.75rem 0 1.75rem;
   }
   .objectives-main-container .outer-layer .objectives-first-container .objectives-section .objectives-header h1 {
     font-family: "THICCCBOI";
   }
   .objectives-main-container .outer-layer .objectives-first-container .objectives-section .objectives-content {
     display: flex;
-    min-width: 42.51844rem;
-    min-height: 44.99056rem;
+    min-width: 24.51844rem;
+    min-height: 25.99056rem;
     margin-left: 1rem;
     align-items: center; /* Vertically center the content */
     justify-content: center; /* Horizontally center the content */
@@ -256,9 +254,8 @@
   .objectives-main-container .outer-layer .objectives-first-container .objectives-section .objectives-content .cybersecurity-img {
     -o-object-fit: contain;
        object-fit: contain;
-    width: 100%;
+    width: 60%;
     height: 100%;
-    z-index: 2;
   }
   .objectives-main-container .outer-layer .objectives-second-container {
     margin-top: 2.25rem;
@@ -271,7 +268,7 @@
     overflow: hidden;
   }
   .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .usersafety-header {
-    margin: 45rem 1.31rem 0 1.31rem;
+    margin: 0 1.31rem 0 1.31rem;
   }
   .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .usersafety-header h2 {
     min-width: 20.5625rem;
@@ -374,44 +371,52 @@
        object-fit: contain;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1024px) {
   .objectives-main-container .outer-layer .objectives-first-container .objectives-section {
     height: 58.9375rem;
   }
   .objectives-main-container .outer-layer .objectives-first-container .objectives-section .objectives-content {
     display: flex;
-    min-width: 61rem;
-    min-height: 64rem;
+    max-width: 100%;
+    min-height: 40rem;
     margin-left: 1rem;
     align-items: center; /* Vertically center the content */
     justify-content: center; /* Horizontally center the content */
-    margin-right: 0.38rem;
-    margin-top: 6.23rem;
+    margin: 0 0.38rem 0 1rem;
   }
   .objectives-main-container .outer-layer .objectives-first-container .objectives-section .objectives-content .cybersecurity-img {
     -o-object-fit: contain;
        object-fit: contain;
-    width: 100%;
+    width: 75%;
     height: 100%;
-    z-index: 2;
   }
-  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .privacy-header {
-    margin: 0 26.31rem 0 31.31rem;
+}
+@media (min-width: 1325px) {
+  .objectives-main-container .outer-layer .objectives-first-container .objectives-section {
+    height: 58.9375rem;
+  }
+  .objectives-main-container .outer-layer .objectives-first-container .objectives-section .objectives-content {
     display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
+    max-width: 100%;
+    min-height: 40rem;
+    margin-left: 1rem;
+    align-items: center; /* Vertically center the content */
+    justify-content: center; /* Horizontally center the content */
+    margin: 2.5rem 0.38rem 0 1rem;
   }
-  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .privacy-header h1 {
-    min-width: 41.5rem;
-    min-height: 11.375rem;
+  .objectives-main-container .outer-layer .objectives-first-container .objectives-section .objectives-content .cybersecurity-img {
+    -o-object-fit: contain;
+       object-fit: contain;
+    width: 75%;
+    height: 100%;
   }
-  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .datasecurity-header {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    margin: 0 12.69rem 0 11.56rem;
-    white-space: nowrap;
+}
+@media (min-width: 1440px) {
+  .objectives-main-container .outer-layer .objectives-first-container .objectives-section {
+    height: 68.9375rem;
+  }
+  .objectives-main-container .outer-layer .objectives-first-container .objectives-section .objectives-content {
+    margin-top: 10rem;
   }
 }
 @media (min-width: 1920px) {
@@ -433,8 +438,9 @@
     display: flex;
   }
   .objectives-main-container .outer-layer .objectives-first-container .objectives-section {
-    max-width: 50vw;
+    min-width: 50vw;
     position: relative;
+    height: 65rem;
   }
   .objectives-main-container .outer-layer .objectives-first-container .objectives-section .objectives-header {
     display: flex;
@@ -445,6 +451,9 @@
     align-items: center;
     justify-content: center;
     margin: 0 0.19rem 0 0.19rem;
+  }
+  .objectives-main-container .outer-layer .objectives-first-container .objectives-section .objectives-content {
+    margin-top: 7rem;
   }
   .objectives-main-container .outer-layer .objectives-second-container {
     align-items: center;
@@ -458,7 +467,7 @@
     position: relative;
   }
   .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .usersafety-header {
-    margin: 0 1.31rem 0 1.31rem;
+    margin: 2rem 1.31rem 0 1.31rem;
     display: flex;
     text-align: center;
     align-items: center;
