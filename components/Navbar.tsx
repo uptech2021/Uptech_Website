@@ -63,6 +63,7 @@ export default function Navbar() {
                     <ul className="nav-items">
                         <li className="nav-links"><Link href="/">Home</Link></li>
                         <li className="nav-links"><Link href="/objectives">Objectives</Link></li>
+                        <li className="nav-links"><Link href="/services">Services</Link></li>
                         <li className="nav-links"><Link href="/about">About us</Link></li>
                         <li className="nav-links"><Link href="/contact">Contact us</Link></li>
                     </ul>
@@ -73,6 +74,7 @@ export default function Navbar() {
                     <ul className="dropdown-menu">
                         <li className="nav-links"><Link href="/">Home</Link></li>
                         <li className="nav-links"><Link href="/objectives">Objectives</Link></li>
+                        <li className="nav-links"><Link href="/services">Services</Link></li>
                         <li className="nav-links"><Link href="/about">About us</Link></li>
                         <li className="nav-links"><Link href="/contact">Contact us</Link></li>
                     </ul>
