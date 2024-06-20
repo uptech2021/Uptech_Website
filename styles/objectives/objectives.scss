@@ -9,7 +9,6 @@
 }
 
 .objectives-main-container {
-        font-family: 'THICCCBOI-SemiBold';
         position: relative;
 
         .outer-layer{
@@ -48,8 +47,8 @@
                         margin: 0 0.19rem 0 0.19rem;
 
                         h1{
-                            font-family: 'THICCCBOI';
-                            font-size: 3.3125rem;
+                            font-family: 'THICCBOI-ExtraBold';
+                            font-size: 3.5rem;
                         }
 
                     }
@@ -115,18 +114,15 @@
                         margin: 2.5rem 1.31rem 0 1.31rem;
                         display: flex;
                         text-align: center;
-                        align-items: center;
                         justify-content: center;
+
                         h2{
-                                min-width: 20.5625rem;
-                                min-height: 8.875rem;
                                 display: flex;
                                 color: #52CAC8;
-                                font-family: Inter;
                                 font-size: 3rem;
-                                font-style: normal;
                                 font-weight: 700;
-                                line-height: normal;
+                                font-family: 'THICCBOI-ExtraBold';
+                                text-wrap: wrap;
                             } 
                     }
 
@@ -138,11 +134,9 @@
                         justify-content: center;
                         h2{
                             color: #52CAC8;
-                            font-family: Inter;
+                            font-family: 'THICCBOI-ExtraBold';
                             font-size: 3rem;
-                            font-style: normal;
                             font-weight: 700;
-                            line-height: normal;
                         }
 
                         @media (min-width: 425px){
@@ -156,7 +150,7 @@
 
                         h2{
                             color: #52CAC8;
-                            font-family: 'Inter';
+                            font-family: 'THICCBOI-ExtraBold';
                             font-size: 3rem;
                             font-style: normal;
                             font-weight: 700;
@@ -167,8 +161,8 @@
                         p{
                             color: #000;
                             text-align: center;
-                            font-family: Inter;
-                            font-size: 1.5rem;
+                            font-family: 'THICCBOI-SemiBold';
+                            font-size: 1rem;
                             font-style: normal;
                             font-weight: 500;
                             line-height: normal;
@@ -192,9 +186,8 @@
                         text-align: center;
                         p{
                             color: #000;
-                            font-family: Inter;
-                            font-size: 1.5rem;
-                            font-style: normal;
+                            font-family: 'THICCBOI-SemiBold';
+                            font-size: 1rem;
                             font-weight: 500;
                             line-height: normal;
                             margin: 0 1rem 0 1rem;
@@ -216,9 +209,8 @@
 
                         p{
                             color: #000;
-                            font-family: Inter;
-                            font-size: 1.5rem;
-                            font-style: normal;
+                            font-family: 'THICCBOI-SemiBold';
+                            font-size: 1rem;
                             font-weight: 500;
                             line-height: normal;
                             min-width: 17.75rem;
@@ -257,16 +249,10 @@
                     .objectives-header{
                         display: flex;
                         position: relative;
-                        font-style: normal;
                         font-weight: 800;
-                        line-height: normal;
                         align-items: center;
                         justify-content: center;
                         margin: 0 1.75rem 0 1.75rem;
-
-                        h1{
-                            font-family: 'THICCCBOI';
-                        }
                     }    
                     .objectives-content {
                         display: flex;
@@ -299,13 +285,13 @@
 
 
                     .usersafety-header{
-                        margin: 0 1.31rem 0 1.31rem;
+                        margin: 1.5rem 1.31rem 0 1.31rem;
                         h2{
                                 min-width: 20.5625rem;
                                 min-height: 8.875rem;
                                 display: flex;
                                 color: #52CAC8;
-                                font-family: Inter;
+                                font-family: 'THICCBOI-ExtraBold';
                                 font-style: normal;
                                 font-weight: 700;
                                 line-height: normal;
@@ -318,7 +304,6 @@
                         align-items: center;
                         h2{
                             color: #52CAC8;
-                            font-family: Inter;
                             font-style: normal;
                             font-weight: 700;
                             line-height: normal;
@@ -330,7 +315,6 @@
 
                         h2{
                             color: #52CAC8;
-                            font-family: 'Inter';
                             font-style: normal;
                             font-weight: 700;
                             line-height: normal;
@@ -339,8 +323,7 @@
                     .usersafety-content{
                         p{
                             color: #000;
-                            text-align: center;
-                            font-family: Inter;
+                            text-align: left;
                             font-style: normal;
                             font-weight: 500;
                             line-height: normal;
@@ -349,21 +332,23 @@
                         }
                     }
                     .usersafety-img-container{
-                        min-width: 38.21656rem;
-                        min-height: 20.18113rem;
+                        min-width: 100%;
+                        min-height: 20rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
                         .safety-img{
                             // margin: 0 1.64rem 0 2.62rem;                 
                             object-fit: contain;
-                            align-items: center;
-                            width: 100%;
+                            width: 70%;
                             height: 100%;
                         }
                     }
                     .privacy-content{
-                        text-align: center;
+                        text-align: left;
                         p{
                             color: #000;
-                            font-family: Inter;
                             font-style: normal;
                             font-weight: 500;
                             line-height: normal;
@@ -371,10 +356,13 @@
                         }
                     }
                     .privacy-img-container{
-                        min-width: 40.01575rem;
-                        min-height: 30.25rem;
+                        min-width: 50%;
+                        min-height: 20rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
                         .privacy-img{
-                            width: 100%;
+                            width: 50%;
                             height: 100%;
                             object-fit: contain;
                         }
@@ -382,12 +370,10 @@
                     .datasecurity-content{
                         margin-right: 0.25rem;
                         margin-left: 0.44rem;
-                        text-align: center;
+                        text-align: left;
 
                         p{
                             color: #000;
-                            font-family: Inter;
-                            font-style: normal;
                             font-weight: 500;
                             line-height: normal;
                             min-width: 17.75rem;
@@ -395,11 +381,15 @@
                         }
                     }
                     .datasecurity-img-container{
-                        min-width: 34.47956rem;
-                        min-height: 26.78594rem;
+                        min-width: 50%;
+                        min-height: 20rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
                         .datasecurity-img{
-                            height: 100%;
-                            width: 100%;    
+                            height: 50%;
+                            width: 50%;    
                             object-fit: contain;
                         }
                     }
@@ -539,10 +529,7 @@
                                 min-height: 8.875rem;
                                 display: flex;
                                 color: #52CAC8;
-                                font-family: Inter;
-                                font-style: normal;
                                 font-weight: 700;
-                                line-height: normal;
                             }
                     }
                     .privacy-header{
@@ -552,10 +539,7 @@
                         align-items: center;
                         h2{
                             color: #52CAC8;
-                            font-family: Inter;
-                            font-style: normal;
                             font-weight: 700;
-                            line-height: normal;
                         }
                     }
                     .datasecurity-header{
@@ -564,18 +548,13 @@
 
                         h2{
                             color: #52CAC8;
-                            font-family: 'Inter';
-                            font-style: normal;
                             font-weight: 700;
-                            line-height: normal;
                         }
                     }
                     .usersafety-content{
                         p{
                             color: #000;
                             text-align: center;
-                            font-family: Inter;
-                            font-style: normal;
                             font-weight: 500;
                             line-height: normal;
                             margin-right: 0.19rem;
@@ -597,8 +576,6 @@
                         text-align: center;
                         p{
                             color: #000;
-                            font-family: Inter;
-                            font-style: normal;
                             font-weight: 500;
                             line-height: normal;
                             margin: 0 1rem 0 1rem;
@@ -620,8 +597,6 @@
 
                         p{
                             color: #000;
-                            font-family: Inter;
-                            font-style: normal;
                             font-weight: 500;
                             line-height: normal;
                             min-width: 17.75rem;
