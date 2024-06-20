@@ -7,7 +7,7 @@ import React from "react";
 import Navbar from "@/components/Navbar";
 import Team from "@/components/Team";
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import { useInView } from "react-intersection-observer";
 
 export default function About() {
 

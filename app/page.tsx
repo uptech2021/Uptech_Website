@@ -25,6 +25,7 @@ import Image from 'next/image'
 import { useWindowSize } from 'react-use'; //react package that checks the screen size of the device
 import { motion } from 'framer-motion';
 import { useInView } from "react-intersection-observer";
+ 
 import React from 'react'
 
 export default function Home() {

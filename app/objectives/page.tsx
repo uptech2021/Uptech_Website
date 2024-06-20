@@ -10,7 +10,7 @@ import privacyLock from '../../public/images/Objectives/Mask group.svg'
 
 import Navbar from '@/components/Navbar'
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import { useInView } from "react-intersection-observer";
 
 import Image from 'next/image'
 // import { useWindowSize } from 'react-use'; //react package that checks the screen size of the device

@@ -1,4 +1,3 @@
-'use client'
 
 import '../styles/navbar.css'
 
@@ -6,9 +5,8 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import {FaBars} from "react-icons/fa" 
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import { useInView } from "react-intersection-observer";
 
 import upTechLogo from '../public/images/uptech logo.png'
 import dropdown from '../public/images/Vector 89.svg'
