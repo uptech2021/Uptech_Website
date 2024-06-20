@@ -11,7 +11,7 @@ import React from "react";
 import { useEffect, useState } from 'react';
 import PcServices from '@/components/PcServices';
 import Navbar from "@/components/Navbar";
-import Footer from '@/components/Footer';
+import Footer from '@/components/footer/Footer';
 
 
 export default function Services() {
@@ -111,7 +111,6 @@ export default function Services() {
                         </div>
                     </main>)}
                 </div>
-                <Footer />
             </div>
 
 

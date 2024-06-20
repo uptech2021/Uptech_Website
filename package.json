@@ -21,7 +21,6 @@
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^4.12.0",
-    "react-intersection-observer": "^9.5.3",
     "react-use": "^17.4.0",
     "sharp": "^0.33.1",
     "window-size": "^1.1.1"
@@ -32,6 +31,7 @@
     "@types/react-dom": "^18.2.14",
     "eslint": "^8",
     "eslint-config-next": "13.5.4",
+    "react-intersection-observer": "^9.10.3",
     "typescript": "^5"
   }
 }
