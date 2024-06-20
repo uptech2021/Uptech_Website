@@ -1,4 +1,4 @@
-footer {
+.mobile-footer {
   position: relative;
   background: black;
   margin-top: 1rem;
@@ -6,85 +6,38 @@ footer {
   display: flex;
   flex-direction: column;
   color: white;
+  padding-top: 3%;
+  padding-bottom: 5%;
 }
-footer .uptech-details {
+.mobile-footer .logo-wrapper {
+  width: 100%;
+  margin-left: -8%;
+}
+.mobile-footer .logo-wrapper img {
+  width: 70%;
+  height: 4rem;
+}
+.mobile-footer .social-icons {
   display: flex;
-  flex-direction: column;
-  margin: 4.56rem 1.02rem 0 1.75rem;
-}
-footer .uptech-details .company-details .company-name h4 {
-  font-family: Inter;
-  font-size: 3rem;
-  font-style: normal;
-  font-weight: 900;
-  line-height: normal;
-  margin: 0;
-}
-footer .uptech-details .company-details .company-name h5 {
-  font-family: Inter;
-  font-size: 2rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  margin: 0;
-}
-footer .uptech-details .company-details .swap {
-  margin-top: 1.09rem;
-}
-footer .uptech-details .company-details .swap li {
-  list-style-type: none;
-}
-footer .uptech-details .company-details .swap li .footer-links {
-  margin: 0;
-  font-size: 1.4rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  color: white;
-  text-decoration: none;
-}
-footer .uptech-details .company-details .swap li .footer-links:hover {
-  color: #6CFCEE;
-  animation: hoverAnimation 0.5s forwards;
-}
-@keyframes hoverAnimation {
-  0% {
-    color: initial;
-    font-size: initial;
-  }
-  100% {
-    color: #6CFCEE;
-    font-size: 1.5rem;
-  }
-}
-footer .uptech-details .social-icons {
-  display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  gap: 1.37rem;
-  margin-top: 2.5rem;
+  width: 90%;
+  margin: 0 auto;
+  gap: 3%;
+  justify-content: space-around;
+  margin-left: 1%;
+  margin-top: -3%;
 }
-footer .uptech-details .social-icons li {
-  list-style-type: none;
+.mobile-footer .social-icons .icon-wrapper {
+  width: 15%;
+  height: 5rem;
 }
-footer .uptech-details .social-icons li .icon {
-  width: 4.06463rem;
-  height: 5.48988rem;
-  cursor: pointer;
-  color: initial;
-  font-size: initial;
-  transition: color 0.3s, font-size 0.3s;
+.mobile-footer .social-icons .icon-wrapper img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
-footer .uptech-details .social-icons li .icon:hover {
-  color: #6CFCEE;
-  font-size: 1.3rem;
-}
-footer .swap-mobile {
-  margin-top: 2.53rem;
-  text-align: center;
-  font-family: Inter;
-  font-size: 1.125rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+.mobile-footer p {
+  width: 90%;
+  margin: 0 auto;
 }/*# sourceMappingURL=footer.css.map */
