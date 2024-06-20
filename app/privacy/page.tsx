@@ -1,6 +1,5 @@
 import '@/styles/privacy/privacy.css'
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import BookMarks from '@/components/BookMarks';
 import TermsAndPrivacy from '@/components/TermsAndPrivacy';
 
@@ -20,7 +19,6 @@ export default function Privacy() {
 
           <TermsAndPrivacy />
         </div>
-        <Footer />
       </div>
     </>
 

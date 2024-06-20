@@ -1,8 +1,7 @@
-import '../styles/footer.css'
+import '../../styles/footer.css'
 
 import Image from 'next/image'
-import Link from 'next/link'
-export default function Footer() {
+export default function Mobile() {
   return (
     <footer className='mobile-footer'>
       <div className="logo-wrapper">

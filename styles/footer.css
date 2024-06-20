@@ -40,4 +40,43 @@
 .mobile-footer p {
   width: 90%;
   margin: 0 auto;
+}
+
+@media (min-width: 500px) {
+  .mobile-footer .logo-wrapper {
+    margin-left: -25%;
+  }
+  .mobile-footer .logo-wrapper img {
+    width: 100%;
+    height: 6rem;
+  }
+  .mobile-footer .social-icons {
+    width: 90%;
+    margin-left: 5%;
+    justify-content: start;
+    gap: 5%;
+  }
+  .mobile-footer .social-icons .icon-wrapper {
+    width: 10%;
+    height: 5rem;
+  }
+}
+@media (min-width: 768px) {
+  .mobile-footer .logo-wrapper {
+    margin-left: -30%;
+  }
+  .mobile-footer .logo-wrapper img {
+    width: 100%;
+    height: 6rem;
+  }
+  .mobile-footer .social-icons {
+    width: 90%;
+    margin-left: 5%;
+    justify-content: start;
+    gap: 5%;
+  }
+  .mobile-footer .social-icons .icon-wrapper {
+    width: 6%;
+    height: 5rem;
+  }
 }/*# sourceMappingURL=footer.css.map */
