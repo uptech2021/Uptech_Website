@@ -25,12 +25,11 @@
   width: 90%;
   margin: 0 auto;
   gap: 3%;
-  justify-content: space-around;
-  margin-left: 1%;
+  margin-left: 10%;
   margin-top: -3%;
 }
 .mobile-footer .social-icons .icon-wrapper {
-  width: 15%;
+  width: 10%;
   height: 5rem;
   cursor: pointer;
 }
@@ -41,7 +40,7 @@
      object-fit: contain;
 }
 .mobile-footer p {
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
 }
 
