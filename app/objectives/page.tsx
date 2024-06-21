@@ -1,51 +1,81 @@
 'use client'
 
+import { useEffect } from 'react';
+import { useAnimation } from 'framer-motion';
 import '../../styles/objectives/objectives.css'
-import uptechLogo from '../../public/images/uptech logo.png'
-import menu from '../../public/images/menu.svg'
 import cyberSecurity from '../../public/images/Objectives/header images.svg'
 import safety from '../../public/images/Objectives/user safety.svg'
 import dataSecurity from '../../public/images/Objectives/data security.svg'
 import privacyLock from '../../public/images/Objectives/Mask group.svg'
 
-import Navbar from '@/components/Navbar'
 import { motion } from 'framer-motion';
-import { useInView } from "react-intersection-observer";
 
+import Navbar from '@/components/Navbar'
 import Image from 'next/image'
-// import { useWindowSize } from 'react-use'; //react package that checks the screen size of the device
 import Link from "next/link"
 
 export default function Objectives() {
+    const objectivesControls = useAnimation();
+    const cyberControls = useAnimation();
+    const dataSecurityControls = useAnimation();
+    const privacyControls = useAnimation();
+    const userSafetyControls = useAnimation();
 
-    // const { width } = useWindowSize();
+  useEffect(() => {
+    const handleScroll = (ev: Event) => {
+      const checkInView = (ref: HTMLElement | null) => {
+        if (ref) {
+          const top = ref.getBoundingClientRect().top;
+          return top < window.innerHeight && top > 0;
+        }
+        return false;
+      };
 
-    //Refs and inView states for each section
-    const [cyberRef, cyberInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-    const [datasecurityRef, dataSecurityInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-    const [datasecurityImageRef, dataSecurityImageInView] = useInView({ triggerOnce: true, threshold: 0.5 });
-    const [datasecurityInfoRef, dataSecurityInfoInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-    const [privacyRef, privacyInview] = useInView({ triggerOnce: true, threshold: 0.1 });
-    const [privacyImageRef, privacyImageInview] = useInView({ triggerOnce: true, threshold: 0.1 });
-    const [privacyInfoRef, privacyInfoInview] = useInView({ triggerOnce: true, threshold: 0.1 });
-    const [usersafetyRef, userSafetyInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-    const [usersafetyImageRef, userSafetyImageInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-    const [usersafetyInfoRef, userSafetyInfoInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-    const [objectivesRef, objectivesInView] = useInView({ triggerOnce: true, threshold: 0.1 });
+      const animateIfInView = (ref: HTMLElement | null, controls: any) => {
+        if (ref) {
+          const top = ref.getBoundingClientRect().top;
+          if (top < window.innerHeight && top > 0) {
+            controls.start("visible");
+          }
+        }
+      };
 
+      animateIfInView(
+        document.querySelector(".objectives-header"),
+        objectivesControls
+      );
+      animateIfInView(
+        document.querySelector(".cybersecurity-img"),
+        cyberControls
+      );
+      animateIfInView(
+        document.querySelector(".datasecurity-img"),
+        dataSecurityControls
+      );
+      animateIfInView(document.querySelector(".privacy-img"), privacyControls);
+      animateIfInView(
+        document.querySelector(".safety-img"),
+        userSafetyControls
+      );
+    };
 
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(new Event("scroll"));
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
     const verticalVariants = {
-        hidden: { y: '-100%', opacity: 0 }, // Starts above the screen and invisible
-        visible: { y: 0, opacity: 1 },      // Ends at its normal position and visible
+        hidden: { y: '-100%', opacity: 0 },
+        visible: { y: 0, opacity: 1 },
     };
 
     const fadeVariants = {
         hidden: { opacity: 0 },
         visible: { opacity: 1 },
     };
-
-
 
     return (
         <div className='objectives-main-container'>
@@ -54,21 +84,20 @@ export default function Objectives() {
                     <div className="objectives-section">
                         <Navbar />
 
-                        <motion.div
-                            ref={objectivesRef}
+                       
+                            <header className="objectives-header">
+                            <motion.div
                             initial="hidden"
-                            animate={objectivesInView ? "visible" : "hidden"}
+                            animate={objectivesControls}
                             variants={verticalVariants}
                             transition={{ duration: 1 }}>
-                            <header className="objectives-header">
                                 <h1>Objectives</h1>
+                                </motion.div>
                             </header>
-                        </motion.div>
 
                         <motion.div
-                            ref={cyberRef}
                             initial="hidden"
-                            animate={cyberInView ? "visible" : "hidden"}
+                            animate={cyberControls}
                             variants={fadeVariants}
                             transition={{ duration: 1, ease: "easeInOut" }}>
                             <section className="objectives-content">
@@ -81,9 +110,8 @@ export default function Objectives() {
                     <section className='objectives-info-section'>
                         <section className="usersafety-content">
                             <motion.div
-                                ref={usersafetyRef}
                                 initial="hidden"
-                                animate={userSafetyInView ? "visible" : "hidden"}
+                                animate={userSafetyControls}
                                 variants={verticalVariants}
                                 transition={{ duration: 1 }}>
                                 <header className="usersafety-header">
@@ -91,9 +119,8 @@ export default function Objectives() {
                                 </header>
                             </motion.div>
                             <motion.div
-                                ref={usersafetyImageRef}
                                 initial="hidden"
-                                animate={userSafetyImageInView ? "visible" : "hidden"}
+                                animate={userSafetyControls}
                                 variants={verticalVariants}
                                 transition={{ duration: 1 }}>
                                 <div className="usersafety-img-container">
@@ -101,9 +128,8 @@ export default function Objectives() {
                                 </div>
                             </motion.div>
                             <motion.div
-                                ref={usersafetyInfoRef}
                                 initial="hidden"
-                                animate={userSafetyInfoInView ? "visible" : "hidden"}
+                                animate={userSafetyControls}
                                 variants={verticalVariants}
                                 transition={{ duration: 1 }}>
                                 <p>Implementation of algorithms that can recognize sensitive phrases and words as well as duplicate accounts would improve user&apos;s safety. By doing this, we can defend our users and communities from online criminal activities, like cyberbullying, harassment, cyber-stalking etc. Our medium to long term objectives entails, creating a unique feature that users can employ in an emergency.</p>
@@ -111,9 +137,8 @@ export default function Objectives() {
                         </section>
                         <section className="privacy-content">
                             <motion.div
-                                ref={privacyRef}
                                 initial="hidden"
-                                animate={privacyInview ? "visible" : "hidden"}
+                                animate={privacyControls}
                                 variants={verticalVariants}
                                 transition={{ duration: 1 }}>
                                 <header className="privacy-header">
@@ -121,9 +146,8 @@ export default function Objectives() {
                                 </header>
                             </motion.div>
                             <motion.div
-                                ref={privacyImageRef}
                                 initial="hidden"
-                                animate={privacyImageInview ? "visible" : "hidden"}
+                                animate={privacyControls}
                                 variants={verticalVariants}
                                 transition={{ duration: 1 }}>
                                 <div className="privacy-img-container">
@@ -131,9 +155,8 @@ export default function Objectives() {
                                 </div>
                             </motion.div>
                             <motion.div
-                                ref={privacyInfoRef}
                                 initial="hidden"
-                                animate={privacyInfoInview ? "visible" : "hidden"}
+                                animate={privacyControls}
                                 variants={verticalVariants}
                                 transition={{ duration: 1 }}>
                                 <p>On the Ourlime user profile page, there would be features designed specifically for the user with privacy settings, allowing the user to choose their level of privacy. These specific features would incorporate a &quot;lock code&quot; that only the user would know.</p>
@@ -141,9 +164,8 @@ export default function Objectives() {
                         </section>
                         <section className="datasecurity-content">
                             <motion.div
-                                ref={datasecurityRef}
                                 initial="hidden"
-                                animate={dataSecurityInView ? "visible" : "hidden"}
+                                animate={dataSecurityControls}
                                 variants={verticalVariants}
                                 transition={{ duration: 1 }}>
                                 <header className="datasecurity-header">
@@ -151,9 +173,8 @@ export default function Objectives() {
                                 </header>
                             </motion.div>
                             <motion.div
-                                ref={datasecurityImageRef}
                                 initial="hidden"
-                                animate={dataSecurityImageInView ? "visible" : "hidden"}
+                                animate={dataSecurityControls}
                                 variants={verticalVariants}
                                 transition={{ duration: 1 }}>
                                 <div className="datasecurity-img-container">
@@ -161,9 +182,8 @@ export default function Objectives() {
                                 </div>
                             </motion.div>
                             <motion.div
-                                ref={datasecurityInfoRef}
                                 initial="hidden"
-                                animate={dataSecurityInfoInView ? "visible" : "hidden"}
+                                animate={dataSecurityControls}
                                 variants={verticalVariants}
                                 transition={{ duration: 1 }}>
                                 <p>Data such as names, addresses, emails, contacts, and date of births would not be used for marketing purposes and would not be sold for profit to any third-party and more is discussed in the Terms and Condition.</p>
@@ -175,4 +195,8 @@ export default function Objectives() {
 
         </div>
     )
-} 
+}
+function handleScroll(this: Window, ev: Event) {
+    throw new Error('Function not implemented.');
+}
+

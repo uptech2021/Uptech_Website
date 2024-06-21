@@ -23,31 +23,60 @@ import Navbar from '@/components/Navbar'
 
 import Image from 'next/image'
 import { useWindowSize } from 'react-use'; //react package that checks the screen size of the device
-import { motion } from 'framer-motion';
-import { useInView } from "react-intersection-observer";
- 
-import React from 'react'
+import { motion, useAnimation } from 'framer-motion';
+import React, { useEffect } from 'react'
 
 export default function Home() {
 
   const { width } = useWindowSize();
 
-  const [welcomeRef, welcomeInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-  const [educationRef, educationInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-  const [educationImgRef, educationImgInView] = useInView({ triggerOnce: true, threshold: 0.01 });
-  const [projectRef, projectInView] = useInView({ triggerOnce: true, threshold: 0.01 });
-  const [projectImgRef, projectImgInView] = useInView({ triggerOnce: true, threshold: 0.01 });
-  const [marketRef, marketInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-  const [marketImgRef, marketImgInView] = useInView({ triggerOnce: true, threshold: 0.01 });
-  const [objectivesRef, objectivesInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-  const [safetyRef, safetyInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-  const [privacyRef, privacyInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-  const [securityRef, securityInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-  const [ourlimeRef, ourlimeInView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const welcomeControls = useAnimation();
+  const educationControls = useAnimation();
+  const educationImgControls = useAnimation();
+  const projectControls = useAnimation();
+  const projectImgControls = useAnimation();
+  const marketControls = useAnimation();
+  const marketImgControls = useAnimation();
+  const objectivesControls = useAnimation();
+  const safetyControls = useAnimation();
+  const privacyControls = useAnimation();
+  const securityControls = useAnimation();
+  const ourlimeControls = useAnimation();
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const checkInView = (ref: HTMLElement) => {
+        const top = ref.getBoundingClientRect().top;
+        return top < window.innerHeight && top > 0;
+      };
 
+      const animateIfInView = (ref: HTMLElement | null, controls: any) => {
+        if (ref && checkInView(ref)) {
+          controls.start("visible");
+        }
+      };
 
+      animateIfInView(document.querySelector('.welcome-container'), welcomeControls);
+      animateIfInView(document.querySelector('.education-container'), educationControls);
+      animateIfInView(document.querySelector('.education-container .image-wrapper'), educationImgControls);
+      animateIfInView(document.querySelector('.project-management-container'), projectControls);
+      animateIfInView(document.querySelector('.project-management-container .image-wrapper'), projectImgControls);
+      animateIfInView(document.querySelector('.marketplace-container'), marketControls);
+      animateIfInView(document.querySelector('.marketplace-container .image-wrapper'), marketImgControls);
+      animateIfInView(document.querySelector('.objectives'), objectivesControls);
+      animateIfInView(document.querySelector('.privacy-container'), privacyControls);
+      animateIfInView(document.querySelector('.user-safety-container'), safetyControls);
+      animateIfInView(document.querySelector('.data-security-container'), securityControls);
+      animateIfInView(document.querySelector('.call-to-action .image-wrapper'), ourlimeControls);
+    };
 
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const rightVariants = {
     hidden: { x: '100%', opacity: 0 }, // Start from the right and hidden
@@ -87,9 +116,8 @@ export default function Home() {
 
             <div className="welcome-container">
               <motion.div
-                ref={welcomeRef}
                 initial="hidden"
-                animate={welcomeInView ? "visible" : "hidden"}
+                animate={welcomeControls}
                 variants={rightVariants}
                 transition={{ duration: 1, ease: "easeOut" }} // Adjust the duration and easing
               >
@@ -101,9 +129,8 @@ export default function Home() {
 
             <div className="image-wrapper">
               <motion.div
-                ref={ourlimeRef}
                 initial="hidden"
-                animate={ourlimeInView ? "visible" : "hidden"}
+                animate={ourlimeControls}
                 variants={belowVariants}
                 transition={{ duration: 0.5, ease: "easeInOut" }} // Adjust the duration and easing
               >
@@ -142,9 +169,8 @@ export default function Home() {
                 <>
                   <div className="image-wrapper">
                     <motion.div
-                      ref={educationImgRef}
                       initial="hidden"
-                      animate={educationImgInView ? "visible" : "hidden"}
+                      animate={educationImgControls}
                       variants={belowVariants}
                       transition={{ duration: 0.5, ease: "easeInOut" }} // Adjust the duration and easing
                     >
@@ -159,9 +185,8 @@ export default function Home() {
 
                   <div className="information">
                     <motion.div
-                      ref={educationRef}
                       initial="hidden"
-                      animate={educationInView ? "visible" : "hidden"}
+                      animate={educationControls}
                       variants={rightVariants}
                       transition={{ duration: 1, ease: "easeOut" }} // Adjust the duration and easing
                     >
@@ -205,9 +230,8 @@ export default function Home() {
                 <>
                   <div className="image-wrapper">
                     <motion.div
-                      ref={marketImgRef}
                       initial="hidden"
-                      animate={marketImgInView ? (console.log("Animating market image"), "visible") : (console.log("Market image hidden"), "hidden")}
+                      animate={marketImgControls}
                       variants={rightBelowVariants}
                       transition={{ duration: 1, ease: "easeOut" }} // Adjust the duration and easing
                     >
@@ -259,47 +283,6 @@ export default function Home() {
               {width >= 768 ? (
                 <>
                   <div className="image-wrapper">
-
-                    {/* <motion.div
-                      ref={projectRef}
-                      initial="hidden"
-                    animate={marketImgInView ? (console.log("Animating market image"), "visible") : (console.log("Market image hidden"), "hidden")}
-                    variants={belowVariants}
-                    transition={{ duration: 1, ease: "easeOut"}} // Adjust the duration and easing
-                  > */}
-
-                    {/* <Image src={width >= 768 ? projectManagement_pc_view : projectManagement_mobile_view} className='project-management-img' alt="project management image"/> */}
-                    <Image
-                      src={width >= 768 ? projectManagement_mobile_view : projectManagement_mobile_view}
-                      className='project-management-img'
-                      alt="project management image"
-
-                      quality={100}
-
-                    />
-                    {/* </motion.div> */}
-                  </div>
-
-                  <div className="information">
-                    <motion.div
-                      ref={projectRef}
-                      initial="hidden"
-                      animate={projectInView ? "visible" : "hidden"}
-                      variants={rightVariants}
-                      transition={{ duration: 1, ease: "easeOut" }} // Adjust the duration and easing
-                    >
-                      <h3>PROJECT MANAGEMENT</h3>
-                      <p>Tools for Teacher(s), Student(s), Business(es)</p>
-                    </motion.div>
-                  </div>
-                </>
-
-              ) : (
-                <>
-                  <h3>PROJECT MANAGEMENT</h3>
-
-                  <div className="image-wrapper">
-
                     <Image
                       src={projectManagement_mobile_view}
                       className='project-management-img'
@@ -308,189 +291,157 @@ export default function Home() {
                     />
                   </div>
 
-                  <p>Tools for Teacher(s), Student(s), Business(es)</p>
+                  <div className="information">
+                    <h3>PROJECT MANAGEMENT</h3>
+                    <p>Task Management</p>
+                  </div>
                 </>
-              )
+              ) : (
+                <>
+                  <h3>PROJECT MANAGEMENT</h3>
 
-              }
+                  <div className="image-wrapper">
+                    <Image
+                      src={projectManagement_mobile_view}
+                      className='project-management-img'
+                      alt="project management image"
+                      quality={100}
+                    />
+                  </div>
+
+                  <p>Task Management</p>
+                </>
+              )}
+            </div>
+
+            <div className="dots-wrapper">
+              <Image
+                src={dots}
+                className="dots-img"
+                alt="image of dots"
+
+
+              />
+            </div>
+
+            <div className="objectives">
+              <motion.div
+                initial="hidden"
+                animate={objectivesControls}
+                variants={fadeVariants}
+                transition={{ duration: 0.5, ease: "easeInOut" }} // Adjust the duration and easing
+              >
+                <h3>Our Objectives</h3>
+                <p>We aim to ensure that our users are kept safe while using our platform by prioritizing data protection, educating our users, and guaranteeing that their personal information is secure.</p>
+              </motion.div>
             </div>
 
           </section>
 
-          <section className='objectives'>
-            <motion.div
-              ref={objectivesRef}
-              initial="hidden"
-              animate={objectivesInView ? "visible" : "hidden"}
-              variants={leftVariants}
-              transition={{ duration: 0.5 }} // Adjust the duration and easing
-            >
-              <h2>OBJECTIVES</h2>
-            </motion.div>
-            <div className="privacy-container">
+          <section className="security">
 
-              <div className="image-wrapper">
+            <div className="security-container">
+
+              <div className="privacy-container">
+
                 <motion.div
-                  ref={privacyRef}
                   initial="hidden"
-                  animate={privacyInView ? "visible" : "hidden"}
-                  variants={fadeVariants}
-                  transition={{ duration: 0.5 }} // Adjust the duration and easing
+                  animate={privacyControls}
+                  variants={rightVariants}
+                  transition={{ duration: 1, ease: "easeOut" }} // Adjust the duration and easing
                 >
                   <Image
                     src={privacy}
-                    className='privacy-img'
-                    alt="image of laptop"
+                    className='security-img'
+                    alt="privacy image"
                     quality={100}
                   />
-                </motion.div>
-              </div>
-
-              <div className="information">
-                <motion.div
-                  ref={privacyRef}
-                  initial="hidden"
-                  animate={privacyInView ? "visible" : "hidden"}
-                  variants={fadeVariants}
-                  transition={{ duration: 0.5 }} // Adjust the duration and easing
-                >
                   <h3>PRIVACY</h3>
-                  <p>These specific features would incorporate a &quot;lock code&quot; that only the user would know.</p>
+                  <p>Our users privacy is our top priority.</p>
                 </motion.div>
               </div>
-            </div>
 
-            <div className="user-safety-container">
-
-              <div className="image-wrapper">
+              <div className="user-safety-container">
                 <motion.div
-                  ref={safetyRef}
                   initial="hidden"
-                  animate={safetyInView ? "visible" : "hidden"}
-                  variants={fadeVariants}
-                  transition={{ duration: 0.5 }} // Adjust the duration and easing
+                  animate={safetyControls}
+                  variants={rightVariants}
+                  transition={{ duration: 1, ease: "easeOut" }} // Adjust the duration and easing
                 >
                   <Image
                     src={userSafety}
-                    className='user-safety-img'
-                    alt="image of laptop"
-
+                    className='security-img'
+                    alt="privacy image"
                     quality={100}
-
                   />
-                </motion.div>
-              </div>
-
-              <div className="information">
-                <motion.div
-                  ref={safetyRef}
-                  initial="hidden"
-                  animate={safetyInView ? "visible" : "hidden"}
-                  variants={fadeVariants}
-                  transition={{ duration: 0.5 }} // Adjust the duration and easing
-                >
                   <h3>USER SAFETY</h3>
-                  <p>Implementation of algorithms, that can recognize sensitive phrases and words as well as duplicate account would improve user&apos;s safety.</p>
+                  <p>Educating our users about internet safety.</p>
                 </motion.div>
               </div>
 
-            </div>
-
-            <div className="data-security-container">
-
-              <div className="image-wrapper">
+              <div className="data-security-container">
                 <motion.div
-                  ref={securityRef}
                   initial="hidden"
-                  animate={securityInView ? "visible" : "hidden"}
-                  variants={fadeVariants}
-                  transition={{ duration: 0.5 }} // Adjust the duration and easing
+                  animate={securityControls}
+                  variants={rightVariants}
+                  transition={{ duration: 1, ease: "easeOut" }} // Adjust the duration and easing
                 >
                   <Image
                     src={dataSecurity}
-                    className='data-security-img'
-                    alt="image of male and female by a server room"
-
+                    className='security-img'
+                    alt="privacy image"
                     quality={100}
-
                   />
-                </motion.div>
-              </div>
-
-              <div className="information">
-                <motion.div
-                  ref={securityRef}
-                  initial="hidden"
-                  animate={securityInView ? "visible" : "hidden"}
-                  variants={fadeVariants}
-                  transition={{ duration: 0.5 }} // Adjust the duration and easing
-                >
                   <h3>DATA SECURITY</h3>
-                  <p>Data such as names, addresses, emails, contacts, and date of births would not be used for marketing purposes.</p>
+                  <p>We aim to use the best and most reliable data protection solutions.</p>
                 </motion.div>
               </div>
-
             </div>
 
-          </section>
-
-          <section className='products'>
-            <h2>PRODUCTS</h2>
-
-            <div className="products-container">
-
-              <div className="image-wrapper">
-
-                <Image
-                  src={productsImage}
-                  className='man-holding-phone-with-logo-img'
-                  alt="image of man holding phone with logo"
-                  quality={100}
-
-                />
-              </div>
-
-              <p>The Purpose Of Ourlime And What UpTech Incorporated Hope To Achieve With Our App.</p>
-
-              <button className='sign-up-btn' onClick={() => {
-                window.open('https://ourlime.com', '_blank');
-              }
-              }>Sign Up</button>
-            </div>
           </section>
 
           <section className="about-us">
-            <h2>ABOUT US</h2>
 
-            <div className="about-us-btns">
+            <div className="about-us-container">
+              {width >= 768 ? (
+                <>
+                  <div className="about-us-text">
 
-              <p>Uptech Incorporated created Ourlime and Ourlime Messenger to give our users a new experience.</p>
+                    <h3>About Us</h3>
+                    <p>Our goal is to provide the best service to our users while ensuring their privacy, security, and overall satisfaction. Join us and be part of a safe and engaging community.</p>
+                  </div>
 
-              <div className="btns-containers">
+                  <div className="about-us-image">
+                    <Image
+                      src={aboutUsImage}
+                      alt="About Us"
+                      quality={100}
+                    />
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="about-us-image">
+                    <Image
+                      src={aboutUsImage}
+                      alt="About Us"
+                      quality={100}
+                    />
+                  </div>
 
-                <button className='large-btn-group'>OUR STORY</button>
-                <button className='large-btn-group'>THE WAY FORWARD</button>
-                <button className='large-btn-group'>OURLIME BROCHURE</button>
-              </div>
-
-              <div className="about-us-img-wrapper">
-
-                <Image
-                  src={aboutUsImage}
-                  className="about-us-img"
-                  alt="image of guy with ourlime logo behind him"
-                />
-              </div>
-
+                  <div className="about-us-text">
+                    <h3>About Us</h3>
+                    <p>Our goal is to provide the best service to our users while ensuring their privacy, security, and overall satisfaction. Join us and be part of a safe and engaging community.</p>
+                  </div>
+                </>
+              )}
             </div>
 
           </section>
+
         </main>
 
-
       </div>
-
-
     </div>
-  )
+  );
 }

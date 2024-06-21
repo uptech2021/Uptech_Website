@@ -3,29 +3,57 @@
 import Image from "next/image";
 import airBrush from '@/public/images/About Us/aboutUsImg.svg'
 import "@/styles/about/about.css"
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Team from "@/components/Team";
-import { motion } from 'framer-motion';
-import { useInView } from "react-intersection-observer";
+import { motion, useAnimation } from 'framer-motion';
 
 export default function About() {
 
-    //Refs and inView states for each section
-    const [aboutRef, aboutInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-    const [aboutImageRef, aboutImageInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-    const [founderRef, founderInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-    const [founderInfoRef, founderInfoInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-    const [benefitsRef, benefitsInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-    const [benefitsInfoRef, benefitsInfoInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-    const [storyRef, storyInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-    const [storyInfoRef, storyInfoInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-    const [forwardRef, forwardInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-    const [forwardInfoRef, forwardInfoInView] = useInView({ triggerOnce: true, threshold: 0.1 });
+    // Initialize animation controls
+    const aboutControls = useAnimation();
+    const aboutImageControls = useAnimation();
+    const founderControls = useAnimation();
+    const founderInfoControls = useAnimation();
+    const benefitsControls = useAnimation();
+    const benefitsInfoControls = useAnimation();
+    const storyControls = useAnimation();
+    const storyInfoControls = useAnimation();
+    const forwardControls = useAnimation();
+    const forwardInfoControls = useAnimation();
 
+    useEffect(() => {
+        const handleScroll = () => {
+      const checkInView = (ref: HTMLElement) => {
+        const top = ref.getBoundingClientRect().top;
+        return top < window.innerHeight && top > 0;
+      };
 
+      const animateIfInView = (ref: HTMLElement | null, controls: any) => {
+        if (ref && checkInView(ref)) {
+          controls.start("visible");
+        }
+      };
 
+            animateIfInView(document.querySelector('.about-container'), aboutControls);
+            animateIfInView(document.querySelector('.about-img'), aboutImageControls);
+            animateIfInView(document.querySelector('.info .wrapper:nth-of-type(1) h2'), founderControls);
+            animateIfInView(document.querySelector('.info .wrapper:nth-of-type(1) p'), founderInfoControls);
+            animateIfInView(document.querySelector('.info .wrapper:nth-of-type(2) h2'), benefitsControls);
+            animateIfInView(document.querySelector('.info .wrapper:nth-of-type(2) p'), benefitsInfoControls);
+            animateIfInView(document.querySelector('.info .wrapper:nth-of-type(3) h2'), storyControls);
+            animateIfInView(document.querySelector('.info .wrapper:nth-of-type(3) p'), storyInfoControls);
+            animateIfInView(document.querySelector('.info .wrapper:nth-of-type(4) h2'), forwardControls);
+            animateIfInView(document.querySelector('.info .wrapper:nth-of-type(4) p'), forwardInfoControls);
+        };
 
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     const verticalVariants = {
         hidden: { y: '-100%', color: "#32CD32", opacity: 0 },  // Starts above the screen and invisible
@@ -57,27 +85,22 @@ export default function About() {
                         </header>
                         <div className="wrapper">
                             <motion.div
-                                ref={aboutRef}
                                 initial="hidden"
-                                animate={aboutInView ? "visible" : "hidden"}
+                                animate={aboutControls}
                                 variants={verticalVariants}
                                 transition={{ duration: 1, ease: "easeInOut" }}>
                                 <h1>About Us</h1>
                             </motion.div>
 
-
                             <div className="about-img">
                                 <motion.div
-                                    ref={aboutImageRef}
                                     initial="hidden"
-                                    animate={aboutImageInView ? "visible" : "hidden"}
+                                    animate={aboutImageControls}
                                     variants={fadeVariants}
                                     transition={{ duration: 3, ease: "easeInOut" }}>
                                     <Image src={airBrush} alt="air" className="air-img" />
                                 </motion.div>
                             </div>
-
-
                         </div>
                     </section>
                     <main className="second-main-container">
@@ -85,18 +108,16 @@ export default function About() {
                         <section className="info">
                             <div className="wrapper">
                                 <motion.div
-                                    ref={founderRef}
                                     initial="hidden"
-                                    animate={founderInView ? "visible" : "hidden"}
+                                    animate={founderControls}
                                     variants={leftMidVariants}
                                     transition={{ duration: 2 }}
                                 >
                                     <h2>founder&apos;s message</h2>
                                 </motion.div>
                                 <motion.div
-                                    ref={founderInfoRef}
                                     initial="hidden"
-                                    animate={founderInfoInView ? "visible" : "hidden"}
+                                    animate={founderInfoControls}
                                     variants={rightMidVariants}
                                     transition={{ duration: 2 }}
                                 >
@@ -106,18 +127,16 @@ export default function About() {
 
                             <div className="wrapper">
                                 <motion.div
-                                    ref={benefitsRef}
                                     initial="hidden"
-                                    animate={benefitsInView ? "visible" : "hidden"}
+                                    animate={benefitsControls}
                                     variants={leftMidVariants}
                                     transition={{ duration: 2 }}
                                 >
                                     <h2>Benefits of using the Ourlime Community Network</h2>
                                 </motion.div>
                                 <motion.div
-                                    ref={benefitsInfoRef}
                                     initial="hidden"
-                                    animate={benefitsInfoInView ? "visible" : "hidden"}
+                                    animate={benefitsInfoControls}
                                     variants={rightMidVariants}
                                     transition={{ duration: 2 }}
                                 >
@@ -126,18 +145,16 @@ export default function About() {
                             </div>
                             <div className="wrapper">
                                 <motion.div
-                                    ref={storyRef}
                                     initial="hidden"
-                                    animate={storyInView ? "visible" : "hidden"}
+                                    animate={storyControls}
                                     variants={leftMidVariants}
                                     transition={{ duration: 2 }}
                                 >
                                     <h2>our story</h2>
                                 </motion.div>
                                 <motion.div
-                                    ref={storyInfoRef}
                                     initial="hidden"
-                                    animate={storyInfoInView ? "visible" : "hidden"}
+                                    animate={storyInfoControls}
                                     variants={rightMidVariants}
                                     transition={{ duration: 2 }}
                                 >
@@ -146,18 +163,16 @@ export default function About() {
                             </div>
                             <div className="wrapper">
                                 <motion.div
-                                    ref={forwardRef}
                                     initial="hidden"
-                                    animate={forwardInView ? "visible" : "hidden"}
+                                    animate={forwardControls}
                                     variants={leftMidVariants}
                                     transition={{ duration: 2 }}
                                 >
-                                    <h2>the way foward</h2>
+                                    <h2>the way forward</h2>
                                 </motion.div>
                                 <motion.div
-                                    ref={forwardInfoRef}
                                     initial="hidden"
-                                    animate={forwardInfoInView ? "visible" : "hidden"}
+                                    animate={forwardInfoControls}
                                     variants={rightMidVariants}
                                     transition={{ duration: 2 }}
                                 >
@@ -168,9 +183,6 @@ export default function About() {
                     </main>
                 </div>
             </div>
-
-
         </>
-
     )
 }
