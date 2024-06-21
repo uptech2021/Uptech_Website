@@ -1,7 +1,6 @@
 'use client'
 
 import '../../styles/terms/terms.css'
-
 import Navbar from '@/components/Navbar'
 import BookMarks from '@/components/BookMarks'
 import TermsAndPrivacy from '@/components/TermsAndPrivacy'
