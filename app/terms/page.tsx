@@ -4,7 +4,7 @@ import '../../styles/terms/terms.css'
 
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
-import Footer from '@components/footer/Footer'
+// import Footer from '@components/footer/Footer'
 import BookMarks from '@/components/BookMarks'
 import TermsAndPrivacy from '@/components/TermsAndPrivacy'
 
