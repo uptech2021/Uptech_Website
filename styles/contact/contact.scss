@@ -1,279 +1,307 @@
 @font-face {
-    font-family: 'THICCBOI-ExtraBold';
-    src: url('../../utils/fonts/thiccboi/THICCCBOI-ExtraBold.ttf') format('truetype');
+  font-family: "THICCBOI-ExtraBold";
+  src: url("../../utils/fonts/thiccboi/THICCCBOI-ExtraBold.ttf")
+    format("truetype");
 }
-.contact-main-container{
+.contact-main-container {
+  .outer-layer {
+    padding: 0.99rem 0.63rem;
+    margin: 1.13rem 0.44rem 0 0.44rem;
 
-    .outer-layer{
-            padding: 0.99rem 0.63rem;
-            margin: 1.13rem 0.44rem 0 0.44rem;
-            
-            min-width: 19.125rem;
-            // max-width: 101.9375rem;
-            
-            border-radius: 2.75rem;
-            background: rgba(239, 243, 243, 0.7);
-            position: relative;
-            box-sizing: border-box;
-            overflow-x: wrap;
+    min-width: 19.125rem;
+    // max-width: 101.9375rem;
 
-            .top-section{
-                min-width: 17.875rem;
-                // max-width: 99.125rem;
-                height: auto;
-                display: flex;
-                flex-direction: column;
-                border-radius: 2.75rem;
-                background: #FFF;
-                position: relative;
-                overflow: hidden;
+    border-radius: 2.75rem;
+    background: rgba(239, 243, 243, 0.7);
+    position: relative;
+    box-sizing: border-box;
+    overflow-x: wrap;
 
-                .wrapper{
-                
-                    h1{
-                        font-family: 'THICCBOI-ExtraBold';
-                        font-size: 15vw;
-                        position: absolute;
-                        text-align: center;
-                        width: 100%;
-                        margin-top: 5rem;
-                    }
-                }
-            }
+    .top-section {
+      min-width: 17.875rem;
+      // max-width: 99.125rem;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      border-radius: 2.75rem;
+      background: #fff;
+      position: relative;
+      overflow: hidden;
 
-            .main-section{
-                border-radius: 1.25rem;
-                background: #FFF;
-                padding-left: 1rem;
-                padding-top: 0.5rem;
-                margin-top: 1.44rem;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                .contact-information{
-                    .information{
-                        display: flex;
-                        flex-direction: column;
-
-                        .email-contact .email-us, .phone-contact .phone{
-                            font-family: 'THICCBOI-ExtraBold';
-                            font-size: 8vw;
-                            font-weight: 800;
-                            text-decoration: underline;
-                        }
-
-                        .email-contact .gmail, .phone-contact .phone-number{
-                            font-size: 5vw;
-                            margin-top: -1rem;
-                        }
-
-                        .phone-contact{margin-top: -1rem;}
-
-                    
-                    }
-
-                    .image-wrapper{
-                        width: 100%;
-                        height: 100%;
-                        display: flex;
-                        justify-content: left;
-
-                        .envelope-img{
-                            width: 50%;
-                            height: 50%;
-                            object-fit: contain;
-                        }
-                    }
-                }
-
-                .contact-form{
-                    display: flex;
-                    flex-direction: column;
-                    text-align: left;
-                    width: 90%;
-                    margin-bottom: 2rem;
-
-                    .wrapper:not(:last-of-type){
-                        display: flex;
-                        flex-direction: column;
-
-                        input[type='text']{
-                            border-radius: 1.25rem;
-                            border: none;
-                            background: #B4F1F5;
-                            height: 1.5rem;
-                            padding-left: 0.5rem;
-                            font-family: 'THICCBOI';
-                        }
-
-                        textarea{
-                            border-radius: 1.25rem;
-                            border: none;
-                            background: #B4F1F5; 
-                            // width: 90%;
-                            padding: 0.5rem;
-                            font-size: 1.5rem;
-                            font-family: 'THICCBOI';
-
-                        }
-                    }
-
-                    .btn-wrapper{
-                        display: flex;
-                        flex-direction: row;
-                        gap: 50%;
-                        margin-top: 2rem;
-
-                        button{
-                            border-radius: 1.25rem;
-                            border: none;
-                            height: 2rem;
-                            width: 6.6875rem;
-                            font-family: 'THICCBOI';
-                        }
-
-                        button:last-of-type{color: white;}
-
-                        .submit-btn{
-                            background: #B4F1F5;
-
-                        }
-
-                        .reset-btn{
-                            background: #52CAC8;
-                        }
-                    }
-
-                    @media(min-width: 412px){
-
-                        p{
-                            font-size: 5vw;
-                        }
-
-                        .wrapper:not(:last-of-type){
-                            font-size: 5vw;
-                            margin-top: 1rem;
-                            input[type='text']{
-                                height: 2.3rem;
-                                margin-top: 0.5rem;
-                                font-size: 4.5vw;
-
-                            }
-                        }
-
-                        .btn-wrapper button{font-size: 4vw}
-                    }
-                }
-
-            }
-
-            @media(min-width: 768px){
-                .top-section{
-                    .wrapper{
-                        display: flex;
-                        flex-direction: row;
-                        justify-content: right;
-
-                        h1{
-                            font-size: 5rem;
-                            right: 5rem;
-                        }
-                    }
-                }
-
-                .main-section{
-                    .contact-information{
-                        display: flex;
-                        flex-direction: row;
-                        position: relative;
-                        .information{
-                            width: 50%;
-
-                            .email-contact .email-us, .phone-contact .phone{font-size: 1.8rem;}
-    
-                            .email-contact .gmail, .phone-contact .phone-number{font-size: 1.5rem;}
-                        }
-    
-                        .image-wrapper{
-                            width: 38%;
-                            height: 100%;
-                            display: flex;
-                            margin: 8rem 0 0 3rem;
-                            .envelope-img{
-                                width: 100%;
-                                height: 100%;
-                            }
-                        }
-                    }
-
-                    .contact-form {
-                        p{font-size: 1.3rem;}
-
-                        .wrapper {
-                            label{font-size: 1.2rem;}
-                            input{font-size: .5rem;}
-                            button{
-                                border-radius: 1rem;
-                                border: none;
-                                height:3rem;
-                                width: 8rem;
-                            }
-                            textarea{font-size: 1.2rem;}
-
-                        }
-
-                        .btn-wrapper{
-                            gap: 58%;
-                            button{
-                                font-size: 1.2rem;
-                            }
-                        }
-                    }
-                }
-            }
-
-            @media(min-width: 992px){
-                .top-section{
-                    .wrapper{
-                        width: 100%;
-
-                        .image-wrapper{
-                            width: 100%;
-                            height: 100%;
-                            display: flex;
-                            flex-direction: row;
-                            justify-content: right;
-                            .contact-us-img{
-                                width: 60%;
-                                height: 100%;
-                                object-fit: contain;
-                            }
-                        }
-                        
-                    }
-                    
-                }
-
-                .main-section{
-                    .contact-information{
-                        .image-wrapper {
-                            margin-top: 15rem;
-                            .envelope-img{
-                                width: 100%;
-                                height: 100%;
-                            }
-                        }
-                    }
-
-                    .contact-form {
-
-                        .btn-wrapper{gap: 60%;}
-                    }
-                }
-            }
-
-            @media(min-width: 2560px){
-                .main-section .contact-form .wrapper button{width: 25rem;height: 10rem;}
-            }
+      .wrapper {
+        h1 {
+          font-family: "THICCBOI-ExtraBold";
+          font-size: 15vw;
+          position: absolute;
+          text-align: center;
+          width: 100%;
+          margin-top: 5rem;
+        }
+      }
     }
+
+    .main-section {
+      border-radius: 1.25rem;
+      background: #fff;
+      padding-left: 1rem;
+      padding-top: 0.5rem;
+      margin-top: 1.44rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .contact-information {
+        .information {
+          display: flex;
+          flex-direction: column;
+
+          .email-contact .email-us,
+          .phone-contact .phone {
+            font-family: "THICCBOI-ExtraBold";
+            font-size: 8vw;
+            font-weight: 800;
+            text-decoration: underline;
+          }
+
+          .email-contact .gmail,
+          .phone-contact .phone-number {
+            font-size: 5vw;
+            margin-top: -1rem;
+          }
+
+          .phone-contact {
+            margin-top: -1rem;
+          }
+        }
+
+        .image-wrapper {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: left;
+
+          .envelope-img {
+            width: 50%;
+            height: 50%;
+            object-fit: contain;
+          }
+        }
+      }
+
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        width: 90%;
+        margin-bottom: 2rem;
+
+        .wrapper:not(:last-of-type) {
+          display: flex;
+          flex-direction: column;
+
+          input[type="text"] {
+            border-radius: 1.25rem;
+            border: none;
+            background: #b4f1f5;
+            height: 1.5rem;
+            padding-left: 0.5rem;
+            font-family: "THICCBOI";
+          }
+
+          textarea {
+            border-radius: 1.25rem;
+            border: none;
+            background: #b4f1f5;
+            // width: 90%;
+            padding: 0.5rem;
+            font-size: 1.5rem;
+            font-family: "THICCBOI";
+          }
+        }
+
+        .btn-wrapper {
+          display: flex;
+          flex-direction: row;
+          gap: 50%;
+          margin-top: 2rem;
+
+          button {
+            border-radius: 1.25rem;
+            border: none;
+            height: 2rem;
+            width: 6.6875rem;
+            font-family: "THICCBOI";
+          }
+
+          button:last-of-type {
+            color: white;
+          }
+
+          .submit-btn {
+            background: #b4f1f5;
+          }
+
+          .reset-btn {
+            background: #52cac8;
+          }
+        }
+
+        @media (min-width: 412px) {
+          p {
+            font-size: 5vw;
+          }
+
+          .wrapper:not(:last-of-type) {
+            font-size: 5vw;
+            margin-top: 1rem;
+            input[type="text"] {
+              height: 2.3rem;
+              margin-top: 0.5rem;
+              font-size: 4.5vw;
+            }
+          }
+
+          .btn-wrapper button {
+            font-size: 4vw;
+          }
+        }
+      }
+    }
+
+    @media (min-width: 768px) {
+      .top-section {
+        .wrapper {
+          display: flex;
+          flex-direction: row;
+          justify-content: right;
+
+          h1 {
+            font-size: 5rem;
+            right: 5rem;
+          }
+        }
+      }
+
+      .main-section {
+        .contact-information {
+          display: flex;
+          flex-direction: row;
+          position: relative;
+          .information {
+            width: 50%;
+
+            .email-contact .email-us,
+            .phone-contact .phone {
+              font-size: 1.8rem;
+            }
+
+            .email-contact .gmail,
+            .phone-contact .phone-number {
+              font-size: 1.5rem;
+            }
+          }
+
+          .image-wrapper {
+            width: 38%;
+            height: 100%;
+            display: flex;
+            margin: 8rem 0 0 3rem;
+            .envelope-img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+
+        .contact-form {
+          width: 60%;
+          p {
+            font-size: 1.3rem;
+          }
+
+          .wrapper {
+            label {
+              font-size: 1.2rem;
+            }
+            input {
+              font-size: 0.5rem;
+            }
+            button {
+              border-radius: 1rem;
+              border: none;
+              height: 3rem;
+              width: 8rem;
+            }
+            textarea {
+              font-size: 1.2rem;
+            }
+          }
+
+          .btn-wrapper {
+            gap: 58%;
+            button {
+              font-size: 1.2rem;
+            }
+          }
+        }
+      }
+    }
+
+    @media (min-width: 992px) {
+      .top-section {
+        .wrapper {
+          width: 100%;
+
+          .image-wrapper {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: right;
+            .contact-us-img {
+              width: 60%;
+              height: 100%;
+              object-fit: contain;
+            }
+          }
+        }
+      }
+
+      .main-section {
+        .contact-information {
+          padding-right: 5%;
+          .image-wrapper {
+            margin-left: auto;
+            width: 30%;
+            .envelope-img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+
+        .contact-form {
+          .btn-wrapper {
+            gap: 60%;
+          }
+        }
+      }
+    }
+
+    @media (min-width: 1440px) {
+      .main-section {
+        .contact-information {
+          .image-wrapper {
+            width: 20%;
+          }
+        }
+      }
+    }
+
+    @media (min-width: 2560px) {
+      .main-section .contact-form .wrapper button {
+        width: 25rem;
+        height: 10rem;
+      }
+    }
+  }
 }
