@@ -7,9 +7,11 @@ import contactUsImage from '@/public/images/Contact Us/contactUsImage.png'
 import contactUsImage_pcView from '@/public/images/Contact Us/contactUsImage_pcView.png'
 import envelope from '@/public/images/Contact Us/envelope.svg'
 import Navbar from '@/components/Navbar'
-import Image, { StaticImageData } from 'next/image'
-import { useWindowSize } from 'react-use'
 import React, { useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Image from 'next/image';
+
 export default function Contact() {
     const [width, setWidth] = useState(0);
     const form = useRef<HTMLFormElement>(null);
@@ -20,11 +22,26 @@ export default function Contact() {
             emailjs.sendForm('service_xfnsql8', 'template_mh2p7so', form.current, '5AmHByg4twxtIu8ct')
                 .then((result) => {
                     console.log(result.text);
-                    alert(result.text);
+                    toast.success('Message sent successfully!', {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    });
                 }, (error) => {
-                    console.log(error.text);
-                    alert(error.text);
-
+                    console.error(error.text);
+                    toast.error('Something went wrong. Please try again.', {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    });
                 });
         } else {
             console.error('Form reference is undefined');
@@ -53,6 +70,8 @@ export default function Contact() {
 
     return (
         <div className='contact-main-container'>
+            <ToastContainer />
+
             <div className="outer-layer">
                 <section className="top-section">
                     <Navbar />
