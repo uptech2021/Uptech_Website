@@ -16,7 +16,7 @@ export default function Team() {
                 <p>Transform your business with our innovative solutions and expert services, tailored to propel your company towards success.</p>
                 <div className="service-container">
                     <div className="blue-box">
-                        <h2>ADMINISTRATIVE SERVICE</h2>
+                        <h2>ADMINISTRATIVE SERVICES</h2>
                         <div className="wrapper">
                             <div className="servicePc-img">
                                 <Image src={pcServ1} alt="ser1" className="ser-img" />
@@ -43,7 +43,7 @@ export default function Team() {
                                 <p>Drive growth with a marketer who transforms insights into impactful strategies</p>
                                 <ul>
                                     <li>Social Media</li>
-                                    <li>Event planning and marketing</li>
+                                    <li>Event planning</li>
                                     <li>Marketing planning</li>
                                     <li>Brand Marketing</li>
                                 </ul>
