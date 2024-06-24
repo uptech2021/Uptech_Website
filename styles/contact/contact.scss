@@ -113,7 +113,7 @@
             background: #b4f1f5;
             // width: 90%;
             padding: 0.5rem;
-            font-size: 1.5rem;
+            font-size: 1rem;
             font-family: "THICCBOI";
           }
         }
@@ -146,22 +146,18 @@
         }
 
         @media (min-width: 412px) {
-          p {
-            font-size: 5vw;
-          }
-
           .wrapper:not(:last-of-type) {
             font-size: 5vw;
             margin-top: 1rem;
             input[type="text"] {
-              height: 2.3rem;
+              height: 1rem;
               margin-top: 0.5rem;
-              font-size: 4.5vw;
+              font-size: 1rem;
             }
           }
 
           .btn-wrapper button {
-            font-size: 4vw;
+            font-size: 1rem;
           }
         }
       }
@@ -215,15 +211,15 @@
         .contact-form {
           width: 60%;
           p {
-            font-size: 1.3rem;
+            font-size: 1rem;
           }
 
           .wrapper {
             label {
-              font-size: 1.2rem;
+              font-size: 1rem;
             }
             input {
-              font-size: 0.5rem;
+              font-size: 0.1rem;
             }
             button {
               border-radius: 1rem;
@@ -232,15 +228,12 @@
               width: 8rem;
             }
             textarea {
-              font-size: 1.2rem;
+              font-size: 1rem;
             }
           }
 
           .btn-wrapper {
             gap: 58%;
-            button {
-              font-size: 1.2rem;
-            }
           }
         }
       }

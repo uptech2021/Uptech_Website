@@ -95,7 +95,7 @@
   border: none;
   background: #b4f1f5;
   padding: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-family: "THICCBOI";
 }
 .contact-main-container .outer-layer .main-section .contact-form .btn-wrapper {
@@ -121,20 +121,17 @@
   background: #52cac8;
 }
 @media (min-width: 412px) {
-  .contact-main-container .outer-layer .main-section .contact-form p {
-    font-size: 5vw;
-  }
   .contact-main-container .outer-layer .main-section .contact-form .wrapper:not(:last-of-type) {
     font-size: 5vw;
     margin-top: 1rem;
   }
   .contact-main-container .outer-layer .main-section .contact-form .wrapper:not(:last-of-type) input[type=text] {
-    height: 2.3rem;
+    height: 1rem;
     margin-top: 0.5rem;
-    font-size: 4.5vw;
+    font-size: 1rem;
   }
   .contact-main-container .outer-layer .main-section .contact-form .btn-wrapper button {
-    font-size: 4vw;
+    font-size: 1rem;
   }
 }
 @media (min-width: 768px) {
@@ -177,13 +174,13 @@
     width: 60%;
   }
   .contact-main-container .outer-layer .main-section .contact-form p {
-    font-size: 1.3rem;
+    font-size: 1rem;
   }
   .contact-main-container .outer-layer .main-section .contact-form .wrapper label {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   .contact-main-container .outer-layer .main-section .contact-form .wrapper input {
-    font-size: 0.5rem;
+    font-size: 0.1rem;
   }
   .contact-main-container .outer-layer .main-section .contact-form .wrapper button {
     border-radius: 1rem;
@@ -192,13 +189,10 @@
     width: 8rem;
   }
   .contact-main-container .outer-layer .main-section .contact-form .wrapper textarea {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   .contact-main-container .outer-layer .main-section .contact-form .btn-wrapper {
     gap: 58%;
-  }
-  .contact-main-container .outer-layer .main-section .contact-form .btn-wrapper button {
-    font-size: 1.2rem;
   }
 }
 @media (min-width: 992px) {
