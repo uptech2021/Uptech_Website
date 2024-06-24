@@ -19,7 +19,7 @@ export default function Contact() {
         e.preventDefault();
 
         if (form.current) {
-            emailjs.sendForm('service_xfnsql8', 'template_mh2p7so', form.current, '5AmHByg4twxtIu8ct')
+            emailjs.sendForm('service_xfnsql8', 'template_tc7imh8', form.current, '5AmHByg4twxtIu8ct')
                 .then((result) => {
                     console.log(result.text);
                     toast.success('Message sent successfully!', {
@@ -48,6 +48,11 @@ export default function Contact() {
         }
     };
 
+    const resetForm = () => {
+        if (form.current) {
+            form.current.reset();
+        }
+    };
     useEffect(() => {
         // Handler to call on window resize
         function handleResize() {
@@ -138,7 +143,7 @@ export default function Contact() {
 
                         <div className="btn-wrapper wrapper">
                             <button className="form-btn submit-btn" onClick={sendEmail}>Submit</button>
-                            <button className="form-btn reset-btn">Reset</button>
+                            <button className="form-btn reset-btn" onClick={resetForm}>Reset</button>
                         </div>
 
                     </form>
