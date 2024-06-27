@@ -10,13 +10,28 @@ import Navbar from '@/components/Navbar'
 import React, { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { addSubmissionAttempt, isRateLimited } from '@/utils/rateLimit'
 import Image from 'next/image';
 
 export default function Contact() {
     const [width, setWidth] = useState(0);
-    const form = useRef<HTMLFormElement>(null);
-    const sendEmail = (e: any) => {
+    const form = useRef(null);
+
+    const sendEmail = (e) => {
         e.preventDefault();
+
+        if (isRateLimited()) {
+            toast.error('You have exceeded the maximum number of submissions. Please try again later.', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            return;
+        }
 
         if (form.current) {
             emailjs.sendForm('service_xfnsql8', 'template_tc7imh8', form.current, '5AmHByg4twxtIu8ct')
@@ -31,6 +46,7 @@ export default function Contact() {
                         draggable: true,
                         progress: undefined,
                     });
+                    addSubmissionAttempt(); // Add the attempt after successful submission
                 }, (error) => {
                     console.error(error.text);
                     toast.error('Something went wrong. Please try again.', {
@@ -53,13 +69,13 @@ export default function Contact() {
             form.current.reset();
         }
     };
+
     useEffect(() => {
         // Handler to call on window resize
         function handleResize() {
             // Set window width to state
             setWidth(window.innerWidth);
         }
-
 
         // Add event listener
         window.addEventListener("resize", handleResize);
@@ -133,7 +149,7 @@ export default function Contact() {
 
                         <div className="email-wrapper wrapper">
                             <label htmlFor="email">Email</label>
-                            <input type="text" id="email" name="email" required />
+                            <input type="email" id="email" name="email" required />
                         </div>
 
                         <div className="comment-wrapper wrapper">
@@ -142,14 +158,12 @@ export default function Contact() {
                         </div>
 
                         <div className="btn-wrapper wrapper">
-                            <button className="form-btn submit-btn" onClick={sendEmail}>Submit</button>
-                            <button className="form-btn reset-btn" onClick={resetForm}>Reset</button>
+                            <button className="form-btn submit-btn" type="submit">Submit</button>
+                            <button className="form-btn reset-btn" type="button" onClick={resetForm}>Reset</button>
                         </div>
-
                     </form>
                 </main>
             </div>
-
         </div>
     )
 }
