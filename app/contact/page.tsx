@@ -15,9 +15,9 @@ import Image from 'next/image';
 
 export default function Contact() {
     const [width, setWidth] = useState(0);
-    const form = useRef(null);
+    const form = useRef<HTMLFormElement>(null);
 
-    const sendEmail = (e) => {
+    const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         if (isRateLimited()) {
