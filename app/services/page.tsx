@@ -44,6 +44,7 @@ export default function Services() {
                             </div>
                         </div>
                     </section>
+                    
                     {isLargeScreen ? (
                         <PcServices />
                     ) : (<main className="main-container">
@@ -111,8 +112,6 @@ export default function Services() {
                     </main>)}
                 </div>
             </div>
-
-
         </>
 
     )
