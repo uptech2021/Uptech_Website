@@ -5,39 +5,50 @@ import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion, useAnimation } from 'framer-motion'
-import { useWindowSize } from 'react-use'
 
-import upTechLogo from '../public/images/logo.svg'
 import dropdown from '../public/images/Vector 89.svg'
 import menuBtn from '@/public/images/menu.svg'
 
 export default function Navbar() {
     const [isNavVisible, setIsNavVisible] = useState(false);
-    const { width } = useWindowSize();
+    const [isLargeScreen, setIsLargeScreen] = useState(false);
     const controls = useAnimation();
     const navRef = useRef(null);
 
     useEffect(() => {
-    const handleScroll = () => {
-      if (navRef.current) {
-        const top = (navRef.current as HTMLElement).getBoundingClientRect().top;
-        if (top < window.innerHeight && top > 0) {
-          controls.start("visible");
-        }
-      }
-    };
+        const handleScroll = () => {
+            if (navRef.current) {
+                const top = (navRef.current as HTMLElement).getBoundingClientRect().top;
+                if (top < window.innerHeight && top > 0) {
+                    controls.start("visible");
+                }
+            }
+        };
 
         window.addEventListener('scroll', handleScroll);
-        handleScroll();
+        handleScroll(); // Call handleScroll initially to check if the navbar is in view on load
 
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, [controls]);
 
+
+    useEffect(() => {
+        const checkScreenSize = () => {
+            setIsLargeScreen(window.innerWidth >= 1024);
+        };
+
+        checkScreenSize();
+
+        window.addEventListener('resize', checkScreenSize);
+
+        return () => window.removeEventListener('resize', checkScreenSize);
+    }, []);
+
     const verticalVariants = {
-        hidden: { y: '-100%', opacity: 0 }, // Starts above the screen and invisible
-        visible: { y: 0, opacity: 1 },      // Ends at its normal position and visible
+        hidden: { opacity: 0 }, // Starts invisible
+        visible: { opacity: 1 }, // Ends visible
     };
 
     const toggleNav = () => {
@@ -51,53 +62,53 @@ export default function Navbar() {
                 initial="hidden"
                 animate={controls}
                 variants={verticalVariants}
-                transition={{ duration: 1 }}
+                transition={{ duration: 0.5 }} // Adjust the duration as needed
             >
                 <div className="logo-wrapper">
                     <Image
-                        src={upTechLogo}
+                        src='images/logo.svg'
                         alt="logo"
+                        width={150} height={150}
                         priority={true}
                     />
                 </div>
             </motion.div>
 
             <button className='nav-btn' onClick={toggleNav}>
-                <Image 
-                    src={isNavVisible ? dropdown : menuBtn} 
+                <Image
+                    src={isNavVisible ? dropdown : menuBtn}
                     width={150} height={150}
-                    alt="toggle nav" 
+                    alt="toggle nav"
                 />
             </button>
 
-            {width >= 768 ? (
-                <nav className='navbar'>
-                    <motion.div
-                        initial="hidden"
-                        animate={controls}
-                        variants={verticalVariants}
-                        transition={{ duration: 1 }}
-                    >
-                        <ul className="nav-items">
-                            <li className="nav-links"><Link href="/">Home</Link></li>
-                            <li className="nav-links"><Link href="/objectives">Objectives</Link></li>
-                            <li className="nav-links"><Link href="/services">Services</Link></li>
-                            <li className="nav-links"><Link href="/about">About us</Link></li>
-                            <li className="nav-links"><Link href="/contact">Contact us</Link></li>
-                        </ul>
-                    </motion.div>
-                </nav>
-            ) : (
-                <nav className={`dropdown ${isNavVisible ? 'show-dropdown' : ''}`}>
-                    <ul className="dropdown-menu">
-                        <li className="nav-links"><Link href="/">Home</Link></li>
-                        <li className="nav-links"><Link href="/objectives">Objectives</Link></li>
-                        <li className="nav-links"><Link href="/services">Services</Link></li>
-                        <li className="nav-links"><Link href="/about">About us</Link></li>
-                        <li className="nav-links"><Link href="/contact">Contact us</Link></li>
-                    </ul>
-                </nav>
-            )}
+            <motion.div
+                ref={navRef}
+                initial="hidden"
+                animate={controls}
+                variants={verticalVariants}
+                transition={{ duration: 0.5 }} // Adjust the duration as needed
+            >
+            <nav className='navbar'>
+                <ul className="nav-items">
+                    <li className="nav-links"><Link href="/">Home</Link></li>
+                    <li className="nav-links"><Link href="/objectives">Objectives</Link></li>
+                    <li className="nav-links"><Link href="/services">Services</Link></li>
+                    <li className="nav-links"><Link href="/about">About us</Link></li>
+                    <li className="nav-links"><Link href="/contact">Contact us</Link></li>
+                </ul>
+            </nav>
+            </motion.div>
+
+            <nav className={`dropdown ${isNavVisible ? 'show-dropdown' : ''}`}>
+                <ul className="dropdown-menu">
+                    <li className="nav-links"><Link href="/">Home</Link></li>
+                    <li className="nav-links"><Link href="/objectives">Objectives</Link></li>
+                    <li className="nav-links"><Link href="/services">Services</Link></li>
+                    <li className="nav-links"><Link href="/about">About us</Link></li>
+                    <li className="nav-links"><Link href="/contact">Contact us</Link></li>
+                </ul>
+            </nav>
         </header>
     );
 }

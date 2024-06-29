@@ -24,11 +24,10 @@ import Navbar from '@/components/Navbar'
 import Image from 'next/image'
 import { useWindowSize } from 'react-use'; //react package that checks the screen size of the device
 import { motion, useAnimation } from 'framer-motion';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 export default function Home() {
 
-  const { width } = useWindowSize();
 
   const welcomeControls = useAnimation();
   const educationControls = useAnimation();
@@ -76,7 +75,7 @@ export default function Home() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [educationControls, educationImgControls, marketControls, marketImgControls, objectivesControls, ourlimeControls, privacyControls, projectControls, projectImgControls, safetyControls, securityControls, welcomeControls]);
 
   const rightVariants = {
     hidden: { x: '100%', opacity: 0 }, // Start from the right and hidden
@@ -102,7 +101,20 @@ export default function Home() {
     hidden: { x: 100, y: 100, opacity: 0 },
     visible: { x: 0, y: 0, opacity: 1 }
   }
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
 
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024);
+    };
+
+    checkScreenSize();
+
+
+    window.addEventListener('resize', checkScreenSize);
+
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
 
   return (
     <div className="home-main-container">
@@ -165,8 +177,8 @@ export default function Home() {
             </div>
 
             <div className="education-container">
-              {width >= 768 ? (
-                <>
+              {isLargeScreen  ? (
+                <div>
                   <div className="image-wrapper">
                     <motion.div
                       initial="hidden"
@@ -194,9 +206,9 @@ export default function Home() {
                       <p>Virtual Library, <br />Blogs, etc.</p>
                     </motion.div>
                   </div>
-                </>
+                </div>
               ) : (
-                <>
+                <div>
                   <h3>EDUCATION</h3>
 
                   <div className="image-wrapper">
@@ -209,7 +221,7 @@ export default function Home() {
                   </div>
 
                   <p>Virtual Library, <br />Blogs, etc.</p>
-                </>
+                </div>
               )}
 
 
@@ -226,8 +238,8 @@ export default function Home() {
             </div>
 
             <div className="marketplace-container">
-              {width >= 768 ? (
-                <>
+              {isLargeScreen  ? (
+                <div>
                   <div className="image-wrapper">
                     <motion.div
                       initial="hidden"
@@ -248,9 +260,9 @@ export default function Home() {
                     <h3>MARKETPLACE</h3>
                     <p>Buy, Sell, Trade, Explore</p>
                   </div>
-                </>
+                </div>
               ) : (
-                <>
+                <div>
                   <h3>MARKETPLACE</h3>
 
                   <div className="image-wrapper">
@@ -263,7 +275,7 @@ export default function Home() {
                   </div>
 
                   <p>Buy, Sell, Trade, Explore</p>
-                </>
+                </div>
               )
 
               }
@@ -280,8 +292,8 @@ export default function Home() {
             </div>
 
             <div className="project-management-container">
-              {width >= 768 ? (
-                <>
+              {isLargeScreen  ? (
+                <div>
                   <div className="image-wrapper">
                     <Image
                       src={projectManagement_mobile_view}
@@ -295,9 +307,9 @@ export default function Home() {
                     <h3>PROJECT MANAGEMENT</h3>
                     <p>Task Management</p>
                   </div>
-                </>
+                </div>
               ) : (
-                <>
+                <div>
                   <h3>PROJECT MANAGEMENT</h3>
 
                   <div className="image-wrapper">
@@ -310,7 +322,7 @@ export default function Home() {
                   </div>
 
                   <p>Task Management</p>
-                </>
+                </div>
               )}
             </div>
 
@@ -403,8 +415,8 @@ export default function Home() {
           <section className="about-us">
 
             <div className="about-us-container">
-              {width >= 768 ? (
-                <>
+              {isLargeScreen  ? (
+                <div>
                   <div className="about-us-text">
 
                     <h3>About Us</h3>
@@ -418,9 +430,9 @@ export default function Home() {
                       quality={100}
                     />
                   </div>
-                </>
+                </div>
               ) : (
-                <>
+                <div>
                   <div className="about-us-image">
                     <Image
                       src={aboutUsImage}
@@ -433,7 +445,7 @@ export default function Home() {
                     <h3>About Us</h3>
                     <p>Our goal is to provide the best service to our users while ensuring their privacy, security, and overall satisfaction. Join us and be part of a safe and engaging community.</p>
                   </div>
-                </>
+                </div>
               )}
             </div>
 
