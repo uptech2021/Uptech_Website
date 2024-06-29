@@ -1,7 +1,8 @@
 import Footer from '@/components/footer/Footer'
 import './globals.css'
 import type { Metadata } from 'next'
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/react"
 export const metadata: Metadata = {
   title: 'Uptech Incorporated Limited',
   applicationName:"Uptech Incorporated Limited",
@@ -25,6 +26,8 @@ export default function RootLayout({
       <body>
         {children}
           <Footer />
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   )
