@@ -38,8 +38,8 @@
         background-color: #6CFCEE;
         border-radius: 1rem;
         position: absolute;
-        margin-top: 17rem;
-        margin-left: 1rem;
+        margin-top: 20rem;
+        margin-left: 1.5rem;
         z-index: 3;
         height: auto;
         width: 15rem;
@@ -97,7 +97,8 @@
 
     @media(min-width: 425px){
         .show-dropdown{
-        margin-left: 6rem;
+            margin-left: 35%;
+            margin-top: 22rem;
         }
     }
 

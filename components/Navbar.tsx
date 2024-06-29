@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { motion, useAnimation } from 'framer-motion'
 import { useWindowSize } from 'react-use'
 
-import upTechLogo from '../public/images/uptech logo.png'
+import upTechLogo from '../public/images/logo.svg'
 import dropdown from '../public/images/Vector 89.svg'
 import menuBtn from '@/public/images/menu.svg'
 
@@ -63,7 +63,11 @@ export default function Navbar() {
             </motion.div>
 
             <button className='nav-btn' onClick={toggleNav}>
-                <Image src={isNavVisible ? dropdown : menuBtn} alt="toggle nav" />
+                <Image 
+                    src={isNavVisible ? dropdown : menuBtn} 
+                    width={150} height={150}
+                    alt="toggle nav" 
+                />
             </button>
 
             {width >= 768 ? (

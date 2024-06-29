@@ -8,7 +8,7 @@ export default function Pc() {
       <div className="top">
         <div className="logo-wrapper">
           <Image
-            src="/images/logo.svg"
+            src="/images/whiteLogo.svg"
             width={150}
             height={150}
             className="logo"

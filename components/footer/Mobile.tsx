@@ -6,7 +6,7 @@ export default function Mobile() {
     <footer className='mobile-footer'>
       <div className="logo-wrapper">
         <Image
-          src='/images/logo.svg'
+          src='/images/whiteLogo.svg'
           width={150}
           height={150}
           className='logo'

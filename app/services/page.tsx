@@ -40,11 +40,16 @@ export default function Services() {
                         <div className="wrapper">
                             <p>Yes! <br /> UpTech is offering<br /> services<br /></p>
                             <div className="serviceTop">
-                                <Image src={topSer} alt="topServ" className="topImg" />
+                                <Image 
+                                    src='/images/Services/topService.svg' 
+                                    alt="topServ" 
+                                    width={150} height={150}
+                                    className="topImg" 
+                                />
                             </div>
                         </div>
                     </section>
-                    
+
                     {isLargeScreen ? (
                         <PcServices />
                     ) : (<main className="main-container">
