@@ -288,7 +288,10 @@
 
 
                     .usersafety-header{
-                        margin: 1.5rem 1.31rem 0 1.31rem;
+                        margin: 1.5rem 1.64rem 0 1.62rem;                 
+                        text-align: left;
+                        justify-content: left;
+
                         h2{
                                 min-width: 20.5625rem;
                                 min-height: 8.875rem;
@@ -301,10 +304,10 @@
                             }
                     }
                     .privacy-header{
-                        margin: 0 8.06rem 0 8.06rem;
+                        margin: 0 1.64rem 0 1.62rem;                 
                         display: flex;
-                        text-align: center;
-                        align-items: center;
+                        text-align: right;
+                        justify-content: right;
                         h2{
                             color: #52CAC8;
                             font-style: normal;
@@ -313,9 +316,10 @@
                         }
                     }
                     .datasecurity-header{
-                        display: flex;
-                        text-align: center;
-
+                        margin: 0 1.64rem 0 1.62rem;                 
+                        text-align: left;
+                        justify-content: left;
+                        
                         h2{
                             color: #52CAC8;
                             font-style: normal;
@@ -323,57 +327,75 @@
                             line-height: normal;
                         }
                     }
-                    .usersafety-content{
-                        p{
-                            color: #000;
-                            text-align: left;
-                            font-style: normal;
-                            font-weight: 500;
-                            line-height: normal;
-                            margin-right: 0.19rem;
-                            margin-left: 0.62rem;
-                        }
-                    }
-                    .usersafety-img-container{
-                        min-width: 100%;
-                        min-height: 20rem;
+                    .alignment-safety-container{
                         display: flex;
+                        width: 100%;
+                        // border: solid;
+                        margin-top: -10%;
                         align-items: center;
-                        justify-content: center;
 
-                        .safety-img{
-                            // margin: 0 1.64rem 0 2.62rem;                 
-                            object-fit: contain;
-                            width: 70%;
-                            height: 100%;
-                        }
+                            p{
+                                color: #000;
+                                text-align: left;
+                                font-style: normal;
+                                font-weight: 500;
+                                line-height: normal;
+                                // margin: 0.5rem 1.64rem 0 1.62rem;  
+                                display: flex;
+                                align-self: center;
+                                justify-self: center;      
+                                width: 50%;             
+                                margin-left: auto;
+                                margin-right: 1rem;
+
+                            }
+
+                            .usersafety-img-container{
+                                min-width: 470%;
+                                min-height: 20rem;
+                                display: flex;
+                                // border: solid;
+    
+                                .safety-img{
+                                    object-fit: contain;
+                                    width: 100%;
+                                    height: 100%;
+                                }
+                            }
+                        
                     }
-                    .privacy-content{
-                        text-align: left;
+
+                    .alignment-privacy-container{
+                        display: flex;
+                        flex-direction: row-reverse;
+                        border: solid;
+                        align-items: center;
+
                         p{
                             color: #000;
                             font-style: normal;
                             font-weight: 500;
                             line-height: normal;
-                            margin: 0 1rem 0 1rem;
+                            width: 50%;
+                        }
+                    
+                        .privacy-img-container{
+                            min-width: 25rem;
+                            min-height: 30rem;
+                            border: solid;
+                            .privacy-img{
+                                width: 100%;
+                                height: 100%;
+                                object-fit: contain;
+
+                            }
                         }
                     }
-                    .privacy-img-container{
-                        min-width: 50%;
-                        min-height: 20rem;
+                    .alignment-security-container{
                         display: flex;
                         align-items: center;
-                        justify-content: center;
-                        .privacy-img{
-                            width: 50%;
-                            height: 100%;
-                            object-fit: contain;
-                        }
-                    }
-                    .datasecurity-content{
-                        margin-right: 0.25rem;
-                        margin-left: 0.44rem;
-                        text-align: left;
+                        border: solid;
+                        height: 100%;
 
                         p{
                             color: #000;
@@ -381,21 +403,26 @@
                             line-height: normal;
                             min-width: 17.75rem;
                             min-height: 19.25rem;
+                            width: 50%;
+                            text-align: center;  
+                            margin-left: auto;
+                            margin-right: 1rem; 
                         }
-                    }
-                    .datasecurity-img-container{
-                        min-width: 50%;
-                        min-height: 20rem;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
+                    
+                        .datasecurity-img-container{
+                            min-width: 200%;
+                            min-height: 100%;
+                            display: flex;
+                            align-items: left;
+                            justify-content: left;
 
-                        .datasecurity-img{
-                            height: 50%;
-                            width: 50%;    
-                            object-fit: contain;
+                            .datasecurity-img{
+                                height: 100%;
+                                width: 100%;    
+                                object-fit: contain;
+                            }
                         }
-                    }
+                }
             
                 }
             }
@@ -557,11 +584,9 @@
                     .usersafety-content{
                         p{
                             color: #000;
-                            text-align: center;
+                            // text-align: center;
                             font-weight: 500;
                             line-height: normal;
-                            margin-right: 0.19rem;
-                            margin-left: 0.62rem;
                         }
                     }
                     .usersafety-img-container{

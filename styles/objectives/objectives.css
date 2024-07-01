@@ -257,7 +257,9 @@
     overflow: hidden;
   }
   .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .usersafety-header {
-    margin: 1.5rem 1.31rem 0 1.31rem;
+    margin: 1.5rem 1.64rem 0 1.62rem;
+    text-align: left;
+    justify-content: left;
   }
   .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .usersafety-header h2 {
     min-width: 20.5625rem;
@@ -270,10 +272,10 @@
     line-height: normal;
   }
   .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .privacy-header {
-    margin: 0 8.06rem 0 8.06rem;
+    margin: 0 1.64rem 0 1.62rem;
     display: flex;
-    text-align: center;
-    align-items: center;
+    text-align: right;
+    justify-content: right;
   }
   .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .privacy-header h2 {
     color: #52CAC8;
@@ -282,8 +284,9 @@
     line-height: normal;
   }
   .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .datasecurity-header {
-    display: flex;
-    text-align: center;
+    margin: 0 1.64rem 0 1.62rem;
+    text-align: left;
+    justify-content: left;
   }
   .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .datasecurity-header h2 {
     color: #52CAC8;
@@ -291,73 +294,87 @@
     font-weight: 700;
     line-height: normal;
   }
-  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .usersafety-content p {
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .alignment-safety-container {
+    display: flex;
+    width: 100%;
+    margin-top: -10%;
+    align-items: center;
+  }
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .alignment-safety-container p {
     color: #000;
     text-align: left;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    margin-right: 0.19rem;
-    margin-left: 0.62rem;
-  }
-  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .usersafety-img-container {
-    min-width: 100%;
-    min-height: 20rem;
     display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .usersafety-img-container .safety-img {
-    -o-object-fit: contain;
-       object-fit: contain;
-    width: 70%;
-    height: 100%;
-  }
-  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .privacy-content {
-    text-align: left;
-  }
-  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .privacy-content p {
-    color: #000;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    margin: 0 1rem 0 1rem;
-  }
-  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .privacy-img-container {
-    min-width: 50%;
-    min-height: 20rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .privacy-img-container .privacy-img {
+    align-self: center;
+    justify-self: center;
     width: 50%;
+    margin-left: auto;
+    margin-right: 1rem;
+  }
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .alignment-safety-container .usersafety-img-container {
+    min-width: 470%;
+    min-height: 20rem;
+    display: flex;
+  }
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .alignment-safety-container .usersafety-img-container .safety-img {
+    -o-object-fit: contain;
+       object-fit: contain;
+    width: 100%;
+    height: 100%;
+  }
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .alignment-privacy-container {
+    display: flex;
+    flex-direction: row-reverse;
+    border: solid;
+    align-items: center;
+  }
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .alignment-privacy-container p {
+    color: #000;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    width: 50%;
+  }
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .alignment-privacy-container .privacy-img-container {
+    min-width: 25rem;
+    min-height: 30rem;
+    border: solid;
+  }
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .alignment-privacy-container .privacy-img-container .privacy-img {
+    width: 100%;
     height: 100%;
     -o-object-fit: contain;
        object-fit: contain;
   }
-  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .datasecurity-content {
-    margin-right: 0.25rem;
-    margin-left: 0.44rem;
-    text-align: left;
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .alignment-security-container {
+    display: flex;
+    align-items: center;
+    border: solid;
+    height: 100%;
   }
-  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .datasecurity-content p {
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .alignment-security-container p {
     color: #000;
     font-weight: 500;
     line-height: normal;
     min-width: 17.75rem;
     min-height: 19.25rem;
-  }
-  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .datasecurity-img-container {
-    min-width: 50%;
-    min-height: 20rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .datasecurity-img-container .datasecurity-img {
-    height: 50%;
     width: 50%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: 1rem;
+  }
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .alignment-security-container .datasecurity-img-container {
+    min-width: 200%;
+    min-height: 100%;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+  }
+  .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .alignment-security-container .datasecurity-img-container .datasecurity-img {
+    height: 100%;
+    width: 100%;
     -o-object-fit: contain;
        object-fit: contain;
   }
@@ -491,11 +508,8 @@
   }
   .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .usersafety-content p {
     color: #000;
-    text-align: center;
     font-weight: 500;
     line-height: normal;
-    margin-right: 0.19rem;
-    margin-left: 0.62rem;
   }
   .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .usersafety-img-container {
     min-width: 38.21656rem;
