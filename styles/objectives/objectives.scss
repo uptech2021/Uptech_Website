@@ -44,7 +44,7 @@
                         line-height: normal;
                         align-items: center;
                         justify-content: center;
-                        margin: 0 0.19rem 0 0.19rem;
+                        margin: -5rem 0.19rem 0 0.19rem;
 
                         h1{
                             font-family: 'THICCBOI-ExtraBold';
@@ -255,7 +255,7 @@
                         font-weight: 800;
                         align-items: center;
                         justify-content: center;
-                        margin: 0 1.75rem 0 1.75rem;
+                        // margin: 0 1.75rem 0 1.75rem;
                     }    
                     .objectives-content {
                         display: flex;
@@ -368,7 +368,7 @@
                     .alignment-privacy-container{
                         display: flex;
                         flex-direction: row-reverse;
-                        border: solid;
+                        // border: solid;
                         align-items: center;
 
                         p{
@@ -382,7 +382,7 @@
                         .privacy-img-container{
                             min-width: 25rem;
                             min-height: 30rem;
-                            border: solid;
+                            // border: solid;
                             .privacy-img{
                                 width: 100%;
                                 height: 100%;
@@ -394,7 +394,7 @@
                     .alignment-security-container{
                         display: flex;
                         align-items: center;
-                        border: solid;
+                        // border: solid;
                         height: 100%;
 
                         p{
@@ -489,7 +489,7 @@
         .outer-layer{
             .objectives-first-container{
                 .objectives-section{
-                    height: 68.9375rem;
+                    height: 72.9375rem;
                     .objectives-content{
                         // max-height: 3rem;
                         margin-top: 10rem;

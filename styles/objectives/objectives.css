@@ -38,7 +38,7 @@
   line-height: normal;
   align-items: center;
   justify-content: center;
-  margin: 0 0.19rem 0 0.19rem;
+  margin: -5rem 0.19rem 0 0.19rem;
 }
 .objectives-main-container .outer-layer .objectives-first-container .objectives-section .objectives-header h1 {
   font-family: "THICCBOI-ExtraBold";
@@ -229,7 +229,6 @@
     font-weight: 800;
     align-items: center;
     justify-content: center;
-    margin: 0 1.75rem 0 1.75rem;
   }
   .objectives-main-container .outer-layer .objectives-first-container .objectives-section .objectives-content {
     display: flex;
@@ -327,7 +326,6 @@
   .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .alignment-privacy-container {
     display: flex;
     flex-direction: row-reverse;
-    border: solid;
     align-items: center;
   }
   .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .alignment-privacy-container p {
@@ -340,7 +338,6 @@
   .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .alignment-privacy-container .privacy-img-container {
     min-width: 25rem;
     min-height: 30rem;
-    border: solid;
   }
   .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .alignment-privacy-container .privacy-img-container .privacy-img {
     width: 100%;
@@ -351,7 +348,6 @@
   .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .alignment-security-container {
     display: flex;
     align-items: center;
-    border: solid;
     height: 100%;
   }
   .objectives-main-container .outer-layer .objectives-second-container .objectives-info-section .alignment-security-container p {
@@ -421,7 +417,7 @@
 }
 @media (min-width: 1440px) {
   .objectives-main-container .outer-layer .objectives-first-container .objectives-section {
-    height: 68.9375rem;
+    height: 72.9375rem;
   }
   .objectives-main-container .outer-layer .objectives-first-container .objectives-section .objectives-content {
     margin-top: 10rem;
