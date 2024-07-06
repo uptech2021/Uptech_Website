@@ -47,9 +47,9 @@ export default function Team() {
                         </section>
                         <section className="profile">
                         <div className="name">
-                            <p>DANIEL MACKAY </p>
+                            <p>Xian Ramdass</p>
                             </div>
-                            <p>APPLICATION DEVELOPMENT</p>
+                            <p>Advisor</p>
                             
                         </section>
                         <section className="profile">
