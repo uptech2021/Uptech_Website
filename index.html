@@ -15,7 +15,7 @@
 
   <body>
 
-    <header class="pt-4 pl-6">
+    <header class="pt-4 px-6 flex flex-row items-center justify-between">
       <div class="w-20 h-20">
         <img
           class="w-full h-full"
@@ -23,26 +23,55 @@
           alt="uptech logo"
         />
       </div>
+
+      <nav class="hidden md:block">
+        <ul class="flex flex-row gap-4">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Objectives</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </nav>
     </header>
 
     <!-- WELCOME -->
-    <div class="relative text-center">
-      <div>
+    <div class="relative text-center mt-20">
+      <h1 class="hidden lg:block -mt-20 md:text-8xl font-extrabold">UPTECH</h1>
+
+      <div class="w-full h-1/2 lg:hidden">
         <img
-          class="w-full h-full object-cover"
+          class="w-full h-full object-contain"
           src="./assets/home-backgroundImage.svg"
           alt="background image"
         />
       </div>
-      <div
-        class="absolute top-0 mt-24 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
-      >
-        <h1 class="text-5xl font-extrabold">UPTECH</h1>
+      <div class="w-full h-1/2 -mt-40">
+        <img
+          class="w-full h-full object-contain"
+          src="./assets/homePc-backgroundImage.svg"
+          alt="background image"
+        />
+      </div>
+
+      <div class="absolute md:hidden top-0 mt-24 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+        <h1 class="text-5xl md:text-8xl font-extrabold">UPTECH</h1>
         <h2 class="text-5xl font-bold blueText-light">WELCOME</h2>
         <h2 class="text-2xl font-bold">
           Sign Up For The Ourlime Communities Network Today!
         </h2>
+
       </div>
+
+      <div class="hidden md:flex w-8/12 ml-10 mt-52 flex-col gap-3 text-left absolute top-0 ">
+        <h2 class="text-5xl md:text-6xl font-extrabold blueText-light">WELCOME</h2>
+        <h2 class="text-2xl md:text-4xl font-bold">
+          Sign Up For The Ourlime <br /> Communities Network Today!
+        </h2>
+        <p class="text-xl font-bold">Where Your Sucess Is Our Mission! </p>
+
+      </div>
+
     </div>
 
 

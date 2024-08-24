@@ -18,12 +18,14 @@
   font-weight: 300;
   font-style: normal;
 }
-
+body{
+  overflow-x: hidden;
+}
 h1 {
   font-family: "SavedByZero", sans-serif;
 }
 
-h2, h3 {
+h2, h3, a {
   font-family: "ThiccboiBold", sans-serif;
 }
 
@@ -36,6 +38,9 @@ h3{
 
 p {
   font-family: "ThiccboiRegular", sans-serif;
+}
+a{
+  font-weight: 900;
 }
 
 .bg-blueTheme{
