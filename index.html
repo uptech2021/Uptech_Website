@@ -1,53 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-    <link rel="stylesheet" href="./src/css/globals.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    />
+    <link rel="stylesheet" href="./src/css/globals.css" />
     <title>Uptech Incorporated Limited</title>
-</head>
+  </head>
 
-<body>
+  <body>
+
     <header class="pt-4 pl-6">
-        <div class="w-20 h-20">
-            <img 
-            class="w-full h-full"
-            src="./assets/uptech-logo.svg" 
-            alt="uptech logo" 
-            />
-        </div>
+      <div class="w-20 h-20">
+        <img
+          class="w-full h-full"
+          src="./assets/uptech-logo.svg"
+          alt="uptech logo"
+        />
+      </div>
     </header>
 
+    <!-- WELCOME -->
     <div class="relative text-center">
+      <div>
+        <img
+          class="w-full h-full object-cover"
+          src="./assets/home-backgroundImage.svg"
+          alt="background image"
+        />
+      </div>
+      <div
+        class="absolute top-0 mt-24 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
+      >
+        <h1 class="text-5xl font-extrabold">UPTECH</h1>
+        <h2 class="text-5xl font-bold blueText-light">WELCOME</h2>
+        <h2 class="text-2xl font-bold">
+          Sign Up For The Ourlime Communities Network Today!
+        </h2>
+      </div>
+    </div>
+
+
+    <main>
+      <!-- FEATURES -->
+      <section
+        class="p-6 text-center text-white bg-blueTheme flex flex-col gap-3 items-center"
+      >
+        <h2 class="text-white">FEATURES</h2>
+        <p>
+          Ourlime aims to provide our users with not only the features they have
+          come to expect from a social media platform but also introduce
+          concepts that we think will enhance our users.
+        </p>
+        <br />
+
+        <div class="flex flex-col gap-20 items-center">
+
+          <div class="flex flex-col items-center text-lg">
+            <h3>Education</h3>
+
+            <img class="w-20 h-20" src="./assets/book.svg" alt="book" />
+
+            <p class="font-semibold"
+              >Virtual Library, <br />Blogs, etc.</p
+            >
+          </div>
+
+            <div class="flex flex-col items-center text-lg">
+                <h3>Marketplace</h3>
+
+                <img class="w-20 h-20" src="./assets/house.svg" alt="book" />
+
+                <p class="font-semibold">Buy, Sell, Trade, <br />Explore.</p>
+            </div>
+
+                <div class="flex flex-col items-center text-lg">
+                    <h3>Project <br/>Management</h3>
+
+                    <img class="w-20 h-20" src="./assets/envelope.svg" alt="book" />
+
+                    <p class="font-semibold">Tools for Teachers, <br />Students, Buisnesses.</p>
+                </div>
+        </div>
+
+      </section>
+      
+      <!-- OBJECTIVES -->
+      <section
+        class="p-6 text-center flex flex-col gap-3 items-center"
+      >
+        <h2 class="blueText-dark">OBJECTIVES</h2>
+
+        <div class="flex flex-col gap-20 items-center">
+
+          <div class="flex flex-col items-center text-lg">
+            <h3 class="blueText-light">PRIVACY</h3>
+
+            <img class="w-20 h-20" src="./assets/globe.svg" alt="book" />
+
+            <p class="font-semibold">
+            Implementation of algorithms, that can recognize sensitive phrases and words as well as duplicate 
+              account would improve user’s safety.
+            </p>
+          </div>
+
+            <div class="flex flex-col items-center text-lg">
+                <h3 class="blueText-light">USER SAFETY</h3>
+
+                <img class="w-20 h-20" src="./assets/shield.svg" alt="book" />
+
+                <p class="font-semibold">
+                    These specific features would incorporate a “lock code” that only the user would know.
+                </p>
+            </div>
+
+                <div class="flex flex-col items-center text-lg">
+                    <h3 class="blueText-light">DATA SECURITY</h3>
+
+                    <img class="w-20 h-20" src="./assets/file.svg" alt="book" />
+
+                    <p class="font-semibold">
+                        Data such as names, addresses, emails, contacts, and date of births would not be used for marketing purposes
+                    </p>
+                </div>
+        </div>
+
+      </section>
+
+      <!-- PRODUCTS -->
+      <section
+        class="p-6 text-center text-white bg-blueTheme flex flex-col gap-3 items-center"
+      >
+        <h2>PRODUCTS</h2>
+
+        <div class="flex flex-col gap-20 items-center">
+
+          <div class="flex flex-col items-center text-lg">
+            <h3 class="text-xl">The purpose of Ourlime and what UpTech Incorporated hope to achieve with our App.</h3>
+
+            <div>
+                <img class="w-full h-full" src="./assets/products.svg" alt="book" />
+            </div>
+           
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT US -->
+      <section
+        class="p-6 text-center text-white bg-blueTheme flex flex-col gap-3 items-center"
+      >
+        <h2>PRODUCTS</h2>
+
+        <div class="flex flex-col gap-20 items-center">
+
+          <div class="flex flex-col gap-8 items-center text-lg">
+            <h3 class="text-xl">Uptech Incorporated created Ourlime and Ourlime Messenger to give our users a new experience.</h3>
+
+            <div class="space-y-8">
+                <img 
+                    class="w-48"
+                    src="./assets/ourStory.svg"
+                    alt="our story"
+                />
+                <img 
+                    class="w-48"
+                    src="./assets/theWayForward.svg"
+                    alt="the way forward"
+                />
+                <img 
+                    class="w-48"
+                    src="./assets/theWayForward.svg"
+                    alt="the way forward"
+                />
+            </div>
+           
+          </div>
+        </div>
+      </section>
+
+      
+
+      
+    </main>
+
+    <footer class="bg-black p-5 flex flex-col gap-3">
         <div>
-            <img 
-                class="w-full h-full object-cover"
-                src="./assets/home-backgroundImage.svg" 
-                alt="background image" 
+            <img
+                class="w-full"
+                src="./assets/footerLogo.svg" 
+                alt="footer logo"
             />
         </div>
-        <div class="absolute top-0 mt-24 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
-            <h1 class="text-5xl font-extrabold">UPTECH</h1>
-            <h2 class="text-5xl font-bold blueText-light">WELCOME</h2>
-            <h2 class="text-2xl font-bold">Sign Up For The Ourlime Communities Network Today!</h2>
 
+        <div class="flex gap-5">
+            <a href="https://wa.me/+18687104296" target="_blank"><img class="w-10" src="./assets/whatsapp.svg" alt="whatsapp"></a>
+            <a href="https://www.instagram.com/uptechincorp/" target="_blank"><img class="w-10" src="./assets/instagram.svg" alt="instagram"></a>
+            <a href="https://www.linkedin.com/in/uptechincorp/" target="_blank"><img class="w-10" src="./assets/linkedin.svg" alt="linkedin"></a>
+            <a href="https://www.facebook.com/uptech.trendz" target="_blank"><img class="w-10" src="./assets/facebook.svg" alt="facebook"></a>
         </div>
-    </div>
-    
-    <main>
-        <section class="p-6 text-center text-white bg-blueTheme">
-            <h2 class="text-white text-2xl">FEATURES</h2>
-            <p>
-                Ourlime aims to provide our users with not only the features they have come
-                to expect from a social media platform but also introduce concepts that
-                we think will enhance our users.
-            </p>
-        </section>
 
-    </main>
-    
-    
 
-</body>
+        <p class="text-white">Cooperation, Commmunication, Teamwork and Commitment</p>
+    </footer>
+  </body>
 </html>

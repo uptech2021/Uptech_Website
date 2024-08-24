@@ -23,8 +23,15 @@ h1 {
   font-family: "SavedByZero", sans-serif;
 }
 
-h2 {
+h2, h3 {
   font-family: "ThiccboiBold", sans-serif;
+}
+
+h2{
+  font-size: 2.5rem;
+}
+h3{
+  font-size: 2rem;
 }
 
 p {
