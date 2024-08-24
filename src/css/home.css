@@ -1,0 +1,44 @@
+@font-face {
+  font-family: "ThiccboiRegular";
+  src: url("../../assets/fonts/thicccboi/THICCCBOI-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ThiccboiBold";
+  src: url("../../assets/fonts/thicccboi/THICCCBOI-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SavedByZero";
+  src: url("../../assets/fonts/saved_by_zero/SavedByZero.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+h1 {
+  font-family: "SavedByZero", sans-serif;
+}
+
+h2 {
+  font-family: "ThiccboiBold", sans-serif;
+}
+
+p {
+  font-family: "ThiccboiRegular", sans-serif;
+}
+
+.bg-blueTheme{
+  background-color: #448CFF;
+}
+
+.blueText-light{
+  color: #62a3ff;
+}
+
+.blueText-dark{
+  color: #448CFF;
+}
