@@ -36,7 +36,7 @@
     </header>
 
     <!-- WELCOME -->
-    <div class="relative text-center mt-20">
+    <div class="relative text-center mt-5 lg:mt-20">
       <h1 class="hidden lg:block -mt-20 md:text-8xl font-extrabold">UPTECH</h1>
 
       <div class="w-full h-1/2 lg:hidden">
@@ -46,7 +46,8 @@
           alt="background image"
         />
       </div>
-      <div class="w-full h-1/2 -mt-40">
+
+      <div class="hidden lg:block w-full h-1/2">
         <img
           class="w-full h-full object-contain"
           src="./assets/homePc-backgroundImage.svg"
@@ -88,9 +89,9 @@
         </p>
         <br />
 
-        <div class="flex flex-col gap-20 items-center">
+        <div class="flex flex-col lg:flex-row gap-20 items-center">
 
-          <div class="flex flex-col items-center text-lg">
+          <div class="flex flex-col gap-3 items-center text-lg">
             <h3>Education</h3>
 
             <img class="w-20 h-20" src="./assets/book.svg" alt="book" />
@@ -100,7 +101,7 @@
             >
           </div>
 
-            <div class="flex flex-col items-center text-lg">
+            <div class="flex flex-col gap-3 items-center text-lg">
                 <h3>Marketplace</h3>
 
                 <img class="w-20 h-20" src="./assets/house.svg" alt="book" />
@@ -108,7 +109,7 @@
                 <p class="font-semibold">Buy, Sell, Trade, <br />Explore.</p>
             </div>
 
-                <div class="flex flex-col items-center text-lg">
+                <div class="flex flex-col gap-3 items-center text-lg">
                     <h3>Project <br/>Management</h3>
 
                     <img class="w-20 h-20" src="./assets/envelope.svg" alt="book" />
@@ -120,9 +121,7 @@
       </section>
       
       <!-- OBJECTIVES -->
-      <section
-        class="p-6 text-center flex flex-col gap-3 items-center"
-      >
+      <section class="p-6 text-center flex flex-col gap-3 items-center lg:hidden">
         <h2 class="blueText-dark">OBJECTIVES</h2>
 
         <div class="flex flex-col gap-20 items-center">
@@ -161,52 +160,70 @@
 
       </section>
 
+      <section class="hidden bg-blueTheme relative lg:block">
+        <h2 style="background-color: #F9F5FD;" class="blueText-darker text-8xl font-extrabold pl-10 z-10 relative">OBJECTIVES</h2>
+
+        <img 
+          class="w-full h-full"
+          src="./assets/backgroundVector.svg" 
+          alt="background vector"
+        />
+      </section>
+
       <!-- PRODUCTS -->
-      <section
-        class="p-6 text-center text-white bg-blueTheme flex flex-col gap-3 items-center"
-      >
-        <h2>PRODUCTS</h2>
+      <section class="p-6 text-center text-white bg-blueTheme">
+        <h2 class="lg:text-left">PRODUCTS</h2>
 
-        <div class="flex flex-col gap-20 items-center">
-
-          <div class="flex flex-col items-center text-lg">
-            <h3 class="text-xl">The purpose of Ourlime and what UpTech Incorporated hope to achieve with our App.</h3>
-
-            <div>
-                <img class="w-full h-full" src="./assets/products.svg" alt="book" />
-            </div>
-          
+        <div class="w-full lg:pr-20">
+          <h3 class="hidden text-xl lg:block lg:self-end lg:text-right">
+            The Purpose Of Ourlime And <br /> What UpTech Incorporated Hope <br />To Achieve With Our App.
+          </h3>
+      
+          <div class="flex flex-col items-center text-lg w-full">
+              <h3 class="text-xl lg:hidden">
+                  The purpose of Ourlime and what UpTech Incorporated hope to achieve with our App.
+              </h3>
+      
+              <div class="w-8/12">
+                  <img class="w-full h-full" src="./assets/products.svg" alt="book" />
+              </div>
           </div>
-        </div>
+      </div>
+      
       </section>
 
       <!-- ABOUT US -->
-      <section
-        class="p-6 text-center text-white bg-blueTheme flex flex-col gap-3 items-center"
-      >
-        <h2>PRODUCTS</h2>
+      <section class="p-6 text-center text-white bg-blueTheme flex flex-col gap-3 items-center">
+        <h2 class="font-extrabold">ABOUT US</h2>
 
         <div class="flex flex-col gap-20 items-center">
 
           <div class="flex flex-col gap-8 items-center text-lg">
             <h3 class="text-xl">Uptech Incorporated created Ourlime and Ourlime Messenger to give our users a new experience.</h3>
 
-            <div class="space-y-8">
-                <img 
+            <div class="space-y-8 md:space-y-0 md:flex flex-row gap-10">
+                <a href="#ourStory">
+                  <img 
                     class="w-48"
-                    src="./assets/ourStory.svg"
+                    src="./assets/ourStoryPc.svg"
                     alt="our story"
-                />
-                <img 
+                  />
+                </a>
+                <a href="#foundersMessage">
+                  <img 
                     class="w-48"
-                    src="./assets/theWayForward.svg"
+                    src="./assets/foundersMessage.svg"
                     alt="the way forward"
-                />
-                <img 
+                  />
+                </a>
+                <a href="#theWayForward">
+                  <img 
                     class="w-48"
-                    src="./assets/theWayForward.svg"
+                    src="./assets/theWayForwardPc.svg"
                     alt="the way forward"
-                />
+                  />
+                </a>
+
             </div>
            
           </div>
@@ -219,7 +236,7 @@
     </main>
 
     <footer class="bg-black p-5 flex flex-col gap-3">
-        <div>
+        <div class="w-10/12 md:w-5/12">
             <img
                 class="w-full"
                 src="./assets/footerLogo.svg" 

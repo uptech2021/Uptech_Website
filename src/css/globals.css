@@ -54,3 +54,18 @@ a{
 .blueText-dark{
   color: #448CFF;
 }
+
+.blueText-darker{
+  color: #3659CD;
+}
+
+@media(min-width: 1024px){
+  h2{
+    font-weight: 900;
+    font-size: 3.5rem;
+  }
+
+  p{
+    font-size:large;
+  }
+}
