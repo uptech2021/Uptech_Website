@@ -13,7 +13,9 @@
     <title>Uptech Incorporated Limited</title>
   </head>
   <body>
-    <header class="pt-4 px-6 flex flex-row items-center justify-between">
+    <header
+      class="pt-4 px-6 flex flex-row items-center justify-between relative"
+    >
       <div class="w-20 h-20">
         <img
           class="w-full h-full"
@@ -21,7 +23,6 @@
           alt="uptech logo"
         />
       </div>
-
       <nav class="hidden md:block">
         <ul class="flex flex-row gap-4">
           <li><a href="../../index.html">Home</a></li>
@@ -31,11 +32,27 @@
           <li><a href="./contact.html">Contact Us</a></li>
         </ul>
       </nav>
+      <img
+        src="../../assets/menu.svg"
+        alt="menu"
+        class="w-8 h-8 md:hidden cursor-pointer"
+        id="menu-button"
+      />
+      <nav
+        class="absolute top-16 right-6 bg-white p-4 rounded shadow-md md:hidden hidden z-30"
+        id="mobile-menu"
+      >
+        <ul class="flex flex-col gap-4">
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="./objectives.html">Objectives</a></li>
+          <li><a href="./service.html">Services</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="./contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
     </header>
     <div class="flex flex-col items-center text-center">
-     
       <div class="w-full relative text-center mt-5 lg:mt-20">
-  
         <div class="w-full h-1/2 md:hidden">
           <img
             class="w-full h-full object-contain"
@@ -43,7 +60,7 @@
             alt="background image"
           />
         </div>
-  
+
         <div class="hidden md:block w-full h-1/2">
           <img
             class="w-full h-full object-contain"
@@ -51,23 +68,26 @@
             alt="background image"
           />
         </div>
-  
+
         <!-- Mobile Heading -->
-        <div class="pb-80 flex flex-col justify-between h-full absolute md:hidden top-0 left-1/2 transform -translate-x-1/2 z-10">
+        <div
+          class="pb-96 flex flex-col justify-between h-full absolute md:hidden top-0 left-1/2 transform -translate-x-1/2 z-10"
+        >
           <h1 class="text-5xl md:text-8xl font-extrabold">About Us</h1>
           <h2 class="text-2xl font-bold">
             Discover who we are and what drives our passion here!
           </h2>
         </div>
-  
+
         <!-- PC/Tablet heading -->
-        <div class="hidden md:flex w-8/12 ml-10 flex-col gap-3 text-left absolute top-0 ">
+        <div
+          class="hidden md:flex w-8/12 ml-10 flex-col gap-3 text-left absolute top-0"
+        >
           <h1 class="text-5xl md:text-6xl font-extrabold">About Us</h1>
           <p class="text-xl font-bold">
             Discover who we are and what drives our <br />passion here!
           </p>
         </div>
-  
       </div>
 
       <main class="text-center m-10">
@@ -180,22 +200,39 @@
 
     <footer class="bg-black p-5 flex flex-col gap-3">
       <div class="w-10/12 md:w-5/12">
-          <img
-              class="w-full"
-              src="../../assets/footerLogo.svg" 
-              alt="footer logo"
-          />
+        <img
+          class="w-full"
+          src="../../assets/footerLogo.svg"
+          alt="footer logo"
+        />
       </div>
 
       <div class="flex gap-5">
-          <a href="https://wa.me/+18687104296" target="_blank"><img class="w-10" src="../../assets/whatsapp.svg" alt="whatsapp"></a>
-          <a href="https://www.instagram.com/uptechincorp/" target="_blank"><img class="w-10" src="../../assets/instagram.svg" alt="instagram"></a>
-          <a href="https://www.linkedin.com/in/uptechincorp/" target="_blank"><img class="w-10" src="../../assets/linkedin.svg" alt="linkedin"></a>
-          <a href="https://www.facebook.com/uptech.trendz" target="_blank"><img class="w-10" src="../../assets/facebook.svg" alt="facebook"></a>
+        <a href="https://wa.me/+18687104296" target="_blank"
+          ><img class="w-10" src="../../assets/whatsapp.svg" alt="whatsapp"
+        /></a>
+        <a href="https://www.instagram.com/uptechincorp/" target="_blank"
+          ><img class="w-10" src="../../assets/instagram.svg" alt="instagram"
+        /></a>
+        <a href="https://www.linkedin.com/in/uptechincorp/" target="_blank"
+          ><img class="w-10" src="../../assets/linkedin.svg" alt="linkedin"
+        /></a>
+        <a href="https://www.facebook.com/uptech.trendz" target="_blank"
+          ><img class="w-10" src="../../assets/facebook.svg" alt="facebook"
+        /></a>
       </div>
 
-
-      <p class="text-white">Cooperation, Commmunication, Teamwork and Commitment</p>
-  </footer>
+      <p class="text-white">
+        Cooperation, Commmunication, Teamwork and Commitment
+      </p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#menu-button").click(function () {
+          $("#mobile-menu").toggleClass("hidden");
+        });
+      });
+    </script>
   </body>
 </html>

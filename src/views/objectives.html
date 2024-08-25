@@ -13,7 +13,9 @@
   </head>
   <body class="bg-white text-black">
     <!-- Navbar -->
-    <header class="pt-4 px-6 flex flex-row items-center justify-between">
+    <header
+      class="pt-4 px-6 flex flex-row items-center justify-between relative"
+    >
       <div class="w-20 h-20">
         <img
           class="w-full h-full"
@@ -21,9 +23,26 @@
           alt="uptech logo"
         />
       </div>
-
       <nav class="hidden md:block">
         <ul class="flex flex-row gap-4">
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="#">Objectives</a></li>
+          <li><a href="./service.html">Services</a></li>
+          <li><a href="./aboutus.html">About Us</a></li>
+          <li><a href="./contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+      <img
+        src="../../assets/menu.svg"
+        alt="menu"
+        class="w-8 h-8 md:hidden cursor-pointer"
+        id="menu-button"
+      />
+      <nav
+        class="absolute top-16 right-6 bg-white p-4 rounded shadow-md md:hidden hidden z-30"
+        id="mobile-menu"
+      >
+        <ul class="flex flex-col gap-4">
           <li><a href="../../index.html">Home</a></li>
           <li><a href="#">Objectives</a></li>
           <li><a href="./service.html">Services</a></li>
@@ -35,45 +54,45 @@
 
     <!-- Main Section with SVG Background -->
     <div class="w-full relative text-center mt-5 lg:mt-20">
-  
-        <div class="w-full h-1/2 md:hidden">
-          <img
-            class="w-full h-full object-contain"
-            src="../../assets/objectivesBackground.svg"
-            alt="background image"
-          />
-        </div>
-  
-        <div class="hidden md:block w-full h-1/2">
-          <img
-            class="w-full h-full object-contain"
-            src="../../assets/objectivesPc.svg"
-            alt="background image"
-          />
-        </div>
-  
-        <!-- Mobile Heading -->
-        <div class="pb-20 flex flex-col justify-between h-full absolute md:hidden top-0 left-1/2 transform -translate-x-1/2 z-10">
-          <h1 class="text-3xl md:text-6xl font-extrabold">Objectives</h1>
+      <div class="w-full h-1/2 md:hidden">
+        <img
+          class="w-full h-full object-contain"
+          src="../../assets/objectivesBackground.svg"
+          alt="background image"
+        />
+      </div>
 
-          
-          <h2 class="text-xl font-bold">
-            Enhance your safety with our advanced algorithms, emergency features, and strict privacy protections
-          </h2>
-  
-        </div>
-  
-        <!-- PC/Tablet heading -->
-        <div class="hidden md:flex w-8/12 ml-10 flex-col gap-3 text-left absolute top-0 ">
-          <h1 class="text-5xl md:text-6xl font-extrabold">Objectives</h1>
-          <p class="text-xl font-bold">
-            Enhance your safety with our advanced algorithms, emergency features, and strict privacy protections
-          </p>
-  
-        </div>
-  
+      <div class="hidden md:block w-full h-1/2">
+        <img
+          class="w-full h-full object-contain"
+          src="../../assets/objectivesPc.svg"
+          alt="background image"
+        />
+      </div>
+
+      <!-- Mobile Heading -->
+      <div
+        class="pb-20 flex flex-col justify-between h-full absolute md:hidden top-0 left-1/2 transform -translate-x-1/2 z-10"
+      >
+        <h1 class="text-3xl md:text-6xl font-extrabold">Objectives</h1>
+
+        <h2 class="text-xl font-bold">
+          Enhance your safety with our advanced algorithms, emergency features,
+          and strict privacy protections
+        </h2>
+      </div>
+
+      <!-- PC/Tablet heading -->
+      <div
+        class="hidden md:flex w-8/12 ml-10 flex-col gap-3 text-left absolute top-0"
+      >
+        <h1 class="text-5xl md:text-6xl font-extrabold">Objectives</h1>
+        <p class="text-xl font-bold">
+          Enhance your safety with our advanced algorithms, emergency features,
+          and strict privacy protections
+        </p>
+      </div>
     </div>
-
 
     <!-- Objectives Section -->
     <section class="bg-white py-16">
@@ -171,5 +190,13 @@
         Cooperation, Commmunication, Teamwork and Commitment
       </p>
     </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#menu-button").click(function () {
+          $("#mobile-menu").toggleClass("hidden");
+        });
+      });
+    </script>
   </body>
 </html>
