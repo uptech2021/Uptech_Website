@@ -198,13 +198,70 @@
         Cooperation, Commmunication, Teamwork and Commitment
       </p>
     </footer>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
     <script>
       $(document).ready(function () {
+        // Toggle the mobile menu
         $("#menu-button").click(function () {
           $("#mobile-menu").toggleClass("hidden");
         });
+    
+        // GSAP ScrollTrigger for the main container and services
+        gsap.registerPlugin(ScrollTrigger);
+    
+        // Animate the main container on scroll
+        gsap.from("main", {
+          scrollTrigger: {
+            trigger: "main",
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+          y: 100,
+          opacity: 0,
+          duration: 1.5,
+          ease: "power4.out",
+          scale: 0.9,
+        });
+    
+        // Animate each service section one at a time
+        const serviceSections = gsap.utils.toArray(".flex-col.items-center");
+        serviceSections.forEach((section, index) => {
+          gsap.from(section, {
+            scrollTrigger: {
+              trigger: section,
+              start: "top 80%",
+              toggleActions: "play none none none",
+            },
+            y: 100,
+            opacity: 0,
+            duration: 1.5,
+            ease: "power4.out",
+            rotationX: 45,
+            scale: 0.9,
+            delay: index * 0.8, // Add a delay based on the index
+          });
+        });
+    
+        // Add a cool hover effect to service images
+        gsap.utils.toArray(".flex-col.items-center img").forEach((img) => {
+          gsap.fromTo(
+            img,
+            { scale: 1 },
+            {
+              scale: 1.1,
+              duration: 1.5,
+              ease: "power2.inOut",
+              paused: true,
+              yoyo: true,
+              repeat: -1,
+            }
+          );
+        });
       });
     </script>
+    
   </body>
 </html>

@@ -10,6 +10,8 @@
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
     />
     <link rel="stylesheet" href="../../src/css/globals.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
     <title>Uptech Incorporated Limited</title>
   </head>
   <body>
@@ -115,7 +117,7 @@
             </div>
             <div class="lg:w-1/3">
               <h3 class="blueText-dark text-2xl mb-2">Xian Ramdass</h3>
-              <p class="mb-6 font-bold">Advisor</p>
+              <p class="mb-6 font-bold">ADVISOR/p>
             </div>
             <div class="lg:w-1/3">
               <h3 class="blueText-dark text-2xl mb-2">NEOLA HERNANDEZ</h3>
@@ -227,12 +229,83 @@
       </p>
     </footer>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- GSAP Animation Script -->
     <script>
       $(document).ready(function () {
+        // Initialize GSAP and ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+    
+        // Header animation on load
+        gsap.from("header", {
+          duration: 1,
+          y: -50,
+          opacity: 0,
+          ease: "power2.out",
+        });
+    
+        // Main container animation on scroll
+        gsap.from("main", {
+          duration: 1.2,
+          opacity: 0,
+          y: 50,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: "main",
+            start: "top 80%",  // Start animation when the top of 'main' hits 80% of the viewport height
+            toggleActions: "play none none none"  // Play the animation on entering the viewport
+          },
+        });
+    
+        // Staggered animations for child elements of the main container on scroll
+        gsap.from("main > div", {
+          duration: 1,
+          opacity: 0,
+          y: 30,
+          stagger: 0.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: "main",
+            start: "top 90%",  // Start animation slightly earlier for child elements
+            toggleActions: "play none none none"
+          },
+        });
+    
+        // Footer animation on scroll
+        gsap.from("footer", {
+          duration: 1,
+          y: 50,
+          opacity: 0,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: "footer",
+            start: "top 90%",
+            toggleActions: "play none none none"
+          },
+        });
+    
+        // Team members animation on scroll
+        gsap.from(".flex > div", {
+          duration: 1,
+          opacity: 0,
+          y: 50,
+          stagger: 0.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".flex",
+            start: "top 85%",
+            toggleActions: "play none none none"
+          },
+        });
+    
+        // Mobile menu toggle
         $("#menu-button").click(function () {
           $("#mobile-menu").toggleClass("hidden");
         });
       });
     </script>
+    
+    
+    
   </body>
 </html>
