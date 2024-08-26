@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="../../assets/uptech-logo.svg" />
-    <link rel="bg" href="../../assets/background.svg" />
+    <link rel="icon" href="../assets/uptech-logo.svg" />
+    <link rel="bg" href="../assets/background.svg" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
     />
-    <link rel="stylesheet" href="../../src/css/globals.css" />
+    <link rel="stylesheet" href="../css/globals.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
     <title>Uptech Incorporated Limited</title>
@@ -17,26 +17,26 @@
   <body class="bg-gray-100">
     <div class="xl:w-1/2 xl:flex flex-col mx-auto">
       <header
-        class="pt-4 px-6 flex flex-row items-center justify-between relative"
+        class="pt-4 px-6 flex flex-row items-center justify-between relative z-20"
       >
         <div class="w-20 h-20">
           <img
             class="w-full h-full"
-            src="../../assets/uptech-logo.svg"
+            src="../assets/uptech-logo.svg"
             alt="uptech logo"
           />
         </div>
         <nav class="hidden md:block">
           <ul class="flex flex-row gap-4">
-            <li><a href="../../index.html">Home</a></li>
-            <li><a href="./objectives.html">Objectives</a></li>
-            <li><a href="./service.html">Services</a></li>
+            <li><a href="..">Home</a></li>
+            <li><a href="../objectives">Objectives</a></li>
+            <li><a href="../services">Services</a></li>
             <li><a href="#">About Us</a></li>
-            <li><a href="./contact.html">Contact Us</a></li>
+            <li><a href="../contact">Contact Us</a></li>
           </ul>
         </nav>
         <img
-          src="../../assets/menu.svg"
+          src="../assets/menu.svg"
           alt="menu"
           class="w-8 h-8 md:hidden cursor-pointer"
           id="menu-button"
@@ -46,57 +46,57 @@
           id="mobile-menu"
         >
           <ul class="flex flex-col gap-4">
-            <li><a href="../../index.html">Home</a></li>
-            <li><a href="./objectives.html">Objectives</a></li>
-            <li><a href="./service.html">Services</a></li>
+            <li><a href="..">Home</a></li>
+            <li><a href="../objectives">Objectives</a></li>
+            <li><a href="../services">Services</a></li>
             <li><a href="#">About Us</a></li>
-            <li><a href="./contact.html">Contact Us</a></li>
+            <li><a href="../contact">Contact Us</a></li>
           </ul>
         </nav>
       </header>
 
       <div class="flex flex-col items-center text-center">
-        <div class="w-full relative text-center mt-5 lg:mt-20">
+        <div class="w-full relative text-center  lg:mt-20">
           <div class="w-full h-1/2 md:hidden">
             <img
               class="w-full h-full object-contain"
-              src="../../assets/abg.svg"
+              src="../assets/abg.svg"
               alt="background image"
             />
           </div>
 
           <div
-            class="hidden md:block h-1/2"
-            style="width: 70%; margin-left: 20rem; margin-top: -5rem"
+            style="margin-left: 20rem; margin-top: -5rem"
+            class="hidden md:block h-1/2 ml-120"
           >
             <img
               class="w-full h-full object-contain"
-              src="../../assets/sbgb.svg"
+              src="../assets/abgPc.svg"
               alt="background image"
             />
           </div>
           <img
             class="w-full h-full object-contain"
-            src="../../assets/rectangle.svg"
+            src="../assets/rectangle.svg"
             alt="background image"
           />
 
           <!-- Mobile Heading -->
           <div
-            class="pb-96 flex flex-col justify-between h-full absolute md:hidden top-0 left-1/2 transform -translate-x-1/2 z-10"
+            class="h-full absolute md:hidden top-0 mt-20 left-1/2 transform -translate-x-1/2 z-10"
           >
-            <h1 class="text-5xl md:text-8xl font-extrabold">About Us</h1>
-            <h2 class="text-2xl font-bold">
+            <h1>About Us</h1>
+            <p class="mt-3">
               Discover who we are and what drives our passion here!
-            </h2>
+            </p>
           </div>
 
           <!-- PC/Tablet heading -->
           <div
             class="hidden md:flex w-8/12 ml-10 flex-col gap-3 text-left absolute top-0 -mt-10"
           >
-            <h1 class="text-5xl md:text-6xl font-extrabold">About Us</h1>
-            <p class="text-xl font-bold">
+            <h1>About Us</h1>
+            <p>
               Discover who we are and what drives our <br />passion here!
             </p>
           </div>
@@ -214,28 +214,29 @@
       </div>
     </div>
 
-    <footer class="bg-black p-5 flex flex-col gap-3">
-      <div class="w-10/12 md:w-5/12">
-        <img
-          class="w-full"
-          src="../../assets/footerLogo.svg"
-          alt="footer logo"
-        />
+    <!-- Footer -->
+    <footer class="bg-black px-5 py-20 flex flex-col gap-3">
+      <div class="md:w-2/3 lg:w-1/4">
+        <img class="w-full" src="../assets/footerLogo.svg" alt="footer logo" />
       </div>
 
       <div class="flex gap-5">
-        <a href="https://wa.me/+18687104296" target="_blank"
-          ><img class="w-10" src="../../assets/whatsapp.svg" alt="whatsapp"
-        /></a>
-        <a href="https://www.instagram.com/uptechincorp/" target="_blank"
-          ><img class="w-10" src="../../assets/instagram.svg" alt="instagram"
-        /></a>
-        <a href="https://www.linkedin.com/in/uptechincorp/" target="_blank"
-          ><img class="w-10" src="../../assets/linkedin.svg" alt="linkedin"
-        /></a>
-        <a href="https://www.facebook.com/uptech.trendz" target="_blank"
-          ><img class="w-10" src="../../assets/facebook.svg" alt="facebook"
-        /></a>
+        <a href="https://wa.me/+18687104296" target="_blank">
+          <img class="w-8 md:w-6" src="../assets/whatsapp.svg" alt="whatsapp" />
+        </a>
+        <a href="https://www.instagram.com/uptechincorp/" target="_blank">
+          <img
+            class="w-8 md:w-6"
+            src="../assets/instagram.svg"
+            alt="instagram"
+          />
+        </a>
+        <a href="https://www.linkedin.com/in/uptechincorp/" target="_blank">
+          <img class="w-8 md:w-6" src="../assets/linkedin.svg" alt="linkedin" />
+        </a>
+        <a href="https://www.facebook.com/uptech.trendz" target="_blank">
+          <img class="w-8 md:w-6" src="../assets/facebook.svg" alt="facebook" />
+        </a>
       </div>
 
       <p class="text-white">

@@ -8,12 +8,12 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
     />
-    <link rel="stylesheet" href="./src/css/globals.css" />
+    <link rel="stylesheet" href="./css/globals.css" />
     <title>Uptech Incorporated Limited</title>
   </head>
 
   <body class="bg-gray-100">
-    <div class="xl:w-1/2 xl:flex flex-col mx-auto">
+    <div class="xl:w-1/2 xl:flex flex-col mx-auto overflow-x-hidden">
       <header
         class="pt-4 px-6 flex flex-row items-center justify-between relative"
       >
@@ -27,10 +27,10 @@
         <nav class="hidden md:block">
           <ul class="flex flex-row gap-4">
             <li><a href="#">Home</a></li>
-            <li><a href="./src/views/objectives.html">Objectives</a></li>
-            <li><a href="./src/views/service.html">Services</a></li>
-            <li><a href="./src/views/aboutus.html">About Us</a></li>
-            <li><a href="./src/views/contact.html">Contact Us</a></li>
+            <li><a href="./objectives">Objectives</a></li>
+            <li><a href="./services">Services</a></li>
+            <li><a href="./about">About Us</a></li>
+            <li><a href="./contact">Contact Us</a></li>
           </ul>
         </nav>
         <img
@@ -45,10 +45,10 @@
         >
           <ul class="flex flex-col gap-4">
             <li><a href="#">Home</a></li>
-            <li><a href="./src/views/objectives.html">Objectives</a></li>
-            <li><a href="./src/views/service.html">Services</a></li>
-            <li><a href="./src/views/aboutus.html">About Us</a></li>
-            <li><a href="./src/views/contact.html">Contact Us</a></li>
+            <li><a href="./objectives">Objectives</a></li>
+            <li><a href="./services">Services</a></li>
+            <li><a href="./about">About Us</a></li>
+            <li><a href="./contact">Contact Us</a></li>
           </ul>
         </nav>
       </header>
@@ -56,7 +56,7 @@
       <!-- WELCOME -->
       <div class="relative text-center mt-20">
         <h1
-          class="hidden md:block absolute left-1/2 transform -translate-x-1/2 md:text-7xl font-extrabold"
+          class="hidden md:block absolute left-1/2 transform -translate-x-1/2 md:text-7xl font-extrabold xl:-mt-20"
         >
           UPTECH
         </h1>
@@ -70,8 +70,8 @@
         </div>
 
         <div
-          class="hidden md:block h-1/2"
-          style="width: 70%; margin-left: 20rem; margin-top: -5rem"
+          class="hidden md:block h-1/2  md:ml-auto"
+          style="width: 70%;margin-top: -5rem"
         >
           <img
             class="w-full h-full object-contain"
@@ -86,27 +86,29 @@
         />
         <!-- Mobile Heading -->
         <div
-          class="absolute md:hidden top-0 mt-24 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
+          class="space-y-10 absolute md:hidden top-0 mt-24 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
         >
           <h1 class="text-5xl md:text-8xl font-extrabold">UPTECH</h1>
-          <h2 class="text-5xl font-bold blueText-light">WELCOME</h2>
-          <h2 class="text-2xl font-bold">
-            Sign Up For The Ourlime Communities Network Today!
-          </h2>
+          <div>
+            <h2 class="text-5xl font-bold blueText-light">WELCOME</h2>
+            <h2 class="text-2xl font-bold">
+              Sign Up For The Ourlime Communities Network Today!
+            </h2>
+          </div>
         </div>
 
         <div
-          class="hidden md:flex w-8/12 ml-10 mt-52 flex-col gap-3 text-left absolute top-0"
+          class="hidden md:flex w-8/12 ml-10 mt-28 xl:mt-8 flex-col gap-3 text-left absolute top-0"
         >
-          <h2 class="text-5xl md:text-6xl font-extrabold blueText-light">
+          <p class="ThiccboiBold text-5xl md:text-6xl font-extrabold blueText-light">
             WELCOME
-          </h2>
+          </p>
 
-          <h2 class="tracking-tighter text-2xl md:text-4xl font-bold">
+          <p class="ThiccboiBold tracking-tighter text-2xl md:text-4xl font-bold">
             Sign Up For The Ourlime<br />
             Communities Network<br />
             Today!
-          </h2>
+          </>
 
           <p class="text-xl font-extrabold">
             Where Your Sucess Is <br />Our Mission!
@@ -282,24 +284,28 @@
         </section>
       </main>
     </div>
-    <footer class="bg-black p-5 flex flex-col gap-3">
-      <div class="w-10/12 md:w-5/12">
+    <footer class="bg-black px-5 py-20 flex flex-col gap-3">
+      <div class="md:w-2/3 lg:w-1/4">
         <img class="w-full" src="./assets/footerLogo.svg" alt="footer logo" />
       </div>
 
       <div class="flex gap-5">
-        <a href="https://wa.me/+18687104296" target="_blank"
-          ><img class="w-10" src="./assets/whatsapp.svg" alt="whatsapp"
-        /></a>
-        <a href="https://www.instagram.com/uptechincorp/" target="_blank"
-          ><img class="w-10" src="./assets/instagram.svg" alt="instagram"
-        /></a>
-        <a href="https://www.linkedin.com/in/uptechincorp/" target="_blank"
-          ><img class="w-10" src="./assets/linkedin.svg" alt="linkedin"
-        /></a>
-        <a href="https://www.facebook.com/uptech.trendz" target="_blank"
-          ><img class="w-10" src="./assets/facebook.svg" alt="facebook"
-        /></a>
+        <a href="https://wa.me/+18687104296" target="_blank">
+          <img class="w-8 md:w-6" src="./assets/whatsapp.svg" alt="whatsapp" />
+        </a>
+        <a href="https://www.instagram.com/uptechincorp/" target="_blank">
+          <img
+            class="w-8 md:w-6"
+            src="./assets/instagram.svg"
+            alt="instagram"
+          />
+        </a>
+        <a href="https://www.linkedin.com/in/uptechincorp/" target="_blank">
+          <img class="w-8 md:w-6" src="./assets/linkedin.svg" alt="linkedin" />
+        </a>
+        <a href="https://www.facebook.com/uptech.trendz" target="_blank">
+          <img class="w-8 md:w-6" src="./assets/facebook.svg" alt="facebook" />
+        </a>
       </div>
 
       <p class="text-white">
