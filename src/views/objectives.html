@@ -11,200 +11,232 @@
     <link rel="stylesheet" href="../css/globals.css" />
     <link rel="stylesheet" href="../css/objectives.css" />
   </head>
-  <body class="bg-white text-black">
-    <!-- Navbar -->
-    <header
-      class="pt-4 px-6 flex flex-row items-center justify-between relative"
-    >
-      <div class="w-20 h-20">
-        <img
-          class="w-full h-full"
-          src="../../assets/uptech-logo.svg"
-          alt="uptech logo"
-        />
-      </div>
-      <nav class="hidden md:block">
-        <ul class="flex flex-row gap-4">
-          <li><a href="../../index.html">Home</a></li>
-          <li><a href="#">Objectives</a></li>
-          <li><a href="./service.html">Services</a></li>
-          <li><a href="./aboutus.html">About Us</a></li>
-          <li><a href="./contact.html">Contact Us</a></li>
-        </ul>
-      </nav>
-      <img
-        src="../../assets/menu.svg"
-        alt="menu"
-        class="w-8 h-8 md:hidden cursor-pointer"
-        id="menu-button"
-      />
-      <nav
-        class="absolute top-16 right-6 bg-white p-4 rounded shadow-md md:hidden hidden z-30"
-        id="mobile-menu"
+  <body class="text-black flex justify-center items-center min-h-screen ">
+    <div class="xl:w-1/2 w-full">
+      <!-- Navbar -->
+      <header
+        class="pt-4 px-6 flex flex-row items-center justify-between relative"
       >
-        <ul class="flex flex-col gap-4">
-          <li><a href="../../index.html">Home</a></li>
-          <li><a href="#">Objectives</a></li>
-          <li><a href="./service.html">Services</a></li>
-          <li><a href="./aboutus.html">About Us</a></li>
-          <li><a href="./contact.html">Contact Us</a></li>
-        </ul>
-      </nav>
-    </header>
+        <div class="w-20 h-20">
+          <img
+            class="w-full h-full"
+            src="../../assets/uptech-logo.svg"
+            alt="uptech logo"
+          />
+        </div>
+        <nav class="hidden md:block">
+          <ul class="flex flex-row gap-4">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="#">Objectives</a></li>
+            <li><a href="./service.html">Services</a></li>
+            <li><a href="./aboutus.html">About Us</a></li>
+            <li><a href="./contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+        <img
+          src="../../assets/menu.svg"
+          alt="menu"
+          class="w-8 h-8 md:hidden cursor-pointer"
+          id="menu-button"
+        />
+        <nav
+          class="absolute top-16 right-6 bg-white p-4 rounded shadow-md md:hidden hidden z-30"
+          id="mobile-menu"
+        >
+          <ul class="flex flex-col gap-4">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="#">Objectives</a></li>
+            <li><a href="./service.html">Services</a></li>
+            <li><a href="./aboutus.html">About Us</a></li>
+            <li><a href="./contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+      </header>
 
-    <!-- Main Section with SVG Background -->
-    <div class="w-full relative text-center mt-5 lg:mt-20">
-      <div class="w-full h-1/2 md:hidden">
+      <!-- Main Section with SVG Background -->
+      <div class="w-full relative text-center mt-5 lg:mt-20 top-section fade-in">
+        <div class="w-full h-1/2 md:hidden">
+          <img
+            class="w-full h-full object-contain"
+            src="../../assets/objectivesBackground.svg"
+            alt="background image"
+          />
+        </div>
+
+        <div class="hidden md:block h-1/2" style="width: 70%; margin-left: 20rem; margin-top: -5rem;">
+          <img
+            class="w-full h-full object-contain"
+            src="../../assets/objectivesPc.svg"
+            alt="background image"
+          />
+        </div>
         <img
           class="w-full h-full object-contain"
-          src="../../assets/objectivesBackground.svg"
+          src="../../assets/rectangle.svg"
           alt="background image"
         />
+
+        <!-- Mobile Heading -->
+        <div
+          class="pb-20 flex flex-col justify-between h-full absolute md:hidden top-0 left-1/2 transform -translate-x-1/2 z-10"
+        >
+          <h1 class="text-3xl md:text-6xl font-extrabold">Objectives</h1>
+          <h2 class="text-xl font-bold">
+            Enhance your safety with our advanced algorithms, emergency features,
+            and strict privacy protections
+          </h2>
+        </div>
+
+        <!-- PC/Tablet heading -->
+        <div
+          class="hidden md:flex w-8/12 ml-10 flex-col gap-3 text-left absolute top-0 mt-20"
+        >
+          <h1 class="text-5xl md:text-6xl font-extrabold">Objectives</h1>
+          <p class="text-xl font-bold">
+            Enhance your safety with our advanced algorithms, emergency features,
+            and strict privacy protections
+          </p>
+        </div>
       </div>
 
-      <div class="hidden md:block h-1/2" style="width: 70%; margin-left: 20rem; margin-top: -5rem;">
+
+      <!-- Objectives Section -->
+      <section class="bg-white py-16 objective-section">
+        <div class="max-w-7xl mx-auto px-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12 flip-in">
+            <!-- User Safety -->
+            <div class="flex flex-col items-center md:items-start">
+              <h2 class="text-3xl font-bold text-blue-800 mb-4">USER SAFETY</h2>
+              <p class="text-lg text-gray-600">
+                Implementation of algorithms that can recognize sensitive phrases
+                and words as well as duplicate accounts would improve user's
+                safety...
+              </p>
+            </div>
+            <div class="flex justify-center md:justify-start">
+              <img
+                src="../../assets/userSafetyImage.svg"
+                alt="User Safety"
+                class="w-full"
+              />
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12 flip-in">
+            <!-- Privacy -->
+            <div class="flex justify-center order-last">
+              <img
+                src="../../assets/privacyImage.svg"
+                alt="Privacy"
+                class="w-full"
+              />
+            </div>
+            <div class="flex flex-col items-center">
+              <h2 class="text-3xl font-bold text-blue-800 mb-4">PRIVACY</h2>
+              <p class="text-lg text-gray-600">
+                On the Ourlime user profile page, there would be features designed
+                specifically for the user...
+              </p>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 flip-in">
+            <!-- Data Security -->
+            <div class="flex flex-col items-center md:items-start">
+              <h2 class="text-3xl font-bold text-blue-800 mb-4">DATA SECURITY</h2>
+              <p class="text-lg text-gray-600">
+                Data such as names, addresses, emails, contacts, and date of
+                births would not be used for marketing purposes...
+              </p>
+            </div>
+            <div class="flex justify-center md:justify-start">
+              <img
+                src="../../assets/dataSecurityPicture.svg"
+                alt="Data Security"
+                class="w-full"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
 
 
-        <img
-          class="w-full h-full object-contain"
-          src="../../assets/objectivesPc.svg"
-          alt="background image"
-        />
-        
-      </div>
-      <img
-      class="w-full h-full object-contain"
-      src="../../assets/rectangle.svg"
-      alt="background image"
-      />
+      <!-- Footer -->
+      <footer class="bg-black p-5 flex flex-col gap-3">
+        <div class="w-10/12 md:w-5/12">
+          <img
+            class="w-full"
+            src="../../assets/footerLogo.svg"
+            alt="footer logo"
+          />
+        </div>
 
-      <!-- Mobile Heading -->
-      <div
-        class="pb-20 flex flex-col justify-between h-full absolute md:hidden top-0 left-1/2 transform -translate-x-1/2 z-10"
-      >
-        <h1 class="text-3xl md:text-6xl font-extrabold">Objectives</h1>
+        <div class="flex gap-5">
+          <a href="https://wa.me/+18687104296" target="_blank" rel="noopener"
+            ><img class="w-10" src="../../assets/whatsapp.svg" alt="whatsapp"
+          /></a>
+          <a
+            href="https://www.instagram.com/uptechincorp/"
+            target="_blank"
+            rel="noopener"
+            ><img class="w-10" src="../../assets/instagram.svg" alt="instagram"
+          /></a>
+          <a
+            href="https://www.linkedin.com/in/uptechincorp/"
+            target="_blank"
+            rel="noopener"
+            ><img class="w-10" src="../../assets/linkedin.svg" alt="linkedin"
+          /></a>
+          <a
+            href="https://www.facebook.com/uptech.trendz"
+            target="_blank"
+            rel="noopener"
+            ><img class="w-10" src="../../assets/facebook.svg" alt="facebook"
+          /></a>
+        </div>
 
-        <h2 class="text-xl font-bold">
-          Enhance your safety with our advanced algorithms, emergency features,
-          and strict privacy protections
-        </h2>
-      </div>
-
-      <!-- PC/Tablet heading -->
-      <div
-        class="hidden md:flex w-8/12 ml-10 flex-col gap-3 text-left absolute top-0 mt-20"
-      >
-        <h1 class="text-5xl md:text-6xl font-extrabold">Objectives</h1>
-        <p class="text-xl font-bold">
-          Enhance your safety with our advanced algorithms, emergency features,
-          and strict privacy protections
+        <p class="text-white">
+          Cooperation, Commmunication, Teamwork and Commitment
         </p>
-      </div>
-    </div>
+      </footer>
 
-    <!-- Objectives Section -->
-    <section class="bg-white py-16">
-      <div class="max-w-7xl mx-auto px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
-          <!-- User Safety -->
-          <div class="flex flex-col items-center md:items-start">
-            <h2 class="text-3xl font-bold text-blue-800 mb-4">USER SAFETY</h2>
-            <p class="text-lg text-gray-600">
-              Implementation of algorithms that can recognize sensitive phrases
-              and words as well as duplicate accounts would improve user's
-              safety...
-            </p>
-          </div>
-          <div class="flex justify-center md:justify-start">
-            <img
-              src="../../assets/userSafetyImage.svg"
-              alt="User Safety"
-              class="w-full"
-            />
-          </div>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
-          <!-- Privacy -->
-          <div class="flex justify-center">
-            <img
-              src="../../assets/privacyImage.svg"
-              alt="Privacy"
-              class="w-full"
-            />
-          </div>
-          <div class="flex flex-col items-center">
-            <h2 class="text-3xl font-bold text-blue-800 mb-4">PRIVACY</h2>
-            <p class="text-lg text-gray-600">
-              On the Ourlime user profile page, there would be features designed
-              specifically for the user...
-            </p>
-          </div>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <!-- Data Security -->
-          <div class="flex flex-col items-center md:items-start">
-            <h2 class="text-3xl font-bold text-blue-800 mb-4">DATA SECURITY</h2>
-            <p class="text-lg text-gray-600">
-              Data such as names, addresses, emails, contacts, and date of
-              births would not be used for marketing purposes...
-            </p>
-          </div>
-          <div class="flex justify-center md:justify-start">
-            <img
-              src="../../assets/dataSecurityPicture.svg"
-              alt="Data Security"
-              class="w-full"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-black p-5 flex flex-col gap-3">
-      <div class="w-10/12 md:w-5/12">
-        <img
-          class="w-full"
-          src="../../assets/footerLogo.svg"
-          alt="footer logo"
-        />
-      </div>
-
-      <div class="flex gap-5">
-        <a href="https://wa.me/+18687104296" target="_blank" rel="noopener"
-          ><img class="w-10" src="../../assets/whatsapp.svg" alt="whatsapp"
-        /></a>
-        <a
-          href="https://www.instagram.com/uptechincorp/"
-          target="_blank"
-          rel="noopener"
-          ><img class="w-10" src="../../assets/instagram.svg" alt="instagram"
-        /></a>
-        <a
-          href="https://www.linkedin.com/in/uptechincorp/"
-          target="_blank"
-          rel="noopener"
-          ><img class="w-10" src="../../assets/linkedin.svg" alt="linkedin"
-        /></a>
-        <a
-          href="https://www.facebook.com/uptech.trendz"
-          target="_blank"
-          rel="noopener"
-          ><img class="w-10" src="../../assets/facebook.svg" alt="facebook"
-        /></a>
-      </div>
-
-      <p class="text-white">
-        Cooperation, Commmunication, Teamwork and Commitment
-      </p>
-    </footer>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-      $(document).ready(function () {
-        $("#menu-button").click(function () {
-          $("#mobile-menu").toggleClass("hidden");
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/gsap.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/ScrollTrigger.min.js"></script>
+      <script>
+        gsap.registerPlugin(ScrollTrigger);
+      
+        // Fade-in effect for the top section
+        gsap.from(".fade-in", {
+          scrollTrigger: {
+            trigger: ".top-section",
+            start: "top 80%", // When the top section hits 80% of the viewport height
+            toggleActions: "play none none none" // Only play the animation once
+          },
+          opacity: 0,       // Start with the element fully transparent
+          duration: 1.5,    // Duration of the fade-in effect
+          stagger: 0.3      // Delay between the fade-in of each element
         });
-      });
-    </script>
+
+        // Flip-in effect for the objectives section
+        gsap.from(".flip-in", {
+          scrollTrigger: {
+            trigger: ".objective-section",
+            start: "top 80%",  // When the top section hits 80% of the viewport height
+            toggleActions: "play none none none"  // Only play the animation once
+          },
+          opacity: 0,          // Start with the element fully transparent
+          rotationY: 180,      // Start with a 180-degree rotation (flipped horizontally)
+          duration: 1.5,       // Duration of the flip animation
+          stagger: 0.3         // Delay between the flip of each element
+        });
+      </script>
+      
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script>
+        $(document).ready(function () {
+          $("#menu-button").click(function () {
+            $("#mobile-menu").toggleClass("hidden");
+          });
+        });
+      </script>
+    </div>
   </body>
 </html>
