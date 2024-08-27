@@ -55,34 +55,38 @@
       </header>
 
       <div class="flex flex-col items-center text-center">
-        <div class="w-full relative text-center  lg:mt-20">
-          <div class="w-full h-1/2 md:hidden">
+        
+        <div class="w-full relative text-center  lg:mt-10">
+          <!-- Mobile Image -->
+          <div style="width: 140vw;" class="-ml-16 md:hidden">
             <img
-              class="w-full h-full object-contain"
+              class="w-full h-full"
               src="../assets/abg.svg"
               alt="background image"
             />
           </div>
 
-          <div
-           
-            class="hidden md:block h-1/2 "
+          <!-- PC Image -->
+          <div class="hidden md:block ml-auto lg:w-8/12"
           >
             <img
-              class="w-full h-full object-contain"
+              class="w-full"
               src="../assets/abgPc.svg"
               alt="background image"
             />
           </div>
+
+
           <img
-            class="w-full h-full object-contain"
+            style="width: 100vw;"
+            class="w-full"
             src="../assets/rectangle.svg"
             alt="background image"
           />
 
           <!-- Mobile Heading -->
           <div
-            class="h-full absolute md:hidden top-0 mt-20 left-1/2 transform -translate-x-1/2 z-10"
+            class="h-full absolute md:hidden top-0 mt-10 left-1/2 transform -translate-x-1/2 z-10"
           >
             <h1>About Us</h1>
             <p class="mt-3">
