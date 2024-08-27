@@ -213,69 +213,73 @@
       </p>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
-    <script>
-      $(document).ready(function () {
-        // Toggle the mobile menu
-        $("#menu-button").click(function () {
-          $("#mobile-menu").toggleClass("hidden");
-        });
-    
-        // GSAP ScrollTrigger for the main container and services
-        gsap.registerPlugin(ScrollTrigger);
-    
-        // Animate the main container on scroll
-        gsap.from("main", {
-          scrollTrigger: {
-            trigger: "main",
-            start: "top 80%",
-            toggleActions: "play none none none",
-          },
-          y: 100,
-          opacity: 0,
-          duration: 1.5,
-          ease: "power4.out",
-          scale: 0.9,
-        });
-    
-        // Animate each service section one at a time
-        const serviceSections = gsap.utils.toArray(".flex-col.items-center");
-        serviceSections.forEach((section, index) => {
-          gsap.from(section, {
-            scrollTrigger: {
-              trigger: section,
-              start: "top 80%",
-              toggleActions: "play none none none",
-            },
-            y: 100,
-            opacity: 0,
-            duration: 1.5,
-            ease: "power4.out",
-            rotationX: 45,
-            scale: 0.9,
-            delay: index * 0.8, // Add a delay based on the index
-          });
-        });
-    
-        // Add a cool hover effect to service images
-        gsap.utils.toArray(".flex-col.items-center img").forEach((img) => {
-          gsap.fromTo(
-            img,
-            { scale: 1 },
-            {
-              scale: 1.1,
-              duration: 1.5,
-              ease: "power2.inOut",
-              paused: true,
-              yoyo: true,
-              repeat: -1,
-            }
-          );
-        });
-      });
-    </script>
+  
+    <!-- jQuery and GSAP Libraries -->
+<!-- jQuery and GSAP Libraries -->
+<!-- jQuery and GSAP Libraries -->
+<!-- jQuery and GSAP Libraries -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    // Initialize GSAP and ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Header animation on load (slower by 1 second)
+    gsap.from("header", {
+      duration: 2.5,  // Increased by 1 second for a slower effect
+      y: -50,
+      opacity: 0,
+      ease: "power2.out",
+    });
+
+    // Main container animation on load with a 3D "flip" effect
+    gsap.from("main", {
+      duration: 2,  // Increased by 1 second for a slower effect
+      opacity: 0,
+      y: 50,
+      rotationX: -90,  // Starts flat, laying horizontally
+      transformOrigin: "center bottom",  // Rotate around the bottom edge
+      ease: "power4.out",  // Dynamic easing for a dramatic entrance
+    });
+
+    // Staggered animations for child elements of the main container (slower and without scroll trigger)
+    gsap.from("main > div", {
+      duration: 1.6,  // Increased by 1 second for a slower animation
+      opacity: 0,
+      y: 20,
+      stagger: 0.2,  // Slower stagger
+      ease: "power2.out",
+    });
+
+    // Footer animation on load (slower by 1 second)
+    gsap.from("footer", {
+      duration: 2.5,  // Increased by 1 second
+      y: 50,
+      opacity: 0,
+      ease: "power2.out",
+    });
+
+    // Team members animation on load (slower by 1 second)
+    gsap.from(".flex > div", {
+      duration: 2,  // Increased by 1 second
+      opacity: 0,
+      y: 50,
+      stagger: 0.4,  // Slower stagger
+      ease: "power2.out",
+    });
+
+    // Mobile menu toggle
+    $("#menu-button").click(function () {
+      $("#mobile-menu").toggleClass("hidden");
+    });
+  });
+</script>
+
+
+
     
   </body>
 </html>
