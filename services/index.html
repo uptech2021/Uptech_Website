@@ -115,7 +115,7 @@
                 Administrative <br />
                 services
               </p>
-              <p class="mb-2 lg:w-3/5">
+              <p class="mb-2 md:w-3/5 lg:w-full">
                 Boost productivity with an administrator who keeps everything
                 organized and on track.
               </p>
@@ -133,7 +133,7 @@
                 Marketing <br />
                 services
               </p>
-              <p class="mb-2 md:w-3/5">
+              <p class="mb-2 md:w-3/5 lg:w-full">
                 Drive growth with a marketer who transforms insights into
                 impactful strategies
               </p>
@@ -151,7 +151,7 @@
                 Development<br />
                 services
               </p>
-              <p class="mb-2 md:w-3/5">
+              <p class="mb-2 md:w-3/5 lg:w-full">
                 Unlock innovation and efficiency with a tech developer who turns
                 ideas into cutting-edge solutions.
               </p>
@@ -168,7 +168,7 @@
               Graphic <br />
               services
             </p>
-            <p class="mb-2 md:w-1/5">
+            <p class="mb-2 md:w-3/5 lg:w-3/5">
               Hiring a graphic designer can enhance your brand&apos;s visual
               identity and effectiveness, leading to better engagement and
               success.
@@ -253,13 +253,6 @@
       ease: "power2.out",
     });
 
-    // Footer animation on load (slower by 1 second)
-    gsap.from("footer", {
-      duration: 2.5,  // Increased by 1 second
-      y: 50,
-      opacity: 0,
-      ease: "power2.out",
-    });
 
     // Team members animation on load (slower by 1 second)
     gsap.from(".flex > div", {
