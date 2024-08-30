@@ -9,6 +9,24 @@
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
     />
     <link rel="stylesheet" href="../css/globals.css" />
+
+    <style>
+      .fade-in {
+        opacity: 0;
+        transition: opacity 1.5s ease-out;
+      }
+    
+      .flip-in {
+        opacity: 0;
+        transform: rotateY(180deg);
+        transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+      }
+    
+      .animated {
+        opacity: 1 !important;
+        transform: rotateY(0deg) !important;
+      }
+    </style>
   </head>
   <body class="bg-gray-100">
     <div class="2xl:w-8/12 xl:flex flex-col mx-auto">
@@ -52,48 +70,49 @@
         </nav>
       </header>
 
-      <!-- Main Section with SVG Background -->
-      <div class="w-full relative text-center mt-5 top-section fade-in">
-        <div class="w-full h-1/2 md:hidden">
-          <img
-            class="w-full h-full object-contain"
-            src="../assets/objectivesBackground.svg"
-            alt="background image"
-          />
-        </div>
+     <!-- Main Section with SVG Background -->
+<div class="w-full relative text-center mt-5 top-section fade-in">
+  <div class="w-full h-1/2 md:hidden">
+    <img
+      class="w-full h-full object-contain"
+      src="../assets/objectivesBackground.svg"
+      alt="background image"
+    />
+  </div>
 
-        <div class="hidden md:block ml-auto md:w-1/2">
-          <img
-            class="w-full h-full object-contain"
-            src="../assets/objectivesPc.svg"
-            alt="background image"
-          />
-        </div>
-        
-          <img
-            class="w-full h-full object-contain"
-            src="../assets/rectangle.svg"
-            alt="background image"
-          />
+  <div class="hidden md:block ml-auto md:w-1/2">
+    <img
+      class="w-full h-full object-contain"
+      src="../assets/objectivesPc.svg"
+      alt="background image"
+    />
+  </div>
+  
+  <img
+    class="w-full h-full object-contain"
+    src="../assets/rectangle.svg"
+    alt="background image"
+  />
 
-        <!-- Mobile Heading -->
-        <div class="pb-28 flex flex-col justify-between h-full absolute md:hidden top-0 left-1/2 transform -translate-x-1/2 z-10" >
-          <h1 class="mt-24">Objectives</h1>
-          <p class="ThiccboiBold">
-            Enhance your safety with our advanced algorithms, emergency
-            features, and strict privacy protections.
-          </p>
-        </div>
+  <!-- Mobile Heading -->
+  <div class="pb-28 flex flex-col justify-between h-full absolute md:hidden top-0 left-1/2 transform -translate-x-1/2 z-10">
+    <h1 class="mt-24">Objectives</h1>
+    <p class="ThiccboiBold">
+      Enhance your safety with our advanced algorithms, emergency
+      features, and strict privacy protections.
+    </p>
+  </div>
 
-        <!-- PC/Tablet heading -->
-        <div class="hidden md:flex w-6/12 ml-10 flex-col gap-3 text-left absolute top-0 mt-20 lg:mt-0" >
-          <h1>Objectives</h1>
-          <p class="ThiccboiBold">
-            Enhance your safety with our advanced algorithms, <br class="hidden md:inline"/>emergency
-            features, and strict privacy protections.
-          </p>
-        </div>
-      </div>
+  <!-- PC/Tablet heading -->
+  <div class="hidden md:flex w-6/12 ml-10 flex-col gap-3 text-left absolute top-0 mt-20 lg:mt-0">
+    <h1>Objectives</h1>
+    <p class="ThiccboiBold">
+      Enhance your safety with our advanced algorithms, <br class="hidden md:inline"/>emergency
+      features, and strict privacy protections.
+    </p>
+  </div>
+</div>
+
 
       <!-- Objectives Section -->
       <section class="py-16 objective-section">
@@ -189,34 +208,32 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/ScrollTrigger.min.js"></script>
-    <script>
-      gsap.registerPlugin(ScrollTrigger);
+    
+<script>
+  $(document).ready(function() {
+    function animateOnScroll() {
+      var windowHeight = $(window).height();
+      var scrollTop = $(window).scrollTop();
 
-      // Fade-in effect for the top section
-      gsap.from(".fade-in", {
-        scrollTrigger: {
-          trigger: ".top-section",
-          start: "top 80%", // When the top section hits 80% of the viewport height
-          toggleActions: "play none none none", // Only play the animation once
-        },
-        opacity: 0, // Start with the element fully transparent
-        duration: 1.5, // Duration of the fade-in effect
-        stagger: 0.3, // Delay between the fade-in of each element
+      $('.fade-in').each(function() {
+        var elementTop = $(this).offset().top;
+        if (elementTop < scrollTop + windowHeight * 0.8) {
+          $(this).addClass('animated');
+        }
       });
 
-      // Flip-in effect for the objectives section
-      gsap.from(".flip-in", {
-        scrollTrigger: {
-          trigger: ".objective-section",
-          start: "top 80%", // When the top section hits 80% of the viewport height
-          toggleActions: "play none none none", // Only play the animation once
-        },
-        opacity: 0, // Start with the element fully transparent
-        rotationY: 180, // Start with a 180-degree rotation (flipped horizontally)
-        duration: 1.5, // Duration of the flip animation
-        stagger: 0.3, // Delay between the flip of each element
+      $('.flip-in').each(function() {
+        var elementTop = $(this).offset().top;
+        if (elementTop < scrollTop + windowHeight * 0.8) {
+          $(this).addClass('animated');
+        }
       });
-    </script>
+    }
+
+    $(window).on('scroll', animateOnScroll);
+    animateOnScroll(); // Trigger animation for elements already in view
+  });
+</script>
 
     <script>
       $(document).ready(function () {

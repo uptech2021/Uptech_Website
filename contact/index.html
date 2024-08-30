@@ -9,10 +9,8 @@
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
     />
     <link rel="stylesheet" href="../css/globals.css" />
-
   </head>
   <body class="bg-gray-100">
-
     <div class="2xl:w-8/12 xl:flex flex-col mx-auto">
       <!-- Header -->
       <header
@@ -26,7 +24,7 @@
           />
         </div>
         <nav class="hidden md:block">
-         <ul class="flex flex-row gap-4">
+          <ul class="flex flex-row gap-4">
             <li><a href="..">Home</a></li>
             <li><a href="../objectives">Objectives</a></li>
             <li><a href="../services">Services</a></li>
@@ -64,8 +62,7 @@
             alt="background image"
           />
         </div>
-        <div
-          class="hidden md:block h-1/2 w-1/2 ml-auto">
+        <div class="hidden md:block h-1/2 w-1/2 ml-auto">
           <img
             class="w-full h-full object-contain fade-in"
             src="../assets/contactBackgroundPc.svg"
@@ -83,7 +80,7 @@
           class="pb-32 flex flex-col justify-between h-full absolute md:hidden top-0 left-1/2 transform -translate-x-1/2 z-10 fade-in"
         >
           <h1 class="mt-32">Contact Us</h1>
-          <p style="width: 90vw;" class="ThiccboiBold">
+          <p style="width: 90vw" class="ThiccboiBold">
             Get in touch with us today to hire our services or to collaborate on
             exciting projects!
           </p>
@@ -91,12 +88,13 @@
 
         <!-- PC/Tablet heading -->
         <div
-          class="hidden md:flex w-8/12 ml-10 flex-col text-left absolute top-0  fade-in"
+          class="hidden md:flex w-8/12 ml-10 flex-col text-left absolute top-0 fade-in"
         >
           <h1>Contact Us</h1>
           <p class="ThiccboiBold">
-            Get in touch with us today to hire our services <br class="hidden md:inline" /> or to collaborate on
-            exciting projects!
+            Get in touch with us today to hire our services
+            <br class="hidden md:inline" />
+            or to collaborate on exciting projects!
           </p>
         </div>
       </div>
@@ -107,9 +105,7 @@
       >
         <!-- Contact Info -->
         <div class="bg-white p-4 md:p-10 md:w-1/2">
-          <h2 class="font-bold text-blue-800 mb-6">
-            Contact Us
-          </h2>
+          <h2 class="font-bold text-blue-800 mb-6">Contact Us</h2>
           <p class="text-lg md:text-xl font-semibold text-black mb-4">
             Reach out to us!
           </p>
@@ -194,7 +190,7 @@
       </section>
     </div>
 
-      <!-- Footer -->
+    <!-- Footer -->
     <footer class="bg-black px-5 py-20 flex flex-col gap-3">
       <div class="md:w-2/3 lg:w-1/4">
         <img class="w-full" src="../assets/footerLogo.svg" alt="footer logo" />
@@ -224,53 +220,61 @@
       </p>
     </footer>
 
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-      <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/gsap.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/ScrollTrigger.min.js"></script>
-      <script>
-        gsap.registerPlugin(ScrollTrigger);
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        function checkVisibility() {
+          var windowHeight = $(window).height();
+          var scrollTop = $(window).scrollTop();
 
-        gsap.from(".fade-in", {
-          scrollTrigger: {
-            trigger: ".top-section",
-            start: "top 80%", // When the top section hits 80% of the viewport height
-            toggleActions: "play none none none", // Only play the animation once
-          },
-          opacity: 0, // Start with the element fully transparent
-          duration: 1.5, // Duration of the fade-in effect
-          stagger: 0.3, // Delay between the fade-in of each element
-        });
-      </script>
+          $(".fade-in").each(function () {
+            var elementTop = $(this).offset().top;
+            var elementHeight = $(this).outerHeight();
 
-      <script>
-        $(document).ready(function () {
-          emailjs.init("bQV2gCCnRYuuoJ9cn");
+            if (elementTop < scrollTop + windowHeight * 0.8) {
+              // Element is in view, apply animation
+              $(this).stop().animate({ opacity: 1 }, 1500);
+            }
+          });
+        }
 
-          function handleContactForm(event) {
-            event.preventDefault();
-            $(this).find('input[name="contact_number"]').val(Math.floor(Math.random() * 100000));
-            emailjs.sendForm("service_1ghwgxo", "contact_form", this).then(
-              function () {
-                alert("Message sent successfully!");
-              },
-              function (error) {
-                alert("FAILED...", error);
-              }
-            );
-          }
+        // Set initial opacity for fade-in elements
+        $(".fade-in").css({ opacity: 0 });
 
-          function toggleMobileMenu() {
-            $("#mobile-menu").toggleClass("hidden");
-          }
-
-
-
-          
-          $("#contact-form").submit(handleContactForm);
-          $("#menu-button").click(toggleMobileMenu);
+        // Check visibility on scroll and on page load
+        $(window).on("scroll", checkVisibility);
+        $(window).on("resize", checkVisibility); // Optional: adjust for window resize
+        checkVisibility(); // Initial check
       });
+    </script>
 
-      </script>
+    <script>
+      $(document).ready(function () {
+        emailjs.init("bQV2gCCnRYuuoJ9cn");
+
+        function handleContactForm(event) {
+          event.preventDefault();
+          $(this)
+            .find('input[name="contact_number"]')
+            .val(Math.floor(Math.random() * 100000));
+          emailjs.sendForm("service_1ghwgxo", "contact_form", this).then(
+            function () {
+              alert("Message sent successfully!");
+            },
+            function (error) {
+              alert("FAILED...", error);
+            }
+          );
+        }
+
+        function toggleMobileMenu() {
+          $("#mobile-menu").toggleClass("hidden");
+        }
+
+        $("#contact-form").submit(handleContactForm);
+        $("#menu-button").click(toggleMobileMenu);
+      });
+    </script>
   </body>
 </html>

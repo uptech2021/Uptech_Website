@@ -10,6 +10,20 @@
     />
     <link rel="stylesheet" href="./css/globals.css" />
     <title>Uptech Incorporated Limited</title>
+    <style>
+      img, p {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.animated {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+    </style>
+    
   </head>
 
   <body class="bg-gray-100">
@@ -54,43 +68,40 @@
       </header>
 
       <!-- WELCOME -->
-      <div class="relative text-center mt-20">
-                <h1
-          class="hidden md:block absolute left-1/2 transform -translate-x-1/2 md:text-7xl font-extrabold md:-mt-12 xl:-mt-20"
-          style="font-family: 'SavedByZero', sans-serif;"
+      <div class="relative text-center mt-20 hero">
+        <h1
+          class="hidden md:block absolute left-1/2 transform -translate-x-1/2 md:text-7xl font-extrabold md:-mt-12 xl:-mt-20 welcome-heading"
+          style="font-family: 'SavedByZero', sans-serif"
         >
           UPTECH
         </h1>
 
-
         <div class="w-full h-1/2 md:hidden">
           <img
-            class="w-full h-full object-contain"
+            class="w-full h-full object-contain background-img"
             src="./assets/home-backgroundImage.svg"
             alt="background image"
           />
         </div>
 
-        <div
-          class="hidden md:block h-1/2  md:ml-auto md:w-1/2 "
-          
-        >
+        <div class="hidden md:block h-1/2 md:ml-auto md:w-1/2">
           <img
-            class="w-full h-full object-contain"
+            class="w-full h-full object-contain background-img"
             src="./assets/homePc-backgroundImage.svg"
             alt="background image"
           />
         </div>
         <img
-          class="w-full h-full object-contain"
+          class="w-full h-full object-contain overlay-img"
           src="./assets/rectangle.svg"
           alt="background image"
         />
+
         <!-- Mobile Heading -->
         <div
-          class="space-y-10 absolute md:hidden top-0 mt-24 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
+          class="space-y-10 absolute md:hidden top-0 mt-24 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 mobile-heading"
         >
-          <h1 class="text-5xl md:text-8xl font-extrabold ">UPTECH</h1>
+          <h1 class="text-5xl md:text-8xl font-extrabold">UPTECH</h1>
           <div>
             <h2 class="text-5xl font-bold blueText-light">WELCOME</h2>
             <h2 class="text-2xl font-bold">
@@ -101,18 +112,18 @@
 
         <!-- Pc Heading -->
         <div
-          class="hidden md:flex w-8/12 ml-10 md:mt-12 mt-28 xl:mt-8 flex-col gap-3 text-left absolute top-0"
+          class="hidden md:flex w-8/12 ml-10 md:mt-12 mt-28 xl:mt-8 flex-col gap-3 text-left absolute top-0 pc-heading"
         >
-          <p class="ThiccboiBold text-5xl md:text-6xl font-extrabold blueText-light">
+          <p
+            class="ThiccboiBold text-5xl md:text-6xl font-extrabold blueText-light"
+          >
             WELCOME
           </p>
-
-          <p class="ThiccboiBold tracking-tighter text-2xl md:text-4xl xl:text-2xl font-bold">
-            Sign Up For The Ourlime<br />
-            Communities Network<br />
-            Today!
-          </>
-
+          <p
+            class="ThiccboiBold tracking-tighter text-2xl md:text-4xl xl:text-2xl font-bold"
+          >
+            Sign Up For The Ourlime<br />Communities Network<br />Today!
+          </p>
           <p class="text-xl font-extrabold">
             Where Your Success Is <br />Our Mission!
           </p>
@@ -122,7 +133,7 @@
       <main>
         <!-- FEATURES -->
         <section
-          class="p-6 text-center text-white bg-blueTheme flex flex-col gap-3 items-center"
+          class="p-6 text-center text-white bg-blueTheme flex flex-col gap-3 items-center features-section"
         >
           <h2 class="text-white">FEATURES</h2>
           <p>
@@ -131,29 +142,32 @@
             concepts that we think will enhance our users.
           </p>
           <br />
-
           <div class="flex flex-col md:flex-row gap-20 xl:gap-10 items-center">
-            <div class="flex flex-col gap-3 items-center text-lg">
+            <div class="flex flex-col gap-3 items-center text-lg feature-item">
               <h3>Education</h3>
-
-              <img class="w-20 h-20" src="./assets/book.svg" alt="book" />
-
+              <img
+                class="w-20 h-20 feature-img"
+                src="./assets/book.svg"
+                alt="book"
+              />
               <p class="font-semibold">Virtual Library, <br />Blogs, etc.</p>
             </div>
-
-            <div class="flex flex-col gap-3 items-center text-lg">
+            <div class="flex flex-col gap-3 items-center text-lg feature-item">
               <h3>Marketplace</h3>
-
-              <img class="w-20 h-20" src="./assets/house.svg" alt="book" />
-
+              <img
+                class="w-20 h-20 feature-img"
+                src="./assets/house.svg"
+                alt="book"
+              />
               <p class="font-semibold">Buy, Sell, Trade, <br />Explore.</p>
             </div>
-
-            <div class="flex flex-col gap-3 items-center text-lg">
+            <div class="flex flex-col gap-3 items-center text-lg feature-item">
               <h3>Project <br />Management</h3>
-
-              <img class="w-20 h-20" src="./assets/envelope.svg" alt="book" />
-
+              <img
+                class="w-20 h-20 feature-img"
+                src="./assets/envelope.svg"
+                alt="book"
+              />
               <p class="font-semibold">
                 Tools for Teachers, <br />Students, Buisnesses.
               </p>
@@ -163,39 +177,42 @@
 
         <!-- OBJECTIVES -->
         <section
-          class="p-6 text-center flex flex-col gap-3 items-center md:hidden"
+          class="p-6 text-center flex flex-col gap-3 items-center md:hidden objectives-section"
         >
           <h2 class="blueText-dark">OBJECTIVES</h2>
-
           <div class="flex flex-col gap-20 items-center">
-            <div class="flex flex-col items-center text-lg">
+            <div class="flex flex-col items-center text-lg objective-item">
               <h3 class="blueText-light">PRIVACY</h3>
-
-              <img class="w-20 h-20" src="./assets/globe.svg" alt="book" />
-
+              <img
+                class="w-20 h-20 objective-img"
+                src="./assets/globe.svg"
+                alt="book"
+              />
               <p class="font-semibold">
                 Implementation of algorithms, that can recognize sensitive
                 phrases and words as well as duplicated accounts would improve
                 user’s safety.
               </p>
             </div>
-
-            <div class="flex flex-col items-center text-lg">
+            <div class="flex flex-col items-center text-lg objective-item">
               <h3 class="blueText-light">USER SAFETY</h3>
-
-              <img class="w-20 h-20" src="./assets/shield.svg" alt="book" />
-
+              <img
+                class="w-20 h-20 objective-img"
+                src="./assets/shield.svg"
+                alt="book"
+              />
               <p class="font-semibold">
                 These specific features would incorporate a “lock code” that
                 only the user would know.
               </p>
             </div>
-
-            <div class="flex flex-col items-center text-lg">
+            <div class="flex flex-col items-center text-lg objective-item">
               <h3 class="blueText-light">DATA SECURITY</h3>
-
-              <img class="w-20 h-20" src="./assets/file.svg" alt="book" />
-
+              <img
+                class="w-20 h-20 objective-img"
+                src="./assets/file.svg"
+                alt="book"
+              />
               <p class="font-semibold">
                 Data such as names, addresses, emails, contacts, and date of
                 births would not be used for marketing purposes.
@@ -204,40 +221,40 @@
           </div>
         </section>
 
-        <section class="hidden bg-blueTheme relative md:block">
+        <section
+          class="hidden bg-blueTheme relative md:block objectives-background"
+        >
           <h2
             style="background-color: #f9f5fd"
             class="blueText-darker text-8xl font-extrabold pl-10 z-10 relative"
           >
             OBJECTIVES
           </h2>
-
           <img
-            class="w-full h-full"
+            class="w-full h-full background-vector"
             src="./assets/backgroundVector.svg"
             alt="background vector"
           />
         </section>
 
         <!-- PRODUCTS -->
-        <section class="p-6 text-center text-white bg-blueTheme">
+        <section
+          class="p-6 text-center text-white bg-blueTheme products-section"
+        >
           <h2 class="lg:text-left">PRODUCTS</h2>
-
           <div class="w-full lg:pr-20">
             <h3 class="hidden text-xl lg:block lg:self-end lg:text-right">
-              The Purpose Of Ourlime And <br />
-              What UpTech Incorporated Hope <br />To Achieve With Our App.
+              The Purpose Of Ourlime And <br />What UpTech Incorporated Hope
+              <br />To Achieve With Our App.
             </h3>
-
             <div class="flex flex-col items-center text-lg w-full">
               <h3 class="text-xl lg:hidden">
                 The purpose of Ourlime and what UpTech Incorporated hope to
                 achieve with our App.
               </h3>
-
               <div class="w-8/12">
                 <img
-                  class="w-full h-full"
+                  class="w-full h-full products-img"
                   src="./assets/products.svg"
                   alt="book"
                 />
@@ -248,39 +265,34 @@
 
         <!-- ABOUT US -->
         <section
-          class="p-6 text-center text-white bg-blueTheme flex flex-col gap-3 items-center"
+          class="p-6 text-center text-white bg-blueTheme flex flex-col gap-3 items-center about-us-section"
         >
           <h2 class="font-extrabold">ABOUT US</h2>
-
           <div class="flex flex-col gap-20 items-center">
             <div class="flex flex-col gap-8 items-center text-lg">
               <h3 class="text-xl">
                 Uptech Incorporated created Ourlime and Ourlime Messenger to
                 give our users a new experience.
               </h3>
-
               <div class="space-y-8 md:space-y-0 md:flex flex-row gap-10">
-                <a href="/about#ourStory">
-                  <img
-                    class="w-48"
+                <a href="/about#ourStory"
+                  ><img
+                    class="w-48 about-img"
                     src="./assets/ourStoryPc.svg"
                     alt="our story"
-                  />
-                </a>
-                <a href="/about#foundersMessage">
-                  <img
-                    class="w-48"
+                /></a>
+                <a href="/about#foundersMessage"
+                  ><img
+                    class="w-48 about-img"
                     src="./assets/foundersMessage.svg"
                     alt="the way forward"
-                  />
-                </a>
-                <a href="/about#theWayForward">
-                  <img
-                    class="w-48"
+                /></a>
+                <a href="/about#theWayForward"
+                  ><img
+                    class="w-48 about-img"
                     src="./assets/theWayForwardPc.svg"
                     alt="the way forward"
-                  />
-                </a>
+                /></a>
               </div>
             </div>
           </div>
@@ -317,6 +329,7 @@
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
     <script>
       $(document).ready(function () {
         $("#menu-button").click(function () {
@@ -324,5 +337,54 @@
         });
       });
     </script>
+
+<script>
+  $(document).ready(function() {
+    function animateOnScroll() {
+      $('body *:not(footer img):not(footer p):not(.hero h1)').each(function() {        
+        var elementTop = $(this).offset().top;
+        var windowBottom = $(window).scrollTop() + $(window).height();
+        
+        // Check if the element is in view
+        if (elementTop < windowBottom && !$(this).hasClass('animated')) {
+          // Apply animation
+          $(this).css({
+            'opacity': 0,
+            'transform': 'translateY(20px)', // Start from below
+            'transition': 'opacity 1s ease-out, transform 1s ease-out'
+          }).addClass('animated')
+          .css({
+            'opacity': 1,
+            'transform': 'translateY(0px)' // Move to the original position
+          });
+        }
+      });
+      }
+
+      // Specific animation for images in the products section
+      $('.products-img:not(.animated)').each(function() {
+        var elementTop = $(this).offset().top;
+        var windowBottom = $(window).scrollTop() + $(window).height();
+        
+        if (elementTop < windowBottom) {
+          $(this).css({
+            'opacity': 0,
+            'transform': 'scale(0.8) translateY(20px)',
+            'transition': 'opacity 1s ease-out, transform 1s ease-out'
+          }).addClass('animated')
+          .css({
+            'opacity': 1,
+            'transform': 'scale(1) translateY(0px)'
+          });
+        }
+      });
+
+
+    $(window).on('scroll', animateOnScroll);
+    animateOnScroll(); // Trigger animation for elements already in view
+  });
+</script>
+
+
   </body>
 </html>
