@@ -11,18 +11,18 @@
     <link rel="stylesheet" href="./css/globals.css" />
     <title>Uptech Incorporated Limited</title>
     <style>
-      img, p {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
-}
-
-.animated {
-  opacity: 1;
-  transform: translateY(0px);
-}
-
+      img:not(footer img), p:not(footer p) {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 1s ease-out, transform 1s ease-out;
+      }
+    
+      .animated {
+        opacity: 1;
+        transform: translateY(0px);
+      }
     </style>
+    
     
   </head>
 
@@ -38,7 +38,7 @@
             alt="uptech logo"
           />
         </div>
-        <nav class="hidden md:block">
+        <nav class="hidden md:block z-20">
           <ul class="flex flex-row gap-4">
             <li><a href="#">Home</a></li>
             <li><a href="./objectives">Objectives</a></li>
@@ -54,7 +54,7 @@
           id="menu-button"
         />
         <nav
-          class="absolute top-16 right-6 bg-white p-4 rounded shadow-md md:hidden hidden z-30"
+          class="absolute top-16 right-6 bg-white p-4 rounded shadow-md md:hidden hidden z-50"
           id="mobile-menu"
         >
           <ul class="flex flex-col gap-4">
@@ -70,7 +70,7 @@
       <!-- WELCOME -->
       <div class="relative text-center mt-20 hero">
         <h1
-          class="hidden md:block absolute left-1/2 transform -translate-x-1/2 md:text-7xl font-extrabold md:-mt-12 xl:-mt-20 welcome-heading"
+          class="hidden md:block absolute transform -translate-x-1/2 md:text-7xl font-extrabold mt-0 md:-mt-12 xl:-mt-20 welcome-heading"
           style="font-family: 'SavedByZero', sans-serif"
         >
           UPTECH
@@ -99,12 +99,12 @@
 
         <!-- Mobile Heading -->
         <div
-          class="space-y-10 absolute md:hidden top-0 mt-24 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 mobile-heading"
+          class="space-y-10 absolute md:hidden top-0 -mt-6  transform -translate-x-1/2 -translate-y-1/2 z-10 mobile-heading"
         >
-          <h1 class="text-5xl md:text-8xl font-extrabold">UPTECH</h1>
+          <h1 class="text-5xl md:text-8xl font-extrabold z-10">UPTECH</h1>
           <div>
-            <h2 class="text-5xl font-bold blueText-light">WELCOME</h2>
-            <h2 class="text-2xl font-bold">
+            <h2 class="text-5xl font-bold blueText-light z-10">WELCOME</h2>
+            <h2 class="text-2xl font-bold z-10">
               Sign Up For The Ourlime Communities Network Today!
             </h2>
           </div>
@@ -303,7 +303,7 @@
       <div class="md:w-2/3 lg:w-1/4">
         <img class="w-full" src="./assets/footerLogo.svg" alt="footer logo" />
       </div>
-
+    
       <div class="flex gap-5">
         <a href="https://wa.me/+18687104296" target="_blank">
           <img class="w-8 md:w-6" src="./assets/whatsapp.svg" alt="whatsapp" />
@@ -322,11 +322,12 @@
           <img class="w-8 md:w-6" src="./assets/facebook.svg" alt="facebook" />
         </a>
       </div>
-
+    
       <p class="text-white">
         Cooperation, Commmunication, Teamwork and Commitment
       </p>
     </footer>
+    
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
@@ -341,25 +342,22 @@
 <script>
   $(document).ready(function() {
     function animateOnScroll() {
-      $('body *:not(footer img):not(footer p):not(.hero h1)').each(function() {        
+      $('body *:not(footer):not(footer *)').each(function() {        
         var elementTop = $(this).offset().top;
         var windowBottom = $(window).scrollTop() + $(window).height();
         
-        // Check if the element is in view
         if (elementTop < windowBottom && !$(this).hasClass('animated')) {
-          // Apply animation
           $(this).css({
             'opacity': 0,
-            'transform': 'translateY(20px)', // Start from below
+            'transform': 'translateY(20px)',
             'transition': 'opacity 1s ease-out, transform 1s ease-out'
           }).addClass('animated')
           .css({
             'opacity': 1,
-            'transform': 'translateY(0px)' // Move to the original position
+            'transform': 'translateY(0px)'
           });
         }
       });
-      }
 
       // Specific animation for images in the products section
       $('.products-img:not(.animated)').each(function() {
@@ -378,12 +376,13 @@
           });
         }
       });
-
+    }
 
     $(window).on('scroll', animateOnScroll);
-    animateOnScroll(); // Trigger animation for elements already in view
+    animateOnScroll();
   });
 </script>
+
 
 
   </body>
