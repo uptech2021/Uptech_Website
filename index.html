@@ -10,18 +10,7 @@
     />
     <link rel="stylesheet" href="./css/globals.css" />
     <title>Uptech Incorporated Limited</title>
-    <style>
-      img:not(footer img), p:not(footer p) {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 1s ease-out, transform 1s ease-out;
-      }
-    
-      .animated {
-        opacity: 1;
-        transform: translateY(0px);
-      }
-    </style>
+   
     
     
   </head>
@@ -70,7 +59,7 @@
       <!-- WELCOME -->
       <div class="relative text-center mt-20 hero">
         <h1
-          class="hidden md:block absolute transform -translate-x-1/2 md:text-7xl font-extrabold mt-0 md:-mt-12 xl:-mt-20 welcome-heading"
+          class="hidden md:block absolute left-1/2 transform -translate-x-1/2 md:text-7xl font-extrabold md:-mt-12 xl:-mt-20 welcome-heading"
           style="font-family: 'SavedByZero', sans-serif"
         >
           UPTECH
@@ -99,7 +88,7 @@
 
         <!-- Mobile Heading -->
         <div
-          class="space-y-10 absolute md:hidden top-0 -mt-6  transform -translate-x-1/2 -translate-y-1/2 z-10 mobile-heading"
+          class="space-y-10 absolute md:hidden top-0 -mt-6 z-10 mobile-heading"
         >
           <h1 class="text-5xl md:text-8xl font-extrabold z-10">UPTECH</h1>
           <div>
@@ -338,51 +327,6 @@
         });
       });
     </script>
-
-<script>
-  $(document).ready(function() {
-    function animateOnScroll() {
-      $('body *:not(footer):not(footer *)').each(function() {        
-        var elementTop = $(this).offset().top;
-        var windowBottom = $(window).scrollTop() + $(window).height();
-        
-        if (elementTop < windowBottom && !$(this).hasClass('animated')) {
-          $(this).css({
-            'opacity': 0,
-            'transform': 'translateY(20px)',
-            'transition': 'opacity 1s ease-out, transform 1s ease-out'
-          }).addClass('animated')
-          .css({
-            'opacity': 1,
-            'transform': 'translateY(0px)'
-          });
-        }
-      });
-
-      // Specific animation for images in the products section
-      $('.products-img:not(.animated)').each(function() {
-        var elementTop = $(this).offset().top;
-        var windowBottom = $(window).scrollTop() + $(window).height();
-        
-        if (elementTop < windowBottom) {
-          $(this).css({
-            'opacity': 0,
-            'transform': 'scale(0.8) translateY(20px)',
-            'transition': 'opacity 1s ease-out, transform 1s ease-out'
-          }).addClass('animated')
-          .css({
-            'opacity': 1,
-            'transform': 'scale(1) translateY(0px)'
-          });
-        }
-      });
-    }
-
-    $(window).on('scroll', animateOnScroll);
-    animateOnScroll();
-  });
-</script>
-
 
 
   </body>
