@@ -11,7 +11,24 @@
     <link rel="stylesheet" href="./css/globals.css" />
     <title>Uptech Incorporated Limited</title>
    
-    
+    <style>
+      /* Prevent horizontal scroll */
+      body {
+        overflow-x: hidden;
+      }
+
+      /* Animate only within the visible area */
+      section h2, section p, section img {
+        opacity: 0;
+        transform: translateY(20px); /* Reduced transform to prevent overflow */
+        transition: all 0.5s ease;
+      }
+
+      .animate {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
     
   </head>
 
@@ -329,10 +346,11 @@
 
         // Animations on scroll
         function animateOnScroll() {
-          $(".hero, .features-section, .objectives-section, .products-section, .about-us-section").each(function () {
+          $("section h2, section p, section img").each(function () {
             var elementTop = $(this).offset().top;
             var windowBottom = $(window).scrollTop() + $(window).height();
-            
+
+            // Check if the element is in view, and exclude the footer
             if (windowBottom > elementTop + 100) {
               $(this).addClass("animate");
             }
@@ -348,18 +366,6 @@
         });
       });
     </script>
-    <style>
-      .hero, .features-section, .objectives-section, .products-section, .about-us-section {
-        opacity: 0;
-        transform: translateY(50px);
-        transition: all 0.8s ease;
-      }
-      
-      .animate {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    </style>
 
 
   </body>
