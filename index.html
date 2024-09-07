@@ -322,11 +322,44 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
     <script>
       $(document).ready(function () {
+        // Toggle mobile menu
         $("#menu-button").click(function () {
           $("#mobile-menu").toggleClass("hidden");
         });
+
+        // Animations on scroll
+        function animateOnScroll() {
+          $(".hero, .features-section, .objectives-section, .products-section, .about-us-section").each(function () {
+            var elementTop = $(this).offset().top;
+            var windowBottom = $(window).scrollTop() + $(window).height();
+            
+            if (windowBottom > elementTop + 100) {
+              $(this).addClass("animate");
+            }
+          });
+        }
+
+        // Initial call
+        animateOnScroll();
+
+        // Animate on scroll
+        $(window).on("scroll", function () {
+          animateOnScroll();
+        });
       });
     </script>
+    <style>
+      .hero, .features-section, .objectives-section, .products-section, .about-us-section {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s ease;
+      }
+      
+      .animate {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
 
 
   </body>
