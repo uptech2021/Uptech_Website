@@ -222,13 +222,13 @@
         $('header').css({ opacity: 0, position: 'relative', top: '-50px' }).animate({
           opacity: 1,
           top: '0px'
-        }, 700); // 1 second
+        }, 1000); // 1 second
 
         // Main container animation on load (faster animation)
         $('main').css({ opacity: 0, position: 'relative', top: '50px' }).animate({
           opacity: 1,
           top: '0px'
-        }, 700); // 1 second
+        }, 1000); // 1 second
 
         // Staggered animations for child elements of the main container (faster and shorter delay)
         $('main > div').each(function (index) {
@@ -243,7 +243,7 @@
           $(this).css({ opacity: 0, position: 'relative', top: '50px' }).delay(1000 + index * 200).animate({
             opacity: 1,
             top: '0px'
-          }, 700); // 1 second
+          }, 1000); // 1 second
         });
 
         // Mobile menu toggle
