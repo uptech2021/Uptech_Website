@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href=".././assets/uptech-logo.svg" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
+  <link rel="stylesheet" href="../css/globals.css" />
+  <title>Uptech Incorporated Limited</title>
+
+  <style>
+    .custom-select option {
+      background: transparent;
+      color: inherit;
+    }
+
+    .custom-select option:checked {
+      background: transparent;
+      color: inherit;
+    }
+
+    .active-button {
+      outline: 2px solid black;
+
+    }
+  </style>
+
+
+</head>
+
+<body class="bg-gray-100">
+  <div class="2xl:w-8/12 xl:flex flex-col mx-auto">
+    <header class="pt-4 px-6 flex flex-row items-center justify-between relative z-20">
+      <div class="w-20 h-20">
+        <img class="w-full h-full" src="../assets/uptech-logo.svg" alt="uptech logo" />
+      </div>
+      <nav class="hidden md:block">
+        <ul class="flex flex-row gap-4">
+          <li><a href="..">Home</a></li>
+          <li><a href="../objectives">Objectives</a></li>
+          <li><a href="../services/">Services</a></li>
+          <li><a href="#">Vacancy</a></li>
+          <li><a href="../about">About Us</a></li>
+          <li><a href="../contact">Contact Us</a></li>
+        </ul>
+      </nav>
+      <img src="../assets/menu.svg" alt="menu" class="w-8 h-8 md:hidden cursor-pointer" id="menu-button" />
+      <nav class="absolute top-16 right-6 bg-white p-4 rounded shadow-md md:hidden hidden z-30" id="mobile-menu">
+        <ul class="flex flex-col gap-4">
+          <li><a href="..">Home</a></li>
+          <li><a href="../objectives">Objectives</a></li>
+          <li><a href="../services/">Services</a></li>
+          <li><a href="#">Vacancy</a></li>
+          <li><a href="../about">About Us</a></li>
+          <li><a href="../contact">Contact Us</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="flex flex-col items-center text-center">
+      <div class="w-full relative text-center mt-10 lg:mt-20">
+        <div class="w-full h-1/2 md:hidden">
+          <img class="w-full h-full object-contain" src="../assets/career.svg" alt="background image" />
+        </div>
+
+        <div class="hidden md:block ml-auto w-1/2">
+          <img class="w-full h-full object-contain" src="../assets/careerPC.svg" alt="background image" />
+        </div>
+        <img class="w-full h-full object-contain" src="../assets/rectangle.svg" alt="background image" />
+
+        <!-- Mobile Heading -->
+        <div
+          class="pb-32 flex flex-col justify-between h-full absolute md:hidden top-0 left-1/2 transform -translate-x-1/2 z-10">
+          <h1 class="mt-32">Vacancies</h1>
+          <p style="width: 90vw" class="ThiccboiBold">
+            Join our team and help create
+            unforgettable experiences every day!
+          </p>
+        </div>
+
+        <!-- PC/Tablet heading -->
+        <div class="hidden md:flex w-8/12 ml-10 flex-col gap-3 text-left absolute top-0">
+          <h1>Vacancies</h1>
+          <p class="w-3/4 ThiccboiBold">
+            Join our team and help create
+            unforgettable experiences every day!
+          </p>
+        </div>
+      </div>
+      <main class="mt-20 mx-4 mb-20 text-lg">
+        <p class="mb-20 lg:text-2xl lg:w-3/5 lg:mx-auto">
+          Still looking for your place? Want to find your start? Well look no further, you can start your journey with
+          us!
+        </p>
+        <div class="text-white md:w-1/2 mb-4">
+          <button
+            class="border-solid border-2 bg-blueTheme rounded-md outline-slate-50 outline-2 outline-offset-2 outline-solid p-2 3 font-bold active-button">All</button>
+          <button
+            class="border-solid border-2 bg-blueTheme rounded-md outline-slate-50 outline-2 outline-offset-2 outline-solid p-2 3">Vacancies</button>
+          <button
+            class="border-solid border-2 bg-gray-400 rounded-md outline-slate-50 outline-2 outline-offset-2 outline-solid p-2 3">No
+            Vacancies</button>
+        </div>
+
+
+        <p class="text-left">Select open positions</p>
+
+        <div class="text-white">
+          <div id="dropdown" class="width-4/5 bg-blueTheme rounded-md p-4 mb-4 flex flex-row">
+            <div class="w-2/5 mt-4">
+              <img class="w-80 h-22" src="../assets/S4.svg" alt="graphic" />
+            </div>
+            <div id="jobDepartment" class="w-3/4 flex flex-col">
+              <p class="font-bold">Graphic Design Vacancies</p>
+              <p>Junior Graphic designer</p>
+              <p>Video Editor</p>
+            </div>
+          </div>
+
+          <div id="dropdownContent" class="hidden w-full bg-white border rounded shadow-lg text-left mb-4">
+            <div class="p-4 text-black">
+              <p class="font-bold">Graphic Design Vacancies</p>
+              <p>Deadline: </br> </br>Information: Junior Graphic Designer</br> </br>
+
+                Proficent in Adobe Suit (Photoshop, Illustrator
+                and after effect). Willing to learn and expand
+                with the team.
+
+                </br> </br> Able to meet deadline, good communication
+                skills, and able to adapt to fast pace condtions </p>
+
+              <p>For more information,
+                contact us:
+
+                </br></br>email: xxxxxxx@uptechincorp
+
+                </br></br>phone: xxx-xxxx</p>
+
+              <button class="bg-gray-200 font-bold rounded-md p-2 w-full text-left mb-2">PDF <span
+                  class="font-normal">Graphic Design Position </span> </button>
+
+              <div class="flex flex-row">
+                <p class="font-bold w-3/4 ">PDF file download</p>
+                <button id="applyButton" class="bg-blueTheme text-white font-bold rounded-md p-2 w-1/4">Apply</button>
+              </div>
+
+
+            </div>
+          </div>
+
+
+
+
+
+          <div id="dropdown" class="width-4/5 bg-blueTheme rounded-md p-4 mb-4 flex flex-row">
+            <div class="w-2/5 mt-4">
+              <img class="w-80 h-22" src="../assets/S2.svg" alt="market" />
+            </div>
+            <div id="jobDepartment" class="w-3/4 flex flex-col">
+              <p class="font-bold">Marketing Vacancies</p>
+              <p>Marketing officer</p>
+
+
+            </div>
+          </div>
+          <div id="dropdown" class="width-4/5 bg-blueTheme rounded-md p-4 mb-4 flex flex-row">
+            <div id="jobDepartment" class="w-2/5 mt-4">
+              <img class="w-80 h-22" src="../assets/S1.svg" alt="Administrative" />
+            </div>
+            <div class="w-3/4 flex flex-col">
+              <p id="jobDepartment" class="font-bold">Administrative Vacancies</p>
+              <p>Documentation</p>
+
+
+            </div>
+          </div>
+          <div id="dropdown" class="width-4/5 bg-gray-300 rounded-md p-4 mb-4 flex flex-row">
+            <div id="jobDepartment" class="w-2/5 mt-4">
+              <img class="w-80 h-22" src="../assets/S3.svg" alt="development" />
+            </div>
+            <div class="w-3/4 flex flex-col">
+              <p id="jobDepartment" class="font-bold">Engineering Vacancies</p>
+              <p>IOS Developing</p>
+
+
+            </div>
+          </div>
+        </div>
+        <div id="applicationForm"
+          class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center text-black z-10 ">
+          <div class="bg-white p-8 rounded-lg w-96">
+            <h2 class="text-2xl font-bold mb-4">Application Form</h2>
+            <form class="text-left">
+              <div class="mb-2">
+                <input type="text" id="name" name="name" placeholder="First and Last Name"
+                  class="w-full bg-blueTheme text-white border rounded px-2 py-1 placeholder-white rounded-md" required>
+              </div>
+              <div class="mb-2">
+                <select id="position" name="position"
+                  class="w-full bg-blueTheme text-white border rounded px-2 py-1 placeholder-white rounded-md custom-select"
+                  required>
+                  <option value="" disabled selected>Choose Position</option>
+                  <option value="junior-graphic-designer">Junior Graphic Designer</option>
+                  <option value="video-editor">Video Editor</option>
+                </select>
+              </div>
+
+
+              <div class="mb-2">
+                <input type="text" id="name" name="Number" placeholder="Contact Number"
+                  class="w-full bg-blueTheme text-white border rounded px-2 py-1 placeholder-white rounded-md" required>
+              </div>
+              <div class="mb-2">
+                <input type="email" id="email" name="email" placeholder="Email"
+                  class="w-full bg-blueTheme text-white border rounded px-2 py-1 placeholder-white rounded-md" required>
+              </div>
+              <div class="mb-2 relative">
+                <input type="file" id="resume" name="resume"
+                  class="opacity-0 absolute inset-0 w-full h-full cursor-pointer">
+                <div class="w-full bg-blueTheme text-white border rounded px-2 py-1 rounded-md">Upload Resume</div>
+              </div>
+              <div class="mb-6 relative">
+                <input type="file" id="portfolio" name="portfolio"
+                  class="opacity-0 absolute inset-0 w-full h-full cursor-pointer">
+                <div class="w-full bg-blueTheme text-white border rounded px-2 py-1 rounded-md">Upload Portfolio</div>
+              </div>
+
+              <div class="mb-4">
+                <input type="text" id="comment" name="comment" placeholder="Comment"
+                  class="w-full bg-blueTheme text-white border rounded px-2 py-1 h-20 placeholder-white rounded-md ">
+              </div>
+              <div class="flex justify-between">
+
+                <button type="button" id="closeForm"
+                  class="bg-gray-300 text-gray-800 font-bold rounded-md p-2 w-1/2 mr-2">Close</button>
+                <button type="submit" class="bg-blueTheme text-white font-bold rounded-md p-2 w-1/2">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+    </div>
+
+    </main>
+  </div>
+  </div>
+  <!-- Footer -->
+  <footer class="bg-black px-5 py-20 flex flex-col gap-3">
+    <div class="md:w-2/6 lg:w-1/4">
+      <img class="w-full" src="../assets/footerLogo.svg" alt="footer logo" />
+    </div>
+
+    <div class="flex gap-5">
+      <a href="https://wa.me/+18687104296" target="_blank">
+        <img class="w-8 md:w-6" src="../assets/whatsapp.svg" alt="whatsapp" />
+      </a>
+      <a href="https://www.instagram.com/uptechincorp/" target="_blank">
+        <img class="w-8 md:w-6" src="../assets/instagram.svg" alt="instagram" />
+      </a>
+      <a href="https://www.linkedin.com/in/uptechincorp/" target="_blank">
+        <img class="w-8 md:w-6" src="../assets/linkedin.svg" alt="linkedin" />
+      </a>
+      <a href="https://www.facebook.com/uptech.trendz" target="_blank">
+        <img class="w-8 md:w-6" src="../assets/facebook.svg" alt="facebook" />
+      </a>
+    </div>
+
+    <p class="text-white">
+      Cooperation, Commmunication, Teamwork and Commitment
+    </p>
+  </footer>
+
+  <!-- jQuery Library -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script>
+   $('#menu-button').click(function () {
+    $('#mobile-menu').toggleClass('hidden');
+  });
+
+  </script>
+  <script>
+    document.getElementById('dropdown').addEventListener('click', function () {
+      var dropdownContent = document.getElementById('dropdownContent');
+      var parentDiv = this;
+
+      if (dropdownContent.classList.contains('hidden')) {
+        dropdownContent.classList.remove('hidden');
+        parentDiv.classList.remove('mb-4');
+      } else {
+        dropdownContent.classList.add('hidden');
+        parentDiv.classList.add('mb-4');
+      }
+    });
+
+    document.getElementById('applyButton').addEventListener('click', function () {
+      var jobDepartmentText = document.getElementById('jobDepartment').querySelector('p').textContent;
+      var departmentName = jobDepartmentText.split('Vacancies')[0].trim();
+      document.getElementById('applicationForm').classList.remove('hidden');
+      document.querySelector('#applicationForm h2').textContent = departmentName + ' Form';
+      document.body.style.overflow = 'hidden';
+    });
+
+    document.getElementById('closeForm').addEventListener('click', function () {
+      document.getElementById('applicationForm').classList.add('hidden');
+      document.body.style.overflow = '';
+    });
+
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const allButton = document.querySelector('button:nth-of-type(1)');
+      const vacanciesButton = document.querySelector('button:nth-of-type(2)');
+      const noVacanciesButton = document.querySelector('button:nth-of-type(3)');
+      const jobBoxes = document.querySelectorAll('#dropdown');
+
+      allButton.addEventListener('click', () => {
+        jobBoxes.forEach(box => box.style.display = 'flex');
+      });
+
+      vacanciesButton.addEventListener('click', () => {
+        jobBoxes.forEach(box => {
+          if (box.classList.contains('bg-blueTheme')) {
+            box.style.display = 'flex';
+          } else {
+            box.style.display = 'none';
+          }
+        });
+      });
+
+      noVacanciesButton.addEventListener('click', () => {
+        jobBoxes.forEach(box => {
+          if (box.classList.contains('bg-gray-300')) {
+            box.style.display = 'flex';
+          } else {
+            box.style.display = 'none';
+          }
+        });
+      });
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+      const buttons = document.querySelectorAll('.text-white.md\\:w-1\\/2.mb-4 button');
+
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          buttons.forEach(btn => btn.classList.remove('active-button'));
+          button.classList.add('active-button');
+        });
+      });
+    });
+
+  </script>
+
+</body>
+
+</html>
