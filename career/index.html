@@ -107,18 +107,18 @@
         <p class="text-left">Select open positions</p>
 
         <div class="text-white">
-          <div id="dropdown" class="width-4/5 bg-blueTheme rounded-md p-4 mb-4 flex flex-row">
+          <div id="dropdown-graphic" class="width-4/5 bg-blueTheme rounded-md p-4 mb-4 flex flex-row">
             <div class="w-2/5 mt-4">
               <img class="w-80 h-22" src="../assets/S4.svg" alt="graphic" />
             </div>
-            <div id="jobDepartment" class="w-3/4 flex flex-col">
+            <div class="w-3/4 flex flex-col">
               <p class="font-bold">Graphic Design Vacancies</p>
-              <p>Junior Graphic designer</p>
-              <p>Video Editor</p>
+              <p data-position="junior-graphic-designer">Junior Graphic Designer</p>
+              <p data-position="graphic-and-multimedia">Graphic and Multimedia</p>
             </div>
           </div>
 
-          <div id="dropdownContent" class="hidden w-full bg-white border rounded shadow-lg text-left mb-4">
+          <div id="dropdownContent-graphic" class="hidden w-full bg-white border rounded shadow-lg text-left mb-4">
             <div class="p-4 text-black">
               <p class="font-bold">Graphic Design Vacancies</p>
               <p>Deadline: </br> </br>Information: Junior Graphic Designer</br> </br>
@@ -130,6 +130,7 @@
                 </br> </br> Able to meet deadline, good communication
                 skills, and able to adapt to fast pace condtions </p>
 
+              </br>
               <p>For more information,
                 contact us:
 
@@ -142,7 +143,7 @@
 
               <div class="flex flex-row">
                 <p class="font-bold w-3/4 ">PDF file download</p>
-                <button id="applyButton" class="bg-blueTheme text-white font-bold rounded-md p-2 w-1/4">Apply</button>
+                <button id="applyButton-graphic" class="bg-blueTheme text-white font-bold rounded-md p-2 w-1/4">Apply</button>
               </div>
 
 
@@ -153,35 +154,117 @@
 
 
 
-          <div id="dropdown" class="width-4/5 bg-blueTheme rounded-md p-4 mb-4 flex flex-row">
+          <div id="dropdown-marketing" class="width-4/5 bg-blueTheme rounded-md p-4 mb-4 flex flex-row">
             <div class="w-2/5 mt-4">
               <img class="w-80 h-22" src="../assets/S2.svg" alt="market" />
             </div>
-            <div id="jobDepartment" class="w-3/4 flex flex-col">
+            <div class="w-3/4 flex flex-col">
               <p class="font-bold">Marketing Vacancies</p>
-              <p>Marketing officer</p>
-
-
+              <p data-position="accounts-finance-officer">Accounts and Finance Officer</p>
+              <p data-position="marketing-sales-officer">Marketing and Sales Officer</p>
             </div>
           </div>
-          <div id="dropdown" class="width-4/5 bg-blueTheme rounded-md p-4 mb-4 flex flex-row">
-            <div id="jobDepartment" class="w-2/5 mt-4">
+          <div id="dropdownContent-marketing" class="hidden w-full bg-white border rounded shadow-lg text-left mb-4">
+            <div class="p-4 text-black">
+              <p class="font-bold">Marketing Vacancies</p>
+              <p>Deadline: </br> </br>Information: Junior Graphic Designer</br> </br>
+                Marketing and sales personnel are responsible for promoting products or services, generating leads,
+                and converting them into customers.
+
+                </br> </br>Marketing and sales personnel work closely together to drive
+                revenue growth and market presence for their organization. </p>
+
+              </br>
+              <p>For more information, contact us:
+
+              </br></br>
+              email: xxxxxxx@uptechincorp
+
+              </br></br>
+             phone: xxx-xxxx</p>
+
+              <button class="bg-gray-200 font-bold rounded-md p-2 w-full text-left mb-2">PDF <span
+                  class="font-normal">Marketing Position </span></button>
+              <div class="flex flex-row">
+                <p class="font-bold w-3/4 ">PDF file download</p>
+                <button id="applyButton-marketing"
+                  class="bg-blueTheme text-white font-bold rounded-md p-2 w-1/4">Apply</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="dropdown-administrative" class="width-4/5 bg-blueTheme rounded-md p-4 mb-4 flex flex-row">
+            <div class="w-2/5 mt-4">
               <img class="w-80 h-22" src="../assets/S1.svg" alt="Administrative" />
             </div>
             <div class="w-3/4 flex flex-col">
-              <p id="jobDepartment" class="font-bold">Administrative Vacancies</p>
-              <p>Documentation</p>
+              <p class="font-bold">Administrative and Public Relations Vacancies</p>
+              <p data-position="human-resources-officer">Human Resources Officer</p>
+              <p data-position="communications-specialist">Communications Specialist</p>
+              <p data-position="public-relations-officer">Public Relations Officer</p>
+              <p data-position="project-manager">Project Manager</p>
+            </div>
+          </div>
+          <div id="dropdownContent-administrative"
+            class="hidden w-full bg-white border rounded shadow-lg text-left mb-4">
+            <div class="p-4 text-black">
+              <p class="font-bold">Human Resources</p>
+              <p>Deadline: </br> </br>Information: </br> </br>
+
+                Human Resources personnel play a crucial role in managing the human capital of an organization, 
+                fostering a productive and </br> positive work environment, 
+                and ensuring compliance with laws and regulations that affect employees.
+
+              <p>For more information,
+                contact us:
+
+                </br></br>email: xxxxxxx@uptechincorp
+
+                </br></br>phone: xxx-xxxx</p>
+
+              <button class="bg-gray-200 font-bold rounded-md p-2 w-full text-left mb-2">PDF <span
+                  class="font-normal">Human Resources Position </span> </button>
+
+              <div class="flex flex-row">
+                <p class="font-bold w-3/4 ">PDF file download</p>
+                <button id="applyButton-administrative" class="bg-blueTheme text-white font-bold rounded-md p-2 w-1/4">Apply</button>
+              </div>
 
 
             </div>
           </div>
-          <div id="dropdown" class="width-4/5 bg-gray-300 rounded-md p-4 mb-4 flex flex-row">
-            <div id="jobDepartment" class="w-2/5 mt-4">
+
+          <div id="dropdown-engineering" class="width-4/5 bg-gray-300 rounded-md p-4 mb-4 flex flex-row">
+            <div class="w-2/5 mt-4">
               <img class="w-80 h-22" src="../assets/S3.svg" alt="development" />
             </div>
             <div class="w-3/4 flex flex-col">
-              <p id="jobDepartment" class="font-bold">Engineering Vacancies</p>
-              <p>IOS Developing</p>
+              <p class="font-bold">Engineering Vacancies</p>
+              <p data-position="ios-developer">IOS Developer</p>
+            </div>
+          </div>
+          <div id="dropdownContent-engineering" class="hidden w-full bg-white border rounded shadow-lg text-left mb-4">
+            <div class="p-4 text-black">
+              <p class="font-bold">Engineering Vacancies</p>
+              <p>Deadline: </br> </br>Information: </br> </br>
+
+                The core activities of software engineers is designing, developing, deploying, and maintaining software 
+                applications and systems.  </p>
+
+              <p>For more information,
+                contact us:
+
+                </br></br>email: xxxxxxx@uptechincorp
+
+                </br></br>phone: xxx-xxxx</p>
+
+              <button class="bg-gray-200 font-bold rounded-md p-2 w-full text-left mb-2">PDF <span
+                  class="font-normal">Engineering Position </span> </button>
+
+              <div class="flex flex-row">
+                <p class="font-bold w-3/4 ">PDF file download</p>
+                <button id="applyButton-engineering" class="bg-blueTheme text-white font-bold rounded-md p-2 w-1/4">Apply</button>
+              </div>
 
 
             </div>
@@ -216,14 +299,28 @@
                   class="w-full bg-blueTheme text-white border rounded px-2 py-1 placeholder-white rounded-md" required>
               </div>
               <div class="mb-2 relative">
-                <input type="file" id="resume" name="resume"
-                  class="opacity-0 absolute inset-0 w-full h-full cursor-pointer">
+                <input type="file" id="resume" name="resume" class="opacity-0 absolute inset-0 w-full h-full cursor-pointer" onchange="updateFileName('resume')">
                 <div class="w-full bg-blueTheme text-white border rounded px-2 py-1 rounded-md">Upload Resume</div>
+                <div id="resume-file-info" class="mt-2 flex items-center hidden">
+                  <span id="resume-file-name" class="text-black"></span>
+                  <button type="button" class="ml-2 text-red-500" onclick="removeFile('resume')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
               </div>
               <div class="mb-6 relative">
-                <input type="file" id="portfolio" name="portfolio"
-                  class="opacity-0 absolute inset-0 w-full h-full cursor-pointer">
+                <input type="file" id="portfolio" name="portfolio" class="opacity-0 absolute inset-0 w-full h-full cursor-pointer" onchange="updateFileName('portfolio')">
                 <div class="w-full bg-blueTheme text-white border rounded px-2 py-1 rounded-md">Upload Portfolio</div>
+                <div id="portfolio-file-info" class="mt-2 flex items-center hidden">
+                  <span id="portfolio-file-name" class="text-black"></span>
+                  <button type="button" class="ml-2 text-red-500" onclick="removeFile('portfolio')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
               </div>
 
               <div class="mb-4">
@@ -274,51 +371,109 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
   <script>
-   $('#menu-button').click(function () {
-    $('#mobile-menu').toggleClass('hidden');
-  });
-
-  </script>
-  <script>
-    document.getElementById('dropdown').addEventListener('click', function () {
-      var dropdownContent = document.getElementById('dropdownContent');
-      var parentDiv = this;
-
-      if (dropdownContent.classList.contains('hidden')) {
-        dropdownContent.classList.remove('hidden');
-        parentDiv.classList.remove('mb-4');
-      } else {
-        dropdownContent.classList.add('hidden');
-        parentDiv.classList.add('mb-4');
-      }
-    });
-
-    document.getElementById('applyButton').addEventListener('click', function () {
-      var jobDepartmentText = document.getElementById('jobDepartment').querySelector('p').textContent;
-      var departmentName = jobDepartmentText.split('Vacancies')[0].trim();
-      document.getElementById('applicationForm').classList.remove('hidden');
-      document.querySelector('#applicationForm h2').textContent = departmentName + ' Form';
-      document.body.style.overflow = 'hidden';
-    });
-
-    document.getElementById('closeForm').addEventListener('click', function () {
-      document.getElementById('applicationForm').classList.add('hidden');
-      document.body.style.overflow = '';
+    $('#menu-button').click(function () {
+      $('#mobile-menu').toggleClass('hidden');
     });
 
   </script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
+      // Add event listeners to all dropdowns
+      const dropdowns = document.querySelectorAll('[id^="dropdown"]'); // Select all dropdowns with id starting with "dropdown"
+
+      dropdowns.forEach(dropdown => {
+        dropdown.addEventListener('click', function () {
+          const dropdownContentId = dropdown.id.replace('dropdown', 'dropdownContent'); // Create the corresponding content id
+          const dropdownContent = document.getElementById(dropdownContentId);
+          const parentDiv = this;
+
+          if (dropdownContent) { // Check if dropdownContent exists
+            if (dropdownContent.classList.contains('hidden')) {
+              dropdownContent.classList.remove('hidden');
+              parentDiv.classList.remove('mb-4');
+            } else {
+              dropdownContent.classList.add('hidden');
+              parentDiv.classList.add('mb-4');
+            }
+          }
+        });
+      });
+
+      // Apply button functionality
+      const applyButtons = document.querySelectorAll('[id^="applyButton"]'); // Select all apply buttons
+
+      applyButtons.forEach(button => {
+        button.addEventListener('click', function () {
+          // Find the job department text from the closest dropdown
+          const dropdown = button.closest('[id^="dropdown"]');
+          const jobDepartmentElement = dropdown ? dropdown.querySelector('p.font-bold') : null;
+          
+          if (jobDepartmentElement) { // Check if jobDepartmentElement exists
+            const jobDepartmentText = jobDepartmentElement.textContent;
+            const departmentName = jobDepartmentText.split('Vacancies')[0].trim();
+            
+            // Show the application form
+            const applicationForm = document.getElementById('applicationForm');
+            if (applicationForm) { // Check if applicationForm exists
+              applicationForm.classList.remove('hidden');
+              const formHeader = document.querySelector('#applicationForm h2');
+              if (formHeader) { // Check if formHeader exists
+                formHeader.textContent = departmentName + ' Form';
+              }
+              document.body.style.overflow = 'hidden';
+
+              // Update the select options
+              const positionSelect = applicationForm.querySelector('#position');
+              if (positionSelect) {
+                // Clear existing options
+                positionSelect.innerHTML = '<option value="" disabled selected>Choose Position</option>';
+
+                // Add new options based on the dropdown
+                const positions = dropdown.querySelectorAll('p[data-position]');
+                console.log('Dropdown:', dropdown);
+                console.log('Positions found:', positions.length);
+                positions.forEach(position => {
+                  console.log('Adding position:', position.textContent);
+                  const option = document.createElement('option');
+                  option.value = position.getAttribute('data-position');
+                  option.textContent = position.textContent;
+                  positionSelect.appendChild(option);
+                });
+              }
+            }
+          } else {
+            console.error('Job department element not found.');
+          }
+        });
+      });
+
+      // Close form functionality
+      const closeFormButton = document.getElementById('closeForm');
+      if (closeFormButton) { // Check if closeForm button exists
+        closeFormButton.addEventListener('click', function () {
+          const applicationForm = document.getElementById('applicationForm');
+          if (applicationForm) { // Check if applicationForm exists
+            applicationForm.classList.add('hidden');
+            document.body.style.overflow = '';
+          }
+        });
+      }
+    });
+    document.addEventListener('DOMContentLoaded', function () {
       const allButton = document.querySelector('button:nth-of-type(1)');
       const vacanciesButton = document.querySelector('button:nth-of-type(2)');
       const noVacanciesButton = document.querySelector('button:nth-of-type(3)');
-      const jobBoxes = document.querySelectorAll('#dropdown');
+      const jobBoxes = document.querySelectorAll('.width-4\\/5');
 
       allButton.addEventListener('click', () => {
-        jobBoxes.forEach(box => box.style.display = 'flex');
+        console.log('All button clicked');
+        jobBoxes.forEach(box => {
+          box.style.display = 'flex';
+        });
       });
 
       vacanciesButton.addEventListener('click', () => {
+        console.log('Vacancies button clicked');
         jobBoxes.forEach(box => {
           if (box.classList.contains('bg-blueTheme')) {
             box.style.display = 'flex';
@@ -329,6 +484,7 @@
       });
 
       noVacanciesButton.addEventListener('click', () => {
+        console.log('No Vacancies button clicked');
         jobBoxes.forEach(box => {
           if (box.classList.contains('bg-gray-300')) {
             box.style.display = 'flex';
@@ -348,6 +504,30 @@
         });
       });
     });
+
+    function updateFileName(inputId) {
+    const input = document.getElementById(inputId);
+    const fileInfoDiv = document.getElementById(inputId + '-file-info');
+    const fileNameSpan = document.getElementById(inputId + '-file-name');
+
+    if (input.files.length > 0) {
+      const fileName = input.files[0].name;
+      fileNameSpan.textContent = fileName; // Display the file name
+      fileInfoDiv.classList.remove('hidden'); // Show the file info div
+    } else {
+      fileInfoDiv.classList.add('hidden'); // Hide if no file is selected
+    }
+  }
+
+  function removeFile(inputId) {
+    const input = document.getElementById(inputId);
+    const fileInfoDiv = document.getElementById(inputId + '-file-info');
+    const fileNameSpan = document.getElementById(inputId + '-file-name');
+
+    input.value = ''; // Clear the file input
+    fileNameSpan.textContent = ''; // Clear the displayed file name
+    fileInfoDiv.classList.add('hidden'); // Hide the file info div
+  }
 
   </script>
 
