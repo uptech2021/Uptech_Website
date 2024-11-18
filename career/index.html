@@ -104,7 +104,7 @@
         </div>
 
 
-        <p class="text-left">Select open positions</p>
+
 
         <div class="text-white">
           <div id="dropdown-graphic" class="width-4/5 bg-blueTheme rounded-md p-4 mb-4 flex flex-row">
@@ -121,29 +121,76 @@
           <div id="dropdownContent-graphic" class="hidden w-full bg-white border rounded shadow-lg text-left mb-4">
             <div class="p-4 text-black">
               <p class="font-bold">Graphic Design Vacancies</p>
-              <p>Deadline: </br> </br>Information: Junior Graphic Designer</br> </br>
 
-                Proficent in Adobe Suit (Photoshop, Illustrator
-                and after effect). Willing to learn and expand
-                with the team.
+              <div class="flex items-center">
+                <p class="text-left mr-2">Select open positions:</p>
 
-                </br> </br> Able to meet deadline, good communication
-                skills, and able to adapt to fast pace condtions </p>
+                <select id="position-selector-graphic" name="position"
+                  class="bg-gray-100 bder border-gray-300 rounded-md p-2 shadow-md focus:outline-none focus:ring focus:ring-blue-500"
+                  onchange="updatePositionInfo('graphic')">
+                  <option value="junior-graphic-designer" selected>Junior Graphic Designer</option>
+                  <option value="graphic-and-multimedia">Graphic and Multimedia</option>
+                </select>
+
+
+              </div>
+              <p id="position-info-graphic">
+                Information: <span id="selected-position-graphic">junior-graphic-designer</span>
+              </p>
+
+              </br>
+              <div id="junior-graphic-designer" class="">
+                <p class="font-bold">Job Description:</p>
+                <p>
+                  Proficient in Adobe Suite (Photoshop, Illustrator, and After Effects). Willing to learn and expand
+                  with the team.
+                  </br>
+                  Able to meet deadlines, good communication skills, and able to adapt to fast-paced
+                  conditions.
+                </p>
+                </br>
+                <p class="font-bold ">Key Responsibilities:</p>
+                <ul class="ml-2 list-disc">
+                  <li>Design and create graphics for various media.</li>
+                  <li>Collaborate with the marketing team to develop visual content.</li>
+                  <li>Ensure all designs align with brand guidelines.</li>
+                </ul>
+              </div>
+
+              <div id="graphic-and-multimedia" class="hidden">
+                <p class="font-bold">Job Description:</p>
+                <p>
+                  Create visually engaging designs for digital and print media, including graphics, videos, and
+                  animations.
+                  </br>
+                  Collaborate with clients or teams to produce creative content that aligns with brand
+                  goals.
+                </p>
+                </br>
+                <p class="font-bold">Key Responsibilities:</p>
+                <ul class="ml-2 list-disc">
+                  <li>Design logos, banners, posters, and social media content. </li>
+                  <li>Edit and produce multimedia elements like animations and videos.</li>
+                  <li> Ensure designs are on-brand and meet client expectations. </li>
+                  <li>Stay updated with design trends and tools. </li>
+                </ul>
+              </div>
+
 
               </br>
               <p>For more information,
                 contact us:
 
-                </br></br>email: xxxxxxx@uptechincorp
+                </br></br>email: uptechincorp@gmail.com
 
-                </br></br>phone: xxx-xxxx</p>
+                </br></br>phone: +1 (868) 710-4296</p>
 
-              <button class="bg-gray-200 font-bold rounded-md p-2 w-full text-left mb-2">PDF <span
-                  class="font-normal">Graphic Design Position </span> </button>
+
 
               <div class="flex flex-row">
-                <p class="font-bold w-3/4 ">PDF file download</p>
-                <button id="applyButton-graphic" class="bg-blueTheme text-white font-bold rounded-md p-2 w-1/4">Apply</button>
+
+                <button id="applyButton-graphic"
+                  class="bg-blueTheme text-white font-bold rounded-md p-2 w-1/4">Apply</button>
               </div>
 
 
@@ -161,32 +208,76 @@
             <div class="w-3/4 flex flex-col">
               <p class="font-bold">Marketing Vacancies</p>
               <p data-position="accounts-finance-officer">Accounts and Finance Officer</p>
-              <p data-position="marketing-sales-officer">Marketing and Sales Officer</p>
+              <p data-position="marketing-accounts-and-finance-specialist">Marketing and Sales Officer</p>
             </div>
           </div>
           <div id="dropdownContent-marketing" class="hidden w-full bg-white border rounded shadow-lg text-left mb-4">
             <div class="p-4 text-black">
               <p class="font-bold">Marketing Vacancies</p>
-              <p>Deadline: </br> </br>Information: Junior Graphic Designer</br> </br>
-                Marketing and sales personnel are responsible for promoting products or services, generating leads,
-                and converting them into customers.
 
-                </br> </br>Marketing and sales personnel work closely together to drive
-                revenue growth and market presence for their organization. </p>
+              <div class="flex items-center">
+                <p class="text-left mr-2">Select open positions:</p>
+                <select id="position-selector-marketing" name="position"
+                  class="bg-gray-100 border border-gray-300 rounded-md p-2 shadow-md focus:outline-none focus:ring focus:ring-blue-500"
+                  onchange="updatePositionInfo('marketing')">
+                  <option value="marketing-and-sales-specialist" selected>Marketing and Sales Specialist</option>
+                  <option value="accounts-and-finance-specialist">Accounts and Finance Specialist</option>
+                </select>
+              </div>
 
-              </br>
-              <p>For more information, contact us:
+              <p id="position-info-marketing">
+                Information: <span id="selected-position-marketing">marketing-and-sales-specialist</span>
+              </p>
 
-              </br></br>
-              email: xxxxxxx@uptechincorp
+              <br />
+              <div id="marketing-and-sales-specialist" class="">
+                <p class="font-bold">Job Description:</p>
+                <p>
+                  Promote products or services and drives sales by implementing marketing strategies and engage
+                  with customers.
+                  </br>
+                  Analyze market trends to attract and retain clients.
+                </p>
+                <br />
+                <p class="font-bold">Key Responsibilities:</p>
+                <ul class="ml-2 list-disc">
+                  <li>Develop and execute marketing campaigns. </li>
+                  <li> Identify and target potential customers. </li>
+                  <li> Manage social media and online advertising. </li>
+                  <li>Track sales performance and customer feedback. </li>
+                </ul>
+              </div>
 
-              </br></br>
-             phone: xxx-xxxx</p>
+              <div id="accounts-and-finance-specialist" class="hidden">
+                <p class="font-bold">Job Description:</p>
+                <p>
+                  Manage financial records, budgets, and transactions.
+                  <br />
+                  Ensure compliance with financial
+                  regulations and support decision-making through accurate reporting.
 
-              <button class="bg-gray-200 font-bold rounded-md p-2 w-full text-left mb-2">PDF <span
-                  class="font-normal">Marketing Position </span></button>
+
+                </p>
+                <br />
+                <p class="font-bold">Key Responsibilities:</p>
+                <ul class="ml-2 list-disc">
+                  <li> Prepare financial statements and reports.</li>
+                  <li>Monitor budgets and expenses.</li>
+                  <li>Handle invoices, payroll, and tax documentation. </li>
+                  <li>Conduct financial analysis to support business goals. </li>
+                </ul>
+              </div>
+
+              <br />
+              <p>For more information, contact us:</p>
+              <br />
+              <p>
+                email: xxxxxxx@uptechincorp@gmail.com
+                <br /><br />
+                phone: +1 (868) 710-4296
+              </p>
+
               <div class="flex flex-row">
-                <p class="font-bold w-3/4 ">PDF file download</p>
                 <button id="applyButton-marketing"
                   class="bg-blueTheme text-white font-bold rounded-md p-2 w-1/4">Apply</button>
               </div>
@@ -208,29 +299,105 @@
           <div id="dropdownContent-administrative"
             class="hidden w-full bg-white border rounded shadow-lg text-left mb-4">
             <div class="p-4 text-black">
-              <p class="font-bold">Human Resources</p>
-              <p>Deadline: </br> </br>Information: </br> </br>
+              <p class="font-bold">Administrative and Public Relations Vacancies</p>
 
-                Human Resources personnel play a crucial role in managing the human capital of an organization, 
-                fostering a productive and </br> positive work environment, 
-                and ensuring compliance with laws and regulations that affect employees.
-
-              <p>For more information,
-                contact us:
-
-                </br></br>email: xxxxxxx@uptechincorp
-
-                </br></br>phone: xxx-xxxx</p>
-
-              <button class="bg-gray-200 font-bold rounded-md p-2 w-full text-left mb-2">PDF <span
-                  class="font-normal">Human Resources Position </span> </button>
-
-              <div class="flex flex-row">
-                <p class="font-bold w-3/4 ">PDF file download</p>
-                <button id="applyButton-administrative" class="bg-blueTheme text-white font-bold rounded-md p-2 w-1/4">Apply</button>
+              <div class="flex items-center">
+                <p class="text-left mr-2">Select open positions:</p>
+                <select id="position-selector-administrative" name="position"
+                  class="bg-gray-100 border border-gray-300 rounded-md p-2 shadow-md focus:outline-none focus:ring focus:ring-blue-500"
+                  onchange="updatePositionInfo('administrative')">
+                  <option value="human-resources-officer" selected>Human Resources Officer</option>
+                  <option value="communications-specialist">Communications Specialist</option>
+                  <option value="public-relations-officer">Public Relations Officer</option>
+                  <option value="project-manager">Project Manager</option>
+                </select>
               </div>
 
+              <p id="position-info-administrative">
+                Information: <span id="selected-position-administrative">human-resources-officer</span>
+              </p>
 
+              <br />
+              <div id="human-resources-officer" class="">
+                <p class="font-bold">Job Description:</p>
+                <p>
+                  Manage recruitment, employee relations, and HR policies to support the organization's workforce.
+                  </br>
+                  Ensure a positive workplace environment and compliance with labor laws.
+                </p>
+                <br />
+                <p class="font-bold">Key Responsibilities:</p>
+                <ul class="ml-2 list-disc">
+                  <li>Recruit, interview, and onboard new employees. </li>
+                  <li>Handle employee grievances and performance reviews. </li>
+                  <li>Manage payroll and benefits administration.</li>
+                  <li> Develop and implement HR policies. </li>
+                </ul>
+              </div>
+
+              <div id="communications-specialist" class="hidden">
+                <p class="font-bold">Job Description:</p>
+                <p>
+                  Manage and execute communication strategies to effectively convey the organization's message to
+                  the target audience.
+                  </br> Focus on public relations, media management, and internal communications.
+                </p>
+                <br />
+                <p class="font-bold">Key Responsibilities:</p>
+                <ul class="ml-2 list-disc">
+                  <li>Draft press releases, newsletters, and social media posts.</li>
+                  <li>Coordinate with media outlets and stakeholders. </li>
+                  <li> Develop and implement communication campaigns. </li>
+                  <li> Monitor and report on communication effectiveness. </li>
+                </ul>
+              </div>
+
+              <div id="public-relations-officer" class="hidden">
+                <p class="font-bold">Job Description:</p>
+                <p>
+                  Build and maintain a positive public image for an organization. Develop strategies to engage with
+                  media and the public while managing crisis communications effectively.
+                </p>
+                <br />
+                <p class="font-bold">Key Responsibilities:</p>
+                <ul class="ml-2 list-disc">
+                  <li>Write press releases and manage media interactions. </li>
+                  <li> Plan and execute public relations campaigns. </li>
+                  <li>Build relationships with key stakeholders and influencers. </li>
+                  <li>Monitor public perception and address concerns. </li>
+                </ul>
+              </div>
+
+              <div id="project-manager" class="hidden">
+                <p class="font-bold">Job Description:</p>
+                <p>
+                  Oversee the planning, execution, and completion of projects within budget and timeline.
+                  </br>
+                  Coordinate with teams and stakeholders to ensure successful project delivery.
+                </p>
+                <br />
+                <p class="font-bold">Key Responsibilities:</p>
+                <ul class="ml-2 list-disc">
+                  <li>Define project goals, timelines, and budgets. </li>
+                  <li>Assign tasks and manage team performance. </li>
+                  <li>Monitor project progress and address risks. </li>
+                  <li> Communicate updates to stakeholders. </li>
+                </ul>
+              </div>
+
+              <br />
+              <p>For more information, contact us:</p>
+              <br />
+              <p>
+                email: uptechincorp@gmail.com
+                <br /><br />
+                phone: +1 (868) 710-4296
+              </p>
+
+              <div class="flex flex-row">
+                <button id="applyButton-administrative"
+                  class="bg-blueTheme text-white font-bold rounded-md p-2 w-1/4">Apply</button>
+              </div>
             </div>
           </div>
 
@@ -240,7 +407,7 @@
             </div>
             <div class="w-3/4 flex flex-col">
               <p class="font-bold">Engineering Vacancies</p>
-              <p data-position="ios-developer">IOS Developer</p>
+              <p data-position="software-engineer">Software Engineer / Web/App Developer </p>
             </div>
           </div>
           <div id="dropdownContent-engineering" class="hidden w-full bg-white border rounded shadow-lg text-left mb-4">
@@ -248,22 +415,52 @@
               <p class="font-bold">Engineering Vacancies</p>
               <p>Deadline: </br> </br>Information: </br> </br>
 
-                The core activities of software engineers is designing, developing, deploying, and maintaining software 
-                applications and systems.  </p>
+              <div class="flex items-center">
+                <p class="text-left mr-2">Select open positions:</p>
+                <select id="position-selector-engineering" name="position"
+                  class="bg-gray-100 border border-gray-300 rounded-md p-2 shadow-md focus:outline-none focus:ring focus:ring-blue-500"
+                  onchange="updatePositionInfo('engineering')">
+                  <option value="software-engineer" selected>Software Engineer / Web/App Developer </option>
+
+                </select>
+              </div>
+              <p id="position-info-engineering">
+                Information: <span id="selected-position-engineering">Software Engineer / Web/App Developer </span>
+              </p>
+
+              <br />
+              <div id="software-engineer" class="">
+                <p class="font-bold">Job Description:</p>
+                <p>
+                  Design, develop, test, and maintain software applications, websites, or mobile apps. 
+                </br>
+                  Collaborate
+                  with teams to understand requirements and ensures functionality, performance, and security of
+                  digital solutions.
+                </p>
+                <br />
+                <p class="font-bold">Key Responsibilities:</p>
+                <ul class="ml-2 list-disc">
+                  <li>Write and debug code in programming languages like JavaScript, Python, or Java etc.  </li>
+                  <li>Design user-friendly interfaces and features. </li>
+                  <li>Troubleshoot and fix software issues. </li>
+                  <li>Stay updated with new technologies and frameworks. </li>
+                </ul>
+              </div>
 
               <p>For more information,
                 contact us:
 
-                </br></br>email: xxxxxxx@uptechincorp
+                </br></br>email: uptechincorp@gmail.com
 
-                </br></br>phone: xxx-xxxx</p>
+                </br></br>phone: +1 (868) 710-4296</p>
 
-              <button class="bg-gray-200 font-bold rounded-md p-2 w-full text-left mb-2">PDF <span
-                  class="font-normal">Engineering Position </span> </button>
+            
 
               <div class="flex flex-row">
-                <p class="font-bold w-3/4 ">PDF file download</p>
-                <button id="applyButton-engineering" class="bg-blueTheme text-white font-bold rounded-md p-2 w-1/4">Apply</button>
+                
+                <button id="applyButton-engineering"
+                  class="bg-blueTheme text-white font-bold rounded-md p-2 w-1/4">Apply</button>
               </div>
 
 
@@ -281,12 +478,11 @@
               </div>
               <div class="mb-2">
                 <select id="position" name="position"
-                  class="w-full bg-blueTheme text-white border rounded px-2 py-1 placeholder-white rounded-md custom-select"
-                  required>
-                  <option value="" disabled selected>Choose Position</option>
-                  <option value="junior-graphic-designer">Junior Graphic Designer</option>
-                  <option value="video-editor">Video Editor</option>
-                </select>
+                class="w-full bg-blueTheme text-white border rounded px-2 py-1 placeholder-white rounded-md custom-select"
+                required>
+                <option value="" disabled selected>Choose Position</option>
+                {{ edit_1 }}
+              </select>
               </div>
 
 
@@ -299,24 +495,29 @@
                   class="w-full bg-blueTheme text-white border rounded px-2 py-1 placeholder-white rounded-md" required>
               </div>
               <div class="mb-2 relative">
-                <input type="file" id="resume" name="resume" class="opacity-0 absolute inset-0 w-full h-full cursor-pointer" onchange="updateFileName('resume')">
+                <input type="file" id="resume" name="resume"
+                  class="opacity-0 absolute inset-0 w-full h-full cursor-pointer" onchange="updateFileName('resume')">
                 <div class="w-full bg-blueTheme text-white border rounded px-2 py-1 rounded-md">Upload Resume</div>
                 <div id="resume-file-info" class="mt-2 flex items-center hidden">
                   <span id="resume-file-name" class="text-black"></span>
                   <button type="button" class="ml-2 text-red-500" onclick="removeFile('resume')">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   </button>
                 </div>
               </div>
               <div class="mb-6 relative">
-                <input type="file" id="portfolio" name="portfolio" class="opacity-0 absolute inset-0 w-full h-full cursor-pointer" onchange="updateFileName('portfolio')">
+                <input type="file" id="portfolio" name="portfolio"
+                  class="opacity-0 absolute inset-0 w-full h-full cursor-pointer"
+                  onchange="updateFileName('portfolio')">
                 <div class="w-full bg-blueTheme text-white border rounded px-2 py-1 rounded-md">Upload Portfolio</div>
                 <div id="portfolio-file-info" class="mt-2 flex items-center hidden">
                   <span id="portfolio-file-name" class="text-black"></span>
                   <button type="button" class="ml-2 text-red-500" onclick="removeFile('portfolio')">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   </button>
@@ -403,49 +604,34 @@
       const applyButtons = document.querySelectorAll('[id^="applyButton"]'); // Select all apply buttons
 
       applyButtons.forEach(button => {
-        button.addEventListener('click', function () {
-          // Find the job department text from the closest dropdown
-          const dropdown = button.closest('[id^="dropdown"]');
-          const jobDepartmentElement = dropdown ? dropdown.querySelector('p.font-bold') : null;
-          
-          if (jobDepartmentElement) { // Check if jobDepartmentElement exists
-            const jobDepartmentText = jobDepartmentElement.textContent;
-            const departmentName = jobDepartmentText.split('Vacancies')[0].trim();
-            
-            // Show the application form
+    button.addEventListener('click', function () {
+        const dropdown = button.closest('[id^="dropdown"]');
+        const jobDepartmentElement = dropdown ? dropdown.querySelector('p.font-bold') : null;
+
+        if (jobDepartmentElement) {
             const applicationForm = document.getElementById('applicationForm');
-            if (applicationForm) { // Check if applicationForm exists
-              applicationForm.classList.remove('hidden');
-              const formHeader = document.querySelector('#applicationForm h2');
-              if (formHeader) { // Check if formHeader exists
-                formHeader.textContent = departmentName + ' Form';
-              }
-              document.body.style.overflow = 'hidden';
+            applicationForm.classList.remove('hidden');
 
-              // Update the select options
-              const positionSelect = applicationForm.querySelector('#position');
-              if (positionSelect) {
-                // Clear existing options
-                positionSelect.innerHTML = '<option value="" disabled selected>Choose Position</option>';
+            const positionSelect = applicationForm.querySelector('#position');
+            positionSelect.innerHTML = '<option value="" disabled selected>Choose Position</option>';
 
-                // Add new options based on the dropdown
-                const positions = dropdown.querySelectorAll('p[data-position]');
-                console.log('Dropdown:', dropdown);
-                console.log('Positions found:', positions.length);
-                positions.forEach(position => {
-                  console.log('Adding position:', position.textContent);
-                  const option = document.createElement('option');
-                  option.value = position.getAttribute('data-position');
-                  option.textContent = position.textContent;
-                  positionSelect.appendChild(option);
+            // Get the select element for the current dropdown
+            const selectElement = dropdown.querySelector('select');
+            if (selectElement) {
+                // Loop through the options in the select element
+                Array.from(selectElement.options).forEach(option => {
+                    const newOption = document.createElement('option');
+                    newOption.value = option.value;
+                    newOption.textContent = option.textContent;
+                    positionSelect.appendChild(newOption);
                 });
-              }
+
+                // Optionally set the first position as selected
+                positionSelect.value = selectElement.value; // Set the currently selected value
             }
-          } else {
-            console.error('Job department element not found.');
-          }
-        });
-      });
+        }
+    });
+});
 
       // Close form functionality
       const closeFormButton = document.getElementById('closeForm');
@@ -506,28 +692,61 @@
     });
 
     function updateFileName(inputId) {
-    const input = document.getElementById(inputId);
-    const fileInfoDiv = document.getElementById(inputId + '-file-info');
-    const fileNameSpan = document.getElementById(inputId + '-file-name');
+      const input = document.getElementById(inputId);
+      const fileInfoDiv = document.getElementById(inputId + '-file-info');
+      const fileNameSpan = document.getElementById(inputId + '-file-name');
 
-    if (input.files.length > 0) {
-      const fileName = input.files[0].name;
-      fileNameSpan.textContent = fileName; // Display the file name
-      fileInfoDiv.classList.remove('hidden'); // Show the file info div
-    } else {
-      fileInfoDiv.classList.add('hidden'); // Hide if no file is selected
+      if (input.files.length > 0) {
+        const fileName = input.files[0].name;
+        fileNameSpan.textContent = fileName; // Display the file name
+        fileInfoDiv.classList.remove('hidden'); // Show the file info div
+      } else {
+        fileInfoDiv.classList.add('hidden'); // Hide if no file is selected
+      }
     }
-  }
 
-  function removeFile(inputId) {
-    const input = document.getElementById(inputId);
-    const fileInfoDiv = document.getElementById(inputId + '-file-info');
-    const fileNameSpan = document.getElementById(inputId + '-file-name');
+    function removeFile(inputId) {
+      const input = document.getElementById(inputId);
+      const fileInfoDiv = document.getElementById(inputId + '-file-info');
+      const fileNameSpan = document.getElementById(inputId + '-file-name');
 
-    input.value = ''; // Clear the file input
-    fileNameSpan.textContent = ''; // Clear the displayed file name
-    fileInfoDiv.classList.add('hidden'); // Hide the file info div
-  }
+      input.value = ''; // Clear the file input
+      fileNameSpan.textContent = ''; // Clear the displayed file name
+      fileInfoDiv.classList.add('hidden'); // Hide the file info div
+    }
+
+    function updatePositionInfo(section) {
+      const selectElement = document.getElementById(`position-selector-${section}`);
+      const selectedValue = selectElement.value;
+      const selectedPositionText = document.getElementById(`selected-position-${section}`);
+
+      // Update the displayed position
+      selectedPositionText.textContent = selectedValue;
+
+      // Hide all position divs for the selected section
+      const positionDivs = document.querySelectorAll(
+        `[id^="${section}-"], 
+        [id^="junior-graphic-designer"], 
+        [id^="graphic-and-multimedia"], 
+        [id^="marketing-and-sales-specialist"], 
+        [id^="accounts-and-finance-specialist"], 
+        [id^="human-resources-officer"], 
+        [id^="communications-specialist"], 
+        [id^="public-relations-officer"], 
+        [id^="project-manager"], 
+        [id^="software-engineer"]`
+      );
+
+      positionDivs.forEach(div => {
+        div.classList.add('hidden');
+      });
+
+      // Show the relevant position div based on the selected value
+      const positionToShow = document.getElementById(selectedValue);
+      if (positionToShow) {
+        positionToShow.classList.remove('hidden');
+      }
+    }
 
   </script>
 
