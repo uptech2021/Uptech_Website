@@ -37,13 +37,16 @@
       <header
         class="pt-4 px-6 flex flex-row items-center justify-between relative"
       >
-        <div class="w-12 h-12">
+      <div class="flex items-center gap-2 animate-slide-in" id="logo-text-container">
+        <div class="w-15 h-15">
           <img
-            class="w-full h-full object-contain"
-            src="./assets/uptech-logo.svg"
+            class="w-1/2 h-1/2 object-contain"
+            src="./assets/uptechlogo.svg"
             alt="uptech logo"
           />
         </div>
+        <span class="text-3xl font-bold" id="logo-text"></span>
+      </div>
         <nav class="hidden md:block z-20">
           <ul class="flex flex-row gap-4">
             <li><a href="#">Home</a></li>
@@ -118,7 +121,7 @@
               grow.
             </h2>
             <br />
-            <h2 class="text-lg font-extrabold rounded-xl text-blue-500 bg-yellow-300 p-2">
+            <h2 class="text-lg font-light rounded-xl text-blue-500 bg-yellow-300 p-2">
               Let's Chat about your business needs!
             </h2>
           </div>
@@ -148,156 +151,85 @@
         </h2>
       </div>
 
-      <main>
-        <!-- FEATURES -->
-        <section
-          class="p-6 text-center text-white bg-blueTheme flex flex-col gap-3 items-center features-section"
-        >
-          <h2 class="text-white">FEATURES</h2>
-          <p>
-            Ourlime aims to provide our users with not only the features they
-            have come to expect from a social media platform but also introduce
-            concepts that we think will enhance our users.
-          </p>
-          <br />
-          <div class="flex flex-col md:flex-row gap-20 xl:gap-10 items-center">
-            <div class="flex flex-col gap-3 items-center text-lg feature-item">
-              <h3>Education</h3>
-              <img
-                class="w-20 h-20 feature-img"
-                src="./assets/book.svg"
-                alt="book"
-              />
-              <p class="font-semibold">Virtual Library, <br />Blogs, etc.</p>
-            </div>
-            <div class="flex flex-col gap-3 items-center text-lg feature-item">
-              <h3>Marketplace</h3>
-              <img
-                class="w-20 h-20 feature-img"
-                src="./assets/house.svg"
-                alt="book"
-              />
-              <p class="font-semibold">Buy, Sell, Trade, <br />Explore.</p>
-            </div>
-            <div class="flex flex-col gap-3 items-center text-lg feature-item">
-              <h3>Project <br />Management</h3>
-              <img
-                class="w-20 h-20 feature-img"
-                src="./assets/envelope.svg"
-                alt="book"
-              />
-              <p class="font-semibold">
-                Tools for Teachers, <br />Students, Buisnesses.
-              </p>
-            </div>
-          </div>
-        </section>
+      <!-- Full-width Blue Box with Text -->
+      <div class="w-full text-white p-4 bg-blue-600 text-center">
+        <h2 class="text-xl font-bold text-yellow-300">
+          Freeing up your time, so you can focus on what matters most!
+        </h2>
+      </div>
 
-        <!-- OBJECTIVES -->
-        <section
-          class="p-6 text-center flex flex-col gap-3 items-center md:hidden objectives-section"
-        >
-          <h2 class="blueText-dark">OBJECTIVES</h2>
-          <div class="flex flex-col gap-20 items-center">
-            <div class="flex flex-col items-center text-lg objective-item">
-              <h3 class="blueText-light">PRIVACY</h3>
-              <img
-                class="w-20 h-20 objective-img"
-                src="./assets/globe.svg"
-                alt="book"
-              />
-              <p class="font-semibold">
-                Implementation of algorithms, that can recognize sensitive
-                phrases and words as well as duplicated accounts would improve
-                user’s safety.
-              </p>
-            </div>
-            <div class="flex flex-col items-center text-lg objective-item">
-              <h3 class="blueText-light">USER SAFETY</h3>
-              <img
-                class="w-20 h-20 objective-img"
-                src="./assets/shield.svg"
-                alt="book"
-              />
-              <p class="font-semibold">
-                These specific features would incorporate a “lock code” that
-                only the user would know.
-              </p>
-            </div>
-            <div class="flex flex-col items-center text-lg objective-item">
-              <h3 class="blueText-light">DATA SECURITY</h3>
-              <img
-                class="w-20 h-20 objective-img"
-                src="./assets/file.svg"
-                alt="book"
-              />
-              <p class="font-semibold">
-                Data such as names, addresses, emails, contacts, and date of
-                births would not be used for marketing purposes.
-              </p>
-            </div>
-          </div>
-        </section>
+      <!-- Steps Section -->
+      <div class="p-6 text-center">
+        <h2 class="text-blue-600 font-bold text-3xl mb-6">
+          FOUR EASY STEPS TO YOUR BUSINESS SOLUTIONS:
+        </h2>
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-8">
+          <!-- Buttons with responsive sizing -->
+          <button class="bg-blueTheme text-white text-lg font-semibold w-28 h-28 md:w-32 md:h-32 lg:w-40 lg:h-40 rounded-lg shadow-md hover:bg-blue-600 transition">
+            Consult
+          </button>
+          <button class="bg-blueTheme text-white text-lg font-semibold w-28 h-28 md:w-32 md:h-32 lg:w-40 lg:h-40 rounded-lg shadow-md hover:bg-blue-600 transition">
+            Choose
+          </button>
+          <button class="bg-blueTheme text-white text-lg font-semibold w-28 h-28 md:w-32 md:h-32 lg:w-40 lg:h-40 rounded-lg shadow-md hover:bg-blue-600 transition">
+            Connect
+          </button>
+          <button class="bg-blueTheme text-white text-lg font-semibold w-28 h-28 md:w-32 md:h-32 lg:w-40 lg:h-40 rounded-lg shadow-md hover:bg-blue-600 transition">
+            Receive
+          </button>
+        </div>
+      </div>
 
-        <section
-          class="hidden bg-blueTheme relative md:block objectives-background"
-        >
-          <h2
-            style="background-color: #f9f5fd"
-            class="blueText-darker text-8xl font-extrabold pl-10 z-10 relative"
-          >
-            OBJECTIVES
-          </h2>
-          <img
-            class="w-full h-full background-vector"
-            src="./assets/backgroundVector.svg"
-            alt="background vector"
-          />
-        </section>
-
-        <!-- PRODUCTS -->
-        <section
-          class="p-6 text-center text-white bg-blueTheme products-section"
-        >
-          <h2 class="lg:text-left">PRODUCTS</h2>
-          <div class="w-full lg:pr-20">
-            <h3 class="hidden text-xl lg:block lg:self-end lg:text-right">
-              The Purpose Of Ourlime And <br />What UpTech Incorporated Hope
-              <br />To Achieve With Our App.
-            </h3>
-            <div class="flex flex-col items-center text-lg w-full">
-              <h3 class="text-xl lg:hidden">
-                The purpose of Ourlime and what UpTech Incorporated hope to
-                achieve with our App.
-              </h3>
-              <div class="w-8/12">
-                <a href="./about/"
-                >
-                <img
-                  class="w-full h-full products-img"
-                  src="./assets/products.svg"
-                  alt="book"
-                />
-                </a>
-              </div>
+      <div class="bg-blue-600">
+        <p class="text-white text-3xl font-normal text-center py-4">
+          Here's How we help business like yours:
+        </p>
+    </div>
+    
+    <!--Cards section-->
+    <div class="p-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <!--Graphic Design Card-->
+            <div class="bg-blueTheme rounded-lg p-8 text-white flex flex-col items-center text-center min-h-80">
+                <h2 class="text-xl font-semibold mb-16">Graphic Design</h2>
+                <p class="text-lg">We create visually stunning designs that capture attention and convey your brand's message effectively.</p>
             </div>
-          </div>
-        </section>
+
+            <!--Marketing & Sales Card-->
+            <div class="bg-blueTheme rounded-lg p-8 text-white flex flex-col items-center text-center min-h-80">
+                <h2 class="text-xl font-semibold mb-16">Marketing & Sales</h2>
+                <p class="text-lg">Our marketing content is designed to drive traffic, generate leads, and boost conversions.</p>
+            </div>
+
+            <!--Web/App Development Card-->
+            <div class="bg-blueTheme rounded-lg p-8 text-white flex flex-col items-center text-center min-h-80">
+                <h2 class="text-xl font-semibold mb-12">Web/App Developing</h2>
+                <p class="text-lg">We help you build exceptional digital experiences that engage users and drive business growth.</p>
+            </div>
+
+            <!--Administrative Services Card-->
+            <div class="bg-blueTheme rounded-lg p-8 text-white flex flex-col items-center text-center min-h-80">
+                <h2 class="text-xl font-semibold mb-12">Administrative Services</h2>
+                <p class="text-lg">We provide efficient and reliable support from project management and data entry to customer support and virtual assistance.</p>
+            </div>
+        </div>
+    </div>
+
 
         <!-- Contact Section -->
-        <div class="p-2 bg-blue-800 text-center">
-          <h1 class="text-base md:text-2xl font-light text-white mb-4">
-            It really is that simple!
-          </h1>
+        <div class="p-4 text-center bg-blue-600 text-white">
+          <p class="text-2xl">
+            It really is that Simple!
+          </p>
         </div>
         <section
         class="bg-blueTheme p-4 md:p-10"
         >
         <!-- Contact Section Heading -->
         <div class="text-center mb-6">
-          <h1 class="text-3xl md:text-4xl font-light text-white">
+          <p class="text-3xl md:text-4xl font-light text-white">
             Ready to take the leap?
-          </h1>
+          </p>
         </div>
 
         <!-- Contact Containers -->
@@ -393,9 +325,9 @@
         </div>
         <!-- Contact Section Heading -->
         <div class="text-center mb-6 mt-8">
-          <h1 class="text-3xl md:text-4xl font-light text-white">
+          <p class="text-3xl md:text-4xl font-light text-white">
             Your strategic partner for business growth!
-          </h1>
+          </p>
         </div>
         </section>
         
