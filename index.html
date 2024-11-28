@@ -37,7 +37,7 @@
       <header
         class="pt-4 px-6 flex flex-row items-center justify-between relative"
       >
-      <div class="flex items-center gap-2 animate-slide-in" id="logo-text-container">
+      <div class="flex items-center gap-2 animate-slide-in" id="slide-in">
         <div class="w-15 h-15">
           <img
             class="w-1/2 h-1/2 object-contain"
@@ -45,7 +45,6 @@
             alt="uptech logo"
           />
         </div>
-        <span class="text-3xl font-bold" id="logo-text"></span>
       </div>
         <nav class="hidden md:block z-20">
           <ul class="flex flex-row gap-4">
@@ -125,7 +124,7 @@
               class="text-sm sm:text-base font-light rounded-xl text-blue-500 bg-yellow-300 p-2"
               onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });"
             >
-              Let's Chat about your business needs!
+              Click here to connect with us!
             </botton>
           </div>
         </div>
@@ -147,7 +146,7 @@
               class="text-sm md:text-lg lg:text-lg font-light rounded-xl text-blue-500 bg-yellow-300 p-2 w-auto"
               onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });"
             >
-              Let's Chat about your business needs!
+              Click here to connect with us!
             </button>
           </div>
         </div>
@@ -170,7 +169,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
           
           <!-- Graphic Design Card -->
-          <div class="bg-blueTheme rounded-sm p-6 text-white flex flex-col items-center text-center min-h-80">
+          <div class="bg-blueTheme rounded-sm p-6 text-white flex flex-col items-center text-center hover:bg-blue-600 min-h-80 transform transition hover:scale-105">
             <h2 class="text-lg sm:text-xl font-semibold mb-4">Graphic Design</h2>
             <p class="text-base sm:text-lg mb-4">
               We create visually stunning designs that capture attention and convey your brand's message effectively.
@@ -179,7 +178,7 @@
           </div>
 
           <!-- Marketing & Sales Card -->
-          <div class="bg-blueTheme rounded-sm p-6 text-white flex flex-col items-center text-center min-h-80">
+          <div class="bg-blueTheme rounded-sm p-6 text-white flex flex-col items-center text-center hover:bg-blue-600 min-h-80 transform transition hover:scale-105">
             <h2 class="text-lg sm:text-xl font-semibold mb-4">Marketing & Sales</h2>
             <p class="text-base sm:text-lg mb-4">
               Our marketing content is designed to drive traffic, generate leads, and boost conversions.
@@ -188,7 +187,7 @@
           </div>
 
           <!-- Web/App Development Card -->
-          <div class="bg-blueTheme rounded-sm p-6 text-white flex flex-col items-center text-center min-h-80">
+          <div class="bg-blueTheme rounded-sm p-6 text-white flex flex-col items-center text-center hover:bg-blue-600 min-h-80 transform transition hover:scale-105">
             <h2 class="text-lg sm:text-xl font-semibold mb-4">Web/App Developing</h2>
             <p class="text-base sm:text-lg mb-4">
               We help you build exceptional digital experiences that engage users and drive business growth.
@@ -197,7 +196,7 @@
           </div>
 
           <!-- Administrative Services Card -->
-          <div class="bg-blueTheme rounded-sm p-6 text-white flex flex-col items-center text-center min-h-80">
+          <div class="bg-blueTheme rounded-sm p-6 text-white flex flex-col items-center text-center hover:bg-blue-600 min-h-80 transform transition hover:scale-105">
             <h2 class="text-lg sm:text-xl font-semibold mb-4">Administrative Services</h2>
             <p class="text-base sm:text-lg mb-4">
               We provide efficient and reliable support from project management and data entry to customer support and virtual assistance.
@@ -223,25 +222,25 @@
         </h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-center items-center">
           <!-- Buttons with responsive sizing -->
-          <button class="bg-blueTheme rounded-sm p-6 text-white text-xl font-semibold flex flex-col items-center text-center shadow-md hover:bg-blue-600 transition h-80 w-60 mx-auto">
+          <button class="bg-blueTheme rounded-sm p-6 text-white text-xl font-semibold flex flex-col items-center text-center shadow-md hover:bg-blue-600 transition h-80 w-60 mx-auto transform hover:scale-105">
             <span class="text-2xl">Consult</span>
             <img src="assets/consult.svg" alt="Consult Icon" class="w-38 h-38 mt-32">
           </button>
 
           <!-- Button for Choose -->
-          <button class="bg-blueTheme rounded-sm p-6 text-white text-lg font-semibold flex flex-col items-center text-center shadow-md hover:bg-blue-600 transition h-80 w-60 mx-auto">
+          <button class="bg-blueTheme rounded-sm p-6 text-white text-lg font-semibold flex flex-col items-center text-center shadow-md hover:bg-blue-600 transition h-80 w-60 mx-auto transform hover:scale-105">
             <span class="text-2xl">Choose</span>
             <img src="assets/choose.svg" alt="Choose Icon" class="w-48 h-48 mt-28">
           </button>
 
           <!-- Button for Connect -->
-          <button class="bg-blueTheme rounded-sm p-6 text-white text-lg font-semibold flex flex-col items-center text-center shadow-md hover:bg-blue-600 transition h-80 w-60 mx-auto">
+          <button class="bg-blueTheme rounded-sm p-6 text-white text-lg font-semibold flex flex-col items-center text-center shadow-md hover:bg-blue-600 transition h-80 w-60 mx-auto transform hover:scale-105">
             <span class="text-2xl">Connect</span>
             <img src="assets/connect.svg" alt="Connect Icon" class="w-48 h-48 mt-36">
           </button>
 
           <!-- Button for Receive -->
-          <button class="bg-blueTheme rounded-sm p-6 text-white text-lg font-semibold flex flex-col items-center text-center shadow-md hover:bg-blue-600 transition h-80 w-60 mx-auto">
+          <button class="bg-blueTheme rounded-sm p-6 text-white text-lg font-semibold flex flex-col items-center text-center shadow-md hover:bg-blue-600 transition h-80 w-60 mx-auto transform hover:scale-105">
             <span class="text-2xl">Receive</span>
             <img src="assets/receive.svg" alt="Receive Icon" class="w-38 h-38 mt-28">
           </button>
@@ -400,6 +399,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
       $(document).ready(function () {
         // Toggle mobile menu
@@ -430,6 +430,33 @@
       });
     </script>
 
+    <script>
+      $(document).ready(function () {
+        emailjs.init("bQV2gCCnRYuuoJ9cn");
+
+        function handleContactForm(event) {
+          event.preventDefault();
+          $(this)
+            .find('input[name="contact_number"]')
+            .val(Math.floor(Math.random() * 100000));
+          emailjs.sendForm("service_1ghwgxo", "contact_form", this).then(
+            function () {
+              alert("Message sent successfully!");
+            },
+            function (error) {
+              alert("FAILED...", error);
+            }
+          );
+        }
+
+        function toggleMobileMenu() {
+          $("#mobile-menu").toggleClass("hidden");
+        }
+
+        $("#contact-form").submit(handleContactForm);
+        $("#menu-button").click(toggleMobileMenu);
+      });
+    </script>
 
   </body>
 </html>

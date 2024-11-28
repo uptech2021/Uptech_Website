@@ -110,7 +110,7 @@ ul{
 }
 
 
-
+/*slide in and slide out animation*/
 @keyframes slideIn {
   0% {
     opacity: 0;
@@ -133,10 +133,10 @@ ul{
   }
 }
 
-#logo-text-container {
+#slide-in {
   animation: slideIn 1s ease-out forwards;
 }
 
-#logo-text-container.hidden {
+#slide-out.hidden {
   animation: slideOut 1s ease-in forwards;
 }
