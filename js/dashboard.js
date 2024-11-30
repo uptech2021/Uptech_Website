@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Load applications from Firestore
 async function loadApplications() {
+    console.log('Starting to load applications...');
     const loadingState = document.getElementById('loadingState');
     const emptyState = document.getElementById('emptyState');
     const applicationsTable = document.getElementById('applicationsTable');
@@ -33,9 +34,12 @@ async function loadApplications() {
     applicationsTable.innerHTML = '';
 
     try {
+        console.log('Fetching applications from Firestore...');
         const snapshot = await db.collection('applications').orderBy('timestamp', 'desc').get();
+        console.log('Snapshot received:', snapshot);
         
         if (snapshot.empty) {
+            console.log('No applications found in Firestore');
             loadingState.classList.add('hidden');
             emptyState.classList.remove('hidden');
             return;
@@ -43,8 +47,11 @@ async function loadApplications() {
 
         const applications = [];
         snapshot.forEach(doc => {
+            console.log('Application data:', doc.data());
             applications.push({ id: doc.id, ...doc.data() });
         });
+
+        console.log('Total applications loaded:', applications.length);
 
         // Update position filter options
         updatePositionFilter(applications);
@@ -68,13 +75,16 @@ function renderApplications(applications) {
         const row = document.createElement('tr');
         row.innerHTML = `
             <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm font-medium text-gray-900">${application.name}</div>
+                <div class="text-sm font-medium text-gray-900">${application.firstName}</div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm font-medium text-gray-900">${application.lastName}</div>
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
                 <div class="text-sm text-gray-900">${application.position}</div>
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">${application.contact}</div>
+                <div class="text-sm text-gray-900">${application.phone}</div>
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
                 <div class="text-sm text-gray-900">${application.email}</div>
@@ -153,8 +163,12 @@ async function viewApplication(applicationId) {
         modalContent.innerHTML = `
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                    <label class="block text-sm font-medium text-gray-700">Name</label>
-                    <p class="mt-1 text-sm text-gray-900">${application.name}</p>
+                    <label class="block text-sm font-medium text-gray-700">FirstName</label>
+                    <p class="mt-1 text-sm text-gray-900">${application.firstName}</p>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">LastName</label>
+                    <p class="mt-1 text-sm text-gray-900">${application.lastName}</p>
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700">Position</label>
@@ -162,7 +176,7 @@ async function viewApplication(applicationId) {
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700">Contact</label>
-                    <p class="mt-1 text-sm text-gray-900">${application.contact}</p>
+                    <p class="mt-1 text-sm text-gray-900">${application.phone}</p>
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700">Email</label>

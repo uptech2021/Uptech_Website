@@ -470,13 +470,18 @@
             </div>
           </div>
         </div>
-        <div id="applicationForm"
+        <!-- Application Form -->
+        <form id="applicationForm"
           class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center text-black z-10 ">
           <div class="bg-white p-8 rounded-lg w-96">
             <h2 class="text-2xl font-bold mb-4">Application Form</h2>
             <form class="text-left">
               <div class="mb-2">
-                <input type="text" id="name" name="name" placeholder="First and Last Name"
+                <input type="text" id="firstName" name="firstName" placeholder="First Name"
+                  class="w-full bg-blueTheme text-white border rounded px-2 py-1 placeholder-white rounded-md" required>
+              </div>
+              <div class="mb-2">
+                <input type="text" id="lastName" name="lastName" placeholder="Last Name"
                   class="w-full bg-blueTheme text-white border rounded px-2 py-1 placeholder-white rounded-md" required>
               </div>
               <div class="mb-2">
@@ -527,10 +532,23 @@
                 </div>
               </div>
 
+              <!-- Add Portfolio URL Option -->
+              <div class="mb-2">
+                <p class="text-sm sm:text-sm md:text-base lg:text-md text-gray-600 mb-1">Optional</p>
+                <input type="url" id="portfolioUrl" name="portfolioUrl" placeholder="Portfolio URL"
+                  class="w-full bg-blueTheme text-white border rounded px-2 py-1 placeholder-white rounded-md">
+              </div>
+
               <div class="mb-4">
                 <input type="text" id="comment" name="comment" placeholder="Comment"
                   class="w-full bg-blueTheme text-white border rounded px-2 py-1 h-20 placeholder-white rounded-md ">
               </div>
+
+              <!-- Success Message -->
+              <div id="successMessage" class="hidden mb-4 p-4 bg-green-100 text-green-700 rounded-md text-center">
+                Application submitted successfully! Your application status is pending.
+              </div>
+              
               <div class="flex justify-between">
 
                 <button type="button" id="closeForm"
@@ -539,7 +557,7 @@
               </div>
             </form>
           </div>
-        </div>
+        </form>
     </div>
 
     </main>
@@ -573,6 +591,13 @@
 
   <!-- jQuery Library -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-storage-compat.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/application-handler.js" defer></script>
 
   <script>
     $('#menu-button').click(function () {
