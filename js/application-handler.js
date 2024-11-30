@@ -32,6 +32,7 @@ async function submitApplication(formData) {
             portfolioFileUrl: portfolioUrl,
             portfolioUrl: formData.get('portfolioUrl'),
             comment: formData.get('comment'),
+            status: "pending",
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
         };
 

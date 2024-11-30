@@ -108,12 +108,12 @@ function renderApplications(applications) {
             <td class="px-6 py-4 whitespace-nowrap">
                 <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
                     ${getStatusColor(application.status)}">
-                    ${application.status || 'New'}
+                    ${application.status || 'pending'}
                 </span>
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                 <button onclick="viewApplication('${application.id}')"
-                    class="text-blue-600 hover:text-blue-900 mr-4">
+                    class="text-blue-600 hover:text-blue-900">
                     View
                 </button>
             </td>
@@ -125,7 +125,16 @@ function renderApplications(applications) {
 // Update position filter options
 function updatePositionFilter(applications) {
     const positionFilter = document.getElementById('positionFilter');
-    const positions = [...new Set(applications.map(app => app.position))];
+    // Clear existing options except the first one (All Positions)
+    while (positionFilter.options.length > 1) {
+        positionFilter.remove(1);
+    }
+    
+    const positions = [...new Set(applications.map(app => app.position))]
+        .filter(Boolean)
+        .sort();
+    
+    console.log('Available positions:', positions);
     
     positions.forEach(position => {
         const option = document.createElement('option');
@@ -137,12 +146,10 @@ function updatePositionFilter(applications) {
 
 // Get status color class
 function getStatusColor(status) {
-    switch (status) {
-        case 'new':
-            return 'bg-blue-100 text-blue-800';
-        case 'reviewed':
+    switch (status?.toLowerCase()) {
+        case 'pending':
             return 'bg-yellow-100 text-yellow-800';
-        case 'contacted':
+        case 'accepted':
             return 'bg-green-100 text-green-800';
         case 'rejected':
             return 'bg-red-100 text-red-800';
@@ -211,10 +218,9 @@ async function viewApplication(applicationId) {
                 <div class="col-span-2">
                     <label class="block text-sm font-medium text-gray-700">Status</label>
                     <select id="applicationStatus" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
-                        <option value="new" ${application.status === 'new' ? 'selected' : ''}>New</option>
-                        <option value="reviewed" ${application.status === 'reviewed' ? 'selected' : ''}>Reviewed</option>
-                        <option value="contacted" ${application.status === 'contacted' ? 'selected' : ''}>Contacted</option>
-                        <option value="rejected" ${application.status === 'rejected' ? 'selected' : ''}>Rejected</option>
+                        <option value="pending" ${application.status === 'pending' ? 'selected' : ''}>Pending</option>
+                        <option value="accepted" ${application.status === 'accepted' ? 'selected' : ''}>Accept</option>
+                        <option value="rejected" ${application.status === 'rejected' ? 'selected' : ''}>Reject</option>
                     </select>
                 </div>
             </div>
@@ -243,11 +249,12 @@ document.getElementById('closeModal').addEventListener('click', () => {
 async function updateApplicationStatus(applicationId, status) {
     try {
         await db.collection('applications').doc(applicationId).update({
-            status: status,
-            lastUpdated: firebase.firestore.FieldValue.serverTimestamp()
+            status: status
         });
+        await loadApplications(); // Refresh the table
     } catch (error) {
         console.error('Error updating application status:', error);
+        alert('Failed to update application status. Please try again.');
     }
 }
 
@@ -258,22 +265,36 @@ document.getElementById('statusFilter').addEventListener('change', filterApplica
 async function filterApplications() {
     const position = document.getElementById('positionFilter').value;
     const status = document.getElementById('statusFilter').value;
-    
-    let query = db.collection('applications');
-    
-    if (position) {
-        query = query.where('position', '==', position);
-    }
-    if (status) {
-        query = query.where('status', '==', status);
-    }
+    console.log('Filtering with:', { position, status });
     
     try {
-        const snapshot = await query.orderBy('timestamp', 'desc').get();
+        // Get all applications first
+        const snapshot = await db.collection('applications')
+            .orderBy('timestamp', 'desc')
+            .get();
+
+        console.log('Total applications:', snapshot.size);
         const applications = [];
+        
+        // Filter in memory for more flexible matching
         snapshot.forEach(doc => {
-            applications.push({ id: doc.id, ...doc.data() });
+            const data = { id: doc.id, ...doc.data() };
+            let include = true;
+            
+            if (position && data.position !== position) {
+                include = false;
+            }
+            
+            if (status && data.status?.toLowerCase() !== status.toLowerCase()) {
+                include = false;
+            }
+            
+            if (include) {
+                applications.push(data);
+            }
         });
+        
+        console.log('Filtered applications:', applications.length);
         renderApplications(applications);
     } catch (error) {
         console.error('Error filtering applications:', error);
