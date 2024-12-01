@@ -1,0 +1,10 @@
+{
+  "name": "uptech-website",
+  "version": "1.0.0",
+  "description": "Uptech Website with job application system",
+  "main": "index.js",
+  "dependencies": {
+    "cloudinary": "^1.41.0",
+    "dotenv": "^16.3.1"
+  }
+}

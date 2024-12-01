@@ -98,12 +98,21 @@ function renderApplications(applications) {
                 ` : 'N/A'}
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
-                ${application.portfolioUrl ? `
-                    <a href="${application.portfolioUrl}" target="_blank"
-                       class="text-blue-600 hover:text-blue-900">
-                        <i class="fas fa-external-link-alt mr-2"></i>View
-                    </a>
-                ` : 'N/A'}
+                <div class="flex flex-col space-y-2">
+                    ${application.portfolio?.fileUrl ? `
+                        <a href="${application.portfolio.fileUrl}" target="_blank"
+                           class="text-blue-600 hover:text-blue-900">
+                            <i class="fas fa-file-alt mr-2"></i>View File
+                        </a>
+                    ` : ''}
+                    ${application.portfolio?.webUrl ? `
+                        <a href="${application.portfolio.webUrl}" target="_blank"
+                           class="text-blue-600 hover:text-blue-900">
+                            <i class="fas fa-external-link-alt mr-2"></i>View Website
+                        </a>
+                    ` : ''}
+                    ${!application.portfolio?.fileUrl && !application.portfolio?.webUrl ? 'N/A' : ''}
+                </div>
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
                 <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
@@ -170,11 +179,11 @@ async function viewApplication(applicationId) {
         modalContent.innerHTML = `
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                    <label class="block text-sm font-medium text-gray-700">FirstName</label>
+                    <label class="block text-sm font-medium text-gray-700">First Name</label>
                     <p class="mt-1 text-sm text-gray-900">${application.firstName}</p>
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700">LastName</label>
+                    <label class="block text-sm font-medium text-gray-700">Last Name</label>
                     <p class="mt-1 text-sm text-gray-900">${application.lastName}</p>
                 </div>
                 <div>
@@ -200,16 +209,27 @@ async function viewApplication(applicationId) {
                         ` : 'N/A'}
                     </p>
                 </div>
-                <div>
+                <div class="col-span-2">
                     <label class="block text-sm font-medium text-gray-700">Portfolio</label>
-                    <p class="mt-1 text-sm text-gray-900">
-                        ${application.portfolioUrl ? `
-                            <a href="${application.portfolioUrl}" target="_blank"
-                               class="text-blue-600 hover:text-blue-900">
-                                <i class="fas fa-external-link-alt mr-2"></i>View Portfolio
-                            </a>
-                        ` : 'N/A'}
-                    </p>
+                    <div class="mt-1 text-sm text-gray-900 space-y-2">
+                        ${application.portfolio?.fileUrl ? `
+                            <p>
+                                <a href="${application.portfolio.fileUrl}" target="_blank"
+                                   class="text-blue-600 hover:text-blue-900">
+                                    <i class="fas fa-file-alt mr-2"></i>View Portfolio File
+                                </a>
+                            </p>
+                        ` : ''}
+                        ${application.portfolio?.webUrl ? `
+                            <p>
+                                <a href="${application.portfolio.webUrl}" target="_blank"
+                                   class="text-blue-600 hover:text-blue-900">
+                                    <i class="fas fa-external-link-alt mr-2"></i>View Portfolio Website
+                                </a>
+                            </p>
+                        ` : ''}
+                        ${!application.portfolio?.fileUrl && !application.portfolio?.webUrl ? 'N/A' : ''}
+                    </div>
                 </div>
                 <div class="col-span-2">
                     <label class="block text-sm font-medium text-gray-700">Comment</label>
