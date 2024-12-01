@@ -120,11 +120,17 @@ function renderApplications(applications) {
                     ${application.status || 'pending'}
                 </span>
             </td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                <button onclick="viewApplication('${application.id}')"
-                    class="text-blue-600 hover:text-blue-900">
-                    View
-                </button>
+            <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center space-x-2">
+                    <button onclick="viewApplication('${application.id}')"
+                            class="text-blue-600 hover:text-blue-900">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                    <button onclick="deleteApplication('${application.id}')"
+                            class="text-red-600 hover:text-red-900">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
             </td>
         `;
         applicationsTable.appendChild(row);
@@ -275,6 +281,23 @@ async function updateApplicationStatus(applicationId, status) {
     } catch (error) {
         console.error('Error updating application status:', error);
         alert('Failed to update application status. Please try again.');
+    }
+}
+
+// Delete application
+async function deleteApplication(applicationId) {
+    if (!confirm('Are you sure you want to delete this application? This action cannot be undone.')) {
+        return;
+    }
+
+    try {
+        await db.collection('applications').doc(applicationId).delete();
+        console.log('Application deleted successfully');
+        // Reload the applications to update the UI
+        loadApplications();
+    } catch (error) {
+        console.error('Error deleting application:', error);
+        alert('Error deleting application. Please try again.');
     }
 }
 
