@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
             title: document.getElementById('jobTitle').value,
             department: document.getElementById('jobDepartment').value,
             description: description,
-            status: document.getElementById('jobStatus').value,
+            status: 'open', // Default status for new jobs
             createdAt: new Date().toISOString(),
             createdBy: user.uid // Add user ID for tracking
         };
@@ -156,7 +156,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById('jobTitle').value = job.title;
                 document.getElementById('jobDepartment').value = job.department;
                 tinymce.get('jobDescription').setContent(job.description);
-                document.getElementById('jobStatus').value = job.status;
                 
                 // Change form submit button text
                 const submitBtn = jobForm.querySelector('button[type="submit"]');
