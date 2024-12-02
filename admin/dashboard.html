@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
     <link rel="stylesheet" href="../css/globals.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" />
+    <script src="https://cdn.tiny.cloud/1/69y0qbpet96ep3q9j9hkd8c4yawroudxuzamfa03jep583nm/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body class="bg-gray-100">
     <div class="min-h-screen">
@@ -47,6 +48,9 @@
                                 <option value="Accepted">Accepted</option>
                                 <option value="Rejected">Rejected</option>
                             </select>
+                            <button id="managementBtn" onclick="openJobModal()" class="bg-blueTheme text-white px-4 py-1 rounded">
+                                Management
+                            </button>
                         </div>
 
                         <!-- Applications Table -->
@@ -103,6 +107,65 @@
         </div>
     </div>
 
+    <!-- Job Management Modal -->
+    <div id="jobManagementModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white p-8 rounded-lg w-3/4 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Job Management</h2>
+                <button onclick="closeJobModal()" class="text-gray-600 hover:text-gray-800">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Job Creation Form -->
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold mb-4">Create New Job</h3>
+                <form id="jobForm" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Job Title</label>
+                        <input type="text" id="jobTitle" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Department</label>
+                        <select id="jobDepartment" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border" required>
+                            <option value="graphic">Graphic Design</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="administrative">Administrative</option>
+                            <option value="engineering">Engineering</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Description</label>
+                        <textarea id="jobDescription" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border" required></textarea>
+                        <div class="mt-1 text-sm text-gray-500">
+                            Use the formatting toolbar above to style your text with headings, bold, italic, lists, and more.
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Status</label>
+                        <select id="jobStatus" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border" required>
+                            <option value="open">Open</option>
+                            <option value="closed">Closed</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+                        Create Job
+                    </button>
+                </form>
+            </div>
+
+            <!-- Existing Jobs List -->
+            <div>
+                <h3 class="text-xl font-semibold mb-4">Existing Jobs</h3>
+                <div id="jobsList" class="space-y-4">
+                    <!-- Jobs will be populated here dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
@@ -110,5 +173,22 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
     <script src="../js/firebase-config.js"></script>
     <script src="../js/dashboard.js"></script>
+    <script src="../js/application-handler.js"></script>
+    <script src="../js/job-management.js"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea#jobDescription',
+            height: 300,
+            menubar: false,
+            plugins: 'lists link code table',
+            toolbar: 'undo redo | blocks | ' +
+                'bold italic | alignleft aligncenter ' +
+                'alignright alignjustify | bullist numlist | ' +
+                'link table | code',
+            content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+            branding: false,
+            promotion: false
+        });
+    </script>
 </body>
 </html>
