@@ -22,11 +22,180 @@
 
     .active-button {
       outline: 2px solid black;
+    }
 
+    .job-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .job-modal.show {
+      display: flex;
+    }
+
+    .job-modal-content {
+      background: white;
+      padding: 32px;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 800px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .job-modal-header {
+      margin-bottom: 24px;
+      padding-right: 40px;
+    }
+
+    .job-modal-title {
+      color: #1a365d;
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .job-modal-department {
+      color: #4a5568;
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+
+    .job-modal-description {
+      color: #2d3748;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .job-modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      color: #4a5568;
+      transition: color 0.2s;
+    }
+
+    .job-modal-close:hover {
+      color: #1a365d;
+    }
+
+    .job-modal-apply {
+      background: #1a365d;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: background-color 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .job-modal-apply:hover {
+      background: #2d4a77;
+    }
+
+    .job-details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+      background: white;
+      border-radius: 8px;
+      margin-top: 8px;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.3s ease-out;
+    }
+
+    .job-details.expanded {
+      max-height: 2000px;
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.3s ease-in;
+    }
+
+    .job-details-content {
+      padding: 24px;
+      color: #1a365d;
+      display: flex;
+      gap: 24px;
+    }
+
+    .job-info {
+      flex: 0 0 30%;
+      padding-right: 24px;
+      border-right: 1px solid #e2e8f0;
+    }
+
+    .job-description {
+      flex: 1;
+      line-height: 1.6;
+      color: #2d3748;
+    }
+
+    .apply-button-container {
+      margin-top: 24px;
+      text-align: center;
+    }
+
+    .job-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px;
+      border-radius: 4px;
+      transition: background-color 0.2s;
+      cursor: pointer;
+    }
+
+    .job-title:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .job-description {
+      margin: 16px 0;
+      line-height: 1.6;
+      color: #2d3748;
+    }
+
+    .apply-button {
+      background: #1a365d;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: background-color 0.2s;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .apply-button:hover {
+      background: #2d4a77;
+    }
+
+    .arrow {
+      transition: transform 0.3s;
+    }
+
+    .arrow.expanded {
+      transform: rotate(180deg);
     }
   </style>
-
-
 </head>
 
 <body class="bg-gray-100">
@@ -97,17 +266,22 @@
           us!
         </p>
         <div class="text-white md:w-1/2 mb-4">
-          <button
-            class="border-solid border-2 bg-blueTheme rounded-md outline-slate-50 outline-2 outline-offset-2 outline-solid p-2 3 font-bold active-button">All</button>
-          <button
-            class="border-solid border-2 bg-blueTheme rounded-md outline-slate-50 outline-2 outline-offset-2 outline-solid p-2 3">Vacancies</button>
-          <button
-            class="border-solid border-2 bg-gray-400 rounded-md outline-slate-50 outline-2 outline-offset-2 outline-solid p-2 3">No
-            Vacancies</button>
+          <button onclick="showAll()" 
+                  class="filter-button bg-gray-200 text-gray-800 px-4 py-2 rounded-md mr-2" 
+                  data-type="all">
+            All
+          </button>
+          <button onclick="showVacancies()" 
+                  class="filter-button bg-gray-200 text-gray-800 px-4 py-2 rounded-md mr-2" 
+                  data-type="vacancies">
+            Vacancies
+          </button>
+          <button onclick="showNoVacancies()" 
+                  class="filter-button bg-gray-200 text-gray-800 px-4 py-2 rounded-md" 
+                  data-type="no-vacancies">
+            No Vacancies
+          </button>
         </div>
-
-
-
 
         <div class="text-white">
           <div id="dropdown-graphic" class="width-4/5 bg-blueTheme rounded-md p-4 mb-4 flex flex-row">
@@ -115,361 +289,54 @@
               <img class="w-80 h-22" src="../assets/S4.svg" alt="graphic" />
             </div>
             <div class="w-3/4 flex flex-col">
-              <p class="font-bold">Graphic Design Vacancies</p>
-              <p data-position="junior-graphic-designer">Junior Graphic Designer</p>
-              <p data-position="graphic-and-multimedia">Graphic and Multimedia</p>
+              <p class="font-bold">Graphic Design Vaccancies</p>
+              <div id="graphic-jobs" class="jobs-container">
+                <!-- Jobs will be loaded here dynamically -->
+                <p class="loading-text">Loading positions...</p>
+              </div>
             </div>
           </div>
-
-          <div id="dropdownContent-graphic" class="hidden w-full bg-white border rounded shadow-lg text-left mb-4">
-            <div class="p-4 text-black">
-              <p class="font-bold">Graphic Design Vacancies</p>
-
-              <div class="flex items-center">
-                <p class="text-left mr-2">Select open positions:</p>
-
-                <select id="position-selector-graphic" name="position"
-                  class="bg-gray-100 bder border-gray-300 rounded-md p-2 shadow-md focus:outline-none focus:ring focus:ring-blue-500"
-                  onchange="updatePositionInfo('graphic')">
-                  <option value="junior-graphic-designer" selected>Junior Graphic Designer</option>
-                  <option value="graphic-and-multimedia">Graphic and Multimedia</option>
-                </select>
-
-
-              </div>
-              <p id="position-info-graphic">
-                Information: <span id="selected-position-graphic">junior-graphic-designer</span>
-              </p>
-
-              </br>
-              <div id="junior-graphic-designer" class="">
-                <p class="font-bold">Job Description:</p>
-                <p>
-                  Proficient in Adobe Suite (Photoshop, Illustrator, and After Effects). Willing to learn and expand
-                  with the team.
-                  </br>
-                  Able to meet deadlines, good communication skills, and able to adapt to fast-paced
-                  conditions.
-                </p>
-                </br>
-                <p class="font-bold ">Key Responsibilities:</p>
-                <ul class="ml-2 list-disc">
-                  <li>Design and create graphics for various media.</li>
-                  <li>Collaborate with the marketing team to develop visual content.</li>
-                  <li>Ensure all designs align with brand guidelines.</li>
-                </ul>
-              </div>
-
-              <div id="graphic-and-multimedia" class="hidden">
-                <p class="font-bold">Job Description:</p>
-                <p>
-                  Create visually engaging designs for digital and print media, including graphics, videos, and
-                  animations.
-                  </br>
-                  Collaborate with clients or teams to produce creative content that aligns with brand
-                  goals.
-                </p>
-                </br>
-                <p class="font-bold">Key Responsibilities:</p>
-                <ul class="ml-2 list-disc">
-                  <li>Design logos, banners, posters, and social media content. </li>
-                  <li>Edit and produce multimedia elements like animations and videos.</li>
-                  <li> Ensure designs are on-brand and meet client expectations. </li>
-                  <li>Stay updated with design trends and tools. </li>
-                </ul>
-              </div>
-
-
-              </br>
-              <p>For more information,
-                contact us:
-
-                </br></br>email: uptechincorp@gmail.com
-
-                </br></br>phone: +1 (868) 710-4296</p>
-
-
-
-              <div class="flex flex-row">
-
-                <button id="applyButton-graphic"
-                  class="bg-blueTheme text-white font-bold rounded-md p-2 w-1/4">Apply</button>
-              </div>
-
-
-            </div>
-          </div>
-
-
-
-
 
           <div id="dropdown-marketing" class="width-4/5 bg-blueTheme rounded-md p-4 mb-4 flex flex-row">
             <div class="w-2/5 mt-4">
-              <img class="w-80 h-22" src="../assets/S2.svg" alt="market" />
+              <img class="w-80 h-22" src="../assets/S2.svg" alt="marketing" />
             </div>
             <div class="w-3/4 flex flex-col">
-              <p class="font-bold">Marketing Vacancies</p>
-              <p data-position="accounts-finance-officer">Accounts and Finance Officer</p>
-              <p data-position="marketing-accounts-and-finance-specialist">Marketing and Sales Officer</p>
-            </div>
-          </div>
-          <div id="dropdownContent-marketing" class="hidden w-full bg-white border rounded shadow-lg text-left mb-4">
-            <div class="p-4 text-black">
-              <p class="font-bold">Marketing Vacancies</p>
-
-              <div class="flex items-center">
-                <p class="text-left mr-2">Select open positions:</p>
-                <select id="position-selector-marketing" name="position"
-                  class="bg-gray-100 border border-gray-300 rounded-md p-2 shadow-md focus:outline-none focus:ring focus:ring-blue-500"
-                  onchange="updatePositionInfo('marketing')">
-                  <option value="marketing-and-sales-specialist" selected>Marketing and Sales Specialist</option>
-                  <option value="accounts-and-finance-specialist">Accounts and Finance Specialist</option>
-                </select>
-              </div>
-
-              <p id="position-info-marketing">
-                Information: <span id="selected-position-marketing">marketing-and-sales-specialist</span>
-              </p>
-
-              <br />
-              <div id="marketing-and-sales-specialist" class="">
-                <p class="font-bold">Job Description:</p>
-                <p>
-                  Promote products or services and drives sales by implementing marketing strategies and engage
-                  with customers.
-                  </br>
-                  Analyze market trends to attract and retain clients.
-                </p>
-                <br />
-                <p class="font-bold">Key Responsibilities:</p>
-                <ul class="ml-2 list-disc">
-                  <li>Develop and execute marketing campaigns. </li>
-                  <li> Identify and target potential customers. </li>
-                  <li> Manage social media and online advertising. </li>
-                  <li>Track sales performance and customer feedback. </li>
-                </ul>
-              </div>
-
-              <div id="accounts-and-finance-specialist" class="hidden">
-                <p class="font-bold">Job Description:</p>
-                <p>
-                  Manage financial records, budgets, and transactions.
-                  <br />
-                  Ensure compliance with financial
-                  regulations and support decision-making through accurate reporting.
-
-
-                </p>
-                <br />
-                <p class="font-bold">Key Responsibilities:</p>
-                <ul class="ml-2 list-disc">
-                  <li> Prepare financial statements and reports.</li>
-                  <li>Monitor budgets and expenses.</li>
-                  <li>Handle invoices, payroll, and tax documentation. </li>
-                  <li>Conduct financial analysis to support business goals. </li>
-                </ul>
-              </div>
-
-              <br />
-              <p>For more information, contact us:</p>
-              <br />
-              <p>
-                email: xxxxxxx@uptechincorp@gmail.com
-                <br /><br />
-                phone: +1 (868) 710-4296
-              </p>
-
-              <div class="flex flex-row">
-                <button id="applyButton-marketing"
-                  class="bg-blueTheme text-white font-bold rounded-md p-2 w-1/4">Apply</button>
+              <p class="font-bold">Marketing Vaccancies</p>
+              <div id="marketing-jobs" class="jobs-container">
+                <!-- Jobs will be loaded here dynamically -->
+                <p class="loading-text">Loading positions...</p>
               </div>
             </div>
           </div>
 
           <div id="dropdown-administrative" class="width-4/5 bg-blueTheme rounded-md p-4 mb-4 flex flex-row">
             <div class="w-2/5 mt-4">
-              <img class="w-80 h-22" src="../assets/S1.svg" alt="Administrative" />
+              <img class="w-80 h-22" src="../assets/S1.svg" alt="administrative" />
             </div>
             <div class="w-3/4 flex flex-col">
-              <p class="font-bold">Administrative and Public Relations Vacancies</p>
-              <p data-position="human-resources-officer">Human Resources Officer</p>
-              <p data-position="communications-specialist">Communications Specialist</p>
-              <p data-position="public-relations-officer">Public Relations Officer</p>
-              <p data-position="project-manager">Project Manager</p>
-            </div>
-          </div>
-          <div id="dropdownContent-administrative"
-            class="hidden w-full bg-white border rounded shadow-lg text-left mb-4">
-            <div class="p-4 text-black">
-              <p class="font-bold">Administrative and Public Relations Vacancies</p>
-
-              <div class="flex items-center">
-                <p class="text-left mr-2">Select open positions:</p>
-                <select id="position-selector-administrative" name="position"
-                  class="bg-gray-100 border border-gray-300 rounded-md p-2 shadow-md focus:outline-none focus:ring focus:ring-blue-500"
-                  onchange="updatePositionInfo('administrative')">
-                  <option value="human-resources-officer" selected>Human Resources Officer</option>
-                  <option value="communications-specialist">Communications Specialist</option>
-                  <option value="public-relations-officer">Public Relations Officer</option>
-                  <option value="project-manager">Project Manager</option>
-                </select>
-              </div>
-
-              <p id="position-info-administrative">
-                Information: <span id="selected-position-administrative">Human Resources Officer</span>
-              </p>
-
-              <br />
-              <div id="human-resources-officer" class="">
-                <p class="font-bold">Job Description:</p>
-                <p>
-                  Manage recruitment, employee relations, and HR policies to support the organization's workforce.
-                  </br>
-                  Ensure a positive workplace environment and compliance with labor laws.
-                </p>
-                <br />
-                <p class="font-bold">Key Responsibilities:</p>
-                <ul class="ml-2 list-disc">
-                  <li>Recruit, interview, and onboard new employees. </li>
-                  <li>Handle employee grievances and performance reviews. </li>
-                  <li>Manage payroll and benefits administration.</li>
-                  <li> Develop and implement HR policies. </li>
-                </ul>
-              </div>
-
-              <div id="communications-specialist" class="hidden">
-                <p class="font-bold">Job Description:</p>
-                <p>
-                  Manage and execute communication strategies to effectively convey the organization's message to
-                  the target audience.
-                  </br> Focus on public relations, media management, and internal communications.
-                </p>
-                <br />
-                <p class="font-bold">Key Responsibilities:</p>
-                <ul class="ml-2 list-disc">
-                  <li>Draft press releases, newsletters, and social media posts.</li>
-                  <li>Coordinate with media outlets and stakeholders. </li>
-                  <li> Develop and implement communication campaigns. </li>
-                  <li> Monitor and report on communication effectiveness. </li>
-                </ul>
-              </div>
-
-              <div id="public-relations-officer" class="hidden">
-                <p class="font-bold">Job Description:</p>
-                <p>
-                  Build and maintain a positive public image for an organization. Develop strategies to engage with
-                  media and the public while managing crisis communications effectively.
-                </p>
-                <br />
-                <p class="font-bold">Key Responsibilities:</p>
-                <ul class="ml-2 list-disc">
-                  <li>Write press releases and manage media interactions. </li>
-                  <li> Plan and execute public relations campaigns. </li>
-                  <li>Build relationships with key stakeholders and influencers. </li>
-                  <li>Monitor public perception and address concerns. </li>
-                </ul>
-              </div>
-
-              <div id="project-manager" class="hidden">
-                <p class="font-bold">Job Description:</p>
-                <p>
-                  Oversee the planning, execution, and completion of projects within budget and timeline.
-                  </br>
-                  Coordinate with teams and stakeholders to ensure successful project delivery.
-                </p>
-                <br />
-                <p class="font-bold">Key Responsibilities:</p>
-                <ul class="ml-2 list-disc">
-                  <li>Define project goals, timelines, and budgets. </li>
-                  <li>Assign tasks and manage team performance. </li>
-                  <li>Monitor project progress and address risks. </li>
-                  <li> Communicate updates to stakeholders. </li>
-                </ul>
-              </div>
-
-              <br />
-              <p>For more information, contact us:</p>
-              <br />
-              <p>
-                email: uptechincorp@gmail.com
-                <br /><br />
-                phone: +1 (868) 710-4296
-              </p>
-
-              <div class="flex flex-row">
-                <button id="applyButton-administrative"
-                  class="bg-blueTheme text-white font-bold rounded-md p-2 w-1/4">Apply</button>
+              <p class="font-bold">Administrative and Public Relations</p>
+              <div id="administrative-jobs" class="jobs-container">
+                <!-- Jobs will be loaded here dynamically -->
+                <p class="loading-text">Loading positions...</p>
               </div>
             </div>
           </div>
 
-          <div id="dropdown-engineering" class="width-4/5 bg-gray-300 rounded-md p-4 mb-4 flex flex-row">
+          <div id="dropdown-engineering" class="width-4/5 bg-gray-400 rounded-md p-4 mb-4 flex flex-row">
             <div class="w-2/5 mt-4">
               <img class="w-80 h-22" src="../assets/S3.svg" alt="development" />
             </div>
             <div class="w-3/4 flex flex-col">
-              <p class="font-bold">Engineering Vacancies</p>
-              <p data-position="software-engineer">Software Engineer / Web/App Developer </p>
-            </div>
-          </div>
-          <div id="dropdownContent-engineering" class="hidden w-full bg-white border rounded shadow-lg text-left mb-4">
-            <div class="p-4 text-black">
-              <p class="font-bold">Engineering Vacancies</p>
-              <p>Deadline: </br> </br>Information: </br> </br>
-
-              <div class="flex items-center">
-                <p class="text-left mr-2">Select open positions:</p>
-                <select id="position-selector-engineering" name="position"
-                  class="bg-gray-100 border border-gray-300 rounded-md p-2 shadow-md focus:outline-none focus:ring focus:ring-blue-500"
-                  onchange="updatePositionInfo('engineering')">
-                  <option value="software-engineer" selected>Software Engineer / Web/App Developer </option>
-
-                </select>
+              <p class="font-bold">Engineering and Development</p>
+              <div id="engineering-jobs" class="jobs-container">
+                <!-- Jobs will be loaded here dynamically -->
+                <p class="loading-text">Loading positions...</p>
               </div>
-              <p id="position-info-engineering">
-                Information: <span id="selected-position-engineering">Software Engineer / Web/App Developer </span>
-              </p>
-
-              <br />
-              <div id="software-engineer" class="">
-                <p class="font-bold">Job Description:</p>
-                <p>
-                  Design, develop, test, and maintain software applications, websites, or mobile apps. 
-                </br>
-                  Collaborate
-                  with teams to understand requirements and ensures functionality, performance, and security of
-                  digital solutions.
-                </p>
-                <br />
-                <p class="font-bold">Key Responsibilities:</p>
-                <ul class="ml-2 list-disc">
-                  <li>Write and debug code in programming languages like JavaScript, Python, or Java etc.  </li>
-                  <li>Design user-friendly interfaces and features. </li>
-                  <li>Troubleshoot and fix software issues. </li>
-                  <li>Stay updated with new technologies and frameworks. </li>
-                </ul>
-              </div>
-
-              <p>For more information,
-                contact us:
-
-                </br></br>email: uptechincorp@gmail.com
-
-                </br></br>phone: +1 (868) 710-4296</p>
-
-            
-
-              <div class="flex flex-row">
-                
-                <button id="applyButton-engineering"
-                  class="bg-blueTheme text-white font-bold rounded-md p-2 w-1/4">Apply</button>
-              </div>
-
-
             </div>
           </div>
         </div>
+
         <!-- Application Form -->
         <form id="applicationForm"
           class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center text-black z-10 ">
@@ -486,13 +353,11 @@
               </div>
               <div class="mb-2">
                 <select id="position" name="position"
-                class="w-full bg-blueTheme text-white border rounded px-2 py-1 placeholder-white rounded-md custom-select"
-                required>
-                <option value="" disabled selected>Choose Position</option>
-                {{ edit_1 }}
-              </select>
+                  class="w-full bg-blueTheme text-white border rounded px-2 py-1 placeholder-white rounded-md custom-select"
+                  required>
+                  <option value="" disabled selected>Choose Position</option>
+                </select>
               </div>
-
 
               <div class="mb-2">
                 <input type="text" id="name" name="Number" placeholder="Contact Number"
@@ -548,7 +413,7 @@
               <div id="successMessage" class="hidden mb-4 p-4 bg-green-100 text-green-700 rounded-md text-center">
                 Application submitted successfully! Your application status is pending.
               </div>
-              
+
               <div class="flex justify-between">
 
                 <button type="button" id="closeForm"
@@ -558,7 +423,7 @@
             </form>
           </div>
         </form>
-    </div>
+      </div>
 
     </main>
   </div>
@@ -591,7 +456,7 @@
 
   <!-- jQuery Library -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  
+
   <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
   <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
@@ -606,14 +471,302 @@
       $('#mobile-menu').toggleClass('hidden');
     });
 
+    // Load jobs from Firebase
+    document.addEventListener('DOMContentLoaded', function() {
+      loadJobListings();
+    });
+
+    async function loadJobListings() {
+      try {
+        const snapshot = await firebase.firestore().collection('jobs')
+          .where('status', '==', 'open')
+          .get();
+
+        // Clear all job containers
+        const containers = {
+          'graphic': document.getElementById('graphic-jobs'),
+          'marketing': document.getElementById('marketing-jobs'),
+          'administrative': document.getElementById('administrative-jobs'),
+          'engineering': document.getElementById('engineering-jobs')
+        };
+
+        // Initialize containers with "No current openings" message
+        Object.values(containers).forEach(container => {
+          if (container) {
+            container.innerHTML = '<p>No current openings</p>';
+          }
+        });
+
+        if (!snapshot.empty) {
+          const jobs = {};
+          
+          // Group jobs by department
+          snapshot.forEach(doc => {
+            const job = doc.data();
+            console.log('Found job:', job); // Debug log
+
+            // Convert department to lowercase and clean it for matching
+            const deptKey = job.department.toLowerCase().replace(/[^a-z]/g, '');
+            
+            // Map department names to container keys
+            let containerKey = deptKey;
+            if (deptKey.includes('graphic') || deptKey.includes('design')) {
+              containerKey = 'graphic';
+            } else if (deptKey.includes('market') || deptKey.includes('sales')) {
+              containerKey = 'marketing';
+            } else if (deptKey.includes('admin') || deptKey.includes('relations')) {
+              containerKey = 'administrative';
+            } else if (deptKey.includes('engineer') || deptKey.includes('develop')) {
+              containerKey = 'engineering';
+            }
+
+            console.log('Mapped department:', job.department, 'to container:', containerKey); // Debug log
+
+            if (!jobs[containerKey]) {
+              jobs[containerKey] = [];
+            }
+            jobs[containerKey].push({ id: doc.id, ...job });
+          });
+
+          // Update containers with jobs
+          Object.entries(jobs).forEach(([department, departmentJobs]) => {
+            const container = containers[department];
+            console.log('Updating container for department:', department, 'with jobs:', departmentJobs); // Debug log
+            
+            if (container && departmentJobs.length > 0) {
+              container.innerHTML = departmentJobs.map(job => `
+                <div class="job-listing mb-6" data-job-id="${job.id}">
+                  <div class="job-title" onclick="toggleJobDetails('${job.id}')">
+                    <span class="text-lg">${job.title}</span>
+                    <svg class="arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                  <div class="job-details" id="details-${job.id}">
+                    <div class="job-details-content">
+                      <div class="job-info">
+                        <h3 class="text-xl font-bold mb-2">${job.title}</h3>
+                        <p class="text-gray-600 mb-4">Department: ${job.department}</p>
+                        <div class="apply-button-container">
+                          <button class="apply-button mt-4" onclick="showApplicationForm('${job.id}', '${job.title}')">
+                            Apply Now
+                          </button>
+                        </div>
+                      </div>
+                      <div class="job-description"></div>
+                    </div>
+                  </div>
+                </div>
+              `).join('');
+
+              // Load job descriptions after rendering
+              departmentJobs.forEach(job => {
+                const detailsDiv = document.querySelector(`#details-${job.id} .job-description`);
+                if (detailsDiv) {
+                  detailsDiv.innerHTML = job.description;
+                }
+              });
+            }
+          });
+        }
+
+        // Update the UI based on jobs availability
+        updateDepartmentStatus();
+      } catch (error) {
+        console.error('Error loading jobs:', error);
+        document.querySelectorAll('.jobs-container').forEach(container => {
+          container.innerHTML = '<p>Error loading positions. Please try again later.</p>';
+        });
+      }
+    }
+
+    function updateDepartmentStatus() {
+      const departments = ['graphic', 'marketing', 'administrative', 'engineering'];
+      departments.forEach(dept => {
+        const container = document.getElementById(`${dept}-jobs`);
+        if (!container) return;
+
+        const hasJobs = container.querySelector('.job-listing') !== null;
+        const parentDiv = document.getElementById(`dropdown-${dept}`);
+        
+        if (hasJobs) {
+          parentDiv.classList.remove('bg-gray-400');
+          parentDiv.classList.add('bg-blueTheme');
+        } else {
+          parentDiv.classList.remove('bg-blueTheme');
+          parentDiv.classList.add('bg-gray-400');
+        }
+      });
+    }
   </script>
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    function toggleJobDetails(jobId) {
+      const detailsElement = document.getElementById(`details-${jobId}`);
+      const arrowElement = detailsElement.previousElementSibling.querySelector('.arrow');
+      const jobListing = detailsElement.closest('.job-listing');
+      
+      // Close all other open details
+      document.querySelectorAll('.job-details.expanded').forEach(el => {
+        if (el.id !== `details-${jobId}`) {
+          el.classList.remove('expanded');
+          const otherArrow = el.previousElementSibling.querySelector('.arrow');
+          otherArrow.classList.remove('expanded');
+        }
+      });
+
+      // Toggle the clicked details
+      detailsElement.classList.toggle('expanded');
+      arrowElement.classList.toggle('expanded');
+    }
+
+    function showApplicationForm(jobId, jobTitle) {
+      const positionSelect = document.querySelector('#position');
+      if (positionSelect) {
+        positionSelect.innerHTML = `
+          <option value="" disabled>Choose Position</option>
+          <option value="${jobTitle}" selected>${jobTitle}</option>
+        `;
+      }
+
+      const applicationForm = document.getElementById('applicationForm');
+      if (applicationForm) {
+        applicationForm.classList.remove('hidden');
+      }
+    }
+  </script>
+  <script>
+    async function showJobModal(jobId, jobTitle, department) {
+      try {
+        const doc = await firebase.firestore().collection('jobs').doc(jobId).get();
+        if (doc.exists) {
+          const job = doc.data();
+          
+          // Update modal content
+          const modal = document.getElementById('jobModal');
+          modal.querySelector('.job-modal-title').textContent = job.title;
+          modal.querySelector('.job-modal-department').textContent = `Department: ${job.department}`;
+          modal.querySelector('.job-modal-description').innerHTML = job.description;
+          
+          // Set up apply button
+          const applyButton = modal.querySelector('.job-modal-apply');
+          applyButton.onclick = () => {
+            showApplicationForm(jobId, job.title);
+            closeJobModal();
+          };
+
+          // Show modal
+          modal.classList.add('show');
+          
+          // Prevent background scrolling
+          document.body.style.overflow = 'hidden';
+        }
+      } catch (error) {
+        console.error('Error loading job details:', error);
+        alert('Error loading job details. Please try again.');
+      }
+    }
+
+    function closeJobModal() {
+      const modal = document.getElementById('jobModal');
+      modal.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('jobModal').addEventListener('click', function(event) {
+      if (event.target === this) {
+        closeJobModal();
+      }
+    });
+
+    function showApplicationForm(jobId, jobTitle) {
+      const positionSelect = document.querySelector('#position');
+      if (positionSelect) {
+        positionSelect.innerHTML = `
+          <option value="" disabled>Choose Position</option>
+          <option value="${jobTitle}" selected>${jobTitle}</option>
+        `;
+      }
+
+      const applicationForm = document.getElementById('applicationForm');
+      if (applicationForm) {
+        applicationForm.classList.remove('hidden');
+      }
+    }
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const allButton = document.querySelector('button[onclick="showAll()"]');
+      const vacanciesButton = document.querySelector('button[onclick="showVacancies()"]');
+      const noVacanciesButton = document.querySelector('button[onclick="showNoVacancies()"]');
+
+      function showAll() {
+        document.querySelectorAll('[id^="dropdown-"]').forEach(dept => {
+          dept.style.display = 'flex';
+        });
+        updateActiveButton('all');
+      }
+
+      function showVacancies() {
+        document.querySelectorAll('[id^="dropdown-"]').forEach(dept => {
+          const hasJobs = dept.querySelector('.job-listing') !== null;
+          dept.style.display = hasJobs ? 'flex' : 'none';
+        });
+        updateActiveButton('vacancies');
+      }
+
+      function showNoVacancies() {
+        document.querySelectorAll('[id^="dropdown-"]').forEach(dept => {
+          const hasJobs = dept.querySelector('.job-listing') !== null;
+          dept.style.display = !hasJobs ? 'flex' : 'none';
+        });
+        updateActiveButton('no-vacancies');
+      }
+
+      function updateActiveButton(activeType) {
+        const buttons = document.querySelectorAll('.filter-button');
+        buttons.forEach(button => {
+          if (button.dataset.type === activeType) {
+            button.classList.add('bg-gray-800', 'text-white');
+            button.classList.remove('bg-gray-200', 'text-gray-800');
+          } else {
+            button.classList.remove('bg-gray-800', 'text-white');
+            button.classList.add('bg-gray-200', 'text-gray-800');
+          }
+        });
+      }
+
+      // Make functions globally available
+      window.showAll = showAll;
+      window.showVacancies = showVacancies;
+      window.showNoVacancies = showNoVacancies;
+
+      // Set initial state
+      showAll();
+    });
+  </script>
+  <div id="jobModal" class="job-modal">
+    <div class="job-modal-content">
+      <button class="job-modal-close" onclick="closeJobModal()">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <div class="job-modal-header">
+        <h2 class="job-modal-title"></h2>
+        <p class="job-modal-department"></p>
+      </div>
+      <div class="job-modal-description"></div>
+      <button class="job-modal-apply">Apply Now</button>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
       // Add event listeners to all dropdowns
       const dropdowns = document.querySelectorAll('[id^="dropdown"]'); // Select all dropdowns with id starting with "dropdown"
 
       dropdowns.forEach(dropdown => {
-        dropdown.addEventListener('click', function () {
+        dropdown.addEventListener('click', function() {
           const dropdownContentId = dropdown.id.replace('dropdown', 'dropdownContent'); // Create the corresponding content id
           const dropdownContent = document.getElementById(dropdownContentId);
           const parentDiv = this;
@@ -634,11 +787,11 @@
       const applyButtons = document.querySelectorAll('[id^="applyButton"]'); // Select all apply buttons
 
       applyButtons.forEach(button => {
-    button.addEventListener('click', function () {
-        const dropdown = button.closest('[id^="dropdown"]');
-        const jobDepartmentElement = dropdown ? dropdown.querySelector('p.font-bold') : null;
+        button.addEventListener('click', function() {
+          const dropdown = button.closest('[id^="dropdown"]');
+          const jobDepartmentElement = dropdown ? dropdown.querySelector('p.font-bold') : null;
 
-        if (jobDepartmentElement) {
+          if (jobDepartmentElement) {
             const applicationForm = document.getElementById('applicationForm');
             applicationForm.classList.remove('hidden');
 
@@ -648,25 +801,25 @@
             // Get the select element for the current dropdown
             const selectElement = dropdown.querySelector('select');
             if (selectElement) {
-                // Loop through the options in the select element
-                Array.from(selectElement.options).forEach(option => {
-                    const newOption = document.createElement('option');
-                    newOption.value = option.value;
-                    newOption.textContent = option.textContent;
-                    positionSelect.appendChild(newOption);
-                });
+              // Loop through the options in the select element
+              Array.from(selectElement.options).forEach(option => {
+                const newOption = document.createElement('option');
+                newOption.value = option.value;
+                newOption.textContent = option.textContent;
+                positionSelect.appendChild(newOption);
+              });
 
-                // Optionally set the first position as selected
-                positionSelect.value = selectElement.value; // Set the currently selected value
+              // Optionally set the first position as selected
+              positionSelect.value = selectElement.value; // Set the currently selected value
             }
-        }
-    });
-});
+          }
+        });
+      });
 
       // Close form functionality
       const closeFormButton = document.getElementById('closeForm');
       if (closeFormButton) { // Check if closeForm button exists
-        closeFormButton.addEventListener('click', function () {
+        closeFormButton.addEventListener('click', function() {
           const applicationForm = document.getElementById('applicationForm');
           if (applicationForm) { // Check if applicationForm exists
             applicationForm.classList.add('hidden');
@@ -675,48 +828,23 @@
         });
       }
     });
-    document.addEventListener('DOMContentLoaded', function () {
-      const allButton = document.querySelector('button:nth-of-type(1)');
-      const vacanciesButton = document.querySelector('button:nth-of-type(2)');
-      const noVacanciesButton = document.querySelector('button:nth-of-type(3)');
-      const jobBoxes = document.querySelectorAll('.width-4\\/5');
-
-      allButton.addEventListener('click', () => {
-        console.log('All button clicked');
-        jobBoxes.forEach(box => {
-          box.style.display = 'flex';
-        });
-      });
-
-      vacanciesButton.addEventListener('click', () => {
-        console.log('Vacancies button clicked');
-        jobBoxes.forEach(box => {
-          if (box.classList.contains('bg-blueTheme')) {
-            box.style.display = 'flex';
-          } else {
-            box.style.display = 'none';
-          }
-        });
-      });
-
-      noVacanciesButton.addEventListener('click', () => {
-        console.log('No Vacancies button clicked');
-        jobBoxes.forEach(box => {
-          if (box.classList.contains('bg-gray-300')) {
-            box.style.display = 'flex';
-          } else {
-            box.style.display = 'none';
-          }
-        });
-      });
-    });
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
       const buttons = document.querySelectorAll('.text-white.md\\:w-1\\/2.mb-4 button');
 
       buttons.forEach(button => {
         button.addEventListener('click', () => {
           buttons.forEach(btn => btn.classList.remove('active-button'));
           button.classList.add('active-button');
+        });
+      });
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+      const buttons = document.querySelectorAll('.filter-button');
+
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          buttons.forEach(btn => btn.classList.remove('bg-gray-800', 'text-white'));
+          button.classList.add('bg-gray-800', 'text-white');
         });
       });
     });
@@ -779,7 +907,34 @@
     }
 
   </script>
+  <script>
+    async function showJobDetails(jobId) {
+      try {
+        const doc = await firebase.firestore().collection('jobs').doc(jobId).get();
+        if (doc.exists) {
+          const job = doc.data();
+          
+          // Update the application form's position dropdown
+          const positionSelect = document.querySelector('#position');
+          if (positionSelect) {
+            positionSelect.innerHTML = `
+              <option value="" disabled>Choose Position</option>
+              <option value="${job.title}" selected>${job.title}</option>
+            `;
+          }
 
+          // Show the application form
+          const applicationForm = document.getElementById('applicationForm');
+          if (applicationForm) {
+            applicationForm.classList.remove('hidden');
+          }
+        }
+      } catch (error) {
+        console.error('Error loading job details:', error);
+        alert('Error loading job details. Please try again.');
+      }
+    }
+  </script>
 </body>
 
 </html>
