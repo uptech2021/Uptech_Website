@@ -38,10 +38,17 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
+        // Get TinyMCE content and validate
+        const description = tinymce.get('jobDescription').getContent();
+        if (!description.trim()) {
+            alert('Please enter a job description');
+            return;
+        }
+
         const jobData = {
             title: document.getElementById('jobTitle').value,
             department: document.getElementById('jobDepartment').value,
-            description: tinymce.get('jobDescription').getContent(),
+            description: description,
             status: document.getElementById('jobStatus').value,
             createdAt: new Date().toISOString(),
             createdBy: user.uid // Add user ID for tracking
