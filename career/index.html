@@ -315,7 +315,7 @@
               <img class="w-80 h-22" src="../assets/S1.svg" alt="administrative" />
             </div>
             <div class="w-3/4 flex flex-col">
-              <p class="font-bold">Administrative and Public Relations</p>
+              <p class="font-bold">Administrative and Public Relations Vaccancies</p>
               <div id="administrative-jobs" class="jobs-container">
                 <!-- Jobs will be loaded here dynamically -->
                 <p class="loading-text">Loading positions...</p>
@@ -328,7 +328,7 @@
               <img class="w-80 h-22" src="../assets/S3.svg" alt="development" />
             </div>
             <div class="w-3/4 flex flex-col">
-              <p class="font-bold">Engineering and Development</p>
+              <p class="font-bold">Engineering Vaccancies</p>
               <div id="engineering-jobs" class="jobs-container">
                 <!-- Jobs will be loaded here dynamically -->
                 <p class="loading-text">Loading positions...</p>
@@ -538,9 +538,12 @@
                 <div class="job-listing mb-6" data-job-id="${job.id}">
                   <div class="job-title" onclick="toggleJobDetails('${job.id}')">
                     <span class="text-lg">${job.title}</span>
-                    <svg class="arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
+                    <div class="flex items-center gap-2">
+                      <span class="text-sm px-2 py-1 rounded-full ${job.status === 'open' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">${job.status}</span>
+                      <svg class="arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
                   </div>
                   <div class="job-details" id="details-${job.id}">
                     <div class="job-details-content">
@@ -709,16 +712,22 @@
 
       function showVacancies() {
         document.querySelectorAll('[id^="dropdown-"]').forEach(dept => {
-          const hasJobs = dept.querySelector('.job-listing') !== null;
-          dept.style.display = hasJobs ? 'flex' : 'none';
+          const hasOpenJobs = Array.from(dept.querySelectorAll('.job-listing')).some(job => {
+            const statusBadge = job.querySelector('.text-sm');
+            return statusBadge && statusBadge.textContent === 'open';
+          });
+          dept.style.display = hasOpenJobs ? 'flex' : 'none';
         });
         updateActiveButton('vacancies');
       }
 
       function showNoVacancies() {
         document.querySelectorAll('[id^="dropdown-"]').forEach(dept => {
-          const hasJobs = dept.querySelector('.job-listing') !== null;
-          dept.style.display = !hasJobs ? 'flex' : 'none';
+          const hasClosedJobs = Array.from(dept.querySelectorAll('.job-listing')).some(job => {
+            const statusBadge = job.querySelector('.text-sm');
+            return statusBadge && statusBadge.textContent === 'closed';
+          });
+          dept.style.display = hasClosedJobs ? 'flex' : 'none';
         });
         updateActiveButton('no-vacancies');
       }

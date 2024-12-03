@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
             description: description,
             status: 'open', // Default status for new jobs
             createdAt: new Date().toISOString(),
-            createdBy: user.uid // Add user ID for tracking
+            createdBy: user.uid
         };
 
         try {
@@ -115,27 +115,54 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function createJobElement(id, job) {
         const div = document.createElement('div');
-        div.className = 'bg-gray-50 p-4 rounded-md shadow';
+        div.className = 'bg-gray-50 rounded-md shadow overflow-hidden';
         div.innerHTML = `
-            <div class="flex justify-between items-start">
-                <div>
+            <div class="cursor-pointer p-4 flex justify-between items-center hover:bg-gray-100" onclick="toggleJobDetails('${id}')">
+                <div class="flex items-center space-x-4">
                     <h4 class="text-lg font-semibold">${job.title}</h4>
-                    <p class="text-sm text-gray-600">Department: ${job.department}</p>
-                    <p class="text-sm text-gray-600">Status: ${job.status}</p>
-                    <p class="mt-2">${job.description}</p>
+                    <span class="px-2 py-1 rounded-full text-sm ${job.status === 'open' ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600'}">
+                        ${job.status}
+                    </span>
                 </div>
-                <div class="space-x-2">
-                    <button onclick="editJob('${id}')" class="bg-blue-500 text-white px-3 py-1 rounded">
-                        Edit
-                    </button>
-                    <button onclick="deleteJob('${id}')" class="bg-red-500 text-white px-3 py-1 rounded">
-                        Delete
-                    </button>
+                <svg class="w-5 h-5 transform transition-transform duration-200" id="arrow-${id}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </div>
+            <div class="hidden p-4 bg-white border-t" id="details-${id}">
+                <div class="space-y-2">
+                    <p class="text-sm text-gray-600">Department: ${job.department}</p>
+                    <div class="prose max-w-none mt-2">${job.description}</div>
+                    <div class="flex justify-end space-x-2 mt-4">
+                        <button onclick="toggleJobStatus('${id}', '${job.status}')" 
+                                class="${job.status === 'open' ? 'bg-red-500' : 'bg-green-500'} text-white px-3 py-1 rounded">
+                            ${job.status === 'open' ? 'Close Position' : 'Open Position'}
+                        </button>
+                        <button onclick="editJob('${id}')" class="bg-blue-500 text-white px-3 py-1 rounded">
+                            Edit
+                        </button>
+                        <button onclick="deleteJob('${id}')" class="bg-red-500 text-white px-3 py-1 rounded">
+                            Delete
+                        </button>
+                    </div>
                 </div>
             </div>
         `;
         return div;
     }
+
+    // Add toggle details functionality
+    window.toggleJobDetails = function(id) {
+        const detailsElement = document.getElementById(`details-${id}`);
+        const arrowElement = document.getElementById(`arrow-${id}`);
+        
+        if (detailsElement.classList.contains('hidden')) {
+            detailsElement.classList.remove('hidden');
+            arrowElement.style.transform = 'rotate(180deg)';
+        } else {
+            detailsElement.classList.add('hidden');
+            arrowElement.style.transform = 'rotate(0)';
+        }
+    };
 
     // Event Listeners
     jobForm.addEventListener('submit', handleJobSubmit);
@@ -155,6 +182,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const job = doc.data();
                 document.getElementById('jobTitle').value = job.title;
                 document.getElementById('jobDepartment').value = job.department;
+                document.getElementById('jobStatus').value = job.status === 'open' ? 'open' : 'closed';
                 tinymce.get('jobDescription').setContent(job.description);
                 
                 // Change form submit button text
@@ -188,6 +216,29 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Error deleting job:', error);
                 alert('Error deleting job. Please try again.');
             }
+        }
+    };
+
+    window.toggleJobStatus = async function(id, currentStatus) {
+        // Check authentication
+        const user = firebase.auth().currentUser;
+        if (!user) {
+            alert('Please log in to manage jobs');
+            return;
+        }
+
+        try {
+            const newStatus = currentStatus === 'open' ? 'closed' : 'open';
+            await firebase.firestore().collection('jobs').doc(id).update({
+                status: newStatus,
+                updatedAt: new Date().toISOString(),
+                updatedBy: user.uid
+            });
+            loadJobs(); // Refresh the job list
+            alert(`Job status updated to ${newStatus}`);
+        } catch (error) {
+            console.error('Error updating job status:', error);
+            alert('Error updating job status. Please try again.');
         }
     };
 });
