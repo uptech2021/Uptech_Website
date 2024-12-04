@@ -1,20 +1,32 @@
 // Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyDD5_Ty4m5K3LkMx23jTRkjjsgWw-_XrXM",
-  authDomain: "uptech-31efe.firebaseapp.com",
-  projectId: "uptech-31efe",
-  storageBucket: "uptech-31efe.appspot.com",
-  messagingSenderId: "31863675692",
-  appId: "1:31863675692:web:a30d6141fdcfab7432ea89"
+const firebaseConfig = async () => {
+  try {
+    console.log("Fetching key...");
+    const response = await fetch("http://localhost:3000/api/firebase-config");
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    console.log(response.ok);
+    const data = await response.json();
+    console.log(data.config);
+    return data.config;
+  } catch (error) {
+    console.error("Error catching config:", error);
+    throw error;
+  }
 };
-
-// Initialize Firebase
-const app = firebase.initializeApp(firebaseConfig);
-
-// Initialize services
-const auth = firebase.auth();
-const db = firebase.firestore();
-
-// Export what's needed
-window.auth = auth;
-window.db = db;
+let app;
+let auth;
+let db;
+firebaseConfig().then((firebaseConfig) => {
+  console.log("Firebase config:", firebaseConfig);
+  app = firebase.initializeApp(firebaseConfig);
+  console.log("Firebase app:", app);
+  auth = firebase.auth();
+  console.log("Firebase auth:", auth);
+  db = firebase.firestore();
+  console.log("Firebase db:", db);
+  
+  window.auth = auth;
+  window.db = db;
+});

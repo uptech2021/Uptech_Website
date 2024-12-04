@@ -1,11 +1,23 @@
-// Check authentication state
-auth.onAuthStateChanged((user) => {
-    if (!user) {
-        window.location.href = 'login.html';
-    } else {
-        loadApplications();
-    }
-});
+// Wait for Firebase to initialize and then check authentication state
+function initializeAuth() {
+    const checkAuth = setInterval(() => {
+        if (window.auth) {
+            clearInterval(checkAuth);
+            window.auth.onAuthStateChanged((user) => {
+                if (!user) {
+                    console.log('User is not authenticated');
+                    window.location.href = 'login.html';
+                } else {
+                    console.log('User is authenticated');
+                    loadApplications();
+                }
+            });
+        }
+    }, 100);
+}
+
+// Initialize authentication check
+initializeAuth();
 
 // Logout functionality
 document.addEventListener('DOMContentLoaded', () => {
