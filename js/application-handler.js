@@ -42,7 +42,7 @@ async function uploadFile(file, folder) {
                     downloadButton.innerHTML = 'Download';
                     downloadButton.href = data.secure_url;
                     downloadButton.download = file.name; // Original filename
-                    downloadButton.setAttribute('target', '_blank');
+                    //downloadButton.setAttribute('target', '_blank');
                     
                     // Remove existing download button if any
                     const existingDownloadButton = fileInfo.querySelector('.download-button');
