@@ -432,14 +432,37 @@
 
     <script>
       $(document).ready(function () {
-        emailjs.init("bQV2gCCnRYuuoJ9cn");
+        // Fetch the emailjs key
+        const fetchKey = async () => {
+          try {
+            console.log("Fetching key...");
+            const response = await fetch('http://localhost:3000/api/emailjs-key')
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            console.log(response.ok);
+            const data = await response.json();
+            console.log(data.key);
+            return data.key;
+          }catch (error) {
+            console.error("Error fetching key:", error);
+            throw error;
+          }
+        };
 
-        function handleContactForm(event) {
+        const handleContactForm = async function(event) {
           event.preventDefault();
-          $(this)
+          const form = event.target;
+          if (!form.id === "contact-form") {
+            console.error("Contact form not found");
+            return;
+          }
+          $(form)
             .find('input[name="contact_number"]')
             .val(Math.floor(Math.random() * 100000));
-          emailjs.sendForm("service_1ghwgxo", "contact_form", this).then(
+          const key = await fetchKey();
+          emailjs.init(key);
+          emailjs.sendForm("service_1ghwgxo", "contact_form", form).then(
             function () {
               alert("Message sent successfully!");
             },
@@ -453,9 +476,10 @@
           $("#mobile-menu").toggleClass("hidden");
         }
 
-        $("#contact-form").submit(handleContactForm);
+        $(document).on("submit", "#contact-form", handleContactForm);
         $("#menu-button").click(toggleMobileMenu);
       });
+
     </script>
 
   </body>
