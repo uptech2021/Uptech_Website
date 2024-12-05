@@ -91,6 +91,19 @@ function updateFileName(inputId) {
 // Function to submit application
 async function submitApplication(formData) {
     try {
+        const email = formData.get('email');
+        const position = formData.get('position');
+
+        // Check for existing application with same email and position
+        const existingApplications = await db.collection('applications')
+            .where('email', '==', email)
+            .where('position', '==', position)
+            .get();
+
+        if (!existingApplications.empty) {
+            throw new Error('You have already submitted an application for this position.');
+        }
+
         // Upload resume
         const resumeUrl = await uploadFile(
             document.getElementById('resume').files[0], 
@@ -111,7 +124,7 @@ async function submitApplication(formData) {
             lastName: formData.get('lastName'),
             position: formData.get('position'),
             phone: formData.get('Number'),
-            email: formData.get('email'),
+            email: email,
             resumeUrl: resumeUrl,
             portfolio: {
                 fileUrl: portfolioFileUrl,     // Uploaded portfolio file URL
@@ -125,8 +138,9 @@ async function submitApplication(formData) {
         // Log the data being saved (for debugging)
         console.log('Saving application data:', applicationData);
 
-        // Save to Firestore
-        await db.collection('applications').add(applicationData);
+        // Save to Firestore using email as document ID
+        const docId = `${email}_${position}`.replace(/[^a-zA-Z0-9]/g, '_');
+        await db.collection('applications').doc(docId).set(applicationData);
         return true;
     } catch (error) {
         console.error('Error submitting application:', error);
@@ -144,18 +158,39 @@ function toggleLoadingState(form, isLoading) {
     closeButton.disabled = isLoading;
 }
 
+// Function to reset form
+function resetForm(form) {
+    form.reset();
+    document.getElementById('resume-file-info').classList.add('hidden');
+    document.getElementById('portfolio-file-info').classList.add('hidden');
+    form.closest('#applicationForm').classList.add('hidden');
+    toggleLoadingState(form, false);
+}
+
 // Function to show success message and reset form
 function handleSuccess(form) {
     const successMessage = document.getElementById('successMessage');
+    const errorMessage = document.getElementById('errorMessage');
+    
+    // Hide error message if it's showing
+    errorMessage.classList.add('hidden');
+    // Show success message
     successMessage.classList.remove('hidden');
     
     setTimeout(() => {
         successMessage.classList.add('hidden');
-        form.reset();
-        document.getElementById('resume-file-info').classList.add('hidden');
-        document.getElementById('portfolio-file-info').classList.add('hidden');
-        form.closest('#applicationForm').classList.add('hidden');
-        toggleLoadingState(form, false);
+        resetForm(form);
+    });
+}
+
+// Function to handle duplicate application error
+function handleDuplicateError(form) {
+    const errorMessage = document.getElementById('errorMessage');
+    errorMessage.classList.remove('hidden');
+    
+    setTimeout(() => {
+        errorMessage.classList.add('hidden');
+        resetForm(form);
     }, 3000);
 }
 
@@ -174,8 +209,12 @@ document.addEventListener('DOMContentLoaded', () => {
             await submitApplication(formData);
             handleSuccess(form);
         } catch (error) {
-            alert('There was an error submitting your application. Please try again.');
-            toggleLoadingState(form, false);
+            if (error.message.includes('already submitted')) {
+                handleDuplicateError(form);
+            } else {
+                alert('There was an error submitting your application. Please try again.');
+                toggleLoadingState(form, false);
+            }
         }
     });
 });

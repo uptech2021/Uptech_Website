@@ -104,8 +104,8 @@ function renderApplications(applications) {
             <td class="px-6 py-4 whitespace-nowrap">
                 ${application.resumeUrl ? `
                     <a href="${application.resumeUrl}" target="_blank" 
-                       class="text-blue-600 hover:text-blue-900">
-                        <i class="fas fa-file-alt mr-2"></i>View
+                       class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">
+                        <i class="fas fa-file-alt mr-2"></i>Resume
                     </a>
                 ` : 'N/A'}
             </td>
@@ -113,14 +113,14 @@ function renderApplications(applications) {
                 <div class="flex flex-col space-y-2">
                     ${application.portfolio?.fileUrl ? `
                         <a href="${application.portfolio.fileUrl}" target="_blank"
-                           class="text-blue-600 hover:text-blue-900">
-                            <i class="fas fa-file-alt mr-2"></i>View File
+                           class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">
+                            <i class="fas fa-file-alt mr-2"></i>Portfolio
                         </a>
                     ` : ''}
                     ${application.portfolio?.webUrl ? `
                         <a href="${application.portfolio.webUrl}" target="_blank"
-                           class="text-blue-600 hover:text-blue-900">
-                            <i class="fas fa-external-link-alt mr-2"></i>View Website
+                           class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">
+                            <i class="fas fa-external-link-alt mr-2"></i>Website
                         </a>
                     ` : ''}
                     ${!application.portfolio?.fileUrl && !application.portfolio?.webUrl ? 'N/A' : ''}

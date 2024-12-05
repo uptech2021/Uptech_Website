@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
             title: document.getElementById('jobTitle').value,
             department: document.getElementById('jobDepartment').value,
             description: description,
-            status: 'open', // Default status for new jobs
+            status: document.getElementById('jobStatus').value, // Get status from form
             createdAt: new Date().toISOString(),
             createdBy: user.uid
         };
@@ -180,14 +180,31 @@ document.addEventListener('DOMContentLoaded', function() {
             const doc = await firebase.firestore().collection('jobs').doc(id).get();
             if (doc.exists) {
                 const job = doc.data();
-                document.getElementById('jobTitle').value = job.title;
-                document.getElementById('jobDepartment').value = job.department;
-                document.getElementById('jobStatus').value = job.status === 'open' ? 'open' : 'closed';
-                tinymce.get('jobDescription').setContent(job.description);
+                
+                // Get form elements
+                const titleInput = document.getElementById('jobTitle');
+                const departmentInput = document.getElementById('jobDepartment');
+                const statusInput = document.getElementById('jobStatus');
+                const descriptionEditor = tinymce.get('jobDescription');
+                
+                // Check if all required elements exist
+                if (!titleInput || !departmentInput || !statusInput || !descriptionEditor) {
+                    console.error('Required form elements not found');
+                    alert('Error loading job editor. Please try again.');
+                    return;
+                }
+
+                // Set form values
+                titleInput.value = job.title;
+                departmentInput.value = job.department;
+                statusInput.value = job.status === 'open' ? 'open' : 'closed';
+                descriptionEditor.setContent(job.description);
                 
                 // Change form submit button text
                 const submitBtn = jobForm.querySelector('button[type="submit"]');
-                submitBtn.textContent = 'Update Job';
+                if (submitBtn) {
+                    submitBtn.textContent = 'Update Job';
+                }
                 
                 // Add job ID to form for updating
                 jobForm.dataset.jobId = id;
