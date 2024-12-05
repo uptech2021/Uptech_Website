@@ -138,7 +138,7 @@ function renderApplications(applications) {
                             class="text-blue-600 hover:text-blue-900">
                         <i class="fas fa-eye"></i>
                     </button>
-                    <button onclick="deleteApplication('${application.id}')"
+                    <button onclick="deleteApplication('${application.id}')" 
                             class="text-red-600 hover:text-red-900">
                         <i class="fas fa-trash"></i>
                     </button>
@@ -212,11 +212,17 @@ async function viewApplication(applicationId) {
                     <label class="block text-sm font-medium text-gray-700">Contact</label>
                     <p class="mt-1 text-sm text-gray-900">${application.phone}</p>
                 </div>
-                <div>
+                <div class="col-span-2">
                     <label class="block text-sm font-medium text-gray-700">Email</label>
-                    <p class="mt-1 text-sm text-gray-900">${application.email}</p>
+                    <div class="flex items-center gap-2">
+                        <p class="mt-1 text-sm text-gray-900">${application.email}</p>
+                        <button onclick="emailUser('${application.email}', '${application.firstName} ${application.lastName}', '${application.position}')" 
+                                class="inline-flex items-center px-3 py-1 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            <i class="fas fa-envelope mr-2"></i>Send Email
+                        </button>
+                    </div>
                 </div>
-                <div>
+                <div class="col-span-2">
                     <label class="block text-sm font-medium text-gray-700">Resume</label>
                     <p class="mt-1 text-sm text-gray-900">
                         ${application.resumeUrl ? `
@@ -277,6 +283,174 @@ async function viewApplication(applicationId) {
         console.error('Error loading application details:', error);
     }
 }
+
+// Email templates
+const emailTemplates = {
+    acceptance: {
+        template_id: "application_update",
+        subject: "Congratulations - Your Application at Uptech Incorporated Limited",
+        body: (name, position) => `Dear ${name},
+
+We are delighted to inform you that after careful consideration of your application for the ${position} position at Uptech Incorporated Limited, we would like to invite you to join our team.
+
+Your qualifications, experience, and the skills you've demonstrated throughout the application process have impressed us, and we believe you would be a valuable addition to our organization.
+
+We will be sending a follow-up email shortly with more details about the next steps, including information about compensation, benefits, and start date options.
+
+Once again, congratulations! We look forward to welcoming you to the team.
+
+Best regards,
+HR Team
+Uptech Incorporated Limited`
+    },
+    rejection: {
+        template_id: "application_update",
+        subject: "Update on Your Application - Uptech Incorporated Limited",
+        body: (name, position) => `Dear ${name},
+
+Thank you for your interest in the ${position} position at Uptech Incorporated Limited and for taking the time to submit your application.
+
+After carefully reviewing your application materials, we regret to inform you that we have decided to move forward with other candidates whose qualifications more closely match our current requirements.
+
+We appreciate your interest in Uptech Incorporated Limited and wish you the best in your future endeavors.
+
+Best regards,
+HR Team
+Uptech Incorporated Limited`
+    },
+    post_interview_rejection: {
+        template_id: "application_update",
+        subject: "Update on Your Application - Uptech Incorporated Limited",
+        body: (name, position) => `Dear ${name},
+
+Thank you for taking the time to interview for the ${position} position at Uptech Incorporated Limited. We appreciate the effort you put into this process and enjoyed getting to know you better.
+
+After careful consideration of all candidates, we regret to inform you that we have decided to move forward with another candidate whose qualifications and experience more closely align with our current needs.
+
+We were impressed with your professionalism and encourage you to apply for future positions that match your qualifications.
+
+We wish you the best in your career pursuits.
+
+Best regards,
+HR Team
+Uptech Incorporated Limited`
+    },
+    awaiting_review: {
+        template_id: "application_update",
+        subject: "Application Received - Uptech Incorporated Limited",
+        body: (name, position) => `Dear ${name},
+
+Thank you for submitting your application for the ${position} position at Uptech Incorporated Limited. We appreciate your interest in joining our team.
+
+We are currently reviewing all applications and will be in touch with selected candidates for the next steps in the process. Due to the high volume of applications, this may take some time.
+
+If you don't hear from us within the next two weeks, please feel free to consider other opportunities. We will keep your application on file for any future positions that match your qualifications.
+
+Thank you for your patience and interest in Uptech Incorporated Limited.
+
+Best regards,
+HR Team
+Uptech Incorporated Limited`
+    }
+};
+
+// Email user function
+async function emailUser(email, name, position) {
+    const emailModal = document.getElementById('emailModal');
+    const templateSelect = document.getElementById('emailTemplate');
+    document.getElementById('emailRecipient').textContent = name;
+    document.getElementById('recipientEmail').value = email;
+
+    // Handle template selection
+    const updateEmailTemplate = () => {
+        const template = emailTemplates[templateSelect.value];
+        document.getElementById('emailSubject').value = template.subject;
+        document.getElementById('emailBody').value = template.body(name, position);
+    };
+
+    templateSelect.addEventListener('change', updateEmailTemplate);
+    updateEmailTemplate(); // Set initial template
+
+    emailModal.classList.remove('hidden');
+}
+
+// Fetch the emailjs key
+const fetchKey = async () => {
+    try {
+        console.log("Fetching key...");
+        const response = await fetch('http://localhost:3000/api/emailjs-key')
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        console.log(response.ok);
+        const data = await response.json();
+        console.log(data.key);
+        return data.key;
+    } catch (error) {
+        console.error("Error fetching key:", error);
+        throw error;
+    }
+};
+
+// Send email function
+async function sendEmail(event) {
+    event.preventDefault();
+    const sendButton = document.getElementById('sendEmailButton');
+    const recipientEmail = document.getElementById('recipientEmail').value;
+    const subject = document.getElementById('emailSubject').value;
+    const message = document.getElementById('emailBody').value;
+    const recipientName = document.getElementById('emailRecipient').textContent;
+    const jobTitle = document.getElementById('jobTitle')?.value || 'the position';
+    const adminName = 'HR Team';
+    const companyName = 'Uptech Inc';
+
+    try {
+        sendButton.disabled = true;
+        sendButton.textContent = 'Sending...';
+
+        const key = await fetchKey();
+        emailjs.init(key);
+
+        await emailjs.send(
+            "service_1ghwgxo",
+            "application_update",
+            {
+                to_email: recipientEmail,
+                applicant_name: recipientName,
+                job_title: jobTitle,
+                status_message: message,
+                admin_name: adminName,
+                company_name: companyName,
+                subject: subject,
+                reply_to: recipientEmail
+            }
+        );
+
+        alert('Update sent successfully!');
+        closeEmailModal();
+    } catch (error) {
+        console.error('Error sending email:', error);
+        alert('Failed to send update. Please try again.');
+    } finally {
+        sendButton.disabled = false;
+        sendButton.textContent = 'Send Update';
+    }
+}
+
+// Close email modal
+function closeEmailModal() {
+    const emailModal = document.getElementById('emailModal');
+    emailModal.classList.add('hidden');
+    // Clear form
+    document.getElementById('emailSubject').value = '';
+    document.getElementById('emailBody').value = '';
+}
+
+// Add event listeners for email modal
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('emailForm').addEventListener('submit', sendEmail);
+    document.getElementById('closeEmailModal').addEventListener('click', closeEmailModal);
+});
 
 // Close modal
 document.getElementById('closeModal').addEventListener('click', () => {
