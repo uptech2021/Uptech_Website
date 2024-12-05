@@ -286,7 +286,9 @@
     <header class="pt-4 px-6 flex flex-row items-center justify-between relative z-20">
       <div class="flex items-center gap-2 animate-slide-in" id="slide-in">
         <div class="w-15 h-15">
+          <a href="../index.html">
           <img class="w-1/2 h-1/2" src="../assets/uptechlogo.svg" alt="uptech logo" />
+        </a>
         </div>
       </div>
       <nav class="hidden md:block">
@@ -371,7 +373,7 @@
               </div>
               <div class="w-full md:w-3/4 flex flex-col">
                 <h3 class="font-bold text-lg md:text-xl mb-2">Graphic Design Vacancies</h3>
-                <div id="graphic-jobs" class="jobs-container">
+                <div id="graphic-jobs" class="jobs-container rounded-md hover:bg-blue-600 transition sm:duration-300">
                   <!-- Jobs will be loaded here dynamically -->
                   <p class="loading-text">Loading positions...</p>
                 </div>
@@ -382,9 +384,9 @@
               <div class="w-full md:w-2/5 flex justify-center md:justify-start">
                 <img class="w-32 h-32 md:w-40 md:h-40 object-contain" src="../assets/S2.svg" alt="marketing" />
               </div>
-              <div class="w-full md:w-3/4 flex flex-col items-center text-center">
+              <div class="w-full md:w-3/4 flex flex-col">
                 <h3 class="font-bold text-lg md:text-xl mb-2">Marketing Vacancies</h3>
-                <div id="marketing-jobs" class="jobs-container">
+                <div id="marketing-jobs" class="jobs-container rounded-md hover:bg-blue-600 transition sm:duration-300">
                   <!-- Jobs will be loaded here dynamically -->
                   <p class="loading-text">Loading positions...</p>
                 </div>
@@ -397,7 +399,7 @@
               </div>
               <div class="w-full md:w-3/4 flex flex-col">
                 <h3 class="font-bold text-lg md:text-xl mb-2">Administrative and Public Relations Vacancies</h3>
-                <div id="administrative-jobs" class="jobs-container">
+                <div id="administrative-jobs" class="jobs-container rounded-md hover:bg-blue-600 transition sm:duration-300">
                   <!-- Jobs will be loaded here dynamically -->
                   <p class="loading-text">Loading positions...</p>
                 </div>
@@ -410,7 +412,7 @@
               </div>
               <div class="w-full md:w-3/4 flex flex-col">
                 <h3 class="font-bold text-lg md:text-xl mb-2">Engineering Vacancies</h3>
-                <div id="engineering-jobs" class="jobs-container">
+                <div id="engineering-jobs" class="jobs-container rounded-md hover:bg-blue-600 transition sm:duration-300">
                   <!-- Jobs will be loaded here dynamically -->
                   <p class="loading-text">Loading positions...</p>
                 </div>
@@ -605,7 +607,7 @@
         // Initialize containers with "No current openings" message
         Object.values(containers).forEach(container => {
           if (container) {
-            container.innerHTML = '<p>No current openings</p>';
+            container.innerHTML = '<p></p>';
           }
         });
 
