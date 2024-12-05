@@ -35,7 +35,7 @@
       z-index: 1000;
       justify-content: center;
       align-items: center;
-      padding: 20px;
+      padding: 16px;
     }
 
     .job-modal.show {
@@ -44,7 +44,7 @@
 
     .job-modal-content {
       background: white;
-      padding: 32px;
+      padding: 20px;
       border-radius: 8px;
       width: 100%;
       max-width: 800px;
@@ -54,34 +54,62 @@
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
+    @media (min-width: 768px) {
+      .job-modal-content {
+        padding: 32px;
+      }
+    }
+
     .job-modal-header {
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       padding-right: 40px;
     }
 
     .job-modal-title {
       color: #1a365d;
-      font-size: 24px;
+      font-size: 20px;
       font-weight: bold;
       margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    @media (min-width: 768px) {
+      .job-modal-title {
+        font-size: 24px;
+      }
     }
 
     .job-modal-department {
       color: #4a5568;
-      font-size: 16px;
-      margin-bottom: 16px;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    @media (min-width: 768px) {
+      .job-modal-department {
+        font-size: 16px;
+        margin-bottom: 16px;
+      }
     }
 
     .job-modal-description {
       color: #2d3748;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       line-height: 1.6;
+      font-size: 14px;
+    }
+
+    @media (min-width: 768px) {
+      .job-modal-description {
+        font-size: 16px;
+        margin-bottom: 24px;
+      }
     }
 
     .job-modal-close {
       position: absolute;
-      top: 16px;
-      right: 16px;
+      top: 12px;
+      right: 12px;
       background: none;
       border: none;
       cursor: pointer;
@@ -97,12 +125,22 @@
     .job-modal-apply {
       background: #1a365d;
       color: white;
-      padding: 12px 24px;
+      padding: 10px 20px;
       border-radius: 6px;
       font-weight: 600;
       transition: background-color 0.2s;
       border: none;
       cursor: pointer;
+      width: 100%;
+      font-size: 14px;
+    }
+
+    @media (min-width: 768px) {
+      .job-modal-apply {
+        width: auto;
+        padding: 12px 24px;
+        font-size: 16px;
+      }
     }
 
     .job-modal-apply:hover {
@@ -129,27 +167,48 @@
     }
 
     .job-details-content {
-      padding: 24px;
+      padding: 16px;
       color: #1a365d;
       display: flex;
-      gap: 24px;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .job-details-content {
+        padding: 24px;
+        flex-direction: row;
+        gap: 24px;
+      }
     }
 
     .job-info {
-      flex: 0 0 30%;
-      padding-right: 24px;
-      border-right: 1px solid #e2e8f0;
+      flex: 0 0 100%;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    @media (min-width: 768px) {
+      .job-info {
+        flex: 0 0 30%;
+        padding-bottom: 0;
+        padding-right: 24px;
+        border-bottom: none;
+        border-right: 1px solid #e2e8f0;
+      }
     }
 
     .job-description {
       flex: 1;
       line-height: 1.6;
       color: #2d3748;
+      font-size: 14px;
     }
 
-    .apply-button-container {
-      margin-top: 24px;
-      text-align: center;
+    @media (min-width: 768px) {
+      .job-description {
+        font-size: 16px;
+      }
     }
 
     .job-title {
@@ -160,28 +219,52 @@
       border-radius: 4px;
       transition: background-color 0.2s;
       cursor: pointer;
+      font-size: 14px;
+    }
+
+    @media (min-width: 768px) {
+      .job-title {
+        font-size: 16px;
+        padding: 16px;
+      }
     }
 
     .job-title:hover {
       background: rgba(255, 255, 255, 0.1);
     }
 
-    .job-description {
-      margin: 16px 0;
-      line-height: 1.6;
-      color: #2d3748;
+    .apply-button-container {
+      margin-top: 16px;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .apply-button-container {
+        margin-top: 24px;
+        text-align: left;
+      }
     }
 
     .apply-button {
       background: #1a365d;
       color: white;
-      padding: 12px 24px;
+      padding: 10px 20px;
       border-radius: 6px;
       font-weight: 600;
       transition: background-color 0.2s;
       border: none;
       cursor: pointer;
       display: inline-block;
+      width: 100%;
+      font-size: 14px;
+    }
+
+    @media (min-width: 768px) {
+      .apply-button {
+        width: auto;
+        padding: 12px 24px;
+        font-size: 16px;
+      }
     }
 
     .apply-button:hover {
@@ -265,73 +348,83 @@
           Still looking for your place? Want to find your start? Well look no further, you can start your journey with
           us!
         </p>
-        <div class="text-white md:w-1/2 mb-4">
-          <button onclick="showAll()" 
-                  class="filter-button bg-gray-200 text-gray-800 px-4 py-2 rounded-md mr-2" 
-                  data-type="all">
-            All
-          </button>
-          <button onclick="showVacancies()" 
-                  class="filter-button bg-gray-200 text-gray-800 px-4 py-2 rounded-md mr-2" 
-                  data-type="vacancies">
-            Vacancies
-          </button>
-          <button onclick="showNoVacancies()" 
-                  class="filter-button bg-gray-200 text-gray-800 px-4 py-2 rounded-md" 
-                  data-type="no-vacancies">
-            No Vacancies
-          </button>
+        <div class="text-white w-full md:w-1/2 mb-4 px-4 md:px-0">
+          <div class="flex flex-wrap gap-2">
+            <button onclick="showAll()" 
+                    class="filter-button bg-gray-200 text-gray-800 px-4 py-2 rounded-md" 
+                    data-type="all">
+              All
+            </button>
+            <button onclick="showVacancies()" 
+                    class="filter-button bg-gray-200 text-gray-800 px-4 py-2 rounded-md" 
+                    data-type="vacancies">
+              Vacancies
+            </button>
+            <button onclick="showNoVacancies()" 
+                    class="filter-button bg-gray-200 text-gray-800 px-4 py-2 rounded-md" 
+                    data-type="no-vacancies">
+              No Vacancies
+            </button>
+          </div>
         </div>
 
-        <div class="text-white">
-          <div id="dropdown-graphic" class="width-4/5 bg-blueTheme rounded-md p-4 mb-4 flex flex-row">
-            <div class="w-2/5 mt-4">
-              <img class="w-80 h-22" src="../assets/S4.svg" alt="graphic" />
-            </div>
-            <div class="w-3/4 flex flex-col">
-              <p class="font-bold">Graphic Design Vaccancies</p>
-              <div id="graphic-jobs" class="jobs-container">
-                <!-- Jobs will be loaded here dynamically -->
-                <p class="loading-text">Loading positions...</p>
+        <div class="text-white px-4 md:px-0">
+          <div id="dropdown-graphic" class="w-full bg-blueTheme rounded-md p-4 mb-4">
+            <div class="flex flex-col md:flex-row gap-4">
+              <div class="w-full md:w-2/5 flex justify-center md:justify-start">
+                <img class="w-48 md:w-80 h-auto" src="../assets/S4.svg" alt="graphic" />
+              </div>
+              <div class="w-full md:w-3/4 flex flex-col">
+                <p class="font-bold text-lg md:text-xl mb-2">Graphic Design Vacancies</p>
+                <div id="graphic-jobs" class="jobs-container">
+                  <!-- Jobs will be loaded here dynamically -->
+                  <p class="loading-text">Loading positions...</p>
+                </div>
               </div>
             </div>
           </div>
 
-          <div id="dropdown-marketing" class="width-4/5 bg-blueTheme rounded-md p-4 mb-4 flex flex-row">
-            <div class="w-2/5 mt-4">
-              <img class="w-80 h-22" src="../assets/S2.svg" alt="marketing" />
-            </div>
-            <div class="w-3/4 flex flex-col">
-              <p class="font-bold">Marketing Vaccancies</p>
-              <div id="marketing-jobs" class="jobs-container">
-                <!-- Jobs will be loaded here dynamically -->
-                <p class="loading-text">Loading positions...</p>
+          <div id="dropdown-marketing" class="w-full bg-blueTheme rounded-md p-4 mb-4">
+            <div class="flex flex-col md:flex-row gap-4">
+              <div class="w-full md:w-2/5 flex justify-center md:justify-start">
+                <img class="w-48 md:w-80 h-auto" src="../assets/S2.svg" alt="marketing" />
+              </div>
+              <div class="w-full md:w-3/4 flex flex-col">
+                <p class="font-bold text-lg md:text-xl mb-2">Marketing Vacancies</p>
+                <div id="marketing-jobs" class="jobs-container">
+                  <!-- Jobs will be loaded here dynamically -->
+                  <p class="loading-text">Loading positions...</p>
+                </div>
               </div>
             </div>
           </div>
 
-          <div id="dropdown-administrative" class="width-4/5 bg-blueTheme rounded-md p-4 mb-4 flex flex-row">
-            <div class="w-2/5 mt-4">
-              <img class="w-80 h-22" src="../assets/S1.svg" alt="administrative" />
-            </div>
-            <div class="w-3/4 flex flex-col">
-              <p class="font-bold">Administrative and Public Relations Vaccancies</p>
-              <div id="administrative-jobs" class="jobs-container">
-                <!-- Jobs will be loaded here dynamically -->
-                <p class="loading-text">Loading positions...</p>
+          <div id="dropdown-administrative" class="w-full bg-blueTheme rounded-md p-4 mb-4">
+            <div class="flex flex-col md:flex-row gap-4">
+              <div class="w-full md:w-2/5 flex justify-center md:justify-start">
+                <img class="w-48 md:w-80 h-auto" src="../assets/S1.svg" alt="administrative" />
+              </div>
+              <div class="w-full md:w-3/4 flex flex-col">
+                <p class="font-bold text-lg md:text-xl mb-2">Administrative and Public Relations Vacancies</p>
+                <div id="administrative-jobs" class="jobs-container">
+                  <!-- Jobs will be loaded here dynamically -->
+                  <p class="loading-text">Loading positions...</p>
+                </div>
               </div>
             </div>
           </div>
 
-          <div id="dropdown-engineering" class="width-4/5 bg-gray-400 rounded-md p-4 mb-4 flex flex-row">
-            <div class="w-2/5 mt-4">
-              <img class="w-80 h-22" src="../assets/S3.svg" alt="development" />
-            </div>
-            <div class="w-3/4 flex flex-col">
-              <p class="font-bold">Engineering Vaccancies</p>
-              <div id="engineering-jobs" class="jobs-container">
-                <!-- Jobs will be loaded here dynamically -->
-                <p class="loading-text">Loading positions...</p>
+          <div id="dropdown-engineering" class="w-full bg-gray-400 rounded-md p-4 mb-4">
+            <div class="flex flex-col md:flex-row gap-4">
+              <div class="w-full md:w-2/5 flex justify-center md:justify-start">
+                <img class="w-48 md:w-80 h-auto" src="../assets/S3.svg" alt="development" />
+              </div>
+              <div class="w-full md:w-3/4 flex flex-col">
+                <p class="font-bold text-lg md:text-xl mb-2">Engineering Vacancies</p>
+                <div id="engineering-jobs" class="jobs-container">
+                  <!-- Jobs will be loaded here dynamically -->
+                  <p class="loading-text">Loading positions...</p>
+                </div>
               </div>
             </div>
           </div>
