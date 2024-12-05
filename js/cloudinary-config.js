@@ -1,12 +1,20 @@
-const cloudinary = require('cloudinary').v2;
-
-// Configure Cloudinary
-cloudinary.config({
-    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_API_SECRET,
-    secure: true
-});
+// Firebase configuration
+const cloudinaryConfig = async () => {
+    try {
+      console.log("Fetching key...");
+      const response = await fetch("http://localhost:3000/api/cloudinary-config");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      console.log(response.ok);
+      const data = await response.json();
+      console.log(data.config);
+      return data.config;
+    } catch (error) {
+      console.error("Error catching config:", error);
+      throw error;
+    }
+  };
 
 // Configure upload settings for different file types
 const uploadConfig = {
@@ -24,4 +32,4 @@ const uploadConfig = {
     }
 };
 
-module.exports = { cloudinary, uploadConfig };
+module.exports = { cloudinaryConfig, uploadConfig };
