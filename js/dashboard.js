@@ -327,7 +327,7 @@ Thank you for taking the time to interview for the ${position} position at Uptec
 
 After careful consideration of all candidates, we regret to inform you that we have decided to move forward with another candidate whose qualifications and experience more closely align with our current needs.
 
-We were impressed with your professionalism and encourage you to apply for future positions that match your qualifications.
+We were impressed with your professionalism and encourage you to apply for future positions that align with your qualifications.
 
 We wish you the best in your career pursuits.
 
