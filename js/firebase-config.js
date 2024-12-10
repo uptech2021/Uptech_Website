@@ -2,7 +2,9 @@
 const firebaseConfig = async () => {
   try {
     console.log("Fetching key...");
-    const response = await fetch("http://localhost:3000/api/firebase-config");
+    const isLocalhost = window.location.hostname.includes('localhost');
+    const apiUrl = isLocalhost ? 'http://localhost:3000/api/firebase-config' : 'http://138.197.0.213:3000/api/firebase-config';
+    const response = await fetch(apiUrl)
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
