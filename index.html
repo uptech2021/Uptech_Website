@@ -338,16 +338,16 @@
               </div>
               <div class="flex justify-end space-x-4">
                 <button
-                  type="reset"
-                  class="bg-blue-600 px-6 py-2 rounded-xl hover:bg-blue-700 focus:ring-2 focus:ring-blue-500"
-                >
-                  Reset
-                </button>
-                <button
                   type="submit"
-                  class="bg-gray-600 px-6 py-2 rounded-xl hover:bg-gray-700 focus:ring-2 focus:ring-gray-500"
+                  class="bg-blue-600 px-6 py-2 rounded-xl hover:bg-gray-700 focus:ring-2 focus:ring-gray-500"
                 >
                   Submit
+                </button>
+                <button
+                  type="reset"
+                  class="bg-gray-400 px-6 py-2 rounded-xl hover:bg-blue-700 focus:ring-2 focus:ring-blue-500"
+                >
+                  Reset
                 </button>
               </div>
             </form>
@@ -434,7 +434,7 @@
             console.log("Fetching key...");
             const isLocalhost = window.location.hostname.includes('localhost');
     const apiUrl = isLocalhost ? 'http://localhost:3000/api/emailjs-key' : 'http://138.197.0.213:3000/api/emailjs-key';
-    const response = await fetch(apiUrl)
+    const response = await fetch("http://138.197.0.213:3000/api/emailjs-key")
             if (!response.ok) {
               throw new Error('Network response was not ok');
             }
