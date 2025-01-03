@@ -2,20 +2,168 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@font-face {
+  font-family: "ThiccboiRegular";
+  src: url("../assets/fonts/thicccboi/THICCCBOI-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@font-face {
+  font-family: "ThiccboiBold";
+  src: url("../assets/fonts/thicccboi/THICCCBOI-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SavedByZero";
+  src: url("../assets/fonts/saved_by_zero/SavedByZero.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+
+.bg-blueTheme{
+  background-color: #448CFF;
+}
+
+.blueText-light{
+  color: #62a3ff;
+}
+
+.blueText-dark{
+  color: #448CFF;
+}
+
+.blueText-darker{
+  color: #3659CD;
+}
+
+.ThiccboiBold{
+  font-family: "ThiccboiBold", sans-serif;
+}
+.ThiccboiRegular{
+  font-family: "ThiccboiRegular", sans-serif;
+}
+
+body{
+  background-color: #F9F5FD !important;
+  overflow-x: hidden;
+}
+h1 {
+  font-weight: 900;
+  font-size: 1.9rem;
+  width: 90vw;
+ 
+}
+
+h2, h3, a {
+  font-family: "ThiccboiBold", sans-serif;
+}
+
+
+h2{
+  font-size: 2.5rem;
+}
+h3{
+  font-size: 2rem;
+}
+
+p {
+  font-family: "ThiccboiRegular", sans-serif;
+}
+a{
+  font-weight: 900;
+}
+
+ul{
+  text-align: left;
+}
+
+
+
+@media(min-width: 768px){
+  h1 {
+    font-size: 3.5rem;
+  }
+
+
+}
+@media(min-width: 1024px){
+  h2{
+    font-weight: 900;
+    font-size: 3.5rem;
+  }
+
+  p{
+    font-size: large;
+  }
+}
+@media(min-width: 1280px){
+  .ml-120{
+    margin-left: 30rem !important;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@media (max-width: 1280px) {
+  .text-md {
+    word-break: break-all;
+    word-wrap: break-word;
+  }
+}
+
+
+/*slide in and slide out animation*/
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+}
+
+#slide-in {
+  animation: slideIn 1s ease-out forwards;
+}
+
+#slide-out.hidden {
+  animation: slideOut 1s ease-in forwards;
+}
+
+.skeleton-loader {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  color: transparent;
+  border-radius: 4px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.loading-text.skeleton-loader {
+  width: 200px;
+  height: 24px;
+  margin: 10px 0;
 }

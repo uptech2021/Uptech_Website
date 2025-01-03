@@ -3,7 +3,8 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
+import { getFirestore, collection, query, where, getDocs, DocumentData } from 'firebase/firestore';
+import { firebaseConfig } from '../../firebase/firebase';
 
 interface Job {
   id: string;
@@ -20,9 +21,12 @@ export default function Career() {
     // Initialize Firebase and load job listings
     const initializeJobs = async () => {
       try {
-        const snapshot = await window.db.collection('jobs').where('status', '==', 'open').get();
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const q = query(collection(db, 'jobs'), where('status', '==', 'open'));
+        const snapshot = await getDocs(q);
         const jobs: Job[] = [];
-        snapshot.forEach((doc: firebase.firestore.DocumentSnapshot) => {
+        snapshot.forEach((doc: DocumentData) => {
           jobs.push({ id: doc.id, ...doc.data() });
         });
         setJobListings(jobs);

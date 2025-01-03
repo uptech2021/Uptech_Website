@@ -1,9 +1,20 @@
 'use client';
 import Image from 'next/image';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 
 export default function Home() {
+  const form = useRef<HTMLFormElement>(null);
+
   useEffect(() => {
+    // Initialize EmailJS
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_KEY;
+    if (!publicKey) {
+      console.error('EmailJS public key is not defined in environment variables');
+      return;
+    }
+    emailjs.init(publicKey);
+
     // Toggle mobile menu
     const menuButton = document.getElementById("menu-button");
     const mobileMenu = document.getElementById("mobile-menu");
@@ -37,6 +48,26 @@ export default function Home() {
       window.removeEventListener("scroll", animateOnScroll);
     };
   }, []);
+
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (form.current) {
+      emailjs.sendForm(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'service_1ghwgxo',
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'contact_form',
+        form.current,
+        process.env.NEXT_PUBLIC_EMAILJS_KEY
+      )
+        .then((result) => {
+          console.log('Email sent successfully:', result.text);
+          // You can add a success message or reset the form here
+        })
+        .catch((error) => {
+          console.error('Error sending email:', error);
+        });
+    }
+  };
 
   return (
     <div className="bg-gray-100">
@@ -117,35 +148,35 @@ export default function Home() {
           <div className="space-y-10 absolute md:hidden top-0 mt-10 z-10 mobile-heading">
             <div className="text-center flex flex-col items-center gap-4">
               <h2 className="text-3xl sm:text-4xl font-bold z-10">
-                A Digital Services <br />
-                Company designed to <br />
-                help your business <br />
-                grow.
+          A Digital Services <br />
+          Company designed to <br />
+          help your business <br />
+          grow.
               </h2>
               <br />
               <button
-                className="text-sm sm:text-base font-light rounded-xl text-blue-500 bg-yellow-300 p-2"
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+          className="text-sm sm:text-base font-light rounded-xl text-blue-500 bg-yellow-300 p-2"
+          onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Click here to connect with us!
+          Click here to connect with us!
               </button>
             </div>
           </div>
 
           {/* PC Heading */}
-          <div className="hidden md:flex w-full md:mt-20 mt-28 xl:mt-28 flex-col gap-3 text-center absolute top-1/3 right-1/4 transform -translate-y-1/2 -translate-x-[30%] pc-heading justify-center items-center">
+          <div className="hidden md:flex w-full md:mt-20 mt-28 xl:mt-28 flex-col gap-3 text-center absolute top-1/3 left-1/2 transform -translate-y-1/2 -translate-x-1/2 pc-heading justify-center items-center">
             <div className="text-center flex flex-col md:flex-grow items-center gap-6">
               <p className="ThiccboiBold tracking-tighter text-3xl md:text-4xl lg:text-5xl font-bold">
-                A Digital Services <br />
-                Company designed to <br />
-                help your business <br />
-                grow.
+          A Digital Services <br />
+          Company designed to <br />
+          help your business <br />
+          grow.
               </p>
               <button
-                className="text-sm md:text-lg lg:text-lg font-light rounded-xl text-blue-500 bg-yellow-300 p-2 w-auto"
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+          className="text-sm md:text-lg lg:text-lg font-light rounded-xl text-blue-500 bg-yellow-300 p-2 w-auto"
+          onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Click here to connect with us!
+          Click here to connect with us!
               </button>
             </div>
           </div>
@@ -290,7 +321,7 @@ export default function Home() {
               <h2 className="text-xl md:text-2xl font-bold text-center mb-6">
                 Leave us a message and we will get back to you.
               </h2>
-              <form id="contact-form" className="space-y-6">
+              <form id="contact-form" ref={form} onSubmit={sendEmail} className="space-y-6">
                 <input type="hidden" name="contact_number" />
                 <div className="grid grid-cols-1 gap-4">
                   <div>
