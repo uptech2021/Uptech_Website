@@ -1,21 +1,25 @@
 'use client';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { signInWithEmailAndPassword, auth, initializeAuth } from '../../services/login';
+import { useRouter } from 'next/navigation';
 
 export default function AdminLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const router = useRouter();
+
+  useEffect(() => {
+    initializeAuth();
+  }, []);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    // Implement your login logic here using Firebase or any other method
-    // Example: try to log in with email and password
     try {
-      // Your Firebase login logic here
-      // await firebase.auth().signInWithEmailAndPassword(email, password);
-      console.log('Logging in with:', email, password);
-    } catch (error) {
+      await signInWithEmailAndPassword(auth, email, password);
+      router.push('/admin/dashboard');
+    } catch (error: any) {
       setErrorMessage('Login failed. Please check your credentials.');
     }
   };
@@ -69,13 +73,6 @@ export default function AdminLogin() {
           {errorMessage && <div id="error-message" className="text-red-500 text-center">{errorMessage}</div>}
         </form>
       </div>
-
-      {/* Firebase Scripts */}
-      <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
-      <script src="/js/firebase-config.js"></script>
-      <script src="/js/login.js"></script>
     </div>
   );
 }

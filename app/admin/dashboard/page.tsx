@@ -29,10 +29,9 @@ declare namespace tinymce {
   }
 }
 
-declare module 'tinymce' {
-  interface Editor {
-    getContainer: () => HTMLElement;
-  }
+interface ExtendedEditor extends tinymce.Editor {
+  on(event: string, callback: () => void): void;
+  getContainer(): HTMLElement;
 }
 
 export default function AdminDashboard() {
@@ -64,9 +63,10 @@ export default function AdminDashboard() {
         });
       },
       init_instance_callback: function (editor: tinymce.Editor) {
-        editor.on("focus", function () {
+        const tinyMCEEditor = editor as ExtendedEditor;
+        tinyMCEEditor.on("focus", function () {
           // Remove any validation styling when focused
-          editor.getContainer().style.border = "1px solid #D1D5DB";
+          tinyMCEEditor.getContainer().style.border = "1px solid #D1D5DB";
         });
       },
     });
