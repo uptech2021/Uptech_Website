@@ -45,10 +45,10 @@ export default function Objectives() {
 
   return (
     <div className="bg-gray-100">
-      <head>
+      <header>
         <title>Objectives</title>
         <link rel="icon" href="/favicon.ico" />
-      </head>
+      </header>
       <div className="2xl:w-8/12 xl:flex flex-col mx-auto">
         {/* Navbar */}
         <header className="pt-4 px-6 flex flex-row items-center justify-between relative">

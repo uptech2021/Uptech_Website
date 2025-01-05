@@ -54,10 +54,10 @@ export default function Career() {
 
   return (
     <div className="bg-gray-100">
-      <head>
+      <header>
         <title>Uptech Incorporated Limited</title>
         <link rel="icon" href="/favicon.ico" />
-      </head>
+      </header>
       <div className="2xl:w-8/12 xl:flex flex-col mx-auto">
         <header className="pt-4 px-6 flex flex-row items-center justify-between relative z-20">
           <div className="flex items-center gap-2 animate-slide-in" id="slide-in">
