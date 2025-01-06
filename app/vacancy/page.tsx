@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, query, where, getDocs, DocumentData } from 'firebase/firestore';
-import { firebaseConfig } from '../../firebases/firebase';
+import { firebaseConfig } from '@/firebase/firebase';
 
 interface Job {
   id: string;

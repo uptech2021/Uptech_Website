@@ -1,12 +1,11 @@
-import { db, auth } from '../firebases/firebase';
-import { collection, getDocs, query, orderBy, doc, updateDoc, deleteDoc, addDoc, getDoc } from 'firebase/firestore';
-import { onAuthStateChanged } from 'firebase/auth';
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, orderBy, query, updateDoc } from 'firebase/firestore';
+import { auth, db } from '../firebase/firebase';
 
 // Job Management Functionality
 document.addEventListener('DOMContentLoaded', function() {
     // Get DOM elements
-    const managementBtn = document.getElementById('managementBtn') as HTMLButtonElement;
-    const jobManagementModal = document.getElementById('jobManagementModal') as HTMLDivElement;
+    // const managementBtn = document.getElementById('managementBtn') as HTMLButtonElement;
+    // const jobManagementModal = document.getElementById('jobManagementModal') as HTMLDivElement;
     const jobForm = document.getElementById('jobForm') as HTMLFormElement;
     const jobsList = document.getElementById('jobsList') as HTMLDivElement;
 

@@ -6,7 +6,7 @@ export async function POST(req: NextRequest) {
 
   try {
     const decodedToken = await adminAuth.verifyIdToken(token);
-    console.log("Decoding Token", decodedToken);
+    console.log("Decoding Token");
 
     // Check for the isAdmin custom claim
     const isAdmin = decodedToken.email === process.env.ADMIN_EMAIL;

@@ -1,31 +1,11 @@
 'use client';
-import Image from 'next/image';
-import { useEffect, useState } from 'react';
-import tinymce from 'tinymce/tinymce'; // Import TinyMCE
-import 'tinymce/themes/silver'; // Import the theme
-import 'tinymce/icons/default'; // Import the icons
-import 'tinymce/models/dom'; // Import necessary models
-import 'tinymce/plugins/advlist'; // Import required plugins
-import 'tinymce/plugins/autolink';
-import 'tinymce/plugins/lists';
-import 'tinymce/plugins/link';
-import 'tinymce/plugins/image';
-import 'tinymce/plugins/charmap';
-import 'tinymce/plugins/preview';
-import 'tinymce/plugins/anchor';
-import 'tinymce/plugins/searchreplace';
-import 'tinymce/plugins/visualblocks';
-import 'tinymce/plugins/code';
-import 'tinymce/plugins/fullscreen';
-import 'tinymce/plugins/insertdatetime';
-import 'tinymce/plugins/media';
-import 'tinymce/plugins/table';
-import 'tinymce/plugins/help';
-import 'tinymce/plugins/wordcount';
-import { useRouter } from 'next/navigation';
-import { doc, getDoc } from 'firebase/firestore';
+import JobManagementModal from '@/components/JobManagementModal';
 import { db } from '@/firebase/firebase';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
+import { collection, doc, getDoc, getDocs, orderBy, query } from 'firebase/firestore';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 declare namespace tinymce {
   export interface Editor {
@@ -38,26 +18,31 @@ interface ExtendedEditor extends tinymce.Editor {
   getContainer(): HTMLElement;
 }
 
+// Define a type for the job data
+interface Job {
+  id: string;
+  title: string;
+  department: string;
+  status: string;
+  description: string;
+}
+
 export default function AdminDashboard() {
   const [isJobModalOpen, setIsJobModalOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(true)
-  const [isAdmin, setIsAdmin] = useState(false)
-  const router = useRouter()
+  const [isLoading, setIsLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const router = useRouter();
+  const [jobs, setJobs] = useState<Job[]>([]);
 
-  const openJobModal = () => {
-    setIsJobModalOpen(true);
-  };
-
-  const closeJobModal = () => {
-    setIsJobModalOpen(false);
-  };
+  const openJobModal = () => setIsJobModalOpen(true);
+  const closeJobModal = () => setIsJobModalOpen(false);
 
   const handleLogout = () => {
     const auth = getAuth();
     signOut(auth)
       .then(() => {
         console.log('User signed out.');
-        router.push('/admin/login'); // Redirect to login page after logout
+        router.push('/admin/login');
       })
       .catch((error) => {
         console.error('Error signing out:', error);
@@ -67,18 +52,20 @@ export default function AdminDashboard() {
   // Authorization
   useEffect(() => {
     const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
-        getDoc(doc(db, 'users', user.uid)).then((userDoc) => {
+        try {
+          const userRef = doc(db, 'users', user.uid);
+          const userDoc = await getDoc(userRef);
           if (userDoc.exists() && userDoc.data()?.isAdmin) {
             setIsAdmin(true);
           } else {
             router.push('/admin/login');
           }
-        }).catch((error) => {
+        } catch (error) {
           console.error('Error fetching user document:', error);
           router.push('/admin/login');
-        });
+        }
       } else {
         router.push('/admin/login');
       }
@@ -89,31 +76,6 @@ export default function AdminDashboard() {
   }, [router]);
 
   useEffect(() => {
-    // Initialize TinyMCE
-    tinymce.init({
-      selector: "textarea#jobDescription",
-      height: 300,
-      menubar: true,
-      plugins: [
-        "advlist autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table help wordcount fontsize",
-      ],
-      toolbar:
-        "undo redo | fontsize | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help",
-      font_size_formats: "8pt 10pt 12pt 14pt 16pt 18pt 24pt 36pt",
-      setup: function (editor) {
-        editor.on("change", function () {
-          editor.save(); // This will update the textarea with the content
-        });
-      },
-      init_instance_callback: function (editor: tinymce.Editor) {
-        const tinyMCEEditor = editor as ExtendedEditor;
-        tinyMCEEditor.on("focus", function () {
-          // Remove any validation styling when focused
-          tinyMCEEditor.getContainer().style.border = "1px solid #D1D5DB";
-        });
-      },
-    });
-
     // Logout button functionality
     const logoutBtn = document.getElementById("logoutBtn");
     if (logoutBtn) {
@@ -131,12 +93,26 @@ export default function AdminDashboard() {
     }
   }, []);
 
-  if(isLoading) return <div>Loading...</div>
-  if(!isAdmin) return null
+  async function loadJobs() {
+    try {
+      const q = query(collection(db, 'jobs'), orderBy('createdAt', 'desc'));
+      const snapshot = await getDocs(q);
+      const jobsData = snapshot.docs.map(doc => doc.data() as Job);
+      setJobs(jobsData);
+    } catch (error) {
+      console.error('Error loading jobs:', error);
+    }
+  }
+
+  useEffect(() => {
+    loadJobs();
+  }, []);
+
+  if (isLoading) return <div>Loading...</div>;
+  if (!isAdmin) return null;
 
   return (
     <div className="bg-gray-100 min-h-screen">
-      {/* Navigation */}
       <nav className="bg-white shadow-lg">
         <div className="max-w-full mx-auto px-4">
           <div className="flex justify-between h-16">
@@ -164,14 +140,12 @@ export default function AdminDashboard() {
         </div>
       </nav>
 
-      {/* Main Content */}
       <main className="max-w-full mx-auto py-6 sm:px-6 lg:px-8">
         <div className="px-4 py-6 sm:px-0">
           <div className="bg-white rounded-lg shadow">
             <div className="p-6">
               <h2 className="text-2xl font-bold mb-6">Job Applications</h2>
 
-              {/* Filters */}
               <div className="mb-6 flex flex-wrap gap-4">
                 <select
                   id="positionFilter"
@@ -256,63 +230,7 @@ export default function AdminDashboard() {
 
       {/* Job Management Modal */}
       {isJobModalOpen && (
-        <div id="jobManagementModal" className="fixed inset-0 bg-gray-600 bg-opacity-50">
-          <div className="relative my-10 mx-auto p-5 border w-auto max-w-[90%] bg-white rounded-md shadow-lg">
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-bold">Manage Jobs</h2>
-              <button onClick={closeJobModal} className="text-gray-500 hover:text-gray-700">
-                <i className="fas fa-times"></i>
-              </button>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 overflow-y-auto">
-              {/* Job Creation Form */}
-              <div className="mb-4 md:mb-0">
-                <h3 className="text-lg font-semibold mb-4">Create New Job</h3>
-                <form id="jobForm" className="space-y-4">
-                  <div className="flex gap-4">
-                    <div className="flex-1">
-                      <label className="block text-sm font-medium text-gray-700">Job Title</label>
-                      <input type="text" id="jobTitle" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border" required />
-                    </div>
-                    <div className="w-48">
-                      <label className="block text-sm font-medium text-gray-700">Department</label>
-                      <select id="jobDepartment" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border" required>
-                        <option value="graphic">Graphic Design</option>
-                        <option value="marketing">Marketing</option>
-                        <option value="administrative">Administrative</option>
-                        <option value="engineering">Engineering</option>
-                      </select>
-                    </div>
-                    <div className="w-32">
-                      <label className="block text-sm font-medium text-gray-700">Status</label>
-                      <select id="jobStatus" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border" required>
-                        <option value="open">Open</option>
-                        <option value="closed">Closed</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700">Description</label>
-                    <textarea id="jobDescription" name="jobDescription" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border" style={{ height: '120px' }} required></textarea>
-                  </div>
-
-                  <div className="flex justify-end">
-                    <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Create Job</button>
-                  </div>
-                </form>
-              </div>
-
-              {/* Existing Jobs List */}
-              <div className="overflow-y-auto" style={{ maxHeight: '400px' }}>
-                <h3 className="text-lg font-semibold mb-4">Existing Jobs</h3>
-                <div id="jobsList" className="space-y-4">
-                  {/* Jobs will be dynamically added here */}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <JobManagementModal closeJobModal={closeJobModal} loadJobs={loadJobs} jobs={jobs} />
       )}
 
       {/* Email Modal */}
@@ -349,17 +267,6 @@ export default function AdminDashboard() {
           </div>
         </div>
       </div>
-
-      {/* Firebase Scripts */}
-      <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
-      <script src="/js/firebase-config.js"></script>
-      <script src="/js/dashboard.js"></script>
-      <script src="/js/application-handler.js"></script>
-      <script src="/js/job-management.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     </div>
   );
 }
