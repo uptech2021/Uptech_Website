@@ -1,18 +1,16 @@
 'use client';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { signInWithEmailAndPassword, auth, initializeAuth } from '../../../services/login';
+import { signInWithEmailAndPassword, auth } from '../../../services/login';
 import { useRouter } from 'next/navigation';
+import alreadyLoggedInAuth from '@/hoc/alreadyLoggedInAuth';
 
-export default function AdminLogin() {
+function AdminLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const router = useRouter();
 
-  useEffect(() => {
-    initializeAuth();
-  }, []);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -93,3 +91,5 @@ export default function AdminLogin() {
     </div>
   );
 }
+
+export default alreadyLoggedInAuth(AdminLogin)

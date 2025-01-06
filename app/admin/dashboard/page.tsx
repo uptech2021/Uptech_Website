@@ -1,6 +1,7 @@
 'use client';
 import JobManagementModal from '@/components/JobManagementModal';
 import { db } from '@/firebase/firebase';
+import adminAuth from '@/hoc/adminAuth';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import { collection, doc, getDoc, getDocs, orderBy, query } from 'firebase/firestore';
 import Image from 'next/image';
@@ -16,7 +17,7 @@ interface Job {
   description: string;
 }
 
-export default function AdminDashboard() {
+function AdminDashboard() {
   const [isJobModalOpen, setIsJobModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -37,32 +38,6 @@ export default function AdminDashboard() {
         console.error('Error signing out:', error);
       });
   };
-
-  // Authorization
-  useEffect(() => {
-    const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        try {
-          const userRef = doc(db, 'users', user.uid);
-          const userDoc = await getDoc(userRef);
-          if (userDoc.exists() && userDoc.data()?.isAdmin) {
-            setIsAdmin(true);
-          } else {
-            router.push('/admin/login');
-          }
-        } catch (error) {
-          console.error('Error fetching user document:', error);
-          router.push('/admin/login');
-        }
-      } else {
-        router.push('/admin/login');
-      }
-      setIsLoading(false);
-    });
-
-    return () => unsubscribe();
-  }, [router]);
 
   // Logout
   useEffect(() => {
@@ -96,9 +71,6 @@ export default function AdminDashboard() {
   useEffect(() => {
     loadJobs();
   }, []);
-
-  if (isLoading) return <div>Loading...</div>;
-  if (!isAdmin) return null;
 
   return (
     <div className="bg-gray-100 min-h-screen">
@@ -259,3 +231,4 @@ export default function AdminDashboard() {
     </div>
   );
 }
+export default adminAuth(AdminDashboard)
