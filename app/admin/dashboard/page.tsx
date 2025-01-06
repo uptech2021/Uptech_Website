@@ -165,8 +165,8 @@ function AdminDashboard() {
 
       {/* Application Details Modal */}
       <ApplicationDetailsModal />
-      
-      {/* Job Management Modal */}
+
+      {/* Job Management & Creation Modal */}
       {isJobModalOpen && (
         <JobManagementModal closeJobModal={closeJobModal} loadJobs={loadJobs} jobs={jobs} />
       )}

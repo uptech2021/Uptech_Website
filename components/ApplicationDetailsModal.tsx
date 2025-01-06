@@ -1,6 +1,6 @@
 export default function ApplicationDetailsModal(){
     return (
-        <div id="applicationModal" className="fixed inset-0 bg-gray-600 bg-opacity-50 ">
+        <div id="applicationModal" className="fixed inset-0 bg-gray-600 bg-opacity-50 hidden">
         <div className="relative top-20 mx-auto p-5 border w-11/12 md:w-2/3 lg:w-1/2 shadow-lg rounded-md bg-white">
           <div className="mt-3">
             <h3 className="text-lg leading-6 font-medium text-gray-900 mb-4">Application Details</h3>
