@@ -22,6 +22,10 @@ import 'tinymce/plugins/media';
 import 'tinymce/plugins/table';
 import 'tinymce/plugins/help';
 import 'tinymce/plugins/wordcount';
+import { useRouter } from 'next/navigation';
+import { getAuth } from 'firebase/auth';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '@/firebase/firebase';
 
 declare namespace tinymce {
   export interface Editor {
@@ -36,6 +40,9 @@ interface ExtendedEditor extends tinymce.Editor {
 
 export default function AdminDashboard() {
   const [isJobModalOpen, setIsJobModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true)
+  const [isAdmin, setIsAdmin] = useState(false)
+  const router = useRouter()
 
   const openJobModal = () => {
     setIsJobModalOpen(true);
@@ -44,6 +51,34 @@ export default function AdminDashboard() {
   const closeJobModal = () => {
     setIsJobModalOpen(false);
   };
+
+  // Authorization
+  useEffect(()=>{
+    async function checkAuthorization(){
+      try{
+        const auth = getAuth()
+        const user = auth.currentUser;
+
+        if(!user){
+          router.push('/admin/login')
+          return
+        }
+
+        const userDoc = await getDoc(doc(db, 'users', user.uid))
+
+        if(userDoc.exists() && userDoc.data()?.isAdmin) 
+          setIsAdmin(true)
+        else router.push('/admin/login')
+      }catch(error){
+        console.error('Authorization check failed:', error)
+        router.push('/login')
+      } finally{
+        setIsLoading(false)
+      }
+    }
+
+    checkAuthorization()
+  }, [router]) 
 
   useEffect(() => {
     // Initialize TinyMCE
@@ -80,6 +115,9 @@ export default function AdminDashboard() {
       });
     }
   }, []);
+
+  if(isLoading) return <div>Loading...</div>
+  if(!isAdmin) return null
 
   return (
     <div className="bg-gray-100 min-h-screen">

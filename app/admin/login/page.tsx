@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { signInWithEmailAndPassword, auth, initializeAuth } from '../../services/login';
+import { signInWithEmailAndPassword, auth, initializeAuth } from '../../../services/login';
 import { useRouter } from 'next/navigation';
 
 export default function AdminLogin() {
