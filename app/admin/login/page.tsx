@@ -11,7 +11,6 @@ function AdminLogin() {
   const [errorMessage, setErrorMessage] = useState('');
   const router = useRouter();
 
-
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     setErrorMessage('')

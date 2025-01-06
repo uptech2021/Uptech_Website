@@ -7,6 +7,7 @@ import { collection, doc, getDoc, getDocs, orderBy, query } from 'firebase/fires
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import JobApplicationModal from '@/components/JobApplicationModal';
 
 
 interface Job {
@@ -23,9 +24,12 @@ function AdminDashboard() {
   const [isAdmin, setIsAdmin] = useState(false);
   const router = useRouter();
   const [jobs, setJobs] = useState<Job[]>([]);
+  const [isJobApplicationModalOpen, setIsJobApplicationModalOpen] = useState(false);
 
   const openJobModal = () => setIsJobModalOpen(true);
   const closeJobModal = () => setIsJobModalOpen(false);
+  const openJobApplicationModal = () => setIsJobApplicationModalOpen(true);
+  const closeJobApplicationModal = () => setIsJobApplicationModalOpen(false);
 
   const handleLogout = () => {
     const auth = getAuth();
@@ -228,6 +232,15 @@ function AdminDashboard() {
           </div>
         </div>
       </div>
+
+      {/* Job Application Modal */}
+      {isJobApplicationModalOpen && (
+        <JobApplicationModal
+          isOpen={isJobApplicationModalOpen}
+          onClose={closeJobApplicationModal}
+          positions={['Developer', 'Designer', 'Manager']} // Example positions
+        />
+      )}
     </div>
   );
 }

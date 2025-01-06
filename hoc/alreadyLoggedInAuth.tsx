@@ -33,13 +33,13 @@ export default function alreadyLoggedInAuth(WrappedComponent: React.ComponentTyp
       return () => unsubscribe();
     }, [router]);
 
-    if (isLoading) {
+    if (isLoading) 
       return <div>Loading...</div>;
-    }
+    
 
-    if (isAdmin) {
-      return null; // Redirect is handled
-    }
+    if (isAdmin) 
+      return null; 
+    
 
     return <WrappedComponent {...props} />;
   };

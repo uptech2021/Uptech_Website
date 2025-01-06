@@ -27,6 +27,9 @@
 .bg-blueTheme{
   background-color: #448CFF;
 }
+.text-blueTheme{
+  color: #448CFF;
+}
 
 .blueText-light{
   color: #62a3ff;

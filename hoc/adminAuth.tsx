@@ -22,10 +22,10 @@ export default function adminAuth(WrappedComponent: React.ComponentType) {
             const userDoc = await getDoc(userRef);
             if (userDoc.exists() && userDoc.data()?.isAdmin) {
                 console.log("user is admin")
-              setIsAdmin(true);
+                setIsAdmin(true);
             } else {
                 console.log("user is not admin, redirecting to login...")
-              router.push('/admin/login');
+                router.push('/admin/login');
             }
           } catch (error) {
             console.error('Error fetching user document:', error);
@@ -40,14 +40,15 @@ export default function adminAuth(WrappedComponent: React.ComponentType) {
       return () => unsubscribe();
     }, [router]);
 
-    if (isLoading) {
+    if (isLoading) 
       return <div>Loading...</div>;
-    }
+    
 
-    if (!isAdmin) {
-      return null; // Redirect is handled
-    }
-
+    // If user isn't admin, don't display the web page
+    if (!isAdmin) 
+      return null; 
+    
+    // Returns the web page
     return <WrappedComponent {...props} />;
   };
 
