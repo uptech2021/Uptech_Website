@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import Header from '@/components/Header';
 
 export default function Home() {
   const form = useRef<HTMLFormElement>(null);
@@ -71,49 +72,8 @@ export default function Home() {
 
   return (
     <div className="bg-gray-100">
-      <header>
-        <title>Uptech Incorporated Limited</title>
-        <meta name="description" content="Your page description" />
-        <link rel="icon" href="/favicon.ico" />
-      </header>
       <main className="2xl:w-8/12 xl:flex flex-col mx-auto overflow-x-hidden">
-        <header className="pt-4 px-6 flex flex-row items-center justify-between relative">
-          <div className="flex items-center gap-2 animate-slide-in" id="slide-in">
-            <div className="w-15 h-15">
-              <Image
-                className="w-1/2 h-1/2 object-contain"
-                src="/images/uptechlogo.svg"
-                alt="uptech logo"
-                width={100}
-                height={100}
-              />
-            </div>
-          </div>
-          <nav className="hidden md:block z-20">
-            <ul className="flex flex-row gap-4">
-              <li><a href="#">Home</a></li>
-              <li><a href="./objectives">Objectives</a></li>
-              <li><a href="./vacancy">Vacancy</a></li>
-              <li><a href="./about">About Us</a></li>
-            </ul>
-          </nav>
-          <Image
-            src="/images/menu.svg"
-            alt="menu"
-            className="w-8 h-8 md:hidden cursor-pointer"
-            id="menu-button"
-            width={32}
-            height={32}
-          />
-          <nav className="absolute top-16 right-6 bg-white p-4 rounded shadow-md md:hidden hidden z-50" id="mobile-menu">
-            <ul className="flex flex-col gap-4">
-              <li><a href="#">Home</a></li>
-              <li><a href="./objectives">Objectives</a></li>
-              <li><a href="./career">Vacancy</a></li>
-              <li><a href="./about">About Us</a></li>
-            </ul>
-          </nav>
-        </header>
+        <Header />
         <div className="w-full h-1 bg-black my-4"></div>
 
         {/* WELCOME */}

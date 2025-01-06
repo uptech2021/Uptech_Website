@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, query, where, getDocs, DocumentData } from 'firebase/firestore';
 import { firebaseConfig } from '@/firebase/firebase';
-
+import Header from '@/components/Header'
 interface Job {
   id: string;
   title: string;
@@ -54,50 +54,8 @@ export default function Career() {
 
   return (
     <div className="bg-gray-100">
-      <header>
-        <title>Uptech Incorporated Limited</title>
-        <link rel="icon" href="/favicon.ico" />
-      </header>
       <div className="2xl:w-8/12 xl:flex flex-col mx-auto">
-        <header className="pt-4 px-6 flex flex-row items-center justify-between relative z-20">
-          <div className="flex items-center gap-2 animate-slide-in" id="slide-in">
-            <div className="w-15 h-15">
-              <a href="../index.html">
-                <Image
-                  className="w-1/2 h-1/2"
-                  src="/images/uptechlogo.svg"
-                  alt="uptech logo"
-                  width={100}
-                  height={100}
-                />
-              </a>
-            </div>
-          </div>
-          <nav className="hidden md:block">
-            <ul className="flex flex-row gap-4">
-              <li><a href="./">Home</a></li>
-              <li><a href="../objectives">Objectives</a></li>
-              <li><a href="#">Vacancy</a></li>
-              <li><a href="../about">About Us</a></li>
-            </ul>
-          </nav>
-          <Image
-            src="/images/menu.svg"
-            alt="menu"
-            className="w-8 h-8 md:hidden cursor-pointer"
-            id="menu-button"
-            width={32}
-            height={32}
-          />
-          <nav className="absolute top-16 right-6 bg-white p-4 rounded shadow-md md:hidden hidden z-30" id="mobile-menu">
-            <ul className="flex flex-col gap-4">
-              <li><a href="../index.html">Home</a></li>
-              <li><a href="../objectives">Objectives</a></li>
-              <li><a href="#">Vacancy</a></li>
-              <li><a href="../about">About Us</a></li>
-            </ul>
-          </nav>
-        </header>
+        <Header /> 
         <div className="w-full h-1 bg-black my-4"></div>
 
         <div className="flex flex-col items-center text-center">

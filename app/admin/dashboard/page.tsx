@@ -7,18 +7,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-declare namespace tinymce {
-  export interface Editor {
-    // Add any additional properties or methods you need
-  }
-}
 
-interface ExtendedEditor extends tinymce.Editor {
-  on(event: string, callback: () => void): void;
-  getContainer(): HTMLElement;
-}
-
-// Define a type for the job data
 interface Job {
   id: string;
   title: string;
@@ -75,8 +64,8 @@ export default function AdminDashboard() {
     return () => unsubscribe();
   }, [router]);
 
+  // Logout
   useEffect(() => {
-    // Logout button functionality
     const logoutBtn = document.getElementById("logoutBtn");
     if (logoutBtn) {
       logoutBtn.addEventListener("click", () => {
@@ -84,7 +73,7 @@ export default function AdminDashboard() {
         signOut(auth)
           .then(() => {
             console.log('User signed out.');
-            router.push('/admin/login'); // Redirect to login page after logout
+            router.push('/admin/login'); 
           })
           .catch((error) => {
             console.error('Error signing out:', error);
