@@ -139,7 +139,6 @@ function AdminDashboard() {
           </div>
         </main>
 
-        <EmailUserModal />
 
         {/* Application Details Modal */}
         {selectedApplication && (
