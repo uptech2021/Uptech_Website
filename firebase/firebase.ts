@@ -1,5 +1,5 @@
 import {initializeApp, getApp, getApps} from 'firebase/app';
-import {getAuth} from 'firebase/auth';
+import {getAuth, onAuthStateChanged} from 'firebase/auth';
 import {getFirestore} from 'firebase/firestore';
 
 
@@ -21,5 +21,13 @@ const db = getFirestore(app);
 
 // Initialize Auth
 const auth = getAuth(app);
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    console.log('User is logged in:', user);
+  } else {
+    console.log('No user is logged in');
+  }
+});
 
 export { db, auth, firebaseConfig };

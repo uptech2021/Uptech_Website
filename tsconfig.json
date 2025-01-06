@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "firebases/firebase.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "firebases/firebase.ts", "scripts/assignCustomClaims.js", "scripts/customUserClaims.ts"],
   "exclude": ["node_modules"]
 }

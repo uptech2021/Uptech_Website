@@ -16,8 +16,25 @@ export default function AdminLogin() {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    setErrorMessage('')
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      const userCredentials = await signInWithEmailAndPassword(auth, email, password);
+      const token = await userCredentials.user.getIdToken()
+
+      //Send token to the backend for cookie setting
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({token})
+      })
+
+      if(response.ok){
+        console.log("Redirecting to dashboard")
+        router.push('/admin/dashboard')
+      }else {
+        const { message } = await response.json()
+        setErrorMessage(message || 'Failed to login. Please try again.')
+      }
       router.push('/admin/dashboard');
     } catch (error: any) {
       setErrorMessage('Login failed. Please check your credentials.');

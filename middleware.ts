@@ -3,10 +3,20 @@ import { NextRequest, NextResponse } from "next/server";
 export async function middleware(request: NextRequest) {
     const token = request.cookies.get('token')?.value;
 
-    if (!token) return NextResponse.redirect(new URL('/admin/login', request.url));
+     // Exclude the login page from middleware checks
+    const excludedPaths = ['/admin/login'];
+    if (excludedPaths.includes(request.nextUrl.pathname)) {
+        return NextResponse.next();
+    }
+
+    if (!token) {
+        console.error('User not logged in');
+        return NextResponse.redirect(new URL('/admin/login', request.url));
+    }
 
     try {
-        const response = await fetch(new URL('/api/verifyToken', request.url), {
+        console.log('Making verifyToken api call')
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/verifyToken`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ token }),
@@ -15,16 +25,21 @@ export async function middleware(request: NextRequest) {
         const { isValid, isAdmin } = await response.json();
 
         if (!isValid || !isAdmin) {
-            return NextResponse.redirect(new URL('/admin/login', request.url));
+            console.error('Invalid token or not an admin');
+            if (request.nextUrl.pathname !== '/admin/login') {
+                return NextResponse.redirect(new URL('/admin/login', request.url));
+            }
         }
     } catch (error) {
         console.error('Error verifying token:', error);
-        return NextResponse.redirect(new URL('/admin/login', request.url));
+        if (request.nextUrl.pathname !== '/admin/login') {
+            return NextResponse.redirect(new URL('/admin/login', request.url));
+        }
     }
 
     return NextResponse.next();
 }
 
 export const config = {
-    matcher: '/admin/dashboard',
-}
+    matcher: ['/admin/:path*'], // Applies middleware to all /admin routes
+};

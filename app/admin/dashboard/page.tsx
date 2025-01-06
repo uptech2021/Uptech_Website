@@ -23,9 +23,9 @@ import 'tinymce/plugins/table';
 import 'tinymce/plugins/help';
 import 'tinymce/plugins/wordcount';
 import { useRouter } from 'next/navigation';
-import { getAuth } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '@/firebase/firebase';
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 
 declare namespace tinymce {
   export interface Editor {
@@ -52,33 +52,41 @@ export default function AdminDashboard() {
     setIsJobModalOpen(false);
   };
 
+  const handleLogout = () => {
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        console.log('User signed out.');
+        router.push('/admin/login'); // Redirect to login page after logout
+      })
+      .catch((error) => {
+        console.error('Error signing out:', error);
+      });
+  };
+
   // Authorization
-  useEffect(()=>{
-    async function checkAuthorization(){
-      try{
-        const auth = getAuth()
-        const user = auth.currentUser;
-
-        if(!user){
-          router.push('/admin/login')
-          return
-        }
-
-        const userDoc = await getDoc(doc(db, 'users', user.uid))
-
-        if(userDoc.exists() && userDoc.data()?.isAdmin) 
-          setIsAdmin(true)
-        else router.push('/admin/login')
-      }catch(error){
-        console.error('Authorization check failed:', error)
-        router.push('/login')
-      } finally{
-        setIsLoading(false)
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        getDoc(doc(db, 'users', user.uid)).then((userDoc) => {
+          if (userDoc.exists() && userDoc.data()?.isAdmin) {
+            setIsAdmin(true);
+          } else {
+            router.push('/admin/login');
+          }
+        }).catch((error) => {
+          console.error('Error fetching user document:', error);
+          router.push('/admin/login');
+        });
+      } else {
+        router.push('/admin/login');
       }
-    }
+      setIsLoading(false);
+    });
 
-    checkAuthorization()
-  }, [router]) 
+    return () => unsubscribe();
+  }, [router]);
 
   useEffect(() => {
     // Initialize TinyMCE
@@ -110,8 +118,15 @@ export default function AdminDashboard() {
     const logoutBtn = document.getElementById("logoutBtn");
     if (logoutBtn) {
       logoutBtn.addEventListener("click", () => {
-        // Implement your logout logic here
-        console.log('Logging out...');
+        const auth = getAuth();
+        signOut(auth)
+          .then(() => {
+            console.log('User signed out.');
+            router.push('/admin/login'); // Redirect to login page after logout
+          })
+          .catch((error) => {
+            console.error('Error signing out:', error);
+          });
       });
     }
   }, []);
@@ -139,6 +154,7 @@ export default function AdminDashboard() {
             <div className="flex items-center">
               <button
                 id="logoutBtn"
+                onClick={handleLogout}
                 className="ml-4 px-4 py-2 text-sm text-red-600 hover:text-red-900"
               >
                 Logout
