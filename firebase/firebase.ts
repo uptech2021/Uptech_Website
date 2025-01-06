@@ -22,12 +22,12 @@ const db = getFirestore(app);
 // Initialize Auth
 const auth = getAuth(app);
 
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    console.log('User is logged in:', user);
-  } else {
-    console.log('No user is logged in');
-  }
-});
+// onAuthStateChanged(auth, (user) => {
+//   if (user) {
+//     console.log('User is logged in:', user);
+//   } else {
+//     console.log('No user is logged in');
+//   }
+// });
 
 export { db, auth, firebaseConfig };
