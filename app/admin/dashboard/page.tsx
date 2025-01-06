@@ -16,6 +16,8 @@ function AdminDashboard() {
   const [applications, setApplications] = useState<Application[]>([]);
   const [selectedApplication, setSelectedApplication] = useState<Application | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [statusFilter, setStatusFilter] = useState<string>('All');
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
   const router = useRouter();
 
@@ -74,6 +76,12 @@ function AdminDashboard() {
     }
   };
 
+  const filteredApplications = applications.filter(application => {
+    const matchesStatus = statusFilter === 'All' || application.status === statusFilter;
+    const matchesEmail = application.email.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesStatus && matchesEmail;
+  });
+
   useEffect(() => {
     const fetchApplications = async () => {
       await loadApplications();
@@ -117,6 +125,25 @@ function AdminDashboard() {
             <div className="bg-white rounded-lg shadow">
               <div className="p-6">
                 <h2 className="text-2xl font-bold mb-6">Job Applications</h2>
+                <div className="mb-4">
+                  <input
+                    type="text"
+                    placeholder="Search by email"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="border rounded p-2 mb-4"
+                  />
+                  <select
+                    value={statusFilter}
+                    onChange={(e) => setStatusFilter(e.target.value)}
+                    className="border rounded p-2 mb-4 bg-white"
+                  >
+                    <option value="All">All</option>
+                    <option value="accepted">Accepted</option>
+                    <option value="rejected">Rejected</option>
+                    <option value="pending">Pending</option>
+                  </select>
+                </div>
                 {applications.length === 0 ? (
                   <div className="flex flex-col gap-4">
                     <SkeletonLoader />
@@ -126,13 +153,12 @@ function AdminDashboard() {
                     <SkeletonLoader />
                   </div>
                 ) : (
-                  <ApplicationTable applications={applications} handleApplicationUpdate={handleApplicationUpdate} onApplicationClick={handleApplicationClick} />
+                  <ApplicationTable applications={filteredApplications} handleApplicationUpdate={handleApplicationUpdate} onApplicationClick={handleApplicationClick} />
                 )}
               </div>
             </div>
           </div>
         </main>
-
 
         {/* Application Details Modal */}
         {selectedApplication && (
