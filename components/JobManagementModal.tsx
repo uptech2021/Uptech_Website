@@ -6,7 +6,6 @@ import { db, auth } from '@/firebase/firebase';
 interface JobForm {
   title: string;
   department: string;
-  status: string;
   description: string;
   jobId: string | null;
 }
@@ -31,7 +30,6 @@ export default function JobManagementModal({ closeJobModal, loadJobs, jobs }: Jo
   const [jobForm, setJobForm] = useState<JobForm>({
     title: '',
     department: 'graphic',
-    status: 'open',
     description: '',
     jobId: null,
   });
@@ -53,7 +51,7 @@ export default function JobManagementModal({ closeJobModal, loadJobs, jobs }: Jo
       title: jobForm.title,
       department: jobForm.department,
       description: jobForm.description,
-      status: jobForm.status,
+      status: 'open',
       createdAt: new Date().toISOString(),
       createdBy: user.uid,
     };
@@ -70,7 +68,7 @@ export default function JobManagementModal({ closeJobModal, loadJobs, jobs }: Jo
         await addDoc(collection(db, 'jobs'), jobData);
       }
       alert('Job saved successfully!');
-      setJobForm({ title: '', department: 'graphic', status: 'open', description: '', jobId: null });
+      setJobForm({ title: '', department: 'graphic', description: '', jobId: null });
       loadJobs();
     } catch (error) {
       console.error('Error saving job:', error);
@@ -124,10 +122,6 @@ export default function JobManagementModal({ closeJobModal, loadJobs, jobs }: Jo
                 <option value="marketing">Marketing</option>
                 <option value="administrative">Administrative</option>
                 <option value="engineering">Engineering</option>
-              </select>
-              <select name="status" value={jobForm.status} onChange={handleInputChange} required className="w-full p-2 border rounded">
-                <option value="open">Open</option>
-                <option value="closed">Closed</option>
               </select>
             </div>
             <textarea
