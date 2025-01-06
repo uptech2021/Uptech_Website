@@ -32,14 +32,6 @@ const ApplicationTable: React.FC<ApplicationTableProps> = ({
     onApplicationClick(application);
   };
 
-  const handleAccept = (applicationId: string, reason: string) => {
-    handleApplicationUpdate(applicationId, 'accepted', reason);
-  };
-
-  const handleReject = (applicationId: string, reason: string) => {
-    handleApplicationUpdate(applicationId, 'rejected', reason);
-  };
-
   return (
     <div className="overflow-x-auto bg-white rounded-lg shadow w-full">
       <div className="min-w-screen bg-gray-100">
@@ -164,13 +156,13 @@ const ApplicationTable: React.FC<ApplicationTableProps> = ({
                   {/* <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center space-x-2">
                       <button
-                        onClick={() => handleAccept(application.id, '')}
+                        onClick={() => handleApplicationUpdate(application.id, 'accepted', '')}
                         className="bg-blue-500 text-white px-3 py-1 rounded mr-2"
                       >
                         Accept
                       </button>
                       <button
-                        onClick={() => handleReject(application.id, '')}
+                        onClick={() => handleApplicationUpdate(application.id, 'rejected', '')}
                         className="bg-red-500 text-white px-3 py-1 rounded"
                       >
                         Reject

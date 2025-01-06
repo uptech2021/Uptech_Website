@@ -1,23 +1,21 @@
 'use client';
 import ApplicationDetailsModal from '@/components/ApplicationDetailsModal';
 import ApplicationTable from '@/components/ApplicationTable';
-import EmailUserModal from '@/components/EmailUserModal';
+import SkeletonLoader from '@/components/SkeletonLoader';
 import { auth, db } from '@/firebase/firebase';
 import adminAuth from '@/hoc/adminAuth';
 import { Application, Job } from '@/types/dashboard';
 import { signOut } from 'firebase/auth';
-import { collection, getDocs, orderBy, query, doc, updateDoc } from 'firebase/firestore';
+import { collection, doc, getDocs, orderBy, query, updateDoc } from 'firebase/firestore';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 
 function AdminDashboard() {
-  const [isJobModalOpen, setIsJobModalOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const [jobs, setJobs] = useState<Job[]>([]);
   const [applications, setApplications] = useState<Application[]>([]);
   const [selectedApplication, setSelectedApplication] = useState<Application | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const router = useRouter();
 
@@ -31,17 +29,6 @@ function AdminDashboard() {
       });
   };
 
-  const loadJobs = async () => {
-    try {
-      const q = query(collection(db, 'jobs'), orderBy('createdAt', 'desc'));
-      const snapshot = await getDocs(q);
-      const jobsData = snapshot.docs.map((doc) => doc.data() as Job);
-      setJobs(jobsData);
-    } catch (error) {
-      console.error('Error loading jobs:', error);
-    }
-  };
-
   const loadApplications = async () => {
     try {
       const snapshot = await getDocs(collection(db, 'applications'));
@@ -50,8 +37,10 @@ function AdminDashboard() {
         ...doc.data(),
       } as Application));
       setApplications(applicationsData);
+      setIsLoading(false);
     } catch (error) {
       console.error('Error loading applications:', error);
+      setIsLoading(false);
     }
   };
 
@@ -86,11 +75,10 @@ function AdminDashboard() {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      await Promise.all([loadJobs(), loadApplications()]);
-      setIsLoading(false);
+    const fetchApplications = async () => {
+      await loadApplications();
     };
-    fetchData();
+    fetchApplications();
   }, []);
 
   return (
@@ -129,11 +117,17 @@ function AdminDashboard() {
             <div className="bg-white rounded-lg shadow">
               <div className="p-6">
                 <h2 className="text-2xl font-bold mb-6">Job Applications</h2>
-                <ApplicationTable
-                  applications={applications}
-                  onApplicationClick={handleApplicationClick}
-                  handleApplicationUpdate={handleApplicationUpdate}
-                />
+                {applications.length === 0 ? (
+                  <div className="flex flex-col gap-4">
+                    <SkeletonLoader />
+                    <SkeletonLoader />
+                    <SkeletonLoader />
+                    <SkeletonLoader />
+                    <SkeletonLoader />
+                  </div>
+                ) : (
+                  <ApplicationTable applications={applications} handleApplicationUpdate={handleApplicationUpdate} onApplicationClick={handleApplicationClick} />
+                )}
               </div>
             </div>
           </div>
