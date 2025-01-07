@@ -1,4 +1,5 @@
 'use client';
+import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import Image from 'next/image';
 import { useEffect } from 'react';
@@ -234,6 +235,7 @@ export default function Objectives() {
           </p>
         </footer>
       </div>
+      <Footer />
     </div>
   );
 }

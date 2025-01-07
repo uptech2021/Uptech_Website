@@ -31,7 +31,7 @@ interface JobManagementModalProps {
 export default function JobManagementModal({ closeJobModal, loadJobs, jobs }: JobManagementModalProps) {
   const [jobForm, setJobForm] = useState<JobForm>({
     title: '',
-    department: 'graphic',
+    department: '',
     description: '',
     jobId: null,
   });
@@ -69,12 +69,12 @@ export default function JobManagementModal({ closeJobModal, loadJobs, jobs }: Jo
           updatedAt: new Date().toISOString(),
           updatedBy: user.uid,
         });
-        setJobForm({ title: '', department: 'graphic', description: '', jobId: null });
+        setJobForm({ title: '', department: '', description: '', jobId: null });
       } else {
         await addDoc(collection(db, 'jobs'), jobData);
       }
       alert('Job saved successfully!');
-      setJobForm({ title: '', department: 'graphic', description: '', jobId: null });
+      setJobForm({ title: '', department: '', description: '', jobId: null });
       loadJobs();
     } catch (error) {
       console.error('Error saving job:', error);
@@ -123,7 +123,7 @@ export default function JobManagementModal({ closeJobModal, loadJobs, jobs }: Jo
                 className="w-full p-2 border rounded"
               />
               <select name="department" value={jobForm.department} onChange={handleInputChange} required className="w-full p-2 border rounded">
-                <option value="graphic">Graphic Design</option>
+                <option value="graphic design">Graphic Design</option>
                 <option value="marketing">Marketing</option>
                 <option value="administrative">Administrative</option>
                 <option value="engineering">Engineering</option>
@@ -160,23 +160,18 @@ export default function JobManagementModal({ closeJobModal, loadJobs, jobs }: Jo
           )}
         </div>
         <div className="lg:ml-10">
-          <div className="overflow-y-auto mt-4" style={{ maxHeight: '400px' }}>
-            <h3 className="text-lg font-semibold mb-4">Existing Jobs</h3>
-            
-            <div id="jobsList" className="space-y-4">
+          <div className="job-list">
+            <h3>Existing Jobs</h3>
+            <ul>
               {jobs.map((job) => (
-                <div key={job.id} className="bg-gray-50 rounded-md shadow overflow-hidden">
-                  <div className="p-4 flex justify-between items-center">
-                    <h4 className="text-lg font-semibold">{job.title}</h4>
-                    <div className="flex gap-2 ml-10">
-                      <button onClick={() => setJobForm({ ...job, jobId: job.id })} className="text-blue-500 hover:text-blue-700">Edit</button>
-                      <button onClick={() => deleteJob(job.id)} className="text-red-500 hover:text-red-700">Delete</button>
-                    </div>
-                  </div>
-                </div>
+                <li key={job.id}>
+                  <h4>{job.title}</h4>
+                  <p>Department: {job.department}</p>
+                  <p>Status: {job.status}</p>
+                  <p>{job.description}</p>
+                </li>
               ))}
-            </div>
-            
+            </ul>
           </div>
         </div>
       </div>

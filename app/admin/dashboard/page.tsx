@@ -1,47 +1,53 @@
-'use client';
-import ApplicationDetailsModal from '@/components/ApplicationDetailsModal';
-import ApplicationTable from '@/components/ApplicationTable';
-import SkeletonLoader from '@/components/SkeletonLoader';
-import { auth, db } from '@/firebase/firebase';
-import adminAuth from '@/hoc/adminAuth';
-import { Application } from '@/types/dashboard';
-import { signOut } from 'firebase/auth';
-import { collection, doc, getDocs, updateDoc } from 'firebase/firestore';
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+"use client";
+import ApplicationDetailsModal from "@/components/ApplicationDetailsModal";
+import ApplicationTable from "@/components/ApplicationTable";
+import SkeletonLoader from "@/components/SkeletonLoader";
+import JobManagementModal from "@/components/JobManagementModal"; // Import Job Management Modal
+import { auth, db } from "@/firebase/firebase";
+import adminAuth from "@/hoc/adminAuth";
+import { Application } from "@/types/dashboard";
+import { signOut } from "firebase/auth";
+import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 function AdminDashboard() {
   const [applications, setApplications] = useState<Application[]>([]);
-  const [selectedApplication, setSelectedApplication] = useState<Application | null>(null);
+  const [selectedApplication, setSelectedApplication] =
+    useState<Application | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [statusFilter, setStatusFilter] = useState<string>('All');
-  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [statusFilter, setStatusFilter] = useState<string>("All");
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [isJobModalOpen, setIsJobModalOpen] = useState(false); // State for Job Management Modal
 
   const router = useRouter();
 
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
-        router.push('/admin/login');
+        router.push("/admin/login");
       })
       .catch((error) => {
-        console.error('Error signing out:', error);
+        console.error("Error signing out:", error);
       });
   };
 
   const loadApplications = async () => {
     try {
-      const snapshot = await getDocs(collection(db, 'applications'));
-      const applicationsData: Application[] = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      } as Application));
+      const snapshot = await getDocs(collection(db, "applications"));
+      const applicationsData: Application[] = snapshot.docs.map(
+        (doc) =>
+          ({
+            id: doc.id,
+            ...doc.data(),
+          } as Application)
+      );
       setApplications(applicationsData);
       setIsLoading(false);
     } catch (error) {
-      console.error('Error loading applications:', error);
+      console.error("Error loading applications:", error);
       setIsLoading(false);
     }
   };
@@ -50,37 +56,50 @@ function AdminDashboard() {
     setSelectedApplication(application);
   };
 
-  const handleApplicationUpdate = async (applicationId: string, status: string, reason: string) => {
+  const handleApplicationUpdate = async (
+    applicationId: string,
+    status: string,
+    reason: string
+  ) => {
     try {
-        // Update application status logic
-        await updateApplicationStatus(applicationId, status, reason);
-        toast.success(`Application ${status} successfully!`);
+      await updateApplicationStatus(applicationId, status, reason);
+      toast.success(`Application ${status} successfully!`);
     } catch (error) {
-        console.error('Error updating application:', error);
-        toast.error('Failed to update application status.');
+      console.error("Error updating application:", error);
+      toast.error("Failed to update application status.");
     }
   };
 
-  const updateApplicationStatus = async (applicationId: string, status: string, reason: string) => {
+  const updateApplicationStatus = async (
+    applicationId: string,
+    status: string,
+    reason: string
+  ) => {
     try {
-        const applicationRef = doc(db, 'applications', applicationId);
-        await updateDoc(applicationRef, { status, reason });
-        setApplications((prevApplications) =>
-            prevApplications.map((app) =>
-                app.id === applicationId ? { ...app, status, reason } : app
-            )
-        );
+      const applicationRef = doc(db, "applications", applicationId);
+      await updateDoc(applicationRef, { status, reason });
+      setApplications((prevApplications) =>
+        prevApplications.map((app) =>
+          app.id === applicationId ? { ...app, status, reason } : app
+        )
+      );
     } catch (error) {
-        console.error('Error updating application status:', error);
-        toast.error('Failed to update application status.');
+      console.error("Error updating application status:", error);
+      toast.error("Failed to update application status.");
     }
   };
 
-  const filteredApplications = applications.filter(application => {
-    const matchesStatus = statusFilter === 'All' || application.status === statusFilter;
-    const matchesEmail = application.email.toLowerCase().includes(searchQuery.toLowerCase());
+  const filteredApplications = applications.filter((application) => {
+    const matchesStatus =
+      statusFilter === "All" || application.status === statusFilter;
+    const matchesEmail = application.email
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
     return matchesStatus && matchesEmail;
   });
+
+  const openJobModal = () => setIsJobModalOpen(true); // Open Job Modal
+  const closeJobModal = () => setIsJobModalOpen(false); // Close Job Modal
 
   useEffect(() => {
     const fetchApplications = async () => {
@@ -107,13 +126,21 @@ function AdminDashboard() {
                   />
                 </div>
               </div>
-              <div className="flex items-center">
+              <div className="flex flex-row gap-4 items-center">
                 <button
                   id="logoutBtn"
                   onClick={handleLogout}
                   className="ml-4 px-4 py-2 text-sm text-red-600 hover:text-red-900"
                 >
                   Logout
+                </button>
+
+                <button
+                  id="managementBtn"
+                  onClick={openJobModal}
+                  className="bg-blueTheme text-white px-4 py-1 rounded"
+                >
+                  Management
                 </button>
               </div>
             </div>
@@ -153,7 +180,11 @@ function AdminDashboard() {
                     <SkeletonLoader />
                   </div>
                 ) : (
-                  <ApplicationTable applications={filteredApplications} handleApplicationUpdate={handleApplicationUpdate} onApplicationClick={handleApplicationClick} />
+                  <ApplicationTable
+                    applications={filteredApplications}
+                    handleApplicationUpdate={handleApplicationUpdate}
+                    onApplicationClick={handleApplicationClick}
+                  />
                 )}
               </div>
             </div>
@@ -166,6 +197,15 @@ function AdminDashboard() {
             application={selectedApplication}
             onClose={() => setSelectedApplication(null)}
             onUpdateStatus={handleApplicationUpdate}
+          />
+        )}
+
+        {/* Job Management Modal */}
+        {isJobModalOpen && (
+          <JobManagementModal
+            closeJobModal={closeJobModal}
+            loadJobs={() => console.log("Load jobs logic")}
+            jobs={[]} // Pass the correct jobs array when implemented
           />
         )}
       </div>

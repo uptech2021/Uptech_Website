@@ -5,8 +5,8 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/firebase/firebase";
 import JobApplicationModal from "@/components/JobApplicationModal";
 import Header from "@/components/Header";
-import DOMPurify from 'dompurify';
-
+import DOMPurify from "dompurify";
+import Footer from "@/components/Footer";
 type Vacancies = {
   department: string;
   description: string;
@@ -17,7 +17,6 @@ type Vacancies = {
   createdBy: string;
   updatedBy: string;
 };
-
 
 const VacanciesPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -108,52 +107,18 @@ const VacanciesPage = () => {
             further, you can start your journey with us!
           </p>
         </header>
-        <main className="space-y-6 px-4">
+
+        <main className="space-y-6 px-4 mb-10 xl:w-9/12 mx-auto">
           {isLoading ? (
             <p>Loading...</p>
           ) : (
             vacancies.map((vacancy, index) => (
               <div
                 key={index}
-                className={`text-white bg-blueTheme rounded-md p-4 flex flex-row`}
+                className={`text-white bg-blueTheme rounded-md p-4 flex flex-col md:flex-row `}
               >
-                <div className="w-2/5">
-                  {vacancy.department === "Graphic Design Vacancies" && (
-                    <Image
-                      src="/images/S4.svg"
-                      alt={vacancy.department}
-                      width={150}
-                      height={100}
-                    />
-                  )}
-                  {vacancy.department === "Marketing Vacancies" && (
-                    <Image
-                      src="/images/S2.svg"
-                      alt={vacancy.department}
-                      width={150}
-                      height={100}
-                    />
-                  )}
-                  {vacancy.department ===
-                    "Administrative and Public Relations Vacancies" && (
-                    <Image
-                      src="/images/S1.svg"
-                      alt={vacancy.department}
-                      width={150}
-                      height={100}
-                    />
-                  )}
-                  {vacancy.department === "Engineering Vacancies" && (
-                    <Image
-                      src="/images/S3.svg"
-                      alt={vacancy.department}
-                      width={150}
-                      height={100}
-                    />
-                  )}
-                </div>
-                <div className="w-3/4 flex flex-col">
-                  <p className="font-bold text-lg">{vacancy.department}</p>
+                <div className="w-full flex flex-col">
+                  <h1 className="font-bold text-3xl">{vacancy.title}</h1>
                   <div
                     className="mt-2 space-y-1"
                     dangerouslySetInnerHTML={{
@@ -178,6 +143,8 @@ const VacanciesPage = () => {
           department={selectedDepartment}
         />
       </div>
+
+      <Footer />
     </div>
   );
 };
