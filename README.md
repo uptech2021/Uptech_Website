@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+![Uptech Logo](assets/uptech-logo.svg) 
+# Uptech Incorporated Limited 
 
-## Getting Started
+Uptech Incorporated Limited is a dynamic web agency dedicated to delivering innovative web solutions. We are also the creators of Ourlime, a platform designed to foster sustainable relationships and provide a secure environment for managing private communities.
 
-First, run the development server:
+## Our Services
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Web Development**: Custom web solutions tailored to your business needs.
+- **Digital Strategy**: Comprehensive strategies to enhance your online presence.
+- **UI/UX Design**: User-centered design to create engaging digital experiences.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Ourlime - Private Communities Network
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Ourlime is our flagship project, aimed at providing a safe and productive environment for community building. It emphasizes user privacy and genuine content control.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Our Story
 
-## Learn More
+Founded by Rishi Kowlessar, Uptech Incorporated Limited has been at the forefront of web innovation, with a commitment to quality and customer satisfaction. Our journey with Ourlime reflects our dedication to creating meaningful digital experiences.
 
-To learn more about Next.js, take a look at the following resources:
+## The Way Forward
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+We are continuously expanding our services and enhancing Ourlime to meet the evolving needs of our clients and users. Our focus remains on delivering excellence and fostering innovation.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Setup Instructions
 
-## Deploy on Vercel
+To run the project, use the pnpm package manager. Follow these steps:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Install the dependencies:
+   ```bash
+   pnpm install
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. Start the development server:
+   ```bash
+   pnpm dev
+   ```
+
+Contact the lead senior developer, Aaron, for the `.env` file.
+
+---
+
+© 2024 Uptech Incorporated Limited. All rights reserved.
+
+Partner with us to bring your digital vision to life.
