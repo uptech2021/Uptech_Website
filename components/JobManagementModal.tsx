@@ -123,10 +123,10 @@ export default function JobManagementModal({ closeJobModal, loadJobs, jobs }: Jo
                 className="w-full p-2 border rounded"
               />
               <select name="department" value={jobForm.department} onChange={handleInputChange} required className="w-full p-2 border rounded">
-                <option value="graphic design">Graphic Design</option>
-                <option value="marketing">Marketing</option>
-                <option value="administrative">Administrative</option>
-                <option value="engineering">Engineering</option>
+                <option value="Graphic design">Graphic Design</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Administrative">Administrative</option>
+                <option value="Engineering">Engineering</option>
               </select>
             </div>
             <Editor

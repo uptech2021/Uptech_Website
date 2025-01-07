@@ -136,12 +136,12 @@ const VacanciesPage = () => {
             ))
           )}
         </main>
-
-        <JobApplicationModal
+        {selectedDepartment && <JobApplicationModal
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
           department={selectedDepartment}
-        />
+        />}
+        
       </div>
 
       <Footer />

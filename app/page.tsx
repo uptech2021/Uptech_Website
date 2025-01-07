@@ -366,13 +366,13 @@ export default function Home() {
               </h2>
               <p className="text-md md:text-lg font-bold mb-2">Email Us:</p>
               <p className="text-md md:text-lg text-gray-700 mb-4">
-                rishikowlessar@uptechincorp.com
+                uptechincorp@gmail.com
               </p>
               <p className="text-md md:text-lg font-bold mb-2">
                 Call or Whatsapp:
               </p>
               <p className="text-md md:text-lg text-gray-700 mb-4">
-                1-868-710-4296
+                1-868-710-4296 or 1-868-492-5166
               </p>
 
               {/* Social Media Links */}
