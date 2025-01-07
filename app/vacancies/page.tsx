@@ -7,6 +7,7 @@ import JobApplicationModal from "@/components/JobApplicationModal";
 import Header from "@/components/Header";
 import DOMPurify from "dompurify";
 import Footer from "@/components/Footer";
+
 type Vacancies = {
   department: string;
   description: string;
@@ -23,10 +24,15 @@ const VacanciesPage = () => {
   const [selectedDepartment, setSelectedDepartment] = useState("");
   const [filter, setFilter] = useState("all");
   const [isLoading, setIsLoading] = useState(true);
+  const [expandedVacancy, setExpandedVacancy] = useState<number | null>(null);
 
   const handleApply = (department: string) => {
     setSelectedDepartment(department);
     setIsModalOpen(true);
+  };
+
+  const toggleVacancyDetails = (index: number) => {
+    setExpandedVacancy(expandedVacancy === index ? null : index);
   };
 
   const [vacancies, setVacancies] = useState<Vacancies[]>([]);
@@ -36,7 +42,7 @@ const VacanciesPage = () => {
       const vacanciesData = (await getDocs(collection(db, "jobs"))).docs.map(
         (doc) => doc.data() as Vacancies
       );
-      console.log(vacanciesData);
+      //console.log(vacanciesData);
 
       setVacancies(vacanciesData);
     } catch (error) {
@@ -48,6 +54,17 @@ const VacanciesPage = () => {
 
   useEffect(() => {
     loadVacancies();
+  });
+
+  useEffect(() => {
+    // Toggle mobile menu
+    const menuButton = document.getElementById("menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+    if (menuButton && mobileMenu) {
+      menuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+    }
   });
 
   return (
@@ -119,18 +136,29 @@ const VacanciesPage = () => {
               >
                 <div className="w-full flex flex-col">
                   <h1 className="font-bold text-3xl">{vacancy.title}</h1>
-                  <div
-                    className="mt-2 space-y-1"
-                    dangerouslySetInnerHTML={{
-                      __html: DOMPurify.sanitize(vacancy.description),
-                    }}
-                  />
                   <button
-                    className="mt-4 bg-white text-blueTheme font-bold rounded-md px-4 py-2"
-                    onClick={() => handleApply(vacancy.department)}
+                    className="mt-2 bg-white text-blueTheme font-bold rounded-md px-2 py-1"
+                    onClick={() => toggleVacancyDetails(index)}
                   >
-                    Apply
+                    {expandedVacancy === index ? "Hide Details" : "View Details"}
                   </button>
+                  {expandedVacancy === index && (
+                    <div>
+                      <div
+                        className="mt-2 space-y-1"
+                        dangerouslySetInnerHTML={{
+                          __html: DOMPurify.sanitize(vacancy.description),
+                        }}
+                      />
+                      <button
+                        className="mt-4 bg-white text-blueTheme font-bold rounded-md px-4 py-2"
+                        onClick={() => handleApply(vacancy.department)}
+                      >
+                        Apply
+                      </button>
+                    </div>
+                  )}
+
                 </div>
               </div>
             ))

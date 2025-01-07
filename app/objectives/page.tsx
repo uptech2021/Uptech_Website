@@ -210,7 +210,7 @@ export default function Objectives() {
         </section>
 
         {/* Footer */}
-        <footer className="bg-black px-5 py-20 flex flex-col gap-3">
+        {/* <footer className="bg-black px-5 py-20 flex flex-col gap-3">
           <div className="md:w-2/6 lg:w-1/4">
             <Image className="w-full" src="/images/footerLogo.svg" alt="footer logo" width={100} height={100} />
           </div>
@@ -233,7 +233,7 @@ export default function Objectives() {
           <p className="text-white">
             Cooperation, Communication, Teamwork and Commitment
           </p>
-        </footer>
+        </footer> */}
       </div>
       <Footer />
     </div>

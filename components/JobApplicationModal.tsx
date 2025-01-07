@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 import { GalleryVertical, Image, X } from "lucide-react";
@@ -25,13 +25,14 @@ export default function JobApplicationModal({
   const [resumeFile, setResumeFile] = useState<File | null>(null);
   const [portfolioFile, setPortfolioFile] = useState<File | null>(null);
 
+  const resumeInputRef = useRef<HTMLInputElement | null>(null);
+  const portfolioInputRef = useRef<HTMLInputElement | null>(null);
 
   const handleResumeDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.currentTarget.classList.remove("dragging"); // Remove dragging class
     const file = e.dataTransfer.files[0];
     setResumeFile(file);
-    uploadFile(file, "resume");
   };
 
   const handlePortfolioDrop = (e: React.DragEvent<HTMLDivElement>) => {
@@ -39,7 +40,6 @@ export default function JobApplicationModal({
     e.currentTarget.classList.remove("dragging"); // Remove dragging class
     const file = e.dataTransfer.files[0];
     setPortfolioFile(file);
-    uploadFile(file, "portfolio");
   };
 
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
@@ -80,6 +80,12 @@ export default function JobApplicationModal({
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (resumeFile) {
+      await uploadFile(resumeFile, "resume");
+    }
+    if (portfolioFile) {
+      await uploadFile(portfolioFile, "portfolio");
+    }
 
     setStatus("pending"); // Set the status to pending while processing
 
@@ -112,11 +118,30 @@ export default function JobApplicationModal({
       setStatus("idle");
       setErrorMessage("");
       onClose();
+      resetFields();
     } catch (error) {
       console.error("Error submitting application:", error);
       setStatus("error");
       setErrorMessage("An error occurred. Please try again.");
     }
+  };
+
+  const resetFields = () => {
+    setPortfolioURL("");
+    setSelectedPosition("");
+    setFirstName("");
+    setLastName("");
+    setContactNumber("");
+    setEmail("");
+    setResumeFile(null);
+    setPortfolioFile(null);
+    setErrorMessage("");
+    setStatus("idle");
+  };
+
+  const handleClose = () => {
+    resetFields();
+    onClose();
   };
 
   if (!isOpen) return null;
@@ -199,7 +224,19 @@ export default function JobApplicationModal({
                   className="upload-area"
                   onDrop={handleResumeDrop}
                   onDragOver={handleDragOver}
+                  onClick={() => resumeInputRef.current?.click()}
                 >
+                  <input
+                    type="file"
+                    ref={resumeInputRef}
+                    style={{ display: 'none' }}
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) {
+                        setResumeFile(file);
+                      }
+                    }}
+                  />
                   {resumeFile ? (
                     <div className="file-info">
                       <span>{resumeFile.name}</span>
@@ -221,7 +258,19 @@ export default function JobApplicationModal({
                   className="upload-area"
                   onDrop={handlePortfolioDrop}
                   onDragOver={handleDragOver}
+                  onClick={() => portfolioInputRef.current?.click()}
                 >
+                  <input
+                    type="file"
+                    ref={portfolioInputRef}
+                    style={{ display: 'none' }}
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) {
+                        setPortfolioFile(file);
+                      }
+                    }}
+                  />
                   {portfolioFile ? (
                     <div className="file-info">
                       <span>{portfolioFile.name}</span>
@@ -274,7 +323,7 @@ export default function JobApplicationModal({
           <div className="flex justify-between">
             <button
               type="button"
-              onClick={onClose}
+              onClick={handleClose}
               className="bg-gray-300 text-gray-800 font-bold rounded-md p-2 w-1/2 mr-2"
             >
               Close

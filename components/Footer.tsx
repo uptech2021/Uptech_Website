@@ -13,7 +13,7 @@ export default function Footer() {
           />
         </div>
 
-        <div className="flex gap-5">
+        {/* <div className="flex gap-5">
           <a
             href="https://wa.me/+18687104296"
             target="_blank"
@@ -66,7 +66,7 @@ export default function Footer() {
               height={32}
             />
           </a>
-        </div>
+        </div> */}
 
         <p className="text-white">
           Cooperation, Communication, Teamwork and Commitment
