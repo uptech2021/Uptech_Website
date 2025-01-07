@@ -1,41 +1,60 @@
-import React, { useState } from 'react';
-import { collection, addDoc, query, where, getDocs } from 'firebase/firestore';
-import { db } from '../firebase/firebase';
+import React, { useState } from "react";
+import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
+import { db } from "../firebase/firebase";
+import { GalleryVertical, Image, X } from "lucide-react";
 
-export default function JobApplicationModal(
-  { isOpen, onClose, positions }: 
-  { 
-    isOpen: boolean; 
-    onClose: () => void; 
-    positions: Array<string> 
-  }) {
-  const [portfolioURL, setPortfolioURL] = useState('');
-  const [selectedPosition, setSelectedPosition] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [contactNumber, setContactNumber] = useState('');
-  const [email, setEmail] = useState('');
-  const [status, setStatus] = useState<'idle' | 'pending' | 'error'>('idle');
-  const [errorMessage, setErrorMessage] = useState('');
+export default function JobApplicationModal({
+  isOpen,
+  onClose,
+  department,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  department: string;
+}) {
+  const [portfolioURL, setPortfolioURL] = useState("");
+  const [selectedPosition, setSelectedPosition] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [contactNumber, setContactNumber] = useState("");
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "pending" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [file, setFile] = useState<File | null>(null);
+
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.currentTarget.classList.remove("dragging"); // Remove dragging class
+    setFile(e.dataTransfer.files[0]);
+  };
+
+  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.currentTarget.classList.add("dragging"); // Add dragging class
+  };
+
+  const removeFile = () => {
+    setFile(null);
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    setStatus('pending'); // Set the status to pending while processing
+    setStatus("pending"); // Set the status to pending while processing
 
     try {
       // Query to check if the user has already applied for the selected position
-      const applicationsRef = collection(db, 'applications');
+      const applicationsRef = collection(db, "applications");
       const q = query(
         applicationsRef,
-        where('email', '==', email),
-        where('position', '==', selectedPosition)
+        where("email", "==", email),
+        where("position", "==", selectedPosition)
       );
 
       const querySnapshot = await getDocs(q);
       if (!querySnapshot.empty) {
-        setErrorMessage('You have already applied for this position.');
-        setStatus('idle');
+        setErrorMessage("You have already applied for this position.");
+        setStatus("idle");
         return;
       }
 
@@ -49,13 +68,13 @@ export default function JobApplicationModal(
         position: selectedPosition,
       });
 
-      setStatus('idle');
-      setErrorMessage('');
+      setStatus("idle");
+      setErrorMessage("");
       onClose();
     } catch (error) {
-      console.error('Error submitting application:', error);
-      setStatus('error');
-      setErrorMessage('An error occurred. Please try again.');
+      console.error("Error submitting application:", error);
+      setStatus("error");
+      setErrorMessage("An error occurred. Please try again.");
     }
   };
 
@@ -64,7 +83,9 @@ export default function JobApplicationModal(
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-10">
       <div className="bg-white p-8 rounded-lg w-96">
-        <h2 className="text-2xl font-bold mb-4">Application Form</h2>
+        <h2 className="text-2xl font-bold mb-4">
+          {department} Application Form
+        </h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-2">
             <input
@@ -96,11 +117,16 @@ export default function JobApplicationModal(
               <option value="" disabled selected>
                 Choose Position
               </option>
-              {positions.map((pos, idx) => (
-                <option key={idx} value={pos}>
-                  {pos}
-                </option>
-              ))}
+              <option value="Graphic Design Vacancies">
+                Graphic Design Vacancies
+              </option>
+              <option value="Marketing Vacancies">Marketing Vacancies</option>
+              <option value="Administrative and Public Relations Vacancies">
+                Administrative and Public Relations Vacancies
+              </option>
+              <option value="Engineering Vacancies">
+                Engineering Vacancies
+              </option>
             </select>
           </div>
           <div className="mb-2">
@@ -124,27 +150,78 @@ export default function JobApplicationModal(
             />
           </div>
           <div className="mb-2">
-            <label className="block text-black mb-1" htmlFor="resume">Upload Resume</label>
-              <input
-                type="file"
-                name="resume"
-                placeholder="Upload Resume"
-                className="w-full bg-blueTheme text-white placeholder-gray-100 border rounded px-2 py-1"
-              />
+            <div className="flex flex-col md:flex-row gap-4">
+              {/* LEFT */}
+              <div className="flex flex-col">
+                <h6>RESUME</h6>
+                <div
+                  className="upload-area"
+                  onDrop={handleDrop}
+                  onDragOver={handleDragOver}
+                >
+                  {file ? (
+                    <div className="file-info">
+                      <span>{file.name}</span>
+                      <X name="X" onClick={removeFile} />
+                    </div>
+                  ) : (
+                    <div className="flex flex-col justify-center items-center gap-2">
+                      <Image />
+                      <p>Drag and drop your RESUME here, or click to upload</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            
+            {/* RIGHT */}
+            <div className="flex flex-col">
+              <h6>PORTFOLIO</h6>
+              <div
+                className="upload-area"
+                onDrop={handleDrop}
+                onDragOver={handleDragOver}
+              >
+                {file ? (
+                  <div className="file-info">
+                    <span>{file.name}</span>
+                    <X name="X" onClick={removeFile} />
+                  </div>
+                ) : (
+                  <div className="flex flex-col justify-center items-center gap-2">
+                    <Image />
+                    <p>Drag and drop your PORTFOLIO here, or click to upload</p>
+                  </div>
+                )}
+              </div>
             </div>
-            <div className="mb-2">
-            <label className="block text-black mb-1" htmlFor="resume">Upload Portfolio</label>
-              <input
-                type="file"
-                name="portfolioFile"
-                placeholder="Upload Portfolio"
-                className="w-full bg-blueTheme text-white placeholder-gray-100 border rounded px-2 py-1"
-              />
+
             </div>
+            <style jsx>{`
+              .upload-area {
+                border: 2px dashed #0070f3;
+                padding: 20px;
+                text-align: center;
+                cursor: pointer;
+                transition: border-color 0.3s, background-color 0.3s;
+              }
+              .upload-area:hover {
+                border-color: #005bb5;
+              }
+              .upload-area.dragging {
+                border-color: #00bfff; /* Change border color when dragging */
+                background-color: rgba(0, 191, 255, 0.1); /* Light blue background */
+              }
+              .file-info {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              }
+            `}</style>
+          </div>
           <div className="mb-2">
             <input
               type="url"
-              placeholder="Portfolio URL"
+              placeholder="Portfolio URL (optional)"
               className="w-full bg-blueTheme text-white placeholder-gray-100 border rounded px-2 py-1"
               value={portfolioURL}
               onChange={(e) => setPortfolioURL(e.target.value)}
@@ -163,12 +240,12 @@ export default function JobApplicationModal(
             </button>
             <button
               type="submit"
-              disabled={status === 'pending'}
+              disabled={status === "pending"}
               className={`${
-                status === 'pending' ? 'bg-gray-500' : 'bg-blueTheme'
+                status === "pending" ? "bg-gray-500" : "bg-blueTheme"
               } text-white font-bold rounded-md p-2 w-1/2`}
             >
-              {status === 'pending' ? 'Submitting...' : 'Submit'}
+              {status === "pending" ? "Submitting..." : "Submit"}
             </button>
           </div>
         </form>
@@ -176,5 +253,3 @@ export default function JobApplicationModal(
     </div>
   );
 }
-
-  
