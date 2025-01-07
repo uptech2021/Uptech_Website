@@ -1,34 +1,34 @@
-import Footer from '@/components/footer/Footer'
-import './globals.css'
-import type { Metadata } from 'next'
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import { Analytics } from "@vercel/analytics/react"
-export const metadata: Metadata = {
-  title: 'Uptech Incorporated Limited',
-  applicationName:"Uptech Incorporated Limited",
-  authors: {
-    url: "https://www.linkedin.com/in/uptechincorp/",
-    name: "Uptech Incorporated Limited"
-  },
-  keywords: ["ourlime", "ourlime.com", "uptech", "uptech.com", "uptechincorp", "uptechincorp.com" ,"social media platform", "online community", "social networking", "connect with friends", "social media app", "share moments", "online interaction", "follow and share", "interactive platform", "social engagement", "online socializing", "social media connection", "create and share", "discover new content", "social feed", "personalized feed", "connect with people", "social media profiles", "social interaction online", "online community platform"],
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
 
-  description: 'Corporate Website',
-}
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: "Uptech Incorporated Limited - Innovating Web Solutions",
+  description: "Uptech Incorporated Limited is a leading web agency and the creator of Ourlime, a platform for building sustainable relationships and managing private communities.",
+};
 
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode
-}) {
- 
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="en">
-      <body>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         {children}
-          <Footer />
-        <SpeedInsights />
-        <Analytics />
       </body>
     </html>
-  )
+  );
 }
