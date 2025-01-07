@@ -11,6 +11,21 @@ importers:
       '@emailjs/browser':
         specifier: ^4.4.1
         version: 4.4.1
+      '@fortawesome/fontawesome-free':
+        specifier: ^6.7.2
+        version: 6.7.2
+      '@fortawesome/fontawesome-svg-core':
+        specifier: ^6.7.2
+        version: 6.7.2
+      '@fortawesome/free-solid-svg-icons':
+        specifier: ^6.7.2
+        version: 6.7.2
+      '@fortawesome/react-fontawesome':
+        specifier: ^0.2.2
+        version: 0.2.2(@fortawesome/fontawesome-svg-core@6.7.2)(react@19.0.0)
+      '@tinymce/tinymce-react':
+        specifier: ^5.1.1
+        version: 5.1.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       emailjs-com:
         specifier: ^3.2.0
         version: 3.2.0
@@ -54,6 +69,9 @@ importers:
       '@types/react-dom':
         specifier: ^19
         version: 19.0.2(@types/react@19.0.2)
+      '@types/react-fontawesome':
+        specifier: ^1.6.8
+        version: 1.6.8
       '@types/tinymce':
         specifier: ^4.6.9
         version: 4.6.9
@@ -295,6 +313,28 @@ packages:
 
   '@firebase/webchannel-wrapper@1.0.3':
     resolution: {integrity: sha512-2xCRM9q9FlzGZCdgDMJwc0gyUkWFtkosy7Xxr6sFgQwn+wMNIWd7xIvYNauU1r64B5L5rsGKy/n9TKJ0aAFeqQ==}
+
+  '@fortawesome/fontawesome-common-types@6.7.2':
+    resolution: {integrity: sha512-Zs+YeHUC5fkt7Mg1l6XTniei3k4bwG/yo3iFUtZWd/pMx9g3fdvkSK9E0FOC+++phXOka78uJcYb8JaFkW52Xg==}
+    engines: {node: '>=6'}
+
+  '@fortawesome/fontawesome-free@6.7.2':
+    resolution: {integrity: sha512-JUOtgFW6k9u4Y+xeIaEiLr3+cjoUPiAuLXoyKOJSia6Duzb7pq+A76P9ZdPDoAoxHdHzq6gE9/jKBGXlZT8FbA==}
+    engines: {node: '>=6'}
+
+  '@fortawesome/fontawesome-svg-core@6.7.2':
+    resolution: {integrity: sha512-yxtOBWDrdi5DD5o1pmVdq3WMCvnobT0LU6R8RyyVXPvFRd2o79/0NCuQoCjNTeZz9EzA9xS3JxNWfv54RIHFEA==}
+    engines: {node: '>=6'}
+
+  '@fortawesome/free-solid-svg-icons@6.7.2':
+    resolution: {integrity: sha512-GsBrnOzU8uj0LECDfD5zomZJIjrPhIlWU82AHwa2s40FKH+kcxQaBvBo3Z4TxyZHIyX8XTDxsyA33/Vx9eFuQA==}
+    engines: {node: '>=6'}
+
+  '@fortawesome/react-fontawesome@0.2.2':
+    resolution: {integrity: sha512-EnkrprPNqI6SXJl//m29hpaNzOp1bruISWaOiRtkMi/xSvHJlzc2j2JAYS7egxt/EbjSNV/k6Xy0AQI6vB2+1g==}
+    peerDependencies:
+      '@fortawesome/fontawesome-svg-core': ~1 || ~6
+      react: '>=16.3'
 
   '@google-cloud/firestore@7.11.0':
     resolution: {integrity: sha512-88uZ+jLsp1aVMj7gh3EKYH1aulTAMFAp8sH/v5a9w8q8iqSG27RiWLoxSAFr/XocZ9hGiWH1kEnBw+zl3xAgNA==}
@@ -566,6 +606,12 @@ packages:
   '@swc/helpers@0.5.15':
     resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
 
+  '@tinymce/tinymce-react@5.1.1':
+    resolution: {integrity: sha512-DQ0wpvnf/9z8RsOEAmrWZ1DN1PKqcQHfU+DpM3llLze7FHmxVtzuN8O+FYh0oAAF4stzAXwiCIVacfqjMwRieQ==}
+    peerDependencies:
+      react: ^18.0.0 || ^17.0.1 || ^16.7.0
+      react-dom: ^18.0.0 || ^17.0.1 || ^16.7.0
+
   '@tootallnate/once@2.0.0':
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
     engines: {node: '>= 10'}
@@ -616,6 +662,9 @@ packages:
     resolution: {integrity: sha512-c1s+7TKFaDRRxr1TxccIX2u7sfCnc3RxkVyBIUA2lCpyqCF+QoAwQ/CBg7bsMdVwP120HEH143VQezKtef5nCg==}
     peerDependencies:
       '@types/react': ^19.0.0
+
+  '@types/react-fontawesome@1.6.8':
+    resolution: {integrity: sha512-+dQ+4jccHraCd/FI4uSeY/O7c1RZ+wVASTgpCgbC6ijh1zSDsr0cb9XU3Dbfy5eJPyXq5QPp9W9RJTVRf+5+pA==}
 
   '@types/react@19.0.2':
     resolution: {integrity: sha512-USU8ZI/xyKJwFTpjSVIrSeHBVAGagkHQKPNbxeWwql/vDmnTIBgx+TJnhFnj1NXgz8XfprU0egV2dROLGpsBEg==}
@@ -990,6 +1039,9 @@ packages:
   jose@4.15.9:
     resolution: {integrity: sha512-1vUQX+IdDMVPj4k8kOxgUqlcK518yluMuGZwqlr44FS1ppZB/5GWh4rZG89erpOBOJjU/OBsnCVFfapsRz6nEA==}
 
+  js-tokens@4.0.0:
+    resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
+
   json-bigint@1.0.0:
     resolution: {integrity: sha512-SiPv/8VpZuWbvLSMtTDU8hEfrZWg/mH/nV/b4o0CYbSxu1UIQPLdwKOCIyLQX+VIPO5vrLX3i8qtqFyhdPSUSQ==}
 
@@ -1056,6 +1108,10 @@ packages:
 
   long@5.2.3:
     resolution: {integrity: sha512-lcHwpNoggQTObv5apGNCTdJrO69eHOZMi4BNC+rTLER8iHAqGrUVeLh/irVIM7zTw2bOXA8T6uNPeujwOLg/2Q==}
+
+  loose-envify@1.4.0:
+    resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
+    hasBin: true
 
   lru-cache@10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
@@ -1239,6 +1295,9 @@ packages:
     resolution: {integrity: sha512-OCVPnIObs4N29kxTjzLfUryOkvZEq+pf8jTF0lg8E7uETuWHA+v7j3c/xJmiqpX450191LlmZfUKkXxkTry7nA==}
     engines: {node: ^10 || ^12 || >=14}
 
+  prop-types@15.8.1:
+    resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}
+
   proto3-json-serializer@2.0.2:
     resolution: {integrity: sha512-SAzp/O4Yh02jGdRc+uIrGoe87dkN/XtwxfZ4ZyafJHymd79ozp5VG5nyZ7ygqPM5+cpLDjjGnYFUkngonyDPOQ==}
     engines: {node: '>=14.0.0'}
@@ -1254,6 +1313,9 @@ packages:
     resolution: {integrity: sha512-4GV5sHFG0e/0AD4X+ySy6UJd3jVl1iNsNHdpad0qhABJ11twS3TTBnseqsKurKcsNqCEFeGL3uLpVChpIO3QfQ==}
     peerDependencies:
       react: ^19.0.0
+
+  react-is@16.13.1:
+    resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
   react-toastify@11.0.2:
     resolution: {integrity: sha512-GjHuGaiXMvbls3ywqv8XdWONwrcO4DXCJIY1zVLkHU73gEElKvTTXNI5Vom3s/k/M8hnkrfsqgBSX3OwmlonbA==}
@@ -1833,6 +1895,24 @@ snapshots:
 
   '@firebase/webchannel-wrapper@1.0.3': {}
 
+  '@fortawesome/fontawesome-common-types@6.7.2': {}
+
+  '@fortawesome/fontawesome-free@6.7.2': {}
+
+  '@fortawesome/fontawesome-svg-core@6.7.2':
+    dependencies:
+      '@fortawesome/fontawesome-common-types': 6.7.2
+
+  '@fortawesome/free-solid-svg-icons@6.7.2':
+    dependencies:
+      '@fortawesome/fontawesome-common-types': 6.7.2
+
+  '@fortawesome/react-fontawesome@0.2.2(@fortawesome/fontawesome-svg-core@6.7.2)(react@19.0.0)':
+    dependencies:
+      '@fortawesome/fontawesome-svg-core': 6.7.2
+      prop-types: 15.8.1
+      react: 19.0.0
+
   '@google-cloud/firestore@7.11.0':
     dependencies:
       '@opentelemetry/api': 1.9.0
@@ -2074,6 +2154,13 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
+  '@tinymce/tinymce-react@5.1.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+    dependencies:
+      prop-types: 15.8.1
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+      tinymce: 7.6.0
+
   '@tootallnate/once@2.0.0':
     optional: true
 
@@ -2131,6 +2218,10 @@ snapshots:
   '@types/range-parser@1.2.7': {}
 
   '@types/react-dom@19.0.2(@types/react@19.0.2)':
+    dependencies:
+      '@types/react': 19.0.2
+
+  '@types/react-fontawesome@1.6.8':
     dependencies:
       '@types/react': 19.0.2
 
@@ -2594,6 +2685,8 @@ snapshots:
 
   jose@4.15.9: {}
 
+  js-tokens@4.0.0: {}
+
   json-bigint@1.0.0:
     dependencies:
       bignumber.js: 9.1.2
@@ -2671,6 +2764,10 @@ snapshots:
   lodash.once@4.1.1: {}
 
   long@5.2.3: {}
+
+  loose-envify@1.4.0:
+    dependencies:
+      js-tokens: 4.0.0
 
   lru-cache@10.4.3: {}
 
@@ -2831,6 +2928,12 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
+  prop-types@15.8.1:
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+      react-is: 16.13.1
+
   proto3-json-serializer@2.0.2:
     dependencies:
       protobufjs: 7.4.0
@@ -2857,6 +2960,8 @@ snapshots:
     dependencies:
       react: 19.0.0
       scheduler: 0.25.0
+
+  react-is@16.13.1: {}
 
   react-toastify@11.0.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:

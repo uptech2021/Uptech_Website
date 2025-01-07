@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { addDoc, collection, updateDoc, doc, deleteDoc } from 'firebase/firestore';
 import { db, auth } from '@/firebase/firebase';
+import { Editor } from '@tinymce/tinymce-react';
+import { X } from 'lucide-react';
 
 // Define a type for the job form state
 interface JobForm {
@@ -39,6 +41,10 @@ export default function JobManagementModal({ closeJobModal, loadJobs, jobs }: Jo
     setJobForm({ ...jobForm, [name]: value });
   };
 
+  const handleEditorChange = (content: string) => {
+    setJobForm({ ...jobForm, description: content });
+  };
+
   const handleJobSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const user = auth.currentUser;
@@ -63,7 +69,7 @@ export default function JobManagementModal({ closeJobModal, loadJobs, jobs }: Jo
           updatedAt: new Date().toISOString(),
           updatedBy: user.uid,
         });
-        setJobForm({ ...jobForm, jobId: null });
+        setJobForm({ title: '', department: 'graphic', description: '', jobId: null });
       } else {
         await addDoc(collection(db, 'jobs'), jobData);
       }
@@ -94,7 +100,6 @@ export default function JobManagementModal({ closeJobModal, loadJobs, jobs }: Jo
       }
     }
   };
-
   return (
     <div id="jobManagementModal" className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
       <div className="relative my-10 mx-auto p-5 border w-auto max-w-[90%] bg-white rounded-md shadow-lg flex flex-col lg:flex-row">
@@ -102,7 +107,7 @@ export default function JobManagementModal({ closeJobModal, loadJobs, jobs }: Jo
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-xl font-bold">Manage Jobs</h2>
             <button onClick={closeJobModal} className="text-gray-500 hover:text-gray-700">
-             X
+             <X />
             </button>
           </div>
 
@@ -124,22 +129,40 @@ export default function JobManagementModal({ closeJobModal, loadJobs, jobs }: Jo
                 <option value="engineering">Engineering</option>
               </select>
             </div>
-            <textarea
-              name="description"
+            <Editor
+              apiKey={process.env.NEXT_PUBLIC_TINYMCE_API_KEY}
               value={jobForm.description}
-              onChange={handleInputChange}
-              placeholder="Job Description"
-              required
-              className="w-full p-2 border rounded"
+              init={{
+                height: 300,
+                menubar: false,
+                plugins: [
+                  'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'print', 
+                  'preview', 'anchor', 'searchreplace', 'visualblocks', 'code', 
+                  'fullscreen', 'insertdatetime', 'media', 'table', 'paste', 
+                  'help', 'wordcount'
+                ],
+                toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
+              }}
+              onEditorChange={handleEditorChange}
             />
-            <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
-              {jobForm.jobId ? 'Update Job' : 'Create Job'}
-            </button>
+            <div className="flex gap-4">
+              <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
+                {jobForm.jobId ? 'Update Job' : 'Create Job'}
+              </button>
+            </div>
           </form>
+          {jobForm.jobId && (
+            <div className="flex gap-4 mt-4">
+              <button type="button" onClick={() => setJobForm({ title: '', department: 'graphic', description: '', jobId: null })} className="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">
+                Cancel Edit
+              </button>
+            </div>
+          )}
         </div>
         <div className="lg:ml-10">
           <div className="overflow-y-auto mt-4" style={{ maxHeight: '400px' }}>
             <h3 className="text-lg font-semibold mb-4">Existing Jobs</h3>
+            
             <div id="jobsList" className="space-y-4">
               {jobs.map((job) => (
                 <div key={job.id} className="bg-gray-50 rounded-md shadow overflow-hidden">
@@ -153,9 +176,11 @@ export default function JobManagementModal({ closeJobModal, loadJobs, jobs }: Jo
                 </div>
               ))}
             </div>
+            
           </div>
         </div>
       </div>
     </div>
+    
   );
 }

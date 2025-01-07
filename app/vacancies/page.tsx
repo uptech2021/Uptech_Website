@@ -1,19 +1,23 @@
 'use client';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '@/firebase/firebase';
 import JobApplicationModal from '@/components/JobApplicationModal';
 import Header from '@/components/Header';
 
 const VacanciesPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPositions, setSelectedPositions] = useState<string[]>([]);
+  const [filter, setFilter] = useState('all');
+  const [loading, setLoading] = useState(true);
 
   const handleApply = (positions: Array<string>) => {
     setSelectedPositions(positions);
     setIsModalOpen(true);
   };
 
-  const vacancies = [
+  const [vacancies, setVacancies] = useState([
     {
       department: 'Graphic Design Vacancies',
       positions: ['Junior Graphic Designer', 'Graphic and Multimedia'],
@@ -38,9 +42,27 @@ const VacanciesPage = () => {
       image: '/images/S3.svg',
       className: 'bg-gray-300',
     },
-  ];
+  ]);
 
-  const [filter, setFilter] = useState('all');
+
+  const loadVacancies = async () => {
+    try {
+      const snapshot = await getDocs(collection(db, 'jobs'));
+      const jobsData = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setVacancies(jobsData);
+      setLoading(false);
+    } catch (error) {
+      console.error('Error loading jobs:', error);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadVacancies();
+  }, []);
 
   const filteredVacancies =
     filter === 'all'
@@ -48,7 +70,6 @@ const VacanciesPage = () => {
       : filter === 'vacancies'
       ? vacancies.filter((v) => v.className === 'bg-blueTheme')
       : vacancies.filter((v) => v.className === 'bg-gray-300');
-
   return (
     <div className="bg-gray-100">
       <div className="2xl:w-8/12 xl:flex flex-col mx-auto">
@@ -109,28 +130,47 @@ const VacanciesPage = () => {
           </div>
         </header>
         <main className="space-y-6 px-4">
-          {filteredVacancies.map((vacancy, idx) => (
-            <div key={idx} className={`${vacancy.className} text-white rounded-md p-4 flex flex-row`}>
-              <div className="w-2/5">
-                <Image src={vacancy.image} alt={vacancy.department} width={150} height={100} />
-              </div>
-              <div className="w-3/4 flex flex-col">
-                <p className="font-bold text-lg">{vacancy.department}</p>
-                <div className="mt-2 space-y-1">
-                  {vacancy.positions.map((pos, i) => (
-                    <p key={i} className="text-sm">{pos}</p>
-                  ))}
-                </div>
-                <button
-                  className="mt-4 bg-white text-blueTheme font-bold rounded-md px-4 py-2"
-                  onClick={() => handleApply(vacancy.positions)}
-                >
-                  Apply
-                </button>
-              </div>
-            </div>
-          ))}
-        </main>
+  {loading ? (
+    <p>Loading...</p>
+  ) : (
+    filteredVacancies.map((vacancy, idx) => (
+      <div key={idx} className={`${vacancy.className} text-white rounded-md p-4 flex flex-row`}>
+        <div className="w-2/5">
+          {vacancy.image ? (
+            <Image
+              src={vacancy.image}
+              alt={vacancy.department}
+              width={150}
+              height={100}
+            />
+          ) : (
+            <Image
+              src="/images/placeholder.svg" // Path to your placeholder image
+              alt="Placeholder image"
+              width={150}
+              height={100}
+            />
+          )}
+        </div>
+        <div className="w-3/4 flex flex-col">
+          <p className="font-bold text-lg">{vacancy.department}</p>
+          <div className="mt-2 space-y-1">
+            {vacancy.positions.map((pos: string, i: number) => (
+              <p key={i} className="text-sm">{pos}</p>
+            ))}
+          </div>
+          <button
+            className="mt-4 bg-white text-blueTheme font-bold rounded-md px-4 py-2"
+            onClick={() => handleApply(vacancy.positions)}
+          >
+            Apply
+          </button>
+        </div>
+      </div>
+    ))
+  )}
+</main>
+
         <JobApplicationModal
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}

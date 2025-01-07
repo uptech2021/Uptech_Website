@@ -124,7 +124,7 @@ export default function Home() {
           </div>
 
           {/* PC Heading */}
-          <div className="hidden md:flex w-full md:mt-20 mt-28 xl:mt-28 flex-col gap-3 text-center absolute top-1/3 left-1/2 transform -translate-y-1/2 -translate-x-1/2 pc-heading justify-center items-center">
+          <div className="hidden md:flex w-full md:mt-20 mt-28 xl:mt-28 flex-col gap-3 text-center absolute top-1/3 left-1/4 transform -translate-y-1/2 -translate-x-1/2 pc-heading justify-center items-center">
             <div className="text-center flex flex-col md:flex-grow items-center gap-6">
               <p className="ThiccboiBold tracking-tighter text-3xl md:text-4xl lg:text-5xl font-bold">
           A Digital Services <br />
@@ -210,7 +210,7 @@ export default function Home() {
             {/* Buttons with responsive sizing */}
             <button className="bg-blueTheme rounded-sm p-6 text-white text-xl font-semibold flex flex-col items-center text-center shadow-md hover:bg-blue-600 transition h-80 w-60 mx-auto transform hover:scale-105">
               <span className="text-2xl">Consult</span>
-              <Image src="/images/consult.svg" alt="Consult Icon" className="w-38 h-38 mt-32" width={100} height={100} />
+              <Image src="/images/consult.svg" alt="Consult Icon" className="w-38 h-38 mt-32" width={150} height={150} />
             </button>
 
             {/* Button for Choose */}
@@ -228,7 +228,7 @@ export default function Home() {
             {/* Button for Receive */}
             <button className="bg-blueTheme rounded-sm p-6 text-white text-lg font-semibold flex flex-col items-center text-center shadow-md hover:bg-blue-600 transition h-80 w-60 mx-auto transform hover:scale-105">
               <span className="text-2xl">Receive</span>
-              <Image src="/images/receive.svg" alt="Receive Icon" className="w-38 h-38 mt-28" width={100} height={100} />
+              <Image src="/images/receive.svg" alt="Receive Icon" className="w-38 h-38 mt-28" width={150} height={150} />
             </button>
           </div>
         </div>
