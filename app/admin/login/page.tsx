@@ -1,40 +1,44 @@
-'use client';
-import Image from 'next/image';
-import { useState, useEffect } from 'react';
-import { signInWithEmailAndPassword, auth } from '../../../services/login';
-import { useRouter } from 'next/navigation';
-import alreadyLoggedInAuth from '@/hoc/alreadyLoggedInAuth';
-
+"use client";
+import alreadyLoggedInAuth from "@/hoc/alreadyLoggedInAuth";
+import { auth } from "@/lib/firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 function AdminLogin() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const router = useRouter();
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    setErrorMessage('')
+    setErrorMessage("");
     try {
-      const userCredentials = await signInWithEmailAndPassword(auth, email, password);
-      const token = await userCredentials.user.getIdToken()
+      const userCredentials = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const token = await userCredentials.user.getIdToken();
 
       //Send token to the backend for cookie setting
-      const response = await fetch('/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({token})
-      })
+      const response = await fetch("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token }),
+      });
 
-      if(response.ok){
-        console.log("Redirecting to dashboard")
-        router.push('/admin/dashboard')
-      }else {
-        const { message } = await response.json()
-        setErrorMessage(message || 'Failed to login. Please try again.')
+      if (response.ok) {
+        console.log("Redirecting to dashboard");
+        router.push("/admin/dashboard");
+      } else {
+        const { message } = await response.json();
+        setErrorMessage(message || "Failed to login. Please try again.");
       }
-      router.push('/admin/dashboard');
+      router.push("/admin/dashboard");
     } catch (error: any) {
-      setErrorMessage('Login failed. Please check your credentials.');
+      setErrorMessage("Login failed. Please check your credentials.");
     }
   };
 
@@ -53,7 +57,12 @@ function AdminLogin() {
         </div>
         <form id="loginForm" className="space-y-6" onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Email
+            </label>
             <input
               type="email"
               id="email"
@@ -65,7 +74,12 @@ function AdminLogin() {
             />
           </div>
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Password
+            </label>
             <input
               type="password"
               id="password"
@@ -84,11 +98,15 @@ function AdminLogin() {
               Sign in
             </button>
           </div>
-          {errorMessage && <div id="error-message" className="text-red-500 text-center">{errorMessage}</div>}
+          {errorMessage && (
+            <div id="error-message" className="text-red-500 text-center">
+              {errorMessage}
+            </div>
+          )}
         </form>
       </div>
     </div>
   );
 }
 
-export default alreadyLoggedInAuth(AdminLogin)
+export default alreadyLoggedInAuth(AdminLogin);

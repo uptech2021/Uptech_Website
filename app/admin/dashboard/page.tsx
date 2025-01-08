@@ -3,7 +3,7 @@ import ApplicationDetailsModal from "@/components/ApplicationDetailsModal";
 import ApplicationTable from "@/components/ApplicationTable";
 import SkeletonLoader from "@/components/SkeletonLoader";
 import JobManagementModal from "@/components/JobManagementModal"; // Import Job Management Modal
-import { auth, db } from "@/firebase/firebase";
+import { auth, db } from "@/lib/firebase";
 import adminAuth from "@/hoc/adminAuth";
 import { Application } from "@/types/dashboard";
 import { signOut } from "firebase/auth";

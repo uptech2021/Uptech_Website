@@ -6,7 +6,7 @@ import {
   doc,
   deleteDoc,
 } from "firebase/firestore";
-import { db, auth } from "@/firebase/firebase";
+import { db, auth } from "@/lib/firebase";
 import { Editor } from "@tinymce/tinymce-react";
 import { X } from "lucide-react";
 import { Job, JobForm, JobManagementModalProps } from "@/types/dashboard";

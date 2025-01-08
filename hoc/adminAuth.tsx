@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
-import { db } from '@/firebase/firebase';
+import { db } from '@/lib/firebase';
 
 export default function adminAuth(WrappedComponent: React.ComponentType) {
   const AdminProtectedRoute = (props: any) => {

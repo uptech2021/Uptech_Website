@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "@/firebase/firebase";
+import { db } from "@/lib/firebase";
 import JobApplicationModal from "@/components/JobApplicationModal";
 import Header from "@/components/Header";
 import DOMPurify from "dompurify";

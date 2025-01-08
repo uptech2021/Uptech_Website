@@ -70,9 +70,9 @@ const ApplicationDetailsModal: React.FC<ApplicationDetailsModalProps> = ({
                     <div className="col-span-2">
                         <label className="block text-sm font-medium text-gray-700">Resume</label>
                         <p className="mt-1 text-sm text-gray-900">
-                            {application.resumeUrl ? (
+                            {application.resumeFileUrl ? (
                                 <a
-                                    href={application.resumeUrl}
+                                    href={application.resumeFileUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="text-blue-600 hover:text-blue-900"
@@ -87,10 +87,10 @@ const ApplicationDetailsModal: React.FC<ApplicationDetailsModalProps> = ({
                     <div className="col-span-2">
                         <label className="block text-sm font-medium text-gray-700">Portfolio</label>
                         <div className="mt-1 text-sm text-gray-900 space-y-2">
-                            {application.portfolio?.fileUrl && (
+                            {application.portfolioFileUrl && (
                                 <p>
                                     <a
-                                        href={application.portfolio.fileUrl}
+                                        href={application.portfolioFileUrl}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="text-blue-600 hover:text-blue-900"
@@ -99,10 +99,10 @@ const ApplicationDetailsModal: React.FC<ApplicationDetailsModalProps> = ({
                                     </a>
                                 </p>
                             )}
-                            {application.portfolio?.webUrl && (
+                            {application.portfolioUrl && (
                                 <p>
                                     <a
-                                        href={application.portfolio.webUrl}
+                                        href={application.portfolioUrl}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="text-blue-600 hover:text-blue-900"
@@ -111,7 +111,7 @@ const ApplicationDetailsModal: React.FC<ApplicationDetailsModalProps> = ({
                                     </a>
                                 </p>
                             )}
-                            {!application.portfolio?.fileUrl && !application.portfolio?.webUrl && 'N/A'}
+                            {!application.portfolioFileUrl && !application.portfolioUrl && 'N/A'}
                         </div>
                     </div>
                     <div className="col-span-2">
