@@ -4,6 +4,7 @@ import { db } from "../lib/firebase";
 import { GalleryVertical, Image, X } from "lucide-react";
 import { ref, uploadBytes, getDownloadURL, StorageReference } from 'firebase/storage';
 import { storage } from '../lib/firebase';
+import { Timestamp } from "firebase-admin/firestore";
 
 export default function JobApplicationModal({
   isOpen,
@@ -117,6 +118,7 @@ export default function JobApplicationModal({
         portfolioUrl,
         portfolioFileUrl: portfolioFileUrl ? portfolioFileUrl : '',
         position: department,
+        dateApplied: Timestamp.now(),
       });
 
       setStatus("idle");
