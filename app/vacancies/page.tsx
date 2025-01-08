@@ -71,7 +71,6 @@ const VacanciesPage = () => {
     <div className="bg-gray-100">
       <div className="2xl:w-8/12 xl:flex flex-col mx-auto">
         <Header />
-        <div className="w-full h-1 bg-black my-4"></div>
 
         <header className="flex flex-col items-center text-center">
           <div className="w-full relative text-center mt-10 lg:mt-20">
