@@ -61,6 +61,9 @@ const ApplicationTable: React.FC<ApplicationTableProps> = ({
                   Portfolio
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Date Applied
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Status
                 </th>
                 {/* <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -145,6 +148,11 @@ const ApplicationTable: React.FC<ApplicationTableProps> = ({
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="text-sm text-gray-900">
+                      {application.dateApplied.toDate().toLocaleDateString()}
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
                     <span
                       className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusColor(
                         application.status
@@ -153,22 +161,6 @@ const ApplicationTable: React.FC<ApplicationTableProps> = ({
                       {application.status || "pending"}
                     </span>
                   </td>
-                  {/* <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center space-x-2">
-                      <button
-                        onClick={() => handleApplicationUpdate(application.id, 'accepted', '')}
-                        className="bg-blue-500 text-white px-3 py-1 rounded mr-2"
-                      >
-                        Accept
-                      </button>
-                      <button
-                        onClick={() => handleApplicationUpdate(application.id, 'rejected', '')}
-                        className="bg-red-500 text-white px-3 py-1 rounded"
-                      >
-                        Reject
-                      </button>
-                    </div>
-                  </td> */}
                 </tr>
               ))}
             </tbody>

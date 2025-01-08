@@ -1,3 +1,5 @@
+import { Timestamp } from "firebase/firestore";
+
 export type Job = {
   id: string;
   title: string;
@@ -30,6 +32,8 @@ export type Application = {
   portfolioFileUrl?: string;
   status: string;
   comment?: string;
+  reason?: string;
+  dateApplied: Timestamp;
 };
 
 export interface EmailUserModalProps {
