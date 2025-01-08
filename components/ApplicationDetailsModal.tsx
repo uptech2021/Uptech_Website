@@ -1,6 +1,8 @@
+import React, { useState } from 'react';
 import { Application } from "@/types/dashboard";
 import { Mail } from "lucide-react";
 import { toast } from 'react-toastify';
+import EmailUserModal from './EmailUserModal'; // Import the EmailUserModal component
 
 interface ApplicationDetailsModalProps {
     application: Application;
@@ -13,6 +15,8 @@ const ApplicationDetailsModal: React.FC<ApplicationDetailsModalProps> = ({
     onClose,
     onUpdateStatus,
 }) => {
+    const [isEmailModalOpen, setEmailModalOpen] = useState(false); // State to manage modal visibility
+
     const handleStatusChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const newStatus = e.target.value;
         onUpdateStatus(application.id, newStatus, '');
@@ -28,6 +32,14 @@ const ApplicationDetailsModal: React.FC<ApplicationDetailsModalProps> = ({
         onUpdateStatus(application.id, "rejected", "");
         toast.error('Application rejected successfully!');
         onClose(); // Close the modal after rejecting
+    };
+
+    const handleEmailButtonClick = () => {
+        setEmailModalOpen(true); // Open the email modal
+    };
+
+    const handleCloseEmailModal = () => {
+        setEmailModalOpen(false); // Close the email modal
     };
 
     return (
@@ -56,11 +68,7 @@ const ApplicationDetailsModal: React.FC<ApplicationDetailsModalProps> = ({
                         <div className="flex items-center gap-2">
                             <p className="mt-1 text-sm text-gray-900">{application.email}</p>
                             <button
-                                onClick={() =>
-                                    console.log(
-                                        `Emailing ${application.firstName} ${application.lastName} (${application.email})`
-                                    )
-                                }
+                                onClick={handleEmailButtonClick} // Update the onClick handler
                                 className="inline-flex items-center px-3 py-1 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                             >
                                 <Mail className="w-4 h-4 mr-2" /> Send Email
@@ -140,6 +148,13 @@ const ApplicationDetailsModal: React.FC<ApplicationDetailsModalProps> = ({
                     <button onClick={handleReject} className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600">Reject</button>
                 </div>
             </div>
+            {isEmailModalOpen && (
+                <EmailUserModal 
+                    onClose={handleCloseEmailModal} 
+                    recipientEmail={application.email}
+                    firstName={application.firstName}
+                />
+            )}
         </div>
     );
 };

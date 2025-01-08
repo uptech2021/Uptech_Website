@@ -21,3 +21,11 @@ export type Application = {
   status: string;
   comment?: string;
 };
+
+export interface EmailUserModalProps {
+  onClose: () => void;
+  recipientEmail: string;
+    firstName: string; 
+  };
+
+
