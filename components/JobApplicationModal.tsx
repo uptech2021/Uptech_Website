@@ -14,7 +14,7 @@ export default function JobApplicationModal({
   onClose: () => void;
   department: string;
 }) {
-  const [portfolioURL, setPortfolioURL] = useState("");
+  const [portfolioUrl, setPortfolioURL] = useState("");
   const [selectedPosition, setSelectedPosition] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -24,6 +24,8 @@ export default function JobApplicationModal({
   const [errorMessage, setErrorMessage] = useState("");
   const [resumeFile, setResumeFile] = useState<File | null>(null);
   const [portfolioFile, setPortfolioFile] = useState<File | null>(null);
+
+
 
   const resumeInputRef = useRef<HTMLInputElement | null>(null);
   const portfolioInputRef = useRef<HTMLInputElement | null>(null);
@@ -48,21 +50,14 @@ export default function JobApplicationModal({
   };
 
   const uploadFile = async (file: File, type: "resume" | "portfolio") => {
-    if (!file) return;
-
-    let storageRef: StorageReference = ref(storage, `uploads/${type}/${file.name}`);
-    if (type === "resume") {    
-      storageRef = ref(storage, `uploads/${type}/${file.name}`);
-      setStatus("pending");
-    } else if (type === "portfolio") {    
-      storageRef = ref(storage, `uploads/${type}/${file.name}`);
-      setStatus("pending");
-    }
-      
+    const storageRef = ref(storage, `uploads/${type}/${file.name}`);
+    setStatus("pending");
     try {
       await uploadBytes(storageRef, file);
-      const downloadURL = await getDownloadURL(storageRef);
+      const fileUrl = await getDownloadURL(storageRef);
       setStatus("idle");
+
+      return fileUrl
     } catch (error) {
       setErrorMessage("Failed to upload file");
       setStatus("error");
@@ -80,13 +75,20 @@ export default function JobApplicationModal({
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    let resumeFileUrl;
+    let portfolioFileUrl;
     if (resumeFile) {
-      await uploadFile(resumeFile, "resume");
+      console.log("Resume", resumeFile)
+      resumeFileUrl = await uploadFile(resumeFile, "resume");
+      console.log(resumeFileUrl)
     }
     if (portfolioFile) {
-      await uploadFile(portfolioFile, "portfolio");
-    }
+      console.log("portfolio", portfolioFileUrl)
+      portfolioFileUrl = await uploadFile(portfolioFile, "portfolio");
+      console.log(portfolioFileUrl)
 
+    }
+    // console.log(resumeFile, portfolioFile)
     setStatus("pending"); // Set the status to pending while processing
 
     try {
@@ -111,7 +113,9 @@ export default function JobApplicationModal({
         lastName,
         contactNumber,
         email,
-        portfolioURL,
+        resumeFileUrl,
+        portfolioUrl,
+        portfolioFileUrl: portfolioFileUrl ? portfolioFileUrl : '',
         position: department,
       });
 
@@ -313,7 +317,7 @@ export default function JobApplicationModal({
               type="url"
               placeholder="Portfolio URL (optional)"
               className="w-full bg-blueTheme text-white placeholder-gray-100 border rounded px-2 py-1"
-              value={portfolioURL}
+              value={portfolioUrl}
               onChange={(e) => setPortfolioURL(e.target.value)}
             />
           </div>

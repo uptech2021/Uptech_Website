@@ -205,7 +205,6 @@ function AdminDashboard() {
           <JobManagementModal
             closeJobModal={closeJobModal}
             loadJobs={() => console.log("Load jobs logic")}
-            jobs={[]} // Pass the correct jobs array when implemented
           />
         )}
       </div>

@@ -6,6 +6,18 @@ export type Job = {
   description: string;
 };
 
+export type JobForm = {
+  title: string;
+  department: string;
+  description: string;
+  jobId: string | null;
+}
+
+export type JobManagementModalProps = {
+  closeJobModal: () => void;
+  loadJobs: () => void;
+}
+
 export type Application = {
   id: string;
   firstName: string;
@@ -13,11 +25,9 @@ export type Application = {
   position: string;
   contactNumber: string;
   email: string;
-  resumeUrl?: string;
-  portfolio?: {
-    fileUrl?: string;
-    webUrl?: string;
-  };
+  resumeFileUrl: string;
+  portfolioUrl?: string; 
+  portfolioFileUrl?: string;
   status: string;
   comment?: string;
 };

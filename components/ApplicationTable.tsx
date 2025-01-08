@@ -101,9 +101,9 @@ const ApplicationTable: React.FC<ApplicationTableProps> = ({
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    {application.resumeUrl ? (
+                    {application.resumeFileUrl ? (
                       <a
-                        href={application.resumeUrl}
+                        href={application.resumeFileUrl}
                         target="_blank"
                         className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs"
                       >
@@ -115,9 +115,9 @@ const ApplicationTable: React.FC<ApplicationTableProps> = ({
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex flex-col space-y-2">
-                      {application.portfolio?.fileUrl ? (
+                      {application.portfolioFileUrl ? (
                         <a
-                          href={application.portfolio.fileUrl}
+                          href={application.portfolioFileUrl}
                           target="_blank"
                           className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs"
                         >
@@ -126,9 +126,9 @@ const ApplicationTable: React.FC<ApplicationTableProps> = ({
                       ) : (
                         ""
                       )}
-                      {application.portfolio?.webUrl ? (
+                      {application.portfolioUrl ? (
                         <a
-                          href={application.portfolio.webUrl}
+                          href={application.portfolioUrl}
                           target="_blank"
                           className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs"
                         >
@@ -138,8 +138,8 @@ const ApplicationTable: React.FC<ApplicationTableProps> = ({
                       ) : (
                         ""
                       )}
-                      {!application.portfolio?.fileUrl &&
-                      !application.portfolio?.webUrl
+                      {!application.portfolioFileUrl &&
+                      !application.portfolioUrl
                         ? "N/A"
                         : ""}
                     </div>
