@@ -122,20 +122,20 @@ export default function About() {
                   <h3 className="blueText-dark text-2xl mb-2">Quanne Dann</h3>
                   <p className="mb-6 font-bold">DATABASE ADMINISTRATIVE DIRECTOR</p>
                 </div>
-                <div className="lg:w-1/3">
+                {/* <div className="lg:w-1/3">
                   <h3 className="blueText-dark text-2xl mb-2">Romario Solomon</h3>
                   <p className="mb-6 font-bold">MARKETING AND BRAND MANAGER</p>
-                </div>
+                </div> */}
                 <div className="lg:w-1/3">
                   <h3 className="blueText-dark text-2xl mb-2">Kyle Nagee</h3>
                   <p className="mb-6 font-bold">JUNIOR SOFTWARE ENGINEERING DIRECTOR</p>
                 </div>
               </div>
               <div className="flex flex-col lg:flex-row lg:gap-20 items-center lg:mb-10">
-                <div className="lg:w-1/3">
+                {/* <div className="lg:w-1/3">
                   <h3 className="blueText-dark text-2xl mb-2">Hermione Ramsohan</h3>
                   <p className="mb-6 font-bold">JUNIOR SOFTWARE ENGINEERING</p>
-                </div>
+                </div> */}
                 <div className="lg:w-1/3">
                   <h3 className="blueText-dark text-2xl mb-2">Raushawn Mitchell</h3>
                   <p className="mb-6 font-bold">JUNIOR SOFTWARE ENGINEERING</p>
@@ -158,10 +158,10 @@ export default function About() {
                   <h3 className="blueText-dark text-2xl mb-2">Jason Dookeran</h3>
                   <p className="mb-6 font-bold">ADVISOR</p>
                 </div>
-                <div className="lg:w-1/3">
+                {/* <div className="lg:w-1/3">
                   <h3 className="blueText-dark text-2xl mb-2">Xian Ramdass</h3>
                   <p className="mb-6 font-bold">ADVISOR</p>
-                </div>
+                </div> */}
               </div>
 
               {/* Top Border */}
