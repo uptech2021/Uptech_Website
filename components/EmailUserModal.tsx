@@ -7,14 +7,14 @@ export default function EmailUserModal({
   firstName, 
 }: EmailUserModalProps) {
   const [emailTemplate, setEmailTemplate] = useState('acceptance');
-
+  
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+  
     try {
-      const recipientFirstName = firstName; 
-
-      const response = await fetch('/api/send-email', {
+      const recipientFirstName = firstName; // Ensure `firstName` is available in scope
+  
+      const response = await fetch('/api/send-email', {  // Fixed syntax
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -25,7 +25,7 @@ export default function EmailUserModal({
           dynamicData: { firstName: recipientFirstName },
         }),
       });
-
+  
       if (response.ok) {
         alert('Email sent successfully!');
         onClose();
@@ -38,6 +38,7 @@ export default function EmailUserModal({
       alert('Failed to send email.');
     }
   };
+  
 
   return (
     <div id="emailModal" className="fixed inset-0 bg-gray-600 bg-opacity-50">

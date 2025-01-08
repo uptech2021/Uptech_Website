@@ -5,42 +5,23 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY!);
 
 export async function POST(req: Request) {
   try {
-    // Parse the request body
     const { userEmail, emailTemplate, dynamicData } = await req.json();
 
-    // Validate required fields
     if (!userEmail || !emailTemplate) {
-      return NextResponse.json(
-        { error: 'Missing required fields' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
-    // Fetch the template ID
     const templateId = getTemplateId(emailTemplate);
     if (!templateId) {
-      return NextResponse.json(
-        { error: 'Invalid email template' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Invalid email template' }, { status: 400 });
     }
 
-    // Send the email
-    await sendUserEmail({
-      userEmail,
-      templateId,
-      dynamicData,
-    });
+    await sendUserEmail({ userEmail, templateId, dynamicData });
 
-    return NextResponse.json({
-      message: 'Email sent successfully',
-    });
+    return NextResponse.json({ message: 'Email sent successfully' });
   } catch (error) {
     console.error('Error sending email:', error);
-    return NextResponse.json(
-      { error: 'Failed to send email' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
   }
 }
 
@@ -54,10 +35,7 @@ const sendUserEmail = async ({
   dynamicData?: { firstName: string };
 }) => {
   const mailOptions = {
-    from: {
-      email: process.env.ADMIN_EMAIL!,
-      name: 'Uptech Incorp',
-    },
+    from: { email: process.env.ADMIN_EMAIL!, name: 'Uptech Incorp' },
     to: userEmail,
     templateId,
     dynamic_template_data: dynamicData || {},
@@ -78,17 +56,5 @@ const getTemplateId = (template: string): string => {
       return 'd-930fd93582b64fdeb8c696b422f77d97';
     default:
       return '';
-  }
-};
-
-const getDynamicData = (template: string, firstName: string) => {
-  switch (template) {
-    case 'acceptance':
-    case 'rejection':
-    case 'post_interview_rejection':
-    case 'awaiting_review':
-      return { firstName }; // Only `firstName` is needed for all templates
-    default:
-      return {};
   }
 };
