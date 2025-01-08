@@ -33,7 +33,7 @@ export type Application = {
   status: string;
   comment?: string;
   reason?: string;
-  dateApplied: Timestamp;
+  dateApplied: Date;
 };
 
 export interface EmailUserModalProps {

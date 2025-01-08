@@ -1,6 +1,7 @@
 import React from "react";
 import ApplicationDetailsModal from "@/components/ApplicationDetailsModal";
 import { Application } from "@/types/dashboard";
+import { Timestamp } from "firebase/firestore";
 
 interface ApplicationTableProps {
   applications: Application[];
@@ -149,7 +150,9 @@ const ApplicationTable: React.FC<ApplicationTableProps> = ({
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="text-sm text-gray-900">
-                      {application.dateApplied.toDate().toLocaleDateString()}
+                      {application.dateApplied instanceof Timestamp
+                        ? application.dateApplied.toDate().toLocaleDateString()
+                        : "Date not available"}
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
