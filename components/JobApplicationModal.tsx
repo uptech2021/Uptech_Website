@@ -1,10 +1,8 @@
-import React, { useState,useRef } from "react";
-import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
-import { db } from "../lib/firebase";
-import { GalleryVertical, Image, X } from "lucide-react";
-import { ref, uploadBytes, getDownloadURL, StorageReference } from 'firebase/storage';
-import { storage } from '../lib/firebase';
-import { Timestamp } from "firebase-admin/firestore";
+import { addDoc, collection, getDocs, query, Timestamp, where } from "firebase/firestore";
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import { Image, X } from "lucide-react";
+import React, { useRef, useState } from "react";
+import { db, storage } from "../lib/firebase";
 
 export default function JobApplicationModal({
   isOpen,
