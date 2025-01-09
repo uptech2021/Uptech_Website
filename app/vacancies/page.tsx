@@ -67,113 +67,133 @@ const VacanciesPage = () => {
     }
   });
 
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+
+    // Cleanup function to remove the class when the component unmounts
+    return () => {
+      document.body.classList.remove('no-scroll');
+    };
+  }, [isModalOpen]);
+
   return (
-    <div className="bg-gray-100">
-      <div className="2xl:w-8/12 xl:flex flex-col mx-auto">
-        <Header />
+    <>
+      <style jsx global>{`
+        .no-scroll {
+          overflow: hidden;
+        }
+      `}</style>
+      <div className="bg-gray-100">
+        <div className="2xl:w-8/12 xl:flex flex-col mx-auto">
+          <Header />
 
-        <header className="flex flex-col items-center text-center">
-          <div className="w-full relative text-center mt-10 lg:mt-20">
-            <div className="w-full h-1/2 md:hidden">
-              <Image
-                className="w-full h-full object-contain"
-                src="/images/career.svg"
-                alt="background image"
-                width={150}
-                height={150}
-              />
-            </div>
-
-            <div className="hidden md:block ml-auto w-1/2">
-              <Image
-                className="w-full h-full object-contain"
-                src="/images/careerPC.svg"
-                alt="background image"
-                width={150}
-                height={150}
-              />
-            </div>
-            <Image
-              className="w-full h-full object-contain"
-              src="/images/rectangle.svg"
-              alt="background image"
-              width={150}
-              height={150}
-            />
-
-            {/* Mobile Heading */}
-            <div className="pb-32 flex flex-col justify-between h-full absolute md:hidden top-0 left-1/2 transform -translate-x-1/2 z-10">
-              <h1 className="mt-32">Vacancies</h1>
-              <p style={{ width: "90vw" }} className="ThiccboiBold">
-                Join our team and help create unforgettable experiences every
-                day!
-              </p>
-            </div>
-
-            {/* PC/Tablet heading */}
-            <div className="hidden md:flex w-8/12 ml-10 flex-col gap-3 text-left absolute top-0">
-              <h1>Vacancies</h1>
-              <p className="w-3/4 ThiccboiBold">
-                Join our team and help create unforgettable experiences every
-                day!
-              </p>
-            </div>
-          </div>
-          <p className="mt-20 mx-4 mb-20 text-lg lg:text-2xl lg:w-3/5 lg:mx-auto">
-            Still looking for your place? Want to find your start? Well look no
-            further, you can start your journey with us!
-          </p>
-        </header>
-
-        <main className="space-y-6 px-4 mb-10 xl:w-9/12 mx-auto">
-          {isLoading ? (
-            <p>Loading...</p>
-          ) : (
-            vacancies.map((vacancy, index) => (
-              <div
-                key={index}
-                className={`text-white bg-blueTheme rounded-md p-4 flex flex-col md:flex-row `}
-              >
-                <div className="w-full flex flex-col">
-                  <h1 className="font-bold text-3xl">{vacancy.title}</h1>
-                  <button
-                    className="mt-2 bg-white text-blueTheme font-bold rounded-md px-2 py-1"
-                    onClick={() => toggleVacancyDetails(index)}
-                  >
-                    {expandedVacancy === index ? "Hide Details" : "View Details"}
-                  </button>
-                  {expandedVacancy === index && (
-                    <div>
-                      <div
-                        className="mt-2 space-y-1"
-                        dangerouslySetInnerHTML={{
-                          __html: DOMPurify.sanitize(vacancy.description),
-                        }}
-                      />
-                      <button
-                        className="mt-4 bg-white text-blueTheme font-bold rounded-md px-4 py-2"
-                        onClick={() => handleApply(vacancy.department)}
-                      >
-                        Apply
-                      </button>
-                    </div>
-                  )}
-
-                </div>
+          <header className="flex flex-col items-center text-center">
+            <div className="w-full relative text-center mt-10 lg:mt-20">
+              <div className="w-full h-1/2 md:hidden">
+                <Image
+                  className="w-full h-full object-contain"
+                  src="/images/career.svg"
+                  alt="background image"
+                  width={150}
+                  height={150}
+                />
               </div>
-            ))
-          )}
-        </main>
-        {selectedDepartment && <JobApplicationModal
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-          department={selectedDepartment}
-        />}
-        
-      </div>
 
-      <Footer />
-    </div>
+              <div className="hidden md:block ml-auto w-1/2">
+                <Image
+                  className="w-full h-full object-contain"
+                  src="/images/careerPC.svg"
+                  alt="background image"
+                  width={150}
+                  height={150}
+                />
+              </div>
+              <Image
+                className="w-full h-full object-contain"
+                src="/images/rectangle.svg"
+                alt="background image"
+                width={150}
+                height={150}
+              />
+
+              {/* Mobile Heading */}
+              <div className="pb-32 flex flex-col justify-between h-full absolute md:hidden top-0 left-1/2 transform -translate-x-1/2 z-10">
+                <h1 className="mt-32">Vacancies</h1>
+                <p style={{ width: "90vw" }} className="ThiccboiBold">
+                  Join our team and help create unforgettable experiences every
+                  day!
+                </p>
+              </div>
+
+              {/* PC/Tablet heading */}
+              <div className="hidden md:flex w-8/12 ml-10 flex-col gap-3 text-left absolute top-0">
+                <h1>Vacancies</h1>
+                <p className="w-3/4 ThiccboiBold">
+                  Join our team and help create unforgettable experiences every
+                  day!
+                </p>
+              </div>
+            </div>
+            <p className="mt-20 mx-4 mb-20 text-lg lg:text-2xl lg:w-3/5 lg:mx-auto">
+              Still looking for your place? Want to find your start? Well look no
+              further, you can start your journey with us!
+            </p>
+          </header>
+
+          <main className="space-y-6 px-4 mb-10 xl:w-9/12 mx-auto">
+            {isLoading ? (
+              <p>Loading...</p>
+            ) : (
+              vacancies.map((vacancy, index) => (
+                <div
+                  key={index}
+                  className={`text-white bg-blueTheme rounded-md p-4 flex flex-col md:flex-row `}
+                >
+                  <div className="w-full flex flex-col">
+                    <h1 className="font-bold text-3xl">{vacancy.title}</h1>
+                    <button
+                      className="mt-2 bg-white text-blueTheme font-bold rounded-md px-2 py-1"
+                      onClick={() => toggleVacancyDetails(index)}
+                    >
+                      {expandedVacancy === index ? "Hide Details" : "View Details"}
+                    </button>
+                    {expandedVacancy === index && (
+                      <div>
+                        <div
+                          className="mt-2 space-y-1"
+                          dangerouslySetInnerHTML={{
+                            __html: DOMPurify.sanitize(vacancy.description),
+                          }}
+                        />
+                        <button
+                          className="mt-4 bg-white text-blueTheme font-bold rounded-md px-4 py-2"
+                          onClick={() => handleApply(vacancy.department)}
+                        >
+                          Apply
+                        </button>
+                      </div>
+                    )}
+
+                  </div>
+                </div>
+              ))
+            )}
+          </main>
+          {selectedDepartment && <JobApplicationModal
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+            department={selectedDepartment}
+          />}
+          
+        </div>
+
+        <Footer />
+      </div>
+    </>
   );
 };
 

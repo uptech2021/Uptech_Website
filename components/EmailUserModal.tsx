@@ -1,20 +1,54 @@
 import React, { useState } from 'react';
 import { EmailUserModalProps } from '../types/dashboard';
+import { toast } from 'react-toastify';
 
 export default function EmailUserModal({
   onClose,
   recipientEmail,
-  firstName, 
+  firstName,
 }: EmailUserModalProps) {
   const [emailTemplate, setEmailTemplate] = useState('acceptance');
-  
+  const [files, setFiles] = useState<File[]>([]);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files; // Extract files
+    if (files) {
+      setFiles((prevFiles) => [...prevFiles, ...Array.from(files)]);
+    }
+  };
+
+  const removeFile = (index: number) => {
+    setFiles((prevFiles) => prevFiles.filter((_, i) => i !== index));
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-  
+
     try {
-      const recipientFirstName = firstName; // Ensure `firstName` is available in scope
-  
-      const response = await fetch('/api/send-email', {  // Fixed syntax
+      const recipientFirstName = firstName;
+
+      // Convert files to base64
+      const attachments = await Promise.all(
+        files.map((file) =>
+          new Promise<{ content: string; filename: string; type: string; disposition: string }>(
+            (resolve, reject) => {
+              const reader = new FileReader();
+              reader.onload = () => {
+                resolve({
+                  content: (reader.result as string).split(',')[1], // Base64 content
+                  filename: file.name,
+                  type: file.type,
+                  disposition: 'attachment',
+                });
+              };
+              reader.onerror = reject;
+              reader.readAsDataURL(file);
+            }
+          )
+        )
+      );
+
+      const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -23,22 +57,22 @@ export default function EmailUserModal({
           userEmail: recipientEmail,
           emailTemplate,
           dynamicData: { firstName: recipientFirstName },
+          attachments: emailTemplate === 'acceptance' ? attachments : undefined,
         }),
       });
-  
+
       if (response.ok) {
-        alert('Email sent successfully!');
+        toast.success('Email sent successfully!');
         onClose();
       } else {
         const { error } = await response.json();
-        alert(`Failed to send email: ${error}`);
+        toast.error(`Failed to send email: ${error}`);
       }
     } catch (error) {
       console.error('Error sending email:', error);
-      alert('Failed to send email.');
+      toast.error('Failed to send email.');
     }
   };
-  
 
   return (
     <div id="emailModal" className="fixed inset-0 bg-gray-600 bg-opacity-50">
@@ -65,6 +99,46 @@ export default function EmailUserModal({
                 <option value="awaiting_review">Application Under Review</option>
               </select>
             </div>
+
+            {emailTemplate === 'acceptance' && (
+              <div className="mt-4 p-4 border rounded-md bg-gray-50 shadow-sm">
+                <label htmlFor="fileUpload" className="block text-sm font-medium text-gray-700 mb-2">
+                  Upload PDF(s)
+                </label>
+                <div className="flex items-center gap-2">
+                  <input
+                    id="fileUpload"
+                    type="file"
+                    accept="application/pdf"
+                    multiple
+                    onChange={handleFileChange}
+                    className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => document.getElementById('fileUpload')?.click()}
+                    className="px-3 py-2 bg-blue-500 text-white text-xs rounded-md hover:bg-blue-600"
+                  >
+                    Add Another File
+                  </button>
+                </div>
+                <div className="mt-2 space-y-2">
+                  {files.map((file, index) => (
+                    <div key={index} className="flex items-center justify-between text-sm bg-white p-2 rounded-md shadow-sm">
+                      <span className="truncate">{file.name}</span>
+                      <button
+                        type="button"
+                        onClick={() => removeFile(index)}
+                        className="text-red-500 hover:underline"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             <div className="mt-5 flex justify-end gap-4">
               <button
                 type="button"

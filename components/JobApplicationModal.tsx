@@ -3,6 +3,8 @@ import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { Image, X } from "lucide-react";
 import React, { useRef, useState } from "react";
 import { db, storage } from "../lib/firebase";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function JobApplicationModal({
   isOpen,
@@ -76,37 +78,33 @@ export default function JobApplicationModal({
     e.preventDefault();
     let resumeFileUrl;
     let portfolioFileUrl;
+  
     if (resumeFile) {
-      console.log("Resume", resumeFile)
       resumeFileUrl = await uploadFile(resumeFile, "resume");
-      console.log(resumeFileUrl)
     }
+  
     if (portfolioFile) {
-      console.log("portfolio", portfolioFileUrl)
       portfolioFileUrl = await uploadFile(portfolioFile, "portfolio");
-      console.log(portfolioFileUrl)
-
     }
-    // console.log(resumeFile, portfolioFile)
-    setStatus("pending"); // Set the status to pending while processing
-
+  
+    setStatus("pending");
+  
     try {
-      // Query to check if the user has already applied for the selected position
       const applicationsRef = collection(db, "applications");
       const q = query(
         applicationsRef,
         where("email", "==", email),
         where("position", "==", selectedPosition)
       );
-
+  
       const querySnapshot = await getDocs(q);
       if (!querySnapshot.empty) {
         setErrorMessage("You have already applied for this position.");
         setStatus("idle");
+        toast.error("You have already applied for this position.");
         return;
       }
-
-      // Add a new application if not already applied
+  
       await addDoc(applicationsRef, {
         firstName,
         lastName,
@@ -114,11 +112,32 @@ export default function JobApplicationModal({
         email,
         resumeFileUrl,
         portfolioUrl,
-        portfolioFileUrl: portfolioFileUrl ? portfolioFileUrl : '',
+        portfolioFileUrl: portfolioFileUrl ? portfolioFileUrl : "",
         position: department,
         dateApplied: Timestamp.now(),
       });
-
+  
+      await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          userEmail: 'uptechincorp@gmail.com',
+          emailTemplate: 'job_application_notification',
+          dynamicData: {
+            firstName,
+            lastName,
+            email,
+            contactNumber,
+            position: department,
+            resumeLink: resumeFileUrl,
+            portfolioLink: portfolioFileUrl || portfolioUrl,
+          },
+        }),
+      });
+  
+      toast.success("Application submitted successfully!");
       setStatus("idle");
       setErrorMessage("");
       onClose();
@@ -127,8 +146,10 @@ export default function JobApplicationModal({
       console.error("Error submitting application:", error);
       setStatus("error");
       setErrorMessage("An error occurred. Please try again.");
+      toast.error("An error occurred. Please try again.");
     }
   };
+  
 
   const resetFields = () => {
     setPortfolioURL("");
@@ -151,199 +172,202 @@ export default function JobApplicationModal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-10">
-      <div className="bg-white p-8 rounded-lg w-96">
-        <h2 className="text-2xl font-bold mb-4">
-            {department} Application Form
-        </h2>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-2">
-            <input
-              type="text"
-              placeholder="First Name"
-              className="w-full bg-blueTheme text-white placeholder-gray-100 border rounded px-2 py-1"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-              required
-            />
-          </div>
-          <div className="mb-2">
-            <input
-              type="text"
-              placeholder="Last Name"
-              className="w-full bg-blueTheme text-white placeholder-gray-100 border rounded px-2 py-1"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-              required
-            />
-          </div>
-          {/* <div className="mb-2">
-            <select
-              className="w-full bg-blueTheme text-white placeholder-gray-100 border rounded px-2 py-1"
-              value={selectedPosition}
-              onChange={(e) => setSelectedPosition(e.target.value)}
-              required
-            >
-              <option value="" disabled selected>
-                Choose Position
-              </option>
-              <option value="Graphic Design Vacancies">
-                Graphic Design Vacancies
-              </option>
-              <option value="Marketing Vacancies">Marketing Vacancies</option>
-              <option value="Administrative and Public Relations Vacancies">
-                Administrative and Public Relations Vacancies
-              </option>
-              <option value="Engineering Vacancies">
-                Engineering Vacancies
-              </option>
-            </select>
-          </div> */}
-          <div className="mb-2">
-            <input
-              type="text"
-              placeholder="Contact Number"
-              className="w-full bg-blueTheme text-white placeholder-gray-100 border rounded px-2 py-1"
-              value={contactNumber}
-              onChange={(e) => setContactNumber(e.target.value)}
-              required
-            />
-          </div>
-          <div className="mb-2">
-            <input
-              type="email"
-              placeholder="Email"
-              className="w-full bg-blueTheme text-white placeholder-gray-100 border rounded px-2 py-1"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div className="mb-2">
-            <div className="flex flex-col md:flex-row gap-4">
-              {/* LEFT */}
-              <div className="flex flex-col">
-                <h6>RESUME</h6>
-                <div
-                  className="upload-area"
-                  onDrop={handleResumeDrop}
-                  onDragOver={handleDragOver}
-                  onClick={() => resumeInputRef.current?.click()}
-                >
-                  <input
-                    type="file"
-                    ref={resumeInputRef}
-                    style={{ display: 'none' }}
-                    onChange={(e) => {
-                      const file = e.target.files?.[0];
-                      if (file) {
-                        setResumeFile(file);
-                      }
-                    }}
-                  />
-                  {resumeFile ? (
-                    <div className="file-info">
-                      <span>{resumeFile.name}</span>
-                      <X name="X" onClick={removeResumeFile} />
-                    </div>
-                  ) : (
-                    <div className="flex flex-col justify-center items-center gap-2">
-                      <Image />
-                      <p>Drag and drop your RESUME here, or click to upload</p>
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {/* RIGHT */}
-              <div className="flex flex-col">
-                <h6>PORTFOLIO</h6>
-                <div
-                  className="upload-area"
-                  onDrop={handlePortfolioDrop}
-                  onDragOver={handleDragOver}
-                  onClick={() => portfolioInputRef.current?.click()}
-                >
-                  <input
-                    type="file"
-                    ref={portfolioInputRef}
-                    style={{ display: 'none' }}
-                    onChange={(e) => {
-                      const file = e.target.files?.[0];
-                      if (file) {
-                        setPortfolioFile(file);
-                      }
-                    }}
-                  />
-                  {portfolioFile ? (
-                    <div className="file-info">
-                      <span>{portfolioFile.name}</span>
-                      <X name="X" onClick={removePortfolioFile} />
-                    </div>
-                  ) : (
-                    <div className="flex flex-col justify-center items-center gap-2">
-                      <Image />
-                      <p>Drag and drop your PORTFOLIO here, or click to upload</p>
-                    </div>
-                  )}
-                </div>
-              </div>
-
+    <>
+      <ToastContainer />
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-10">
+        <div className="bg-white p-8 rounded-lg w-96">
+          <h2 className="text-2xl font-bold mb-4">
+              {department} Application Form
+          </h2>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-2">
+              <input
+                type="text"
+                placeholder="First Name"
+                className="w-full bg-blueTheme text-white placeholder-gray-100 border rounded px-2 py-1"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                required
+              />
             </div>
-            <style jsx>{`
-              .upload-area {
-                border: 2px dashed #0070f3;
-                padding: 20px;
-                text-align: center;
-                cursor: pointer;
-                transition: border-color 0.3s, background-color 0.3s;
-              }
-              .upload-area:hover {
-                border-color: #005bb5;
-              }
-              .upload-area.dragging {
-                border-color: #00bfff; /* Change border color when dragging */
-                background-color: rgba(0, 191, 255, 0.1); /* Light blue background */
-              }
-              .file-info {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-              }
-            `}</style>
-          </div>
-          <div className="mb-2">
-            <input
-              type="url"
-              placeholder="Portfolio URL (optional)"
-              className="w-full bg-blueTheme text-white placeholder-gray-100 border rounded px-2 py-1"
-              value={portfolioUrl}
-              onChange={(e) => setPortfolioURL(e.target.value)}
-            />
-          </div>
-          {errorMessage && (
-            <div className="text-red-500 text-sm mb-2">{errorMessage}</div>
-          )}
-          <div className="flex justify-between">
-            <button
-              type="button"
-              onClick={handleClose}
-              className="bg-gray-300 text-gray-800 font-bold rounded-md p-2 w-1/2 mr-2"
-            >
-              Close
-            </button>
-            <button
-              type="submit"
-              disabled={status === "pending"}
-              className={`${
-                status === "pending" ? "bg-gray-500" : "bg-blueTheme"
-              } text-white font-bold rounded-md p-2 w-1/2`}
-            >
-              {status === "pending" ? "Submitting..." : "Submit"}
-            </button>
-          </div>
-        </form>
+            <div className="mb-2">
+              <input
+                type="text"
+                placeholder="Last Name"
+                className="w-full bg-blueTheme text-white placeholder-gray-100 border rounded px-2 py-1"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                required
+              />
+            </div>
+            {/* <div className="mb-2">
+              <select
+                className="w-full bg-blueTheme text-white placeholder-gray-100 border rounded px-2 py-1"
+                value={selectedPosition}
+                onChange={(e) => setSelectedPosition(e.target.value)}
+                required
+              >
+                <option value="" disabled selected>
+                  Choose Position
+                </option>
+                <option value="Graphic Design Vacancies">
+                  Graphic Design Vacancies
+                </option>
+                <option value="Marketing Vacancies">Marketing Vacancies</option>
+                <option value="Administrative and Public Relations Vacancies">
+                  Administrative and Public Relations Vacancies
+                </option>
+                <option value="Engineering Vacancies">
+                  Engineering Vacancies
+                </option>
+              </select>
+            </div> */}
+            <div className="mb-2">
+              <input
+                type="text"
+                placeholder="Contact Number"
+                className="w-full bg-blueTheme text-white placeholder-gray-100 border rounded px-2 py-1"
+                value={contactNumber}
+                onChange={(e) => setContactNumber(e.target.value)}
+                required
+              />
+            </div>
+            <div className="mb-2">
+              <input
+                type="email"
+                placeholder="Email"
+                className="w-full bg-blueTheme text-white placeholder-gray-100 border rounded px-2 py-1"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className="mb-2">
+              <div className="flex flex-col md:flex-row gap-4">
+                {/* LEFT */}
+                <div className="flex flex-col">
+                  <h6>RESUME</h6>
+                  <div
+                    className="upload-area"
+                    onDrop={handleResumeDrop}
+                    onDragOver={handleDragOver}
+                    onClick={() => resumeInputRef.current?.click()}
+                  >
+                    <input
+                      type="file"
+                      ref={resumeInputRef}
+                      style={{ display: 'none' }}
+                      onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (file) {
+                          setResumeFile(file);
+                        }
+                      }}
+                    />
+                    {resumeFile ? (
+                      <div className="file-info">
+                        <span>{resumeFile.name}</span>
+                        <X name="X" onClick={removeResumeFile} />
+                      </div>
+                    ) : (
+                      <div className="flex flex-col justify-center items-center gap-2">
+                        <Image />
+                        <p>Drag and drop your RESUME here, or click to upload</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* RIGHT */}
+                <div className="flex flex-col">
+                  <h6>PORTFOLIO</h6>
+                  <div
+                    className="upload-area"
+                    onDrop={handlePortfolioDrop}
+                    onDragOver={handleDragOver}
+                    onClick={() => portfolioInputRef.current?.click()}
+                  >
+                    <input
+                      type="file"
+                      ref={portfolioInputRef}
+                      style={{ display: 'none' }}
+                      onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (file) {
+                          setPortfolioFile(file);
+                        }
+                      }}
+                    />
+                    {portfolioFile ? (
+                      <div className="file-info">
+                        <span>{portfolioFile.name}</span>
+                        <X name="X" onClick={removePortfolioFile} />
+                      </div>
+                    ) : (
+                      <div className="flex flex-col justify-center items-center gap-2">
+                        <Image />
+                        <p>Drag and drop your PORTFOLIO here, or click to upload</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+              </div>
+              <style jsx>{`
+                .upload-area {
+                  border: 2px dashed #0070f3;
+                  padding: 20px;
+                  text-align: center;
+                  cursor: pointer;
+                  transition: border-color 0.3s, background-color 0.3s;
+                }
+                .upload-area:hover {
+                  border-color: #005bb5;
+                }
+                .upload-area.dragging {
+                  border-color: #00bfff; /* Change border color when dragging */
+                  background-color: rgba(0, 191, 255, 0.1); /* Light blue background */
+                }
+                .file-info {
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                }
+              `}</style>
+            </div>
+            <div className="mb-2">
+              <input
+                type="url"
+                placeholder="Portfolio URL (optional)"
+                className="w-full bg-blueTheme text-white placeholder-gray-100 border rounded px-2 py-1"
+                value={portfolioUrl}
+                onChange={(e) => setPortfolioURL(e.target.value)}
+              />
+            </div>
+            {errorMessage && (
+              <div className="text-red-500 text-sm mb-2">{errorMessage}</div>
+            )}
+            <div className="flex justify-between">
+              <button
+                type="button"
+                onClick={handleClose}
+                className="bg-gray-300 text-gray-800 font-bold rounded-md p-2 w-1/2 mr-2"
+              >
+                Close
+              </button>
+              <button
+                type="submit"
+                disabled={status === "pending"}
+                className={`${
+                  status === "pending" ? "bg-gray-500" : "bg-blueTheme"
+                } text-white font-bold rounded-md p-2 w-1/2`}
+              >
+                {status === "pending" ? "Submitting..." : "Submit"}
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
