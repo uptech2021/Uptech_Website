@@ -113,53 +113,31 @@ export default function About() {
                   <p className="mb-6 font-bold">FOUNDER /CHAIRMAN/ CEO</p>
                 </div>
                 <div className="lg:w-1/2">
-                  <h3 className="blueText-dark text-2xl mb-2">Aaron Hazzard</h3>
-                  <p className="mb-6 font-bold">CO-FOUNDER/VICE CHAIRMAN/Senior SOFTWARE ENGINEERING DIRECTOR</p>
-                </div>
-              </div>
-              <div className="flex flex-col lg:flex-row lg:gap-20 items-center lg:mb-10">
-                <div className="lg:w-1/3">
-                  <h3 className="blueText-dark text-2xl mb-2">Quanne Dann</h3>
-                  <p className="mb-6 font-bold">DATABASE ADMINISTRATIVE DIRECTOR</p>
-                </div>
-                <div className="lg:w-1/3">
-                  <h3 className="blueText-dark text-2xl mb-2">Romario Solomon</h3>
-                  <p className="mb-6 font-bold">MARKETING AND BRAND MANAGER</p>
-                </div>
-                <div className="lg:w-1/3">
                   <h3 className="blueText-dark text-2xl mb-2">Kyle Nagee</h3>
-                  <p className="mb-6 font-bold">JUNIOR SOFTWARE ENGINEERING DIRECTOR</p>
+                  <p className="mb-6 font-bold">WEBSITE DEVELOPMENT LEAD</p>
                 </div>
               </div>
               <div className="flex flex-col lg:flex-row lg:gap-20 items-center lg:mb-10">
                 <div className="lg:w-1/3">
-                  <h3 className="blueText-dark text-2xl mb-2">Hermione Ramsohan</h3>
-                  <p className="mb-6 font-bold">JUNIOR SOFTWARE ENGINEERING</p>
+                  <h3 className="blueText-dark text-2xl mb-2">Josiah James</h3>
+                  <p className="mb-6 font-bold">MOBILE APPLICATION LEAD</p>
                 </div>
                 <div className="lg:w-1/3">
                   <h3 className="blueText-dark text-2xl mb-2">Raushawn Mitchell</h3>
                   <p className="mb-6 font-bold">JUNIOR SOFTWARE ENGINEERING</p>
                 </div>
                 <div className="lg:w-1/3">
-                  <h3 className="blueText-dark text-2xl mb-2">Josiah James</h3>
+                  <h3 className="blueText-dark text-2xl mb-2">Ethan Ramsahai</h3>
                   <p className="mb-6 font-bold">JUNIOR SOFTWARE ENGINEERING</p>
                 </div>
               </div>
               <div className="flex flex-col lg:flex-row lg:gap-20 items-center lg:mb-10">
-                <div className="lg:w-1/3">
-                  <h3 className="blueText-dark text-2xl mb-2">Ethan Ramsahai</h3>
-                  <p className="mb-6 font-bold">JUNIOR SOFTWARE ENGINEERING</p>
-                </div>
-                <div className="lg:w-1/3">
+                <div className="lg:w-1/2">
                   <h3 className="blueText-dark text-2xl mb-2">Saeed Sinanan</h3>
                   <p className="mb-6 font-bold">JUNIOR SOFTWARE ENGINEERING</p>
                 </div>
-                <div className="lg:w-1/3">
+                <div className="lg:w-1/2">
                   <h3 className="blueText-dark text-2xl mb-2">Jason Dookeran</h3>
-                  <p className="mb-6 font-bold">ADVISOR</p>
-                </div>
-                <div className="lg:w-1/3">
-                  <h3 className="blueText-dark text-2xl mb-2">Xian Ramdass</h3>
                   <p className="mb-6 font-bold">ADVISOR</p>
                 </div>
               </div>
