@@ -114,7 +114,7 @@ export default function About() {
                 </div>
                 <div className="lg:w-1/2">
                   <h3 className="blueText-dark text-2xl mb-2">Kyle Nagee</h3>
-                  <p className="mb-6 font-bold">WEBSITE DEVELOPMENT LEAD</p>
+                  <p className="mb-6 font-bold">CO-FOUNDER /VICE-CHAIRMAN/WEBSITE DEVELOPMENT LEAD</p>
                 </div>
               </div>
               <div className="flex flex-col lg:flex-row lg:gap-20 items-center lg:mb-10">
@@ -124,7 +124,7 @@ export default function About() {
                 </div>
                 <div className="lg:w-1/3">
                   <h3 className="blueText-dark text-2xl mb-2">Raushawn Mitchell</h3>
-                  <p className="mb-6 font-bold">JUNIOR SOFTWARE ENGINEERING</p>
+                  <p className="mb-6 font-bold">SENIOR SOFTWARE ENGINEERING</p>
                 </div>
                 <div className="lg:w-1/3">
                   <h3 className="blueText-dark text-2xl mb-2">Ethan Ramsahai</h3>
@@ -138,6 +138,10 @@ export default function About() {
                 </div>
                 <div className="lg:w-1/2">
                   <h3 className="blueText-dark text-2xl mb-2">Jason Dookeran</h3>
+                  <p className="mb-6 font-bold">ADVISOR</p>
+                </div>
+                <div className="lg:w-1/2">
+                  <h3 className="blueText-dark text-2xl mb-2">Jagdesh Badree</h3>
                   <p className="mb-6 font-bold">ADVISOR</p>
                 </div>
               </div>

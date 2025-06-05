@@ -164,6 +164,7 @@ export default function JobManagementModal({
                 <option value="Marketing">Marketing</option>
                 <option value="Administrative">Administrative</option>
                 <option value="Engineering">Engineering</option>
+                <option value="General Opportunities">General Opportunities</option>
               </select>
             </div>
             <Editor
