@@ -47,7 +47,7 @@ export default function Objectives() {
 
   return (
     <div className="bg-gray-100">
-      <div className="2xl:w-8/12 xl:flex flex-col mx-auto">
+      <div className="2xl:w-8/12 xl:flex flex-col mx-auto overflow-x-hidden">
         {/* Navbar */}
         <Header />
         <div className="w-full h-1 bg-black my-4"></div>
@@ -83,15 +83,15 @@ export default function Objectives() {
           />
 
           {/* Mobile Heading */}
-          <div className="pb-28 flex flex-col justify-between h-full absolute md:hidden top-0 left-1/2 transform -translate-x-1/2 z-10">
-            <h1 className="mt-24">Objectives</h1>
-            <p className="ThiccboiBold">
+          <div className="h-full absolute md:hidden top-0 mt-10 left-1/2 transform -translate-x-1/2 z-10">
+            <h1>Objectives</h1>
+            <p className="mt-3 ThiccboiBold">
               Ourlime Communities Network - Transforming social networking into a productive and enjoyable experience for communities and their members.
             </p>
           </div>
 
           {/* PC/Tablet heading */}
-          <div className="hidden md:flex w-6/12 ml-10 flex-col gap-3 text-left absolute top-0 mt-20 lg:mt-0">
+          <div className="hidden md:flex w-8/12 ml-10 flex-col gap-3 text-left absolute top-0 -mt-10 md:mt-10">
             <h1>Objectives</h1>
             <p className="ThiccboiBold">
               Ourlime Communities Network - <br className="hidden md:inline" />
