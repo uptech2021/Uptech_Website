@@ -183,30 +183,30 @@ const VacanciesPage = () => {
                     Our Developers Club Benefits:
                   </h3>
                   <ul className="space-y-2 text-gray-700">
-                    <li className="flex items-center">
-                      <span className="w-2 h-2 bg-blueTheme rounded-full mr-3"></span>
+                    <li className="flex items-start">
+                      <span className="w-2 h-2 bg-blueTheme rounded-full mr-3 mt-2 flex-shrink-0"></span>
                       Learn by doing - from the basics of coding to building
                       real websites and mobile apps.
                     </li>
                   </ul>
                   <ul className="space-y-2 text-gray-700">
-                    <li className="flex items-center">
-                      <span className="w-2 h-2 bg-blueTheme rounded-full mr-3"></span>
+                    <li className="flex items-start">
+                      <span className="w-2 h-2 bg-blueTheme rounded-full mr-3 mt-2 flex-shrink-0"></span>
                       Collaborate on real projects - social networks, commercial
                       websites, blogs, and mobile applications for iOS and
                       Android.
                     </li>
                   </ul>
                   <ul className="space-y-2 text-gray-700">
-                    <li className="flex items-center">
-                      <span className="w-2 h-2 bg-blueTheme rounded-full mr-3"></span>
+                    <li className="flex items-start">
+                      <span className="w-2 h-2 bg-blueTheme rounded-full mr-3 mt-2 flex-shrink-0"></span>
                       Grow with support - mentors, workshops, and a community of
                       learners who want to see you win.
                     </li>
                   </ul>
                   <ul className="space-y-2 text-gray-700">
-                    <li className="flex items-center">
-                      <span className="w-2 h-2 bg-blueTheme rounded-full mr-3"></span>
+                    <li className="flex items-start">
+                      <span className="w-2 h-2 bg-blueTheme rounded-full mr-3 mt-2 flex-shrink-0"></span>
                       Build your future - with practical skills that prepare you
                       for freelancing, tech jobs, or launching your own ideas.
                     </li>
