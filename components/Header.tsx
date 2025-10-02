@@ -26,7 +26,7 @@ export default function Header() {
             <Link href="/objectives">Objectives</Link>
           </li>
           <li>
-            <Link href="/vacancies">Vacancies</Link>
+            <Link href="/vacancies">Join Us</Link>
           </li>
           <li>
             <Link href="/about">About Us</Link>
@@ -53,7 +53,7 @@ export default function Header() {
             <Link href="/objectives">Objectives</Link>
           </li>
           <li>
-            <Link href="/vacancies">Vacancies</Link>
+            <Link href="/vacancies">Join Us</Link>
           </li>
           <li>
             <Link href="/about">About Us</Link>

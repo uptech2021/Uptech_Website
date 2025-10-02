@@ -155,7 +155,7 @@ export default function Home() {
               </h2>
               <br />
               <button
-                className="text-sm sm:text-base font-light rounded-xl text-blue-500 bg-yellow-300 p-2"
+                className="text-sm sm:text-base font-light rounded-xl text-blue-500 ThiccboiBold bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 p-2 w-auto transition-all duration-300 backdrop-blur-md border border-yellow-300/50 animate-pulse"
                 onClick={() =>
                   document
                     .getElementById("contact")
@@ -177,7 +177,7 @@ export default function Home() {
                 grow.
               </p>
               <button
-                className="text-sm md:text-lg lg:text-lg font-light rounded-xl text-blue-500 bg-yellow-300 p-2 w-auto"
+                className="text-sm md:text-lg lg:text-lg font-light rounded-xl text-blue-500 ThiccboiBold bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 hover:from-yellow-300 hover:via-yellow-400 hover:to-yellow-500 p-2 w-auto transition-all duration-300 transform hover:scale-105 hover:shadow-lg backdrop-blur-md border border-yellow-300/50 animate-pulse"
                 onClick={() =>
                   document
                     .getElementById("contact")
