@@ -8,6 +8,8 @@ import Header from "@/components/Header";
 import DOMPurify from "dompurify";
 import Footer from "@/components/Footer";
 import DevClubModal from "@/components/DevelopersClubModal";
+import VacancyDetailsModal from "@/components/VacancyDetailsModal";
+import "@/css/globals.css";
 
 type Vacancies = {
   department: string;
@@ -27,15 +29,33 @@ const VacanciesPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [expandedVacancy, setExpandedVacancy] = useState<number | null>(null);
   const [isDevClubModalOpen, setIsDevClubModalOpen] = useState(false);
+  const [isVacancyDetailsModalOpen, setIsVacancyDetailsModalOpen] = useState(false);
+  const [selectedVacancy, setSelectedVacancy] = useState<Vacancies | null>(null);
+
+  useEffect(() => {
+    if (isVacancyDetailsModalOpen || isModalOpen) {
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
+    return () => {
+      document.body.classList.remove("no-scroll");
+    };
+  }, [isVacancyDetailsModalOpen, isModalOpen]);
 
   const handleApply = (department: string) => {
     setSelectedDepartment(department);
     setIsModalOpen(true);
   };
 
-  const toggleVacancyDetails = (index: number) => {
-    setExpandedVacancy(expandedVacancy === index ? null : index);
+  const handleViewDetails = (vacancy: Vacancies) => {
+    setSelectedVacancy(vacancy);
+    setIsVacancyDetailsModalOpen(true);
   };
+
+  // const toggleVacancyDetails = (index: number) => {
+  //   setExpandedVacancy(expandedVacancy === index ? null : index);
+  // };
 
   const [vacancies, setVacancies] = useState<Vacancies[]>([]);
 
@@ -283,39 +303,45 @@ const VacanciesPage = () => {
               vacancies.map((vacancy, index) => (
                 <div
                   key={index}
-                  className={`text-white bg-blueTheme rounded-md p-4 flex flex-col md:flex-row `}
+                  className= "text-white bg-blueTheme rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden"
                 >
-                  <div className="w-full flex flex-col">
-                    <h1 className="font-bold text-3xl">{vacancy.title}</h1>
-                    <button
-                      className="mt-2 bg-white text-blueTheme font-bold rounded-md px-2 py-1"
-                      onClick={() => toggleVacancyDetails(index)}
-                    >
-                      {expandedVacancy === index
-                        ? "Hide Details"
-                        : "View Details"}
-                    </button>
-                    {expandedVacancy === index && (
-                      <div>
-                        <div
-                          className="mt-2 space-y-1"
-                          dangerouslySetInnerHTML={{
-                            __html: DOMPurify.sanitize(vacancy.description),
-                          }}
-                        />
-                        <button
-                          className="mt-4 bg-white text-blueTheme font-bold rounded-md px-4 py-2"
-                          onClick={() => handleApply(vacancy.department)}
-                        >
-                          Apply
-                        </button>
+                  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+                    {/* Vacancy Info */}
+                    <div className="flex-1 min-w-0 w-full">
+                      <h1 className="flex items-start font-semibold text-lg sm:text-xl md:text-2xl lg:text-2xl mb-2 leading-tight vacancy-title">
+                        {vacancy.title}
+                      </h1>
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                          {vacancy.department}
+                        </span>
                       </div>
-                    )}
+                    </div>
+
+                    {/* View Details Button */}
+                    <div className="flex justify-end lg:justify-end">
+                      <button
+                        className="bg-white text-blueTheme font-bold rounded-lg px-6 py-3 hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105 shadow-md "
+                        onClick={() => handleViewDetails(vacancy)}
+                      >
+                        View Details
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))
             )}
           </main>
+
+          {/* Vacancy Details Modal */}
+          <VacancyDetailsModal
+            isOpen={isVacancyDetailsModalOpen}
+            onClose={() => setIsVacancyDetailsModalOpen(false)}
+            vacancy={selectedVacancy}
+            onApply={handleApply}
+          />
+
+          {/* Job Application Modal */}
           {selectedDepartment && (
             <JobApplicationModal
               isOpen={isModalOpen}

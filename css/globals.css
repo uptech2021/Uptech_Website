@@ -163,3 +163,69 @@ ul{
   height: 24px;
   margin: 10px 0;
 }
+
+/* Vacancy Title bug fix */
+.vacancy-title {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+}
+
+/* Vacancy Title bug fix - Specific rules for very small screens (390px and below) */
+@media (max-width: 390px) {
+  .vacancy-title {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+    hyphens: none;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    line-height: 1.2;
+    font-size: 1rem !important;
+  }
+  
+  .vacancy-container {
+    padding: 1rem !important;
+  }
+  
+  .vacancy-button {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+}
+
+/* Vacancy Title bug fix - Specific rules for extra small screens (344px and below) */
+@media (max-width: 344px) {
+  .vacancy-title {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+    hyphens: none;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    line-height: 1.1;
+    font-size: 0.85rem !important;
+    max-width: 100%;
+  }
+  
+  .vacancy-container {
+    padding: 0.75rem !important;
+  }
+  
+  .vacancy-button {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem !important;
+    font-size: 0.875rem !important;
+  }
+  
+  .vacancy-info {
+    margin-bottom: 0.75rem;
+  }
+  
+  .vacancy-department {
+    font-size: 0.75rem !important;
+    padding: 0.25rem 0.5rem !important;
+  }
+}
