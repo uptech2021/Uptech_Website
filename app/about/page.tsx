@@ -125,8 +125,8 @@ export default function About() {
       title: "Junior Development Team",
       members: [
         {
-          id: "a-roopnarine",
-          fullName: "A. Roopnarine",
+          id: "a-roopnarinesingh",
+          fullName: "A. Roopnarinesingh",
           position: "Trainee Junior Software Engineer / Graphic Designer",
           role: "trainee",
           department: "Engineering",
