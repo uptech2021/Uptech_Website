@@ -65,8 +65,8 @@ export default function About() {
         },
         {
           id: "kyle-nagee",
-          fullName: "Kyle Nagee",
-          position: "Senior Software Engineer / Head of Development",
+          fullName: "K. Nagee",
+          position: "Co-Founder / Senior Software Engineer / Head of Development",
           role: "director",
           department: "Engineering",
           isDirector: true,
@@ -75,7 +75,7 @@ export default function About() {
         {
           id: "e-ramsahai",
           fullName: "E. Ramsahai",
-          position: "Graphics & Multimedia",
+          position: "Co-Founder / Graphics & Multimedia",
           role: "director",
           department: "Design",
           isDirector: true,
@@ -141,28 +141,12 @@ export default function About() {
           order: 2,
         },
         {
-          id: "a-persad",
-          fullName: "A. Persad",
-          position: "Trainee Junior Software Engineer",
-          role: "trainee",
-          department: "Engineering",
-          order: 3,
-        },
-        {
           id: "j-lightfoot",
           fullName: "J. Lightfoot",
           position: "Trainee Junior Software Engineer",
           role: "trainee",
           department: "Engineering",
-          order: 4,
-        },
-        {
-          id: "j-doodnath",
-          fullName: "J. Doodnath",
-          position: "Trainee Junior Software Engineer",
-          role: "trainee",
-          department: "Engineering",
-          order: 5,
+          order: 3,
         }
       ]
     }
