@@ -7,32 +7,36 @@ import { doc, deleteDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 
 interface ApplicationDetailsModalProps {
-    application: Application;
+    application: Application | any; // Allow both job and dev club applications
     onClose: () => void;
-    onUpdateStatus: (id: string, status: string, reason: string) => void;
+    onUpdateStatus: (id: string, status: string, reason: string, isDevClub?: boolean) => void;
+    isDevClubApplication?: boolean; // Flag to identify dev club applications
 }
 
 const ApplicationDetailsModal: React.FC<ApplicationDetailsModalProps> = ({
     application,
     onClose,
     onUpdateStatus,
+    isDevClubApplication = false,
 }) => {
+    // Detect if it's a developers club application by checking for unique fields
+    const isDevClub = isDevClubApplication || !application.position || application.hasSoftwareKnowledge !== undefined;
     const [isEmailModalOpen, setEmailModalOpen] = useState(false);
     const [isDeletePromptOpen, setDeletePromptOpen] = useState(false);
 
     const handleStatusChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const newStatus = e.target.value;
-        onUpdateStatus(application.id, newStatus, '');
+        onUpdateStatus(application.id, newStatus, '', isDevClub);
     };
 
     const handleAccept = () => {
-        onUpdateStatus(application.id, "accepted", "");
+        onUpdateStatus(application.id, "accepted", "", isDevClub);
         toast.success('Application accepted successfully!');
         onClose();
     };
 
     const handleReject = () => {
-        onUpdateStatus(application.id, "rejected", "");
+        onUpdateStatus(application.id, "rejected", "", isDevClub);
         toast.error('Application rejected successfully!');
         onClose();
     };
@@ -47,7 +51,8 @@ const ApplicationDetailsModal: React.FC<ApplicationDetailsModalProps> = ({
 
     const handleDelete = async () => {
         try {
-            const applicationRef = doc(db, "applications", application.id);
+            const collectionName = isDevClub ? "developersClubApplications" : "applications";
+            const applicationRef = doc(db, collectionName, application.id);
             await deleteDoc(applicationRef);
             toast.success('Application deleted successfully!');
             window.location.reload();
@@ -60,7 +65,9 @@ const ApplicationDetailsModal: React.FC<ApplicationDetailsModalProps> = ({
     return (
         <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
             <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-3xl">
-                <h2 className="text-xl font-bold mb-4">Application Details</h2>
+                <h2 className="text-xl font-bold mb-4">
+                    {isDevClub ? "Developers Club Application Details" : "Application Details"}
+                </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label className="block text-sm font-medium text-gray-700">First Name</label>
@@ -70,14 +77,36 @@ const ApplicationDetailsModal: React.FC<ApplicationDetailsModalProps> = ({
                         <label className="block text-sm font-medium text-gray-700">Last Name</label>
                         <p className="mt-1 text-sm text-gray-900">{application.lastName}</p>
                     </div>
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">Position</label>
-                        <p className="mt-1 text-sm text-gray-900">{application.position}</p>
-                    </div>
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">Contact</label>
-                        <p className="mt-1 text-sm text-gray-900">{application.contactNumber || 'N/A'}</p>
-                    </div>
+                    
+                    {/* Conditional fields based on application type */}
+                    {isDevClub ? (
+                        <>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">Date of Birth</label>
+                                <p className="mt-1 text-sm text-gray-900">{application.dateOfBirth || 'N/A'}</p>
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">Contact Number</label>
+                                <p className="mt-1 text-sm text-gray-900">{application.contactNumber || 'N/A'}</p>
+                            </div>
+                            <div className="col-span-2">
+                                <label className="block text-sm font-medium text-gray-700">Address</label>
+                                <p className="mt-1 text-sm text-gray-900">{application.address || 'N/A'}</p>
+                            </div>
+                        </>
+                    ) : (
+                        <>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">Position</label>
+                                <p className="mt-1 text-sm text-gray-900">{application.position || 'N/A'}</p>
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">Contact</label>
+                                <p className="mt-1 text-sm text-gray-900">{application.contactNumber || 'N/A'}</p>
+                            </div>
+                        </>
+                    )}
+                    
                     <div className="col-span-2">
                         <label className="block text-sm font-medium text-gray-700">Email</label>
                         <div className="flex items-center gap-2">
@@ -107,47 +136,94 @@ const ApplicationDetailsModal: React.FC<ApplicationDetailsModalProps> = ({
                             )}
                         </p>
                     </div>
-                    <div className="col-span-2">
-                        <label className="block text-sm font-medium text-gray-700">Portfolio</label>
-                        <div className="mt-1 text-sm text-gray-900 space-y-2">
-                            {application.portfolioFileUrl && (
-                                <p>
-                                    <a
-                                        href={application.portfolioFileUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-blue-600 hover:text-blue-900"
-                                    >
-                                        <i className="fas fa-file-alt mr-2"></i>View Portfolio File
-                                    </a>
-                                </p>
-                            )}
-                            {application.portfolioUrl && (
-                                <p>
-                                    <a
-                                        href={application.portfolioUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-blue-600 hover:text-blue-900"
-                                    >
-                                        <i className="fas fa-external-link-alt mr-2"></i>View Portfolio Website
-                                    </a>
-                                </p>
-                            )}
-                            {!application.portfolioFileUrl && !application.portfolioUrl && 'N/A'}
+                    
+                    {/* Conditional fields for job applications */}
+                    {!isDevClub && (
+                        <div className="col-span-2">
+                            <label className="block text-sm font-medium text-gray-700">Portfolio</label>
+                            <div className="mt-1 text-sm text-gray-900 space-y-2">
+                                {application.portfolioFileUrl && (
+                                    <p>
+                                        <a
+                                            href={application.portfolioFileUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-blue-600 hover:text-blue-900"
+                                        >
+                                            <i className="fas fa-file-alt mr-2"></i>View Portfolio File
+                                        </a>
+                                    </p>
+                                )}
+                                {application.portfolioUrl && (
+                                    <p>
+                                        <a
+                                            href={application.portfolioUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-blue-600 hover:text-blue-900"
+                                        >
+                                            <i className="fas fa-external-link-alt mr-2"></i>View Portfolio Website
+                                        </a>
+                                    </p>
+                                )}
+                                {!application.portfolioFileUrl && !application.portfolioUrl && 'N/A'}
+                            </div>
                         </div>
-                    </div>
+                    )}
+                    
+                    {/* Conditional fields for developers club applications */}
+                    {isDevClub ? (
+                        <>
+                            <div className="col-span-2">
+                                <label className="block text-sm font-medium text-gray-700">Why Interested in Joining</label>
+                                <p className="mt-1 text-sm text-gray-900 whitespace-pre-wrap bg-gray-50 p-3 rounded border">
+                                    {application.interestReason || 'N/A'}
+                                </p>
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">Software Knowledge</label>
+                                <p className="mt-1 text-sm text-gray-900">
+                                    <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
+                                        application.hasSoftwareKnowledge === "yes" 
+                                            ? "bg-green-100 text-green-800" 
+                                            : "bg-gray-100 text-gray-800"
+                                    }`}>
+                                        {application.hasSoftwareKnowledge === "yes" ? "Yes" : "No"}
+                                    </span>
+                                </p>
+                            </div>
+                            {application.hasSoftwareKnowledge === "yes" && application.softwareKnowledgeDetails && (
+                                <div className="col-span-2">
+                                    <label className="block text-sm font-medium text-gray-700">Software Knowledge Details</label>
+                                    <p className="mt-1 text-sm text-gray-900 whitespace-pre-wrap bg-gray-50 p-3 rounded border">
+                                        {application.softwareKnowledgeDetails}
+                                    </p>
+                                </div>
+                            )}
+                        </>
+                    ) : (
+                        <div className="col-span-2">
+                            <label className="block text-sm font-medium text-gray-700">Comment</label>
+                            <p className="mt-1 text-sm text-gray-900">
+                                {application.comment || 'No comment'}
+                            </p>
+                        </div>
+                    )}
                     <div className="col-span-2">
-                        <label className="block text-sm font-medium text-gray-700">Comment</label>
+                        <label className="block text-sm font-medium text-gray-700">Date Applied</label>
                         <p className="mt-1 text-sm text-gray-900">
-                            {application.comment || 'No comment'}
+                            {application.dateApplied 
+                                ? (application.dateApplied.toDate 
+                                    ? application.dateApplied.toDate().toLocaleDateString()
+                                    : new Date(application.dateApplied).toLocaleDateString())
+                                : 'N/A'}
                         </p>
                     </div>
                     <div className="col-span-2">
                         <label className="block text-sm font-medium text-gray-700">Status</label>
                         <select
                             id="applicationStatus"
-                            value={application.status}
+                            value={application.status || "pending"}
                             onChange={handleStatusChange}
                             className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm px-3 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                         >

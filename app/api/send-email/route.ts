@@ -27,6 +27,11 @@ export async function POST(req: Request) {
       userEmail = 'uptechincorp@gmail.com'; // Now this works
     }
 
+    // Handle notification email for developers club applications
+    if (emailTemplate === 'developers_club_application_notification') {
+      userEmail = 'uptechincorp@gmail.com';
+    }
+
     const emailAttachments =
       attachments && attachments.length > 0
         ? attachments.map((attachment: { content: string; filename: string; type: string; disposition: string }) => ({
@@ -96,7 +101,9 @@ const getTemplateId = (template: string): string => {
     case 'awaiting_review':
       return 'd-930fd93582b64fdeb8c696b422f77d97';
     case 'job_application_notification': 
-      return 'd-4eaa748b0b9c4e8d8cc892ce2cb42515'; 
+      return 'd-4eaa748b0b9c4e8d8cc892ce2cb42515';
+    case 'developers_club_application_notification':
+      return 'd-4eaa748b0b9c4e8d8cc892ce2cb42515'; // Using same template for now, can be customized later
     default:
       return '';
   }

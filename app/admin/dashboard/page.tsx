@@ -15,12 +15,14 @@ import { ToastContainer, toast } from "react-toastify";
 
 function AdminDashboard() {
   const [applications, setApplications] = useState<Application[]>([]);
+  const [devClubApplications, setDevClubApplications] = useState<any[]>([]);
   const [selectedApplication, setSelectedApplication] =
     useState<Application | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [statusFilter, setStatusFilter] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [isJobModalOpen, setIsJobModalOpen] = useState(false); // State for Job Management Modal
+  const [applicationType, setApplicationType] = useState<"job" | "devClub">("job");
 
   const router = useRouter();
 
@@ -36,6 +38,7 @@ function AdminDashboard() {
 
   const loadApplications = async () => {
     try {
+      // Load job applications
       const snapshot = await getDocs(collection(db, "applications"));
       const applicationsData: Application[] = snapshot.docs.map(
         (doc) =>
@@ -45,6 +48,15 @@ function AdminDashboard() {
           } as Application)
       );
       setApplications(applicationsData);
+
+      // Load developers club applications
+      const devClubSnapshot = await getDocs(collection(db, "developersClubApplications"));
+      const devClubData = devClubSnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setDevClubApplications(devClubData);
+      
       setIsLoading(false);
     } catch (error) {
       console.error("Error loading applications:", error);
@@ -52,17 +64,18 @@ function AdminDashboard() {
     }
   };
 
-  const handleApplicationClick = (application: Application) => {
+  const handleApplicationClick = (application: Application | any) => {
     setSelectedApplication(application);
   };
 
   const handleApplicationUpdate = async (
     applicationId: string,
     status: string,
-    reason: string
+    reason: string,
+    isDevClub?: boolean
   ) => {
     try {
-      await updateApplicationStatus(applicationId, status, reason);
+      await updateApplicationStatus(applicationId, status, reason, isDevClub);
       toast.success(`Application ${status} successfully!`);
     } catch (error) {
       console.error("Error updating application:", error);
@@ -73,26 +86,41 @@ function AdminDashboard() {
   const updateApplicationStatus = async (
     applicationId: string,
     status: string,
-    reason: string
+    reason: string,
+    isDevClub?: boolean
   ) => {
     try {
-      const applicationRef = doc(db, "applications", applicationId);
+      const collectionName = (isDevClub !== undefined ? isDevClub : applicationType === "devClub") 
+        ? "developersClubApplications" 
+        : "applications";
+      const applicationRef = doc(db, collectionName, applicationId);
       await updateDoc(applicationRef, { status, reason });
-      setApplications((prevApplications) =>
-        prevApplications.map((app) =>
-          app.id === applicationId ? { ...app, status, reason } : app
-        )
-      );
+      
+      if (collectionName === "developersClubApplications") {
+        setDevClubApplications((prevApplications) =>
+          prevApplications.map((app) =>
+            app.id === applicationId ? { ...app, status, reason } : app
+          )
+        );
+      } else {
+        setApplications((prevApplications) =>
+          prevApplications.map((app) =>
+            app.id === applicationId ? { ...app, status, reason } : app
+          )
+        );
+      }
     } catch (error) {
       console.error("Error updating application status:", error);
       toast.error("Failed to update application status.");
     }
   };
 
-  const filteredApplications = applications.filter((application) => {
+  const currentApplications = applicationType === "job" ? applications : devClubApplications;
+  
+  const filteredApplications = currentApplications.filter((application: any) => {
     const matchesStatus =
-      statusFilter === "All" || application.status === statusFilter;
-    const matchesEmail = application.email
+      statusFilter === "All" || (application.status || "pending") === statusFilter;
+    const matchesEmail = (application.email || "")
       .toLowerCase()
       .includes(searchQuery.toLowerCase());
     return matchesStatus && matchesEmail;
@@ -151,7 +179,25 @@ function AdminDashboard() {
           <div className="px-4 py-6 sm:px-0">
             <div className="bg-white rounded-lg shadow">
               <div className="p-6">
-                <h2 className="text-2xl font-bold mb-6">Job Applications</h2>
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-2xl font-bold">
+                    {applicationType === "job" ? "Job Applications" : "Developers Club Applications"}
+                  </h2>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => setApplicationType("job")}
+                      className={`px-4 py-2 rounded ${applicationType === "job" ? "bg-blueTheme text-white" : "bg-gray-200 text-gray-700"}`}
+                    >
+                      Job Applications
+                    </button>
+                    <button
+                      onClick={() => setApplicationType("devClub")}
+                      className={`px-4 py-2 rounded ${applicationType === "devClub" ? "bg-blueTheme text-white" : "bg-gray-200 text-gray-700"}`}
+                    >
+                      Dev Club Applications
+                    </button>
+                  </div>
+                </div>
                 <div className="mb-4">
                   <input
                     type="text"
@@ -171,7 +217,7 @@ function AdminDashboard() {
                     <option value="pending">Pending</option>
                   </select>
                 </div>
-                {applications.length === 0 ? (
+                {(applicationType === "job" ? applications.length === 0 : devClubApplications.length === 0) ? (
                   <div className="flex flex-col gap-4">
                     <SkeletonLoader />
                     <SkeletonLoader />
@@ -197,6 +243,7 @@ function AdminDashboard() {
             application={selectedApplication}
             onClose={() => setSelectedApplication(null)}
             onUpdateStatus={handleApplicationUpdate}
+            isDevClubApplication={applicationType === "devClub"}
           />
         )}
 
