@@ -4,7 +4,7 @@ import { DevelopersClubApplication } from "@/lib/types/developersClub";
 import { Mail, Trash } from "lucide-react";
 import { toast } from 'react-toastify';
 import EmailUserModal from './EmailUserModal';
-import { doc, deleteDoc } from "firebase/firestore";
+import { doc, deleteDoc, Timestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 
 interface ApplicationDetailsModalProps {
@@ -81,30 +81,30 @@ const ApplicationDetailsModal: React.FC<ApplicationDetailsModalProps> = ({
                     </div>
                     
                     {/* Conditional fields based on application type */}
-                    {isDevClub ? (
+                    {isDevClub && devClubApp ? (
                         <>
                             <div>
                                 <label className="block text-sm font-medium text-gray-700">Date of Birth</label>
-                                <p className="mt-1 text-sm text-gray-900">{application.dateOfBirth || 'N/A'}</p>
+                                <p className="mt-1 text-sm text-gray-900">{devClubApp.dateOfBirth || 'N/A'}</p>
                             </div>
                             <div>
                                 <label className="block text-sm font-medium text-gray-700">Contact Number</label>
-                                <p className="mt-1 text-sm text-gray-900">{application.contactNumber || 'N/A'}</p>
+                                <p className="mt-1 text-sm text-gray-900">{devClubApp.contactNumber || 'N/A'}</p>
                             </div>
                             <div className="col-span-2">
                                 <label className="block text-sm font-medium text-gray-700">Address</label>
-                                <p className="mt-1 text-sm text-gray-900">{application.address || 'N/A'}</p>
+                                <p className="mt-1 text-sm text-gray-900">{devClubApp.address || 'N/A'}</p>
                             </div>
                         </>
                     ) : (
                         <>
                             <div>
                                 <label className="block text-sm font-medium text-gray-700">Position</label>
-                                <p className="mt-1 text-sm text-gray-900">{application.position || 'N/A'}</p>
+                                <p className="mt-1 text-sm text-gray-900">{(application as Application).position || 'N/A'}</p>
                             </div>
                             <div>
                                 <label className="block text-sm font-medium text-gray-700">Contact</label>
-                                <p className="mt-1 text-sm text-gray-900">{application.contactNumber || 'N/A'}</p>
+                                <p className="mt-1 text-sm text-gray-900">{(application as Application).contactNumber || 'N/A'}</p>
                             </div>
                         </>
                     )}
@@ -174,78 +174,74 @@ const ApplicationDetailsModal: React.FC<ApplicationDetailsModalProps> = ({
                     )}
                     
                     {/* Conditional fields for developers club applications */}
-                    {isDevClub ? (
+                    {isDevClub && devClubApp ? (
                         <>
                             <div className="col-span-2">
                                 <label className="block text-sm font-medium text-gray-700">Why Interested in Joining</label>
                                 <p className="mt-1 text-sm text-gray-900 whitespace-pre-wrap bg-gray-50 p-3 rounded border">
-                                    {application.interestReason || 'N/A'}
+                                    {devClubApp.interestReason || 'N/A'}
                                 </p>
                             </div>
                             <div>
                                 <label className="block text-sm font-medium text-gray-700">Software Knowledge</label>
                                 <p className="mt-1 text-sm text-gray-900">
                                     <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
-                                        application.hasSoftwareKnowledge === "yes" 
+                                        devClubApp.hasSoftwareKnowledge === "yes" 
                                             ? "bg-green-100 text-green-800" 
                                             : "bg-gray-100 text-gray-800"
                                     }`}>
-                                        {application.hasSoftwareKnowledge === "yes" ? "Yes" : "No"}
+                                        {devClubApp.hasSoftwareKnowledge === "yes" ? "Yes" : "No"}
                                     </span>
                                 </p>
                             </div>
-                            {application.hasSoftwareKnowledge === "yes" && application.softwareKnowledgeDetails && (
+                            {devClubApp.hasSoftwareKnowledge === "yes" && devClubApp.softwareKnowledgeDetails && (
                                 <div className="col-span-2">
                                     <label className="block text-sm font-medium text-gray-700">Software Knowledge Details</label>
                                     <p className="mt-1 text-sm text-gray-900 whitespace-pre-wrap bg-gray-50 p-3 rounded border">
-                                        {application.softwareKnowledgeDetails}
+                                        {devClubApp.softwareKnowledgeDetails}
                                     </p>
                                 </div>
                             )}
-                            {devClubApp && (
-                                <>
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700">Interest Type</label>
-                                        <p className="mt-1 text-sm text-gray-900">
-                                            <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-800">
-                                                {devClubApp.interestType === "app" ? "App Development" : devClubApp.interestType === "web" ? "Web Development" : "N/A"}
-                                            </span>
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700">Weekly Hours</label>
-                                        <p className="mt-1 text-sm text-gray-900">
-                                            {devClubApp.weeklyHours === "more" ? "MORE" : devClubApp.weeklyHours ? `${devClubApp.weeklyHours} hours` : "N/A"}
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700">Work Preference</label>
-                                        <p className="mt-1 text-sm text-gray-900">
-                                            <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-purple-100 text-purple-800">
-                                                {devClubApp.workPreference === "day" ? "Day" : devClubApp.workPreference === "night" ? "Night" : "N/A"}
-                                            </span>
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700">Needs Parent Permission</label>
-                                        <p className="mt-1 text-sm text-gray-900">
-                                            <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
-                                                devClubApp.needsParentPermission === "yes" 
-                                                    ? "bg-yellow-100 text-yellow-800" 
-                                                    : "bg-gray-100 text-gray-800"
-                                            }`}>
-                                                {devClubApp.needsParentPermission === "yes" ? "Yes" : devClubApp.needsParentPermission === "no" ? "No" : "N/A"}
-                                            </span>
-                                        </p>
-                                    </div>
-                                </>
-                            )}
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">Interest Type</label>
+                                <p className="mt-1 text-sm text-gray-900">
+                                    <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-800">
+                                        {devClubApp.interestType === "app" ? "App Development" : devClubApp.interestType === "web" ? "Web Development" : "N/A"}
+                                    </span>
+                                </p>
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">Weekly Hours</label>
+                                <p className="mt-1 text-sm text-gray-900">
+                                    {devClubApp.weeklyHours === "more" ? "MORE" : devClubApp.weeklyHours ? `${devClubApp.weeklyHours} hours` : "N/A"}
+                                </p>
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">Work Preference</label>
+                                <p className="mt-1 text-sm text-gray-900">
+                                    <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-purple-100 text-purple-800">
+                                        {devClubApp.workPreference === "day" ? "Day" : devClubApp.workPreference === "night" ? "Night" : "N/A"}
+                                    </span>
+                                </p>
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">Needs Parent Permission</label>
+                                <p className="mt-1 text-sm text-gray-900">
+                                    <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
+                                        devClubApp.needsParentPermission === "yes" 
+                                            ? "bg-yellow-100 text-yellow-800" 
+                                            : "bg-gray-100 text-gray-800"
+                                    }`}>
+                                        {devClubApp.needsParentPermission === "yes" ? "Yes" : devClubApp.needsParentPermission === "no" ? "No" : "N/A"}
+                                    </span>
+                                </p>
+                            </div>
                         </>
                     ) : (
                         <div className="col-span-2">
                             <label className="block text-sm font-medium text-gray-700">Comment</label>
                             <p className="mt-1 text-sm text-gray-900">
-                                {application.comment || 'No comment'}
+                                {(application as Application).comment || 'No comment'}
                             </p>
                         </div>
                     )}
@@ -253,9 +249,11 @@ const ApplicationDetailsModal: React.FC<ApplicationDetailsModalProps> = ({
                         <label className="block text-sm font-medium text-gray-700">Date Applied</label>
                         <p className="mt-1 text-sm text-gray-900">
                             {application.dateApplied 
-                                ? (application.dateApplied.toDate 
+                                ? (application.dateApplied instanceof Timestamp
                                     ? application.dateApplied.toDate().toLocaleDateString()
-                                    : new Date(application.dateApplied).toLocaleDateString())
+                                    : application.dateApplied instanceof Date
+                                    ? application.dateApplied.toLocaleDateString()
+                                    : new Date(application.dateApplied as any).toLocaleDateString())
                                 : 'N/A'}
                         </p>
                     </div>

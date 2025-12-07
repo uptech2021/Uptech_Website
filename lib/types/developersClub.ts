@@ -1,7 +1,7 @@
 import { Timestamp } from "firebase/firestore";
 
 export type DevelopersClubApplication = {
-  id?: string;
+  id: string;
   firstName: string;
   lastName: string;
   dateOfBirth: string;
