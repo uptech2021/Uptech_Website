@@ -11,8 +11,13 @@ export type DevelopersClubApplication = {
   interestReason: string;
   hasSoftwareKnowledge: "yes" | "no";
   softwareKnowledgeDetails: string;
+  interestType: "app" | "web" | "";
+  weeklyHours: "5" | "7" | "10" | "more" | "";
+  workPreference: "day" | "night" | "";
+  needsParentPermission: "yes" | "no" | "";
   resumeFileUrl: string;
   dateApplied: Timestamp;
+  status?: string;
 };
 
 export type DevelopersClubFormData = {

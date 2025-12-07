@@ -230,6 +230,7 @@ function AdminDashboard() {
                     applications={filteredApplications}
                     handleApplicationUpdate={handleApplicationUpdate}
                     onApplicationClick={handleApplicationClick}
+                    applicationType={applicationType}
                   />
                 )}
               </div>

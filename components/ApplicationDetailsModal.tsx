@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Application } from "@/types/dashboard";
+import { DevelopersClubApplication } from "@/lib/types/developersClub";
 import { Mail, Trash } from "lucide-react";
 import { toast } from 'react-toastify';
 import EmailUserModal from './EmailUserModal';
@@ -7,7 +8,7 @@ import { doc, deleteDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 
 interface ApplicationDetailsModalProps {
-    application: Application | any; // Allow both job and dev club applications
+    application: Application | DevelopersClubApplication; // Allow both job and dev club applications
     onClose: () => void;
     onUpdateStatus: (id: string, status: string, reason: string, isDevClub?: boolean) => void;
     isDevClubApplication?: boolean; // Flag to identify dev club applications
@@ -20,7 +21,8 @@ const ApplicationDetailsModal: React.FC<ApplicationDetailsModalProps> = ({
     isDevClubApplication = false,
 }) => {
     // Detect if it's a developers club application by checking for unique fields
-    const isDevClub = isDevClubApplication || !application.position || application.hasSoftwareKnowledge !== undefined;
+    const isDevClub = isDevClubApplication || !('position' in application) || ('hasSoftwareKnowledge' in application);
+    const devClubApp = isDevClub ? (application as DevelopersClubApplication) : null;
     const [isEmailModalOpen, setEmailModalOpen] = useState(false);
     const [isDeletePromptOpen, setDeletePromptOpen] = useState(false);
 
@@ -199,6 +201,44 @@ const ApplicationDetailsModal: React.FC<ApplicationDetailsModalProps> = ({
                                         {application.softwareKnowledgeDetails}
                                     </p>
                                 </div>
+                            )}
+                            {devClubApp && (
+                                <>
+                                    <div>
+                                        <label className="block text-sm font-medium text-gray-700">Interest Type</label>
+                                        <p className="mt-1 text-sm text-gray-900">
+                                            <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-800">
+                                                {devClubApp.interestType === "app" ? "App Development" : devClubApp.interestType === "web" ? "Web Development" : "N/A"}
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-medium text-gray-700">Weekly Hours</label>
+                                        <p className="mt-1 text-sm text-gray-900">
+                                            {devClubApp.weeklyHours === "more" ? "MORE" : devClubApp.weeklyHours ? `${devClubApp.weeklyHours} hours` : "N/A"}
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-medium text-gray-700">Work Preference</label>
+                                        <p className="mt-1 text-sm text-gray-900">
+                                            <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-purple-100 text-purple-800">
+                                                {devClubApp.workPreference === "day" ? "Day" : devClubApp.workPreference === "night" ? "Night" : "N/A"}
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-medium text-gray-700">Needs Parent Permission</label>
+                                        <p className="mt-1 text-sm text-gray-900">
+                                            <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
+                                                devClubApp.needsParentPermission === "yes" 
+                                                    ? "bg-yellow-100 text-yellow-800" 
+                                                    : "bg-gray-100 text-gray-800"
+                                            }`}>
+                                                {devClubApp.needsParentPermission === "yes" ? "Yes" : devClubApp.needsParentPermission === "no" ? "No" : "N/A"}
+                                            </span>
+                                        </p>
+                                    </div>
+                                </>
                             )}
                         </>
                     ) : (

@@ -1,21 +1,24 @@
 import React from "react";
 import ApplicationDetailsModal from "@/components/ApplicationDetailsModal";
 import { Application } from "@/types/dashboard";
+import { DevelopersClubApplication } from "@/lib/types/developersClub";
 import { Timestamp } from "firebase/firestore";
 
 interface ApplicationTableProps {
-  applications: Application[];
+  applications: Application[] | DevelopersClubApplication[];
   handleApplicationUpdate: (id: string, status: string, reason: string) => void;
-  onApplicationClick: (application: Application) => void;
+  onApplicationClick: (application: Application | DevelopersClubApplication) => void;
+  applicationType: "job" | "devClub";
 }
 
 const ApplicationTable: React.FC<ApplicationTableProps> = ({
   applications,
   handleApplicationUpdate,
   onApplicationClick,
+  applicationType,
 }) => {
   const [selectedApplication, setSelectedApplication] =
-    React.useState<Application | null>(null);
+    React.useState<Application | DevelopersClubApplication | null>(null);
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -28,7 +31,7 @@ const ApplicationTable: React.FC<ApplicationTableProps> = ({
     }
   };
 
-  const viewApplication = (application: Application) => {
+  const viewApplication = (application: Application | DevelopersClubApplication) => {
     setSelectedApplication(application);
     onApplicationClick(application);
   };
@@ -46,9 +49,20 @@ const ApplicationTable: React.FC<ApplicationTableProps> = ({
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   LastName
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Position
-                </th>
+                {applicationType === "job" ? (
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Position
+                  </th>
+                ) : (
+                  <>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Interest
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Hours/Week
+                    </th>
+                  </>
+                )}
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Contact
                 </th>
@@ -58,9 +72,11 @@ const ApplicationTable: React.FC<ApplicationTableProps> = ({
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Resume
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Portfolio
-                </th>
+                {applicationType === "job" && (
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Portfolio
+                  </th>
+                )}
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Date Applied
                 </th>
@@ -89,11 +105,36 @@ const ApplicationTable: React.FC<ApplicationTableProps> = ({
                       {application.lastName}
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">
-                      {application.position || "Developers Club"}
-                    </div>
-                  </td>
+                  {applicationType === "job" ? (
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-sm text-gray-900">
+                        {(application as Application).position || "N/A"}
+                      </div>
+                    </td>
+                  ) : (
+                    <>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm text-gray-900">
+                          <span className="inline-block px-2 py-1 rounded text-xs font-semibold bg-blue-100 text-blue-800">
+                            {(application as DevelopersClubApplication).interestType === "app" 
+                              ? "App Dev" 
+                              : (application as DevelopersClubApplication).interestType === "web" 
+                              ? "Web Dev" 
+                              : "N/A"}
+                          </span>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm text-gray-900">
+                          {(application as DevelopersClubApplication).weeklyHours === "more" 
+                            ? "MORE" 
+                            : (application as DevelopersClubApplication).weeklyHours 
+                            ? `${(application as DevelopersClubApplication).weeklyHours}h` 
+                            : "N/A"}
+                        </div>
+                      </td>
+                    </>
+                  )}
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="text-sm text-gray-900">
                       {application.contactNumber}
@@ -117,37 +158,39 @@ const ApplicationTable: React.FC<ApplicationTableProps> = ({
                       "N/A"
                     )}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex flex-col space-y-2">
-                      {application.portfolioFileUrl ? (
-                        <a
-                          href={application.portfolioFileUrl}
-                          target="_blank"
-                          className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs"
-                        >
-                          <i className="fas fa-file-alt mr-2"></i>Portfolio
-                        </a>
-                      ) : (
-                        ""
-                      )}
-                      {application.portfolioUrl ? (
-                        <a
-                          href={application.portfolioUrl}
-                          target="_blank"
-                          className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs"
-                        >
-                          <i className="fas fa-external-link-alt mr-2"></i>
-                          Website
-                        </a>
-                      ) : (
-                        ""
-                      )}
-                      {!application.portfolioFileUrl &&
-                      !application.portfolioUrl
-                        ? "N/A"
-                        : ""}
-                    </div>
-                  </td>
+                  {applicationType === "job" && (
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="flex flex-col space-y-2">
+                        {(application as Application).portfolioFileUrl ? (
+                          <a
+                            href={(application as Application).portfolioFileUrl}
+                            target="_blank"
+                            className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs"
+                          >
+                            <i className="fas fa-file-alt mr-2"></i>Portfolio
+                          </a>
+                        ) : (
+                          ""
+                        )}
+                        {(application as Application).portfolioUrl ? (
+                          <a
+                            href={(application as Application).portfolioUrl}
+                            target="_blank"
+                            className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs"
+                          >
+                            <i className="fas fa-external-link-alt mr-2"></i>
+                            Website
+                          </a>
+                        ) : (
+                          ""
+                        )}
+                        {!(application as Application).portfolioFileUrl &&
+                        !(application as Application).portfolioUrl
+                          ? "N/A"
+                          : ""}
+                      </div>
+                    </td>
+                  )}
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="text-sm text-gray-900">
                       {application.dateApplied instanceof Timestamp
@@ -175,6 +218,7 @@ const ApplicationTable: React.FC<ApplicationTableProps> = ({
           application={selectedApplication}
           onClose={() => setSelectedApplication(null)}
           onUpdateStatus={handleApplicationUpdate}
+          isDevClubApplication={applicationType === "devClub"}
         />
       )}
     </div>

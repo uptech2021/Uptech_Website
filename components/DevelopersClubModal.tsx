@@ -23,6 +23,10 @@ export default function DevelopersClubModal({
   const [interestReason, setInterestReason] = useState("");
   const [hasSoftwareKnowledge, setHasSoftwareKnowledge] = useState<"yes" | "no" | "">("");
   const [softwareKnowledgeDetails, setSoftwareKnowledgeDetails] = useState("");
+  const [interestType, setInterestType] = useState<"app" | "web" | "">("");
+  const [weeklyHours, setWeeklyHours] = useState<"5" | "7" | "10" | "more" | "">("");
+  const [workPreference, setWorkPreference] = useState<"day" | "night" | "">("");
+  const [needsParentPermission, setNeedsParentPermission] = useState<"yes" | "no" | "">("");
   const [resumeFile, setResumeFile] = useState<File | null>(null);
   const [status, setStatus] = useState<"idle" | "pending" | "error" | "success">("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -167,6 +171,18 @@ export default function DevelopersClubModal({
           return "Please provide details about your software knowledge";
         }
         return "";
+      case "interestType":
+        if (!value) return "Please select your interest";
+        return "";
+      case "weeklyHours":
+        if (!value) return "Please select how many hours you can invest";
+        return "";
+      case "workPreference":
+        if (!value) return "Please select when you work better";
+        return "";
+      case "needsParentPermission":
+        if (!value) return "Please indicate if you need parent's permission";
+        return "";
       default:
         return "";
     }
@@ -186,6 +202,10 @@ export default function DevelopersClubModal({
     errors.contactNumber = validateField("contactNumber", contactNumber);
     errors.email = validateField("email", email);
     errors.interestReason = validateField("interestReason", interestReason);
+    errors.interestType = validateField("interestType", interestType);
+    errors.weeklyHours = validateField("weeklyHours", weeklyHours);
+    errors.workPreference = validateField("workPreference", workPreference);
+    errors.needsParentPermission = validateField("needsParentPermission", needsParentPermission);
     
     if (hasSoftwareKnowledge === "yes") {
       errors.softwareKnowledgeDetails = validateField("softwareKnowledgeDetails", softwareKnowledgeDetails);
@@ -217,6 +237,10 @@ export default function DevelopersClubModal({
       interestReason.trim().split(/\s+/).filter(word => word.length > 0).length >= 50 &&
       hasSoftwareKnowledge !== "" &&
       (hasSoftwareKnowledge === "no" || (hasSoftwareKnowledge === "yes" && softwareKnowledgeDetails.trim().length > 0)) &&
+      interestType !== "" &&
+      weeklyHours !== "" &&
+      workPreference !== "" &&
+      needsParentPermission !== "" &&
       resumeFile !== null
     );
   };
@@ -262,6 +286,18 @@ export default function DevelopersClubModal({
     }
     if (hasSoftwareKnowledge === "yes" && !softwareKnowledgeDetails.trim()) {
       errors.push("Please provide details about your software knowledge");
+    }
+    if (!interestType) {
+      errors.push("Please select your interest (App Development or Web Development)");
+    }
+    if (!weeklyHours) {
+      errors.push("Please select how many hours you can invest per week");
+    }
+    if (!workPreference) {
+      errors.push("Please select when you work better (Day or Night)");
+    }
+    if (!needsParentPermission) {
+      errors.push("Please indicate if you need parent's permission");
     }
     if (!resumeFile) {
       errors.push("Resume upload is required");
@@ -347,6 +383,10 @@ export default function DevelopersClubModal({
         interestReason,
         hasSoftwareKnowledge,
         softwareKnowledgeDetails: hasSoftwareKnowledge === "yes" ? softwareKnowledgeDetails : "",
+        interestType,
+        weeklyHours,
+        workPreference,
+        needsParentPermission,
         resumeFileUrl,
         dateApplied: Timestamp.now(),
         status: "pending",
@@ -380,6 +420,11 @@ ${interestReason}
 Software Knowledge: ${hasSoftwareKnowledge === "yes" ? "Yes" : "No"}
 ${hasSoftwareKnowledge === "yes" ? `\n\nDetails:\n${softwareKnowledgeDetails}` : ""}
 
+Interest Type: ${interestType === "app" ? "App Development" : "Web Development"}
+Weekly Hours: ${weeklyHours === "more" ? "MORE" : `${weeklyHours} hours`}
+Work Preference: ${workPreference === "day" ? "Day" : "Night"}
+Needs Parent Permission: ${needsParentPermission === "yes" ? "Yes" : "No"}
+
 Resume Link: ${resumeFileUrl}
 
 Please review this application in the admin dashboard.`,
@@ -411,14 +456,18 @@ Please review this application in the admin dashboard.`,
                   contactNumber,
                   dateOfBirth,
                   address,
-                  interestReason,
-                  hasSoftwareKnowledge,
-                  softwareKnowledgeDetails: hasSoftwareKnowledge === "yes" ? softwareKnowledgeDetails : "N/A",
-                  resumeLink: resumeFileUrl,
-                },
-              }),
-            });
-            console.log("Email sent via API route fallback");
+              interestReason,
+              hasSoftwareKnowledge,
+              softwareKnowledgeDetails: hasSoftwareKnowledge === "yes" ? softwareKnowledgeDetails : "N/A",
+              interestType: interestType === "app" ? "App Development" : "Web Development",
+              weeklyHours: weeklyHours === "more" ? "MORE" : `${weeklyHours} hours`,
+              workPreference: workPreference === "day" ? "Day" : "Night",
+              needsParentPermission: needsParentPermission === "yes" ? "Yes" : "No",
+              resumeLink: resumeFileUrl,
+            },
+          }),
+        });
+        console.log("Email sent via API route fallback");
           } catch (fallbackError) {
             console.error("Both EmailJS and API route failed:", fallbackError);
           }
@@ -475,6 +524,10 @@ Please review this application in the admin dashboard.`,
     setInterestReason("");
     setHasSoftwareKnowledge("");
     setSoftwareKnowledgeDetails("");
+    setInterestType("");
+    setWeeklyHours("");
+    setWorkPreference("");
+    setNeedsParentPermission("");
     setResumeFile(null);
     setErrorMessage("");
     setSuccessMessage("");
@@ -688,6 +741,7 @@ Please review this application in the admin dashboard.`,
                   Contact Number <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
+                  <Phone className="absolute left-4 top-1/3 -translate-y-1/2 w-5 h-5 text-white/80 pointer-events-none z-10" />
                   <input
                     type="tel"
                     id="contactNumber"
@@ -707,7 +761,7 @@ Please review this application in the admin dashboard.`,
                     onBlur={(e) => {
                       handleFieldBlur("contactNumber", e.target.value);
                     }}
-                    className={`form-input w-full bg-gradient-to-br from-blue-500 to-blue-600 text-white placeholder-gray-200 border-2 rounded-xl px-4 py-3 pl-11 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 focus:shadow-lg focus:shadow-blue-200 transition-all duration-300 ${
+                    className={`form-input w-full bg-gradient-to-br from-blue-500 to-blue-600 text-white placeholder-gray-200 border-2 rounded-xl px-4 py-3 pl-12 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 focus:shadow-lg focus:shadow-blue-200 transition-all duration-300 ${
                       fieldErrors.contactNumber ? "border-red-500 focus:border-red-500 focus:ring-red-400" : "border-blueTheme"
                     }`}
                     placeholder="e.g., 8687261669 (numbers only)"
@@ -715,7 +769,6 @@ Please review this application in the admin dashboard.`,
                   <div className="mt-1 text-xs text-gray-500 italic">
                     Format: Numbers only, minimum 7 digits (e.g., 8687261669)
                   </div>
-                  <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/80 pointer-events-none" />
                   {focusedField === "contactNumber" && (
                     <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-ping"></div>
                   )}
@@ -820,6 +873,290 @@ Please review this application in the admin dashboard.`,
                     <span>Word count requirement met!</span>
                   </div>
                 )}
+              </div>
+            </div>
+
+            {/* What's your interest? */}
+            <div className="space-y-4 form-field-container">
+              <label className="flex items-center gap-2 text-sm font-semibold text-gray-800 mb-2">
+                <Code className="w-4 h-4 text-blueTheme" />
+                What's your interest? <span className="text-red-500">*</span>
+              </label>
+              <div className="flex gap-6">
+                <label className="flex items-center gap-3 cursor-pointer group relative">
+                  <div className="relative">
+                    <input
+                      type="radio"
+                      name="interestType"
+                      value="app"
+                      checked={interestType === "app"}
+                      onChange={(e) => {
+                        setInterestType("app");
+                        if (fieldErrors.interestType) {
+                          setFieldErrors(prev => ({ ...prev, interestType: "" }));
+                        }
+                      }}
+                      required
+                      className="w-5 h-5 text-blueTheme border-2 border-gray-300 focus:ring-2 focus:ring-blueTheme cursor-pointer transition-all duration-300 appearance-none checked:bg-blueTheme checked:border-blueTheme relative z-10"
+                    />
+                    {interestType === "app" && (
+                      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <div className="w-2 h-2 bg-white rounded-full animate-radio-pulse"></div>
+                      </div>
+                    )}
+                  </div>
+                  <span className={`text-gray-700 font-medium transition-all duration-300 ${
+                    interestType === "app" 
+                      ? "text-blueTheme font-semibold scale-105" 
+                      : "group-hover:text-blueTheme"
+                  }`}>
+                    App Development
+                  </span>
+                </label>
+                <label className="flex items-center gap-3 cursor-pointer group relative">
+                  <div className="relative">
+                    <input
+                      type="radio"
+                      name="interestType"
+                      value="web"
+                      checked={interestType === "web"}
+                      onChange={(e) => {
+                        setInterestType("web");
+                        if (fieldErrors.interestType) {
+                          setFieldErrors(prev => ({ ...prev, interestType: "" }));
+                        }
+                      }}
+                      required
+                      className="w-5 h-5 text-blueTheme border-2 border-gray-300 focus:ring-2 focus:ring-blueTheme cursor-pointer transition-all duration-300 appearance-none checked:bg-blueTheme checked:border-blueTheme relative z-10"
+                    />
+                    {interestType === "web" && (
+                      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <div className="w-2 h-2 bg-white rounded-full animate-radio-pulse"></div>
+                      </div>
+                    )}
+                  </div>
+                  <span className={`text-gray-700 font-medium transition-all duration-300 ${
+                    interestType === "web" 
+                      ? "text-blueTheme font-semibold scale-105" 
+                      : "group-hover:text-blueTheme"
+                  }`}>
+                    Web Development
+                  </span>
+                </label>
+              </div>
+              {fieldErrors.interestType && (
+                <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
+                  <span>⚠</span> {fieldErrors.interestType}
+                </p>
+              )}
+            </div>
+
+            {/* How many hours can you invest for the week? */}
+            <div className="space-y-4 form-field-container">
+              <label className="flex items-center gap-2 text-sm font-semibold text-gray-800 mb-2">
+                <Code className="w-4 h-4 text-blueTheme" />
+                How many hours can you invest for the week? <span className="text-red-500">*</span>
+              </label>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {["5", "7", "10", "more"].map((hours) => (
+                  <label key={hours} className="flex items-center gap-3 cursor-pointer group relative">
+                    <div className="relative">
+                      <input
+                        type="radio"
+                        name="weeklyHours"
+                        value={hours}
+                        checked={weeklyHours === hours}
+                        onChange={(e) => {
+                          setWeeklyHours(hours as "5" | "7" | "10" | "more");
+                          if (fieldErrors.weeklyHours) {
+                            setFieldErrors(prev => ({ ...prev, weeklyHours: "" }));
+                          }
+                        }}
+                        required
+                        className="w-5 h-5 text-blueTheme border-2 border-gray-300 focus:ring-2 focus:ring-blueTheme cursor-pointer transition-all duration-300 appearance-none checked:bg-blueTheme checked:border-blueTheme relative z-10"
+                      />
+                      {weeklyHours === hours && (
+                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                          <div className="w-2 h-2 bg-white rounded-full animate-radio-pulse"></div>
+                        </div>
+                      )}
+                    </div>
+                    <span className={`text-gray-700 font-medium transition-all duration-300 ${
+                      weeklyHours === hours 
+                        ? "text-blueTheme font-semibold scale-105" 
+                        : "group-hover:text-blueTheme"
+                    }`}>
+                      {hours === "more" ? "MORE" : `${hours} hours`}
+                    </span>
+                  </label>
+                ))}
+              </div>
+              {fieldErrors.weeklyHours && (
+                <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
+                  <span>⚠</span> {fieldErrors.weeklyHours}
+                </p>
+              )}
+            </div>
+
+            {/* Do you work better in the Day or night? */}
+            <div className="space-y-4 form-field-container">
+              <label className="flex items-center gap-2 text-sm font-semibold text-gray-800 mb-2">
+                <Code className="w-4 h-4 text-blueTheme" />
+                Do you work better in the Day or night? <span className="text-red-500">*</span>
+              </label>
+              <div className="flex gap-6">
+                <label className="flex items-center gap-3 cursor-pointer group relative">
+                  <div className="relative">
+                    <input
+                      type="radio"
+                      name="workPreference"
+                      value="day"
+                      checked={workPreference === "day"}
+                      onChange={(e) => {
+                        setWorkPreference("day");
+                        if (fieldErrors.workPreference) {
+                          setFieldErrors(prev => ({ ...prev, workPreference: "" }));
+                        }
+                      }}
+                      required
+                      className="w-5 h-5 text-blueTheme border-2 border-gray-300 focus:ring-2 focus:ring-blueTheme cursor-pointer transition-all duration-300 appearance-none checked:bg-blueTheme checked:border-blueTheme relative z-10"
+                    />
+                    {workPreference === "day" && (
+                      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <div className="w-2 h-2 bg-white rounded-full animate-radio-pulse"></div>
+                      </div>
+                    )}
+                  </div>
+                  <span className={`text-gray-700 font-medium transition-all duration-300 ${
+                    workPreference === "day" 
+                      ? "text-blueTheme font-semibold scale-105" 
+                      : "group-hover:text-blueTheme"
+                  }`}>
+                    Day
+                  </span>
+                </label>
+                <label className="flex items-center gap-3 cursor-pointer group relative">
+                  <div className="relative">
+                    <input
+                      type="radio"
+                      name="workPreference"
+                      value="night"
+                      checked={workPreference === "night"}
+                      onChange={(e) => {
+                        setWorkPreference("night");
+                        if (fieldErrors.workPreference) {
+                          setFieldErrors(prev => ({ ...prev, workPreference: "" }));
+                        }
+                      }}
+                      required
+                      className="w-5 h-5 text-blueTheme border-2 border-gray-300 focus:ring-2 focus:ring-blueTheme cursor-pointer transition-all duration-300 appearance-none checked:bg-blueTheme checked:border-blueTheme relative z-10"
+                    />
+                    {workPreference === "night" && (
+                      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <div className="w-2 h-2 bg-white rounded-full animate-radio-pulse"></div>
+                      </div>
+                    )}
+                  </div>
+                  <span className={`text-gray-700 font-medium transition-all duration-300 ${
+                    workPreference === "night" 
+                      ? "text-blueTheme font-semibold scale-105" 
+                      : "group-hover:text-blueTheme"
+                  }`}>
+                    Night
+                  </span>
+                </label>
+              </div>
+              {fieldErrors.workPreference && (
+                <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
+                  <span>⚠</span> {fieldErrors.workPreference}
+                </p>
+              )}
+            </div>
+
+            {/* Do you need parent's permission? */}
+            <div className="space-y-4 form-field-container">
+              <label className="flex items-center gap-2 text-sm font-semibold text-gray-800 mb-2">
+                <Code className="w-4 h-4 text-blueTheme" />
+                Do you need parent's permission? <span className="text-red-500">*</span>
+              </label>
+              <div className="flex gap-6">
+                <label className="flex items-center gap-3 cursor-pointer group relative">
+                  <div className="relative">
+                    <input
+                      type="radio"
+                      name="needsParentPermission"
+                      value="yes"
+                      checked={needsParentPermission === "yes"}
+                      onChange={(e) => {
+                        setNeedsParentPermission("yes");
+                        if (fieldErrors.needsParentPermission) {
+                          setFieldErrors(prev => ({ ...prev, needsParentPermission: "" }));
+                        }
+                      }}
+                      required
+                      className="w-5 h-5 text-blueTheme border-2 border-gray-300 focus:ring-2 focus:ring-blueTheme cursor-pointer transition-all duration-300 appearance-none checked:bg-blueTheme checked:border-blueTheme relative z-10"
+                    />
+                    {needsParentPermission === "yes" && (
+                      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <div className="w-2 h-2 bg-white rounded-full animate-radio-pulse"></div>
+                      </div>
+                    )}
+                  </div>
+                  <span className={`text-gray-700 font-medium transition-all duration-300 ${
+                    needsParentPermission === "yes" 
+                      ? "text-blueTheme font-semibold scale-105" 
+                      : "group-hover:text-blueTheme"
+                  }`}>
+                    Yes
+                  </span>
+                </label>
+                <label className="flex items-center gap-3 cursor-pointer group relative">
+                  <div className="relative">
+                    <input
+                      type="radio"
+                      name="needsParentPermission"
+                      value="no"
+                      checked={needsParentPermission === "no"}
+                      onChange={(e) => {
+                        setNeedsParentPermission("no");
+                        if (fieldErrors.needsParentPermission) {
+                          setFieldErrors(prev => ({ ...prev, needsParentPermission: "" }));
+                        }
+                      }}
+                      required
+                      className="w-5 h-5 text-blueTheme border-2 border-gray-300 focus:ring-2 focus:ring-blueTheme cursor-pointer transition-all duration-300 appearance-none checked:bg-blueTheme checked:border-blueTheme relative z-10"
+                    />
+                    {needsParentPermission === "no" && (
+                      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <div className="w-2 h-2 bg-white rounded-full animate-radio-pulse"></div>
+                      </div>
+                    )}
+                  </div>
+                  <span className={`text-gray-700 font-medium transition-all duration-300 ${
+                    needsParentPermission === "no" 
+                      ? "text-blueTheme font-semibold scale-105" 
+                      : "group-hover:text-blueTheme"
+                  }`}>
+                    No
+                  </span>
+                </label>
+              </div>
+              {fieldErrors.needsParentPermission && (
+                <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
+                  <span>⚠</span> {fieldErrors.needsParentPermission}
+                </p>
+              )}
+            </div>
+
+            {/* Virtual Learning Note */}
+            <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-4 form-field-container">
+              <div className="flex items-start gap-3">
+                <svg className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <p className="text-sm text-blue-800 leading-relaxed">
+                  <span className="font-semibold">Important:</span> All learning is virtual, and all resources would be shared via our virtual platform.
+                </p>
               </div>
             </div>
 
@@ -947,7 +1284,7 @@ Please review this application in the admin dashboard.`,
             <div className="form-field-container">
               <label className="flex items-center gap-2 text-sm font-semibold text-gray-800 mb-2">
                 <FileText className="w-4 h-4 text-blueTheme" />
-                Resume <span className="text-red-500">*</span>
+                To better understand your level of education, we recommend you upload your resume. <span className="text-red-500">*</span>
               </label>
               <div
                 className="upload-area border-2 border-dashed border-blueTheme rounded-xl p-8 text-center cursor-pointer transition-all duration-300 hover:border-blue-500 hover:bg-gradient-to-br hover:from-blue-50 hover:to-blue-100 hover:shadow-lg hover:shadow-blue-200 hover:scale-[1.02] group"
