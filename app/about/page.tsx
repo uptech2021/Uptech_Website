@@ -111,14 +111,14 @@ export default function About() {
           department: "Engineering",
           order: 2,
         },
-        {
-          id: "y-manoo",
-          fullName: "Y. Manoo",
-          position: "Senior Software Engineer",
-          role: "senior",
-          department: "Engineering",
-          order: 3,
-        }
+        // {
+        //   id: "y-manoo",
+        //   fullName: "Y. Manoo",
+        //   position: "Senior Software Engineer",
+        //   role: "senior",
+        //   department: "Engineering",
+        //   order: 3,
+        // }
       ]
     },
     {
