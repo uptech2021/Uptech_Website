@@ -552,24 +552,37 @@ Please review this application in the admin dashboard.`,
   return (
     <>
       <ToastContainer position="top-right" autoClose={3000} />
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 overflow-y-auto">
-        <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full mx-4 my-8 transform transition-all duration-300 max-h-[90vh] flex flex-col">
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-blue-950/80 backdrop-blur-sm p-4">
+        <div className="w-full max-w-4xl max-h-[90vh] overflow-hidden rounded-3xl bg-white shadow-2xl flex flex-col">
           {/* Header */}
-          <div className="sticky top-0 bg-white rounded-t-2xl border-b border-gray-200 px-6 py-4 flex justify-between items-center z-10 flex-shrink-0">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-800 ThiccboiBold">
-              Join Our Developers Club
-            </h2>
-            <button
-              onClick={handleClose}
-              className="text-gray-500 hover:text-gray-700 transition-colors"
-              aria-label="Close modal"
-            >
-              <X size={24} />
-            </button>
-          </div>
+       <div className="relative overflow-hidden bg-gradient-to-br from-blue-950 via-blue-700 to-purple-800 text-white p-6 md:p-8 flex-shrink-0">
+  <div className="absolute -top-20 -right-20 w-56 h-56 bg-yellow-300 blur-3xl opacity-20 rounded-full" />
+  <div className="absolute -bottom-20 -left-20 w-56 h-56 bg-cyan-300 blur-3xl opacity-20 rounded-full" />
+
+  <div className="relative z-10 flex justify-between items-start">
+    <div>
+      <p className="text-yellow-300 uppercase font-bold tracking-widest text-sm mb-2">
+        Developers Club
+      </p>
+
+      <h2 className="text-2xl md:text-4xl font-extrabold">
+        Join Our Developers Club
+      </h2>
+    </div>
+
+    <button
+      onClick={handleClose}
+      className="w-10 h-10 rounded-full bg-white/15 hover:bg-white hover:text-blue-950 text-white text-xl font-bold flex items-center justify-center transition"
+    >
+      <X />
+    </button>
+  </div>
+</div>
 
           {/* Form */}
+          <div className="flex-1 overflow-y-auto bg-gray-50">
           <form ref={formRef} onSubmit={handleSubmit} className="p-6 md:p-8 space-y-6 animate-form-fade-in overflow-y-auto flex-1">
+            <div className="bg-white rounded-3xl p-6 md:p-8 shadow-lg border border-gray-100 space-y-6">
             {/* First Name and Last Name */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className={`form-field-container ${focusedField === "firstName" ? "field-focused" : ""}`}>
@@ -1443,7 +1456,9 @@ Please review this application in the admin dashboard.`,
                 )}
           </button>
             </div>
+          </div>
           </form>
+          </div>
 
           <style jsx>{`
             @keyframes form-fade-in {

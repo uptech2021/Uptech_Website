@@ -1,15 +1,15 @@
 "use client";
+
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/lib/firebase";
-import JobApplicationModal from "@/components/JobApplicationModal";
 import Header from "@/components/Header";
-import DOMPurify from "dompurify";
 import Footer from "@/components/Footer";
+import JobApplicationModal from "@/components/JobApplicationModal";
 import DevClubModal from "@/components/DevelopersClubModal";
 import VacancyDetailsModal from "@/components/VacancyDetailsModal";
-import "@/css/globals.css";
+
 
 type Vacancies = {
   department: string;
@@ -22,26 +22,15 @@ type Vacancies = {
   updatedBy: string;
 };
 
-const VacanciesPage = () => {
+export default function VacanciesPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedDepartment, setSelectedDepartment] = useState("");
-  const [filter, setFilter] = useState("all");
   const [isLoading, setIsLoading] = useState(true);
-  const [expandedVacancy, setExpandedVacancy] = useState<number | null>(null);
   const [isDevClubModalOpen, setIsDevClubModalOpen] = useState(false);
-  const [isVacancyDetailsModalOpen, setIsVacancyDetailsModalOpen] = useState(false);
+  const [isVacancyDetailsModalOpen, setIsVacancyDetailsModalOpen] =
+    useState(false);
   const [selectedVacancy, setSelectedVacancy] = useState<Vacancies | null>(null);
-
-  useEffect(() => {
-    if (isVacancyDetailsModalOpen || isModalOpen) {
-      document.body.classList.add("no-scroll");
-    } else {
-      document.body.classList.remove("no-scroll");
-    }
-    return () => {
-      document.body.classList.remove("no-scroll");
-    };
-  }, [isVacancyDetailsModalOpen, isModalOpen]);
+  const [vacancies, setVacancies] = useState<Vacancies[]>([]);
 
   const handleApply = (department: string) => {
     setSelectedDepartment(department);
@@ -53,18 +42,11 @@ const VacanciesPage = () => {
     setIsVacancyDetailsModalOpen(true);
   };
 
-  // const toggleVacancyDetails = (index: number) => {
-  //   setExpandedVacancy(expandedVacancy === index ? null : index);
-  // };
-
-  const [vacancies, setVacancies] = useState<Vacancies[]>([]);
-
   const loadVacancies = async () => {
     try {
       const vacanciesData = (await getDocs(collection(db, "jobs"))).docs.map(
         (doc) => doc.data() as Vacancies
       );
-      //console.log(vacanciesData);
 
       setVacancies(vacanciesData);
     } catch (error) {
@@ -76,293 +58,305 @@ const VacanciesPage = () => {
 
   useEffect(() => {
     loadVacancies();
-  });
+  }, []);
 
   useEffect(() => {
-    // Toggle mobile menu
-    const menuButton = document.getElementById("menu-button");
-    const mobileMenu = document.getElementById("mobile-menu");
-    if (menuButton && mobileMenu) {
-      menuButton.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-      });
-    }
-  });
-
-  useEffect(() => {
-    if (isModalOpen) {
+    if (isVacancyDetailsModalOpen || isModalOpen || isDevClubModalOpen) {
       document.body.classList.add("no-scroll");
     } else {
       document.body.classList.remove("no-scroll");
     }
 
-    // Cleanup function to remove the class when the component unmounts
     return () => {
       document.body.classList.remove("no-scroll");
     };
-  }, [isModalOpen]);
+  }, [isVacancyDetailsModalOpen, isModalOpen, isDevClubModalOpen]);
+
+  useEffect(() => {
+    const revealOnScroll = () => {
+      document.querySelectorAll(".reveal").forEach((element) => {
+        const elementTop = element.getBoundingClientRect().top;
+
+        if (window.innerHeight > elementTop + 80) {
+          element.classList.add("reveal-visible");
+        }
+      });
+    };
+
+    revealOnScroll();
+    window.addEventListener("scroll", revealOnScroll);
+
+    return () => window.removeEventListener("scroll", revealOnScroll);
+  }, []);
 
   return (
-    <>
-      <style jsx global>{`
-        .no-scroll {
-          overflow: hidden;
-        }
-      `}</style>
-      <div className="bg-gray-100">
-        <div className="2xl:w-8/12 xl:flex flex-col mx-auto overflow-x-hidden">
-          <Header />
-          <div className="w-full h-1 bg-black my-4"></div>
+    <div className="bg-gray-100 text-gray-900">
+      <main className="2xl:w-8/12 xl:flex flex-col mx-auto overflow-x-hidden bg-white shadow-2xl">
+        <Header />
 
-          <header className="flex flex-col items-center text-center">
-            <div className="w-full relative text-center mt-10 lg:mt-20">
-              <div className="w-full h-1/2 md:hidden">
-                <Image
-                  className="w-full h-full object-contain"
-                  src="/images/career.svg"
-                  alt="background image"
-                  width={150}
-                  height={150}
-                />
-              </div>
+       {/* HERO */}
+<section className="relative overflow-hidden bg-gradient-to-br from-blue-950 via-blue-700 to-purple-800 text-white px-6 md:px-12 pt-28 pb-20 md:pt-10 md:pb-8">
+  <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-10 items-center max-w-7xl mx-auto min-h-[620px]">
+    <div className="reveal max-w-xl">
+      <p className="text-yellow-300 font-bold tracking-widest uppercase mb-4">
+        Join UpTech
+      </p>
 
-              <div className="hidden md:block ml-auto w-1/2">
-                <Image
-                  className="w-full h-full object-contain"
-                  src="/images/careerPC.svg"
-                  alt="background image"
-                  width={150}
-                  height={150}
-                />
-              </div>
-              <Image
-                className="w-full h-full object-contain"
-                src="/images/rectangle.svg"
-                alt="background image"
-                width={150}
-                height={150}
-              />
+      <h1 className="text-4xl md:text-5xl xl:text-[58px] font-extrabold leading-[1.05] mb-6 max-w-[620px]">
+        Grow your skills with a real digital team.
+      </h1>
 
-              {/* Mobile Heading */}
-              <div className="h-full absolute md:hidden top-0 mt-10 left-1/2 transform -translate-x-1/2 z-10">
-                <h1>Why Join Us?</h1>
-                <p className="mt-3 ThiccboiBold">
-                  Join our team and help create unforgettable experiences every
-                  day!
+      <p className="text-base md:text-lg text-blue-100 max-w-xl mb-8 leading-relaxed">
+        At UpTech, you can build experience, work on real digital projects,
+        and develop new skills in a supportive, creative environment.
+      </p>
+
+      <div className="flex flex-wrap gap-3">
+        {["Careers", "Developers Club", "Growth", "Innovation"].map((value) => (
+          <span
+            key={value}
+            className="bg-white/15 border border-white/20 backdrop-blur-md px-4 py-2 rounded-full text-sm font-bold"
+          >
+            {value}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <div className="relative reveal flex justify-center lg:justify-end">
+      <div className="absolute inset-0 bg-yellow-300 rounded-full blur-3xl opacity-20" />
+
+      <Image
+        src="/images/careerPC.svg"
+        alt="Join UpTech"
+        width={620}
+        height={620}
+        className="relative z-10 w-full max-w-md lg:max-w-xl xl:max-w-2xl drop-shadow-2xl animate-float"
+      />
+    </div>
+  </div>
+</section>
+
+        {/* BRAND STRIP */}
+        <div className="bg-blue-600 text-white text-center py-5 px-6">
+          <p className="text-lg md:text-xl font-bold text-yellow-300">
+            Grow your skills, work on real projects, and be part of something meaningful.
+          </p>
+        </div>
+
+        {/* DEVELOPERS CLUB */}
+        <section className="px-6 md:px-12 py-20 bg-white">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-10 items-center">
+            <div className="reveal">
+              <p className="text-blue-600 font-bold uppercase tracking-widest mb-3">
+                Developers Club
+              </p>
+
+              <h2 className="text-3xl md:text-5xl font-extrabold text-blue-950 mb-6">
+                Learn, collaborate, and build real digital solutions.
+              </h2>
+
+              <div className="space-y-4 text-gray-700 text-lg leading-relaxed">
+                <p>
+                  The UpTech Software Developers Club is a community for people
+                  who are passionate about technology, whether they are just
+                  starting out or already have experience.
+                </p>
+
+                <p>
+                  Members can collaborate on real projects, explore new
+                  technologies, share knowledge, and grow their skills in a
+                  supportive environment.
                 </p>
               </div>
 
-              {/* PC/Tablet heading */}
-              <div className="hidden md:flex w-8/12 ml-10 flex-col gap-3 text-left absolute top-0 -mt-10 md:mt-10">
-                <h1>Why Join Us?</h1>
-                <p className="ThiccboiBold">
-                  Join our team and help create unforgettable experiences every
-                  day!
-                </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+                {[
+                  "Learn by doing",
+                  "Work on real projects",
+                  "Build practical skills",
+                  "Grow with a team",
+                ].map((benefit) => (
+                  <div
+                    key={benefit}
+                    className="bg-gradient-to-r from-blue-50 to-cyan-50 border border-blue-100 rounded-2xl p-4 font-bold text-blue-950 shadow-sm"
+                  >
+                    {benefit}
+                  </div>
+                ))}
               </div>
             </div>
-            <p className="mt-20 mx-4 mb-20 text-lg lg:text-2xl lg:w-3/5 lg:mx-auto">
-              Your skills. Your passion. Your future. At our team, you’ll find
-              more than just a career—you’ll find an environment that helps you
-              grow, experiment, and develop new skills while taking on exciting
-              opportunities.
+
+            <div className="reveal bg-gradient-to-br from-yellow-300 via-green-200 to-cyan-300 rounded-3xl p-8 shadow-2xl">
+              <div className="bg-white/80 backdrop-blur-md rounded-3xl p-8 text-center">
+                <Image
+                  src="/images/devClub.svg"
+                  alt="Developers Club"
+                  width={240}
+                  height={200}
+                  className="mx-auto mb-6 animate-float"
+                />
+
+                <h3 className="text-2xl font-extrabold text-blue-950 mb-4">
+                  Join Our Developers Club
+                </h3>
+
+                <p className="text-gray-700 mb-6">
+                  Connect with other developers, improve your skills, and
+                  become part of UpTech&apos;s growing technology community.
+                </p>
+
+                <button
+                  className="bg-blue-950 text-white px-6 py-3 rounded-2xl font-bold hover:bg-blue-800 transition transform hover:scale-105 shadow-lg"
+                  onClick={() => setIsDevClubModalOpen(true)}
+                >
+                  Join Developers Club
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* VACANCIES */}
+        <section className="px-6 md:px-12 py-20 bg-gradient-to-br from-blue-950 via-blue-700 to-purple-800 text-white">
+          <div className="text-center max-w-3xl mx-auto mb-12 reveal">
+            <p className="text-yellow-300 font-bold uppercase tracking-widest mb-3">
+              Available Vacancies
             </p>
-          </header>
 
-          {/* Developers Club Section */}
-          <div className="my-6 mx-4 md:mx-6 lg:mx-8">
-            <div className="flex flex-col lg:flex-row gap-8 items-start">
-              {/* Text info */}
-              <div className="flex-1 bg-white rounded-2xl shadow-lg border border-gray-200 p-6 md:p-8">
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6">
-                  About Uptech Software Developers Club
-                </h2>
-                <div className="space-y-4 text-gray-700 leading-relaxed">
-                  <p>
-                    The Uptech Software Developers Club is a vibrant community
-                    for anyone passionate about technology, whether you’re just
-                    starting out or already have experience. We believe that
-                    building apps, designing websites, or creating social
-                    platforms shouldn’t be limited by degrees. What matters most
-                    is curiosity, dedication, and the willingness to learn.
-                  </p>
-                  <p>
-                    Our club offers a supportive environment where members can
-                    collaborate on real projects, explore new technologies, and
-                    grow their skills. By connecting with like minded
-                    individuals, sharing knowledge, and working together, our
-                    members achieve more than they could alone. With a range of
-                    resources, hands-on opportunities, and a community driven
-                    approach, the Uptech Developers Club is the perfect place to
-                    turn your passion for technology into real world experience
-                    and future success.
-                  </p>
-                </div>
-                <div className="mt-6">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-3">
-                    Our Developers Club Benefits:
-                  </h3>
-                  <ul className="space-y-2 text-gray-700">
-                    <li className="flex items-start">
-                      <span className="w-2 h-2 bg-blueTheme rounded-full mr-3 mt-2 flex-shrink-0"></span>
-                      Learn by doing - from the basics of coding to building
-                      real websites and mobile apps.
-                    </li>
-                  </ul>
-                  <ul className="space-y-2 text-gray-700">
-                    <li className="flex items-start">
-                      <span className="w-2 h-2 bg-blueTheme rounded-full mr-3 mt-2 flex-shrink-0"></span>
-                      Collaborate on real projects - social networks, commercial
-                      websites, blogs, and mobile applications for iOS and
-                      Android.
-                    </li>
-                  </ul>
-                  <ul className="space-y-2 text-gray-700">
-                    <li className="flex items-start">
-                      <span className="w-2 h-2 bg-blueTheme rounded-full mr-3 mt-2 flex-shrink-0"></span>
-                      Grow with support - mentors, workshops, and a community of
-                      learners who want to see you win.
-                    </li>
-                  </ul>
-                  <ul className="space-y-2 text-gray-700">
-                    <li className="flex items-start">
-                      <span className="w-2 h-2 bg-blueTheme rounded-full mr-3 mt-2 flex-shrink-0"></span>
-                      Build your future - with practical skills that prepare you
-                      for freelancing, tech jobs, or launching your own ideas.
-                    </li>
-                  </ul>
-                </div>
-              </div>
+            <h2 className="text-3xl md:text-5xl font-extrabold mb-5">
+              Discover where you fit.
+            </h2>
 
-              {/* Dev Club Rounded container*/}
-              <div className="flex justify-center lg:justify-start w-full lg:w-auto">
-                <div className="w-72 sm:w-80 md:w-96 lg:w-80 xl:w-80 h-72 sm:h-80 md:h-84 lg:h-96 xl:h-84 bg-white rounded-2xl shadow-lg border border-gray-200 p-4 sm:p-6 flex flex-col items-center justify-center text-center">
-                  {/* Temporary Image Placeholder */}
-                  <div className="w-48 h-36 sm:w-56 sm:h-44 md:w-64 md:h-48 bg-gray-200 rounded-lg mb-3 sm:mb-4 md:mb-5 flex items-center justify-center">
-                    <Image
-                      src="/images/devClub.svg"
-                      alt="Developers Club"
-                      width={100}
-                      height={70}
-                      className="sm:w-[130px] sm:h-[100px] md:w-[150px] md:h-[110px]"
-                    />
-                  </div>
-                  {/* Title */}
-                  <h3 className="text-base sm:text-lg font-bold text-grey-800 mb-3 sm:mb-4">
-                    Join Our Developers Club Community
-                  </h3>
-                  {/* Desc */}
-                  <p className="text-xs sm:text-sm text-grey-600 mb-4 sm:mb-6 px-2 sm:px-4">
-                    Connect and learn with fellow developers and grow your
-                    skills.
-                  </p>
-                  {/* Button */}
-                  <div className="flex flex-col gap-2 sm:gap-3 w-full px-2 sm:px-4">
-                    <button
-                      className="relative bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:from-green-500 hover:via-green-600 hover:to-green-700 text-white px-4 sm:px-6 py-1.5 sm:py-2 rounded-lg font-medium transition-all duration-300 text-sm sm:text-base transform hover:scale-100 hover:shadow-lg backdrop-blur-md border border-green-500/80 animate-pulse"
-                      onClick={() => setIsDevClubModalOpen(true)}
-                    >
-                      <span className="relative z-10">
-                        Join Developers Club
-                      </span>
-                      <div className="absolute inset-0 bg-gradient-to-r from-green-400 via-green-500 to-green-600 rounded-lg opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <p className="text-blue-100 text-lg leading-relaxed">
+              Explore opportunities that match your skills and passion while
+              growing in an environment that encourages experimentation,
+              learning, and development.
+            </p>
           </div>
 
-          <div className="w-11/12 mx-auto h-1 bg-gray-400 my-4"></div>
-
-          {/* Vacancies Section */}
-          <div className="flex-1 p-6 md:p-8">
-            <div className="text-center mb-8">
-              <div className="inline-block">
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-4 relative">
-                  <span className="bg-gradient-to-r from-blueTheme to-blue-600 bg-clip-text">
-                    Available Vacancies
-                  </span>
-                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-blueTheme to-blue-600 rounded-full"></div>
-                </h2>
-                <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
-                  Join our team and be part of something amazing. Discover
-                  exciting career opportunities that match your skills and
-                  passion, while growing in an environment that encourages
-                  experimentation, continuous learning, and the development of
-                  new skills.
+          <main className="space-y-6 max-w-5xl mx-auto">
+            {isLoading ? (
+              <div className="bg-white/10 border border-white/10 rounded-3xl p-8 text-center reveal">
+                <p className="text-blue-100">Loading vacancies...</p>
+              </div>
+            ) : vacancies.length === 0 ? (
+              <div className="bg-white/10 border border-white/10 rounded-3xl p-8 text-center reveal">
+                <p className="text-blue-100">
+                  There are no vacancies available right now. Please check back soon.
                 </p>
               </div>
-            </div>
-          </div>
-
-          <main className="space-y-6 px-4 mb-10 xl:w-9/12 mx-auto">
-            {isLoading ? (
-              <p>Loading...</p>
             ) : (
               vacancies.map((vacancy, index) => (
                 <div
                   key={index}
-                  className= "text-white bg-blueTheme rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden"
+                  className="reveal group bg-white/10 border border-white/10 backdrop-blur-md rounded-3xl p-6 md:p-8 shadow-xl hover:bg-white hover:text-blue-950 transition duration-300 hover:-translate-y-2"
                 >
-                  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
-                    {/* Vacancy Info */}
-                    <div className="flex-1 min-w-0 w-full">
-                      <h1 className="flex items-start font-semibold text-lg sm:text-xl md:text-2xl lg:text-2xl mb-2 leading-tight vacancy-title">
+                  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs font-bold uppercase tracking-widest text-yellow-300 group-hover:text-blue-700 mb-3">
+                        {vacancy.department}
+                      </p>
+
+                      <h3 className="font-extrabold text-2xl md:text-3xl leading-tight mb-3">
                         {vacancy.title}
-                      </h1>
-                      <div className="flex items-center gap-2 mb-3">
-                        <span className="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
-                          {vacancy.department}
+                      </h3>
+
+                      {vacancy.status && (
+                        <span className="inline-block bg-white/15 group-hover:bg-blue-100 text-white group-hover:text-blue-900 px-4 py-2 rounded-full text-sm font-bold">
+                          {vacancy.status}
                         </span>
-                      </div>
+                      )}
                     </div>
 
-                    {/* View Details Button */}
-                    <div className="flex justify-end lg:justify-end">
-                      <button
-                        className="bg-white text-blueTheme font-bold rounded-lg px-6 py-3 hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105 shadow-md "
-                        onClick={() => handleViewDetails(vacancy)}
-                      >
-                        View Details
-                      </button>
-                    </div>
+                    <button
+                      className="bg-yellow-300 text-blue-950 font-bold rounded-2xl px-6 py-3 hover:bg-yellow-400 transition transform hover:scale-105 shadow-lg"
+                      onClick={() => handleViewDetails(vacancy)}
+                    >
+                      View Details
+                    </button>
                   </div>
                 </div>
               ))
             )}
           </main>
+        </section>
 
-          {/* Vacancy Details Modal */}
-          <VacancyDetailsModal
-            isOpen={isVacancyDetailsModalOpen}
-            onClose={() => setIsVacancyDetailsModalOpen(false)}
-            vacancy={selectedVacancy}
-            onApply={handleApply}
-          />
+        {/* CTA */}
+        <section className="px-6 md:px-12 py-16 bg-gray-50 text-center">
+          <div className="max-w-3xl mx-auto reveal">
+            <p className="text-blue-600 font-bold uppercase tracking-widest mb-3">
+              Ready to Join?
+            </p>
 
-          {/* Job Application Modal */}
-          {selectedDepartment && (
-            <JobApplicationModal
-              isOpen={isModalOpen}
-              onClose={() => setIsModalOpen(false)}
-              department={selectedDepartment}
-            />
-          )}
-        </div>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-blue-950 mb-5">
+              Your next opportunity could start here.
+            </h2>
 
-        <Footer />
+            <p className="text-gray-700 text-lg">
+              Review the available vacancies, view the details, and apply using
+              the existing application form.
+            </p>
+          </div>
+        </section>
 
-        {/* Developers Club Modal*/}
-        <DevClubModal
-          isOpen={isDevClubModalOpen}
-          onClose={() => setIsDevClubModalOpen(false)}
-          title="Developers Club Coming Soon!"
-          message="We're working hard to bring you an amazing developers community experience. Stay tuned for the launch!"
+        <VacancyDetailsModal
+          isOpen={isVacancyDetailsModalOpen}
+          onClose={() => setIsVacancyDetailsModalOpen(false)}
+          vacancy={selectedVacancy}
+          onApply={handleApply}
         />
-      </div>
-    </>
-  );
-};
 
-export default VacanciesPage;
+        {selectedDepartment && (
+          <JobApplicationModal
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+            department={selectedDepartment}
+          />
+        )}
+      </main>
+
+      <Footer />
+
+      <DevClubModal
+        isOpen={isDevClubModalOpen}
+        onClose={() => setIsDevClubModalOpen(false)}
+        title="Developers Club Coming Soon!"
+        message="We're working hard to bring you an amazing developers community experience. Stay tuned for the launch!"
+      />
+
+      <style jsx global>{`
+        .no-scroll {
+          overflow: hidden;
+        }
+
+        .reveal {
+          opacity: 0;
+          transform: translateY(35px);
+          transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal-visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        @keyframes float {
+          0% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-14px);
+          }
+          100% {
+            transform: translateY(0px);
+          }
+        }
+
+        .animate-float {
+          animation: float 4s ease-in-out infinite;
+        }
+      `}</style>
+    </div>
+  );
+}
