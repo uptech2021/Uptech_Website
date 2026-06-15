@@ -2,65 +2,78 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/objectives", label: "Objectives" },
+  { href: "/cyber-center", label: "Cyber Center" },
+  { href: "/services", label: "Services" },
+  { href: "/about", label: "About" },
+  { href: "/vacancies", label: "Join Us" },
+  { href: "/contact", label: "Contact" },
+];
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+    const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 10);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
 
   return (
-    <header className="pt-4 px-6 flex flex-row items-center justify-between relative z-20">
-      
-      {/* LOGO (UNCHANGED) */}
-      <div className="flex items-center gap-2 animate-slide-in">
-        <div className="w-15 h-15">
-          <Link href="/">
-            <Image
-              className="w-1/2 h-1/2"
-              src="/images/uptechlogo.svg"
-              alt="uptech logo"
-              width={100}
-              height={100}
-            />
+    <>
+      <header ref={headerRef} id="site-header">
+        <div className="wrap nav">
+          <Link href="/" className="logo" aria-label="UpTech home">
+            <Image src="/images/uptechlogo.svg" alt="UpTech" width={120} height={34} />
           </Link>
+          <nav className="nav-links">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={pathname === link.href ? "active" : ""}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+          <div className="nav-right">
+            <Link href="/contact" className="btn btn-accent" style={{ padding: ".7rem 1.3rem", fontSize: ".94rem" }}>
+              Connect With Us
+            </Link>
+            <button className="menu-btn" onClick={() => setMenuOpen(true)} aria-label="Menu">
+              <span></span><span></span><span></span>
+            </button>
+          </div>
         </div>
-      </div>
+      </header>
 
-      {/* DESKTOP NAV (UNCHANGED) */}
-      <nav className="hidden md:block">
-        <ul className="flex flex-row gap-4">
-          <li><Link href="/">Home</Link></li>
-          <li><Link href="/objectives">Objectives</Link></li>
-          <li><Link href="/vacancies">Join Us</Link></li>
-          <li><Link href="/about">About Us</Link></li>
-        </ul>
-      </nav>
-
-      {/* MOBILE BUTTON (ONLY CHANGE HERE) */}
-      <button
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-        className="md:hidden cursor-pointer"
-      >
-        <Image
-          src="/images/menu.svg"
-          alt="menu"
-          width={32}
-          height={32}
-          className="w-8 h-8"
-        />
-      </button>
-
-      {/* MOBILE MENU (CONTROLLED BY STATE) */}
-      {isMenuOpen && (
-        <nav className="absolute top-16 right-6 bg-white p-4 rounded shadow-md md:hidden z-30">
-          <ul className="flex flex-col gap-4">
-            <li><Link href="/" onClick={() => setIsMenuOpen(false)}>Home</Link></li>
-            <li><Link href="/objectives" onClick={() => setIsMenuOpen(false)}>Objectives</Link></li>
-            <li><Link href="/vacancies" onClick={() => setIsMenuOpen(false)}>Join Us</Link></li>
-            <li><Link href="/about" onClick={() => setIsMenuOpen(false)}>About Us</Link></li>
-          </ul>
+      <div className={`mobile-menu${menuOpen ? " open" : ""}`} onClick={(e) => { if (e.target === e.currentTarget) setMenuOpen(false); }}>
+        <nav>
+          <button className="close" onClick={() => setMenuOpen(false)} aria-label="Close">&times;</button>
+          {navLinks.map((link) => (
+            <Link key={link.href} href={link.href} className={pathname === link.href ? "active" : ""}>
+              {link.label}
+            </Link>
+          ))}
+          <Link href="/contact" className="btn btn-blue" style={{ marginTop: 14, justifyContent: "center" }}>
+            Connect With Us
+          </Link>
         </nav>
-      )}
-
-    </header>
+      </div>
+    </>
   );
 }
