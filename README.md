@@ -23,22 +23,22 @@ We are continuously expanding our services and enhancing Ourlime to meet the evo
 
 ## Setup Instructions
 
-To run the project, use the pnpm package manager. Follow these steps:
+To run the project, use the bun package manager. Follow these steps:
 
 1. Install the dependencies:
    ```bash
-   pnpm install
+   bun install
    ```
 
 2. Start the development server:
    ```bash
-   pnpm dev
+   bun dev
    ```
 
-Contact the lead senior developer, Aaron, for the `.env` file.
+Contact the lead senior developer, Kyle Nagee, for the `.env` file.
 
 ---
 
-© 2024 Uptech Incorporated Limited. All rights reserved.
+© 2026 Uptech Incorporated Limited. All rights reserved.
 
 Partner with us to bring your digital vision to life.
