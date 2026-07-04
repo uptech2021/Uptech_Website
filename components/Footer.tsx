@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="max-w-[1200px] mx-auto px-7">
         <div className="flex justify-between items-start gap-10 flex-wrap">
           <div>
-            <Image src={footerLogo} alt="UpTech" width={120} height={34} className="h-[34px] mb-4" />
+            <Image src={footerLogo} alt="UpTech" width={120} height={34} className="h-[34px] mb-4" style={{ width: "auto" }} />
             <p className="text-[rgba(234,242,255,.55)] max-w-[24rem] text-[.95rem]">
               Cooperation, Communication, Teamwork and Commitment. Your strategic partner for business growth.
             </p>

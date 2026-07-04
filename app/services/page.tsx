@@ -48,7 +48,7 @@ export default function Services() {
             </div>
           </div>
           <div className="relative flex justify-center reveal lg:order-none order-[-1] max-lg:max-w-[440px] max-lg:mx-auto">
-            <Image src={webAppImg} alt="UpTech services" width={480} height={480} className="w-full max-w-[480px] animate-float" />
+            <Image src={webAppImg} alt="UpTech services" width={480} height={480} className="w-full max-w-[480px] animate-float" style={{ height: "auto" }} />
           </div>
         </div>
         <svg className="block w-full h-auto -mt-px" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true">
@@ -74,7 +74,7 @@ export default function Services() {
                 <h3 className="text-[1.18rem] mb-2.5">{s.t}</h3>
                 <p className="text-ink-soft text-[.95rem] flex-1 mb-[18px]">{s.d}</p>
                 <div className="mx-[-24px] bg-mist border-t border-line p-[18px]">
-                  <Image src={s.img} alt={s.t} width={200} height={118} className="w-full h-[118px] object-contain" />
+                  <Image src={s.img} alt={s.t} width={200} height={118} className="w-full h-[118px] object-contain" style={{ width: "auto", height: "auto" }} />
                 </div>
               </div>
             ))}
@@ -94,7 +94,7 @@ export default function Services() {
               <div key={s.t} className="bg-white/[.08] border border-white/[0.16] rounded-card p-[26px] relative transition-[transform,background] duration-[220ms] hover:-translate-y-1.5 hover:bg-white/[.14] reveal" style={{ transitionDelay: `${i * 60}ms` }}>
                 <span className="absolute top-[22px] right-6 text-[2.4rem] font-black text-white/[0.16] leading-none">{i + 1}</span>
                 <div className="w-[88px] h-[88px] rounded-[18px] bg-white grid place-items-center mb-5 p-3.5">
-                  <Image src={s.img} alt={s.t} width={60} height={60} className="w-full h-full object-contain" />
+                  <Image src={s.img} alt={s.t} width={60} height={60} className="w-full h-full object-contain" style={{ width: "auto", height: "auto" }} />
                 </div>
                 <h3 className="text-[1.2rem] mb-2">{s.t}</h3>
                 <p className="text-on-blue text-[.92rem]">{s.d}</p>

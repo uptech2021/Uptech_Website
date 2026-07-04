@@ -40,7 +40,7 @@ export default function Objectives() {
             </div>
           </div>
           <div className="relative flex justify-center reveal lg:order-none order-[-1] max-lg:max-w-[440px] max-lg:mx-auto">
-            <Image src={objectivesPcImage} alt="Ourlime objectives" width={480} height={480} />
+            <Image src={objectivesPcImage} alt="Ourlime objectives" width={480} height={480} style={{ width: "auto", height: "auto" }} />
           </div>
         </div>
         <svg className="block w-full h-auto -mt-px" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true">
@@ -106,7 +106,7 @@ export default function Objectives() {
                   <p className="text-on-blue text-[1.02rem] leading-[1.65]">{o.text}</p>
                 </div>
                 <div className={`flex justify-center ${i % 2 === 1 ? "lg:order-1" : ""}`}>
-                  <Image src={o.img} alt={o.title} width={330} height={240} />
+                  <Image src={o.img} alt={o.title} width={330} height={240} style={{ width: "auto", height: "auto" }} />
                 </div>
               </div>
             ))}

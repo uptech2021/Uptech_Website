@@ -8,7 +8,7 @@ import {
 } from "firebase/firestore";
 import { db, auth } from "@/lib/firebase";
 import { Editor } from "@tinymce/tinymce-react";
-import { X } from "lucide-react";
+import { X, Pencil, Trash2 } from "lucide-react";
 import { Job, JobForm, JobManagementModalProps } from "@/types/dashboard";
 import { toast } from "react-toastify";
 import SkeletonLoader from "./SkeletonLoader";
@@ -128,111 +128,135 @@ export default function JobManagementModal({
   return (
     <div
       id="jobManagementModal"
-      className=" h-6/12 fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center"
+      className="fixed inset-0 z-50 bg-navy/80 backdrop-blur-sm flex justify-center items-center p-4"
     >
-      <div className="relative my-10 mx-auto p-5 border w-auto max-w-[90%] max-h-[90%] overflow-y-scroll bg-white rounded-md shadow-lg flex flex-col lg:flex-row">
-        <div className="flex-1">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-xl font-bold">Manage Jobs</h2>
-            <button
-              onClick={closeJobModal}
-              className="text-gray-500 hover:text-gray-700"
-            >
-              <X />
-            </button>
+      <div className="bg-paper rounded-card shadow-card-lg w-full max-w-6xl max-h-[90vh] overflow-y-auto">
+        {/* Navy header */}
+        <div className="bg-navy rounded-t-card px-6 py-5 flex items-center justify-between">
+          <h2 className="text-white text-xl font-bold">
+            {jobForm.jobId ? "Edit Job" : "Create Job"}
+          </h2>
+          <button
+            onClick={closeJobModal}
+            className="text-white/70 hover:text-white transition"
+          >
+            <X className="w-6 h-6" />
+          </button>
+        </div>
+
+        {/* Two-panel layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-6 p-6">
+          {/* Left panel: Form */}
+          <div>
+            <form onSubmit={handleJobSubmit} className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="text-ink-soft text-sm font-semibold uppercase tracking-wider block mb-2">
+                    Job Title
+                  </label>
+                  <input
+                    type="text"
+                    name="title"
+                    value={jobForm.title}
+                    onChange={handleInputChange}
+                    placeholder="Job Title"
+                    required
+                    className="bg-mist border border-line rounded-card-sm focus:border-brand focus:ring-2 focus:ring-brand/20 px-4 py-3 w-full text-ink transition"
+                  />
+                </div>
+                <div>
+                  <label className="text-ink-soft text-sm font-semibold uppercase tracking-wider block mb-2">
+                    Department
+                  </label>
+                  <select
+                    name="department"
+                    value={jobForm.department}
+                    onChange={handleInputChange}
+                    required
+                    className="bg-mist border border-line rounded-card-sm focus:border-brand focus:ring-2 focus:ring-brand/20 px-4 py-3 w-full text-ink transition"
+                  >
+                    <option value="Graphic design">Graphic Design</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="Administrative">Administrative</option>
+                    <option value="Engineering">Engineering</option>
+                    <option value="General Opportunities">General Opportunities</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="text-ink-soft text-sm font-semibold uppercase tracking-wider block mb-2">
+                  Description
+                </label>
+                <div className="border border-line rounded-card-sm overflow-hidden">
+                  <Editor
+                    apiKey={process.env.NEXT_PUBLIC_TINYMCE_API_KEY}
+                    value={jobForm.description}
+                    init={{
+                      height: 300,
+                      menubar: false,
+                      plugins: [
+                        "advlist",
+                        "autolink",
+                        "lists",
+                        "link",
+                        "image",
+                        "charmap",
+                        "print",
+                        "preview",
+                        "anchor",
+                        "searchreplace",
+                        "visualblocks",
+                        "code",
+                        "fullscreen",
+                        "insertdatetime",
+                        "media",
+                        "table",
+                        "paste",
+                        "help",
+                        "wordcount",
+                      ],
+                      toolbar:
+                        "undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help",
+                    }}
+                    onEditorChange={handleEditorChange}
+                  />
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-3">
+                <button
+                  type="submit"
+                  className="bg-brand text-white rounded-full shadow-glow-blue hover:bg-brand-deep px-6 py-2.5 font-bold transition"
+                >
+                  {jobForm.jobId ? "Update Job" : "Create Job"}
+                </button>
+                {jobForm.jobId && (
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setJobForm({
+                        title: "",
+                        department: "graphic",
+                        description: "",
+                        jobId: null,
+                      })
+                    }
+                    className="bg-transparent text-ink-soft border border-line rounded-full hover:bg-mist px-6 py-2.5 font-bold transition"
+                  >
+                    Cancel Edit
+                  </button>
+                )}
+              </div>
+            </form>
           </div>
 
-          <form onSubmit={handleJobSubmit} className="space-y-4">
-            <div className="flex gap-4">
-              <input
-                type="text"
-                name="title"
-                value={jobForm.title}
-                onChange={handleInputChange}
-                placeholder="Job Title"
-                required
-                className="w-full p-2 border rounded"
-              />
-              <select
-                name="department"
-                value={jobForm.department}
-                onChange={handleInputChange}
-                required
-                className="w-full p-2 border rounded"
-              >
-                <option value="Graphic design">Graphic Design</option>
-                <option value="Marketing">Marketing</option>
-                <option value="Administrative">Administrative</option>
-                <option value="Engineering">Engineering</option>
-                <option value="General Opportunities">General Opportunities</option>
-              </select>
-            </div>
-            <Editor
-              apiKey={process.env.NEXT_PUBLIC_TINYMCE_API_KEY}
-              value={jobForm.description}
-              init={{
-                height: 300,
-                menubar: false,
-                plugins: [
-                  "advlist",
-                  "autolink",
-                  "lists",
-                  "link",
-                  "image",
-                  "charmap",
-                  "print",
-                  "preview",
-                  "anchor",
-                  "searchreplace",
-                  "visualblocks",
-                  "code",
-                  "fullscreen",
-                  "insertdatetime",
-                  "media",
-                  "table",
-                  "paste",
-                  "help",
-                  "wordcount",
-                ],
-                toolbar:
-                  "undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help",
-              }}
-              onEditorChange={handleEditorChange}
-            />
-            <div className="flex gap-4">
-              <button
-                type="submit"
-                className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-              >
-                {jobForm.jobId ? "Update Job" : "Create Job"}
-              </button>
-            </div>
-          </form>
-          {jobForm.jobId && (
-            <div className="flex gap-4 mt-4">
-              <button
-                type="button"
-                onClick={() =>
-                  setJobForm({
-                    title: "",
-                    department: "graphic",
-                    description: "",
-                    jobId: null,
-                  })
-                }
-                className="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600"
-              >
-                Cancel Edit
-              </button>
-            </div>
-          )}
-        </div>
-        <div className="lg:ml-10 h-screen">
-          <div className="job-list h-full">
-            <h3>Existing Jobs</h3>
-            <ul className="h-full overflow-y-auto">
+          {/* Right panel: Existing Jobs */}
+          <div className="mt-6 lg:mt-0">
+            <h3 className="text-ink text-lg font-bold mb-4">Existing Jobs</h3>
+            <div className="space-y-3 max-h-[60vh] overflow-y-auto pr-1">
               {jobs.length === 0 ? (
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-3">
                   <SkeletonLoader />
                   <SkeletonLoader />
                   <SkeletonLoader />
@@ -241,18 +265,45 @@ export default function JobManagementModal({
                 </div>
               ) : (
                 jobs.map((job) => (
-                  <li key={job.id} className="border border-gray-200 rounded-md bg-white p-4 mb-4 hover:bg-gray-100 transition duration-200 ease-in-out">
-                    <h4 className="text-lg font-semibold">{job.title}</h4>
-                    <p className="text-gray-600">Department: {job.department}</p>
-                    <p className="text-gray-600">Status: {job.status}</p>
-                    <div className="flex gap-2 mt-2">
-                      <button className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition duration-200 ease-in-out" onClick={() => handleEdit(job)}>Edit</button>
-                      <button className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition duration-200 ease-in-out" onClick={() => handleDelete(job.id)}>Delete</button>
+                  <div
+                    key={job.id}
+                    className="bg-mist border border-line rounded-card-sm p-4 hover:border-brand/30 transition"
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex-1 min-w-0">
+                        <h4 className="text-ink font-semibold truncate">{job.title}</h4>
+                        <div className="flex flex-wrap items-center gap-2 mt-2">
+                          <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-on-blue text-brand-deep">
+                            {job.department}
+                          </span>
+                          <span className={`inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold ${
+                            job.status === 'open' ? 'bg-green-100 text-green-700' : 'bg-mist-2 text-ink-soft'
+                          }`}>
+                            {job.status}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex gap-1 shrink-0">
+                        <button
+                          onClick={() => handleEdit(job)}
+                          className="text-brand hover:bg-mist-2 border border-transparent hover:border-brand/30 rounded-full p-2 transition"
+                          title="Edit job"
+                        >
+                          <Pencil className="w-4 h-4" />
+                        </button>
+                        <button
+                          onClick={() => handleDelete(job.id)}
+                          className="text-red-500 hover:bg-red-50 border border-transparent hover:border-red-200 rounded-full p-2 transition"
+                          title="Delete job"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
                     </div>
-                  </li>
+                  </div>
                 ))
               )}
-            </ul>
+            </div>
           </div>
         </div>
       </div>

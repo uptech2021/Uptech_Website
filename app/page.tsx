@@ -97,14 +97,14 @@ export default function Home() {
               <a href="#contact" className="inline-flex items-center gap-2 font-extrabold text-base py-[.92rem] px-[1.6rem] rounded-full bg-accent text-accent-ink shadow-glow cursor-pointer border-0 transition-[transform,box-shadow,background] duration-[180ms] hover:bg-accent-deep hover:-translate-y-0.5 active:translate-y-[1px] whitespace-nowrap">Connect With Us</a>
               <a href="https://wa.me/18687104296" target="_blank" rel="noopener" className="inline-flex items-center gap-2 font-extrabold text-base py-[.92rem] px-[1.6rem] rounded-full bg-transparent text-white border-[1.5px] border-white/45 cursor-pointer transition-[transform,box-shadow,background] duration-[180ms] hover:bg-white hover:text-brand-700 hover:-translate-y-0.5 active:translate-y-[1px] whitespace-nowrap">WhatsApp Us</a>
             </div>
-            <div className="flex gap-[34px] mt-10 pt-7 border-t border-white/20 max-sm:gap-[22px]">
+            <div className="flex flex-wrap gap-[34px] mt-10 pt-7 border-t border-white/20 max-sm:gap-[22px] max-sm:flex-col max-sm:items-start">
               <div><div className="text-[1.7rem] font-black text-white tracking-tight">10+</div><div className="text-[.82rem] text-on-blue font-semibold tracking-[.02em]">Digital Services</div></div>
               <div><div className="text-[1.7rem] font-black text-white tracking-tight">1-on-1</div><div className="text-[.82rem] text-on-blue font-semibold tracking-[.02em]">Personal Support</div></div>
               <div><div className="text-[1.7rem] font-black text-white tracking-tight">Chaguanas</div><div className="text-[.82rem] text-on-blue font-semibold tracking-[.02em]">Walk-in Cyber Center</div></div>
             </div>
           </div>
           <div className="relative flex justify-center reveal lg:order-none order-[-1] max-lg:max-w-[440px] max-lg:mx-auto">
-            <Image src={newBgImg} alt="UpTech digital services" width={440} height={440} className="w-full max-w-[480px] drop-shadow-[0_40px_60px_rgba(8,18,46,.4)]" />
+            <Image src={newBgImg} alt="UpTech digital services" width={440} height={440} priority className="w-full max-w-[480px] drop-shadow-[0_40px_60px_rgba(8,18,46,.4)]" style={{ height: "auto" }} />
             <div className="absolute left-[-6px] top-[24%] max-lg:left-[-28px] max-lg:top-[8%] bg-white text-ink rounded-2xl py-[.7rem] px-[.95rem] shadow-card flex items-center gap-[.6rem] font-bold text-[.88rem] animate-float">
               <span className="w-[34px] h-[34px] rounded-[10px] bg-mist grid place-items-center text-[1.1rem]">&#x1F4AC;</span> WhatsApp friendly
             </div>
@@ -151,7 +151,7 @@ export default function Home() {
             </div>
             <div className="relative bg-white border border-line rounded-card p-3.5 shadow-card-lg max-w-[430px] mx-auto w-full reveal">
               <span className="absolute top-[26px] right-[26px] z-[3] text-[.74rem] font-extrabold tracking-[.1em] uppercase text-accent-ink bg-accent py-[.42rem] px-[.8rem] rounded-full shadow-sm">&#x25CF; Open Now</span>
-              <Image src={cyberCenterImg} alt="UpTech Business & Cyber Center" className="w-full rounded-[calc(22px-10px)] block" />
+              <Image src={cyberCenterImg} alt="UpTech Business & Cyber Center" className="w-full rounded-[calc(22px-10px)] block" style={{ height: "auto" }} />
             </div>
           </div>
         </div>
@@ -191,7 +191,7 @@ export default function Home() {
                 <h3 className="text-[1.18rem] mb-2.5">{s.title}</h3>
                 <p className="text-ink-soft text-[.95rem] flex-1 mb-[18px]">{s.desc}</p>
                 <div className="mx-[-24px] bg-mist border-t border-line p-[18px]">
-                  <Image src={s.img} alt={s.title} width={200} height={118} className="w-full h-[118px] object-contain" />
+                  <Image src={s.img} alt={s.title} width={200} height={118} className="w-full h-[118px] object-contain" style={{ width: "auto", height: "auto" }} />
                 </div>
               </div>
             ))}
@@ -216,10 +216,10 @@ export default function Home() {
               <a href="https://wa.me/18687104296" target="_blank" rel="noopener" className="inline-flex items-center gap-2 font-extrabold text-base py-[.92rem] px-[1.6rem] rounded-full bg-brand text-white shadow-glow-blue cursor-pointer border-0 transition-[transform,box-shadow,background] duration-[180ms] hover:bg-brand-deep hover:-translate-y-0.5 active:translate-y-[1px] whitespace-nowrap">Start an Online Order</a>
             </div>
             <div className="hidden lg:flex bg-brand rounded-[18px] overflow-hidden items-center justify-center min-h-[330px] relative right-[-48px] shadow-card-lg">
-              <Image src={shoppingAdDesktopImg} alt="Online shopping assistance" className="w-full h-full object-cover" />
+              <Image src={shoppingAdDesktopImg} alt="Online shopping assistance" className="w-full h-full object-cover" style={{ width: "auto", height: "auto" }} />
             </div>
             <div className="flex lg:hidden bg-brand rounded-[18px] overflow-hidden items-center justify-center min-h-[260px]">
-              <Image src={shoppingAdMobileImg} alt="Online shopping assistance" className="w-full h-full object-cover" />
+              <Image src={shoppingAdMobileImg} alt="Online shopping assistance" className="w-full h-full object-cover" style={{ width: "auto", height: "auto" }} />
             </div>
           </div>
         </div>
@@ -237,8 +237,8 @@ export default function Home() {
             {steps.map((s, i) => (
               <div key={s.title} className="bg-white/[.08] border border-white/[0.16] rounded-card p-[26px] relative transition-[transform,background] duration-[220ms] hover:-translate-y-1.5 hover:bg-white/[.14] reveal" style={{ transitionDelay: `${i * 60}ms` }}>
                 <span className="absolute top-[22px] right-6 text-[2.4rem] font-black text-white/[0.16] leading-none">{i + 1}</span>
-                <div className="w-[88px] h-[88px] rounded-[18px] bg-white grid place-items-center mb-5 p-3.5">
-                  <Image src={s.img} alt={s.title} width={60} height={60} className="w-full h-full object-contain" />
+                <div className="w-[100px] h-[100px] max-sm:w-[80px] max-sm:h-[80px] rounded-[18px] bg-white grid place-items-center mb-5 p-2">
+                  <Image src={s.img} alt={s.title} width={64} height={64} className="object-contain" style={{ width: "auto", height: "auto" }} />
                 </div>
                 <h3 className="text-[1.2rem] mb-2">{s.title}</h3>
                 <p className="text-on-blue text-[.92rem]">{s.desc}</p>
@@ -279,7 +279,7 @@ export default function Home() {
                   { href: "https://www.facebook.com/uptech.trendz", label: "Facebook", img: facebookImg },
                 ].map((s) => (
                   <a key={s.label} href={s.href} target="_blank" rel="noopener" aria-label={s.label} className="w-11 h-11 rounded-xl bg-mist grid place-items-center transition-all duration-[180ms] border border-line hover:bg-brand hover:-translate-y-[3px] group">
-                    <Image src={s.img} alt={s.label} width={20} height={20} className="w-5 h-5 group-hover:brightness-0 group-hover:invert" />
+                    <Image src={s.img} alt={s.label} width={20} height={20} className="w-5 h-5 group-hover:brightness-0 group-hover:invert" style={{ width: "auto", height: "auto" }} />
                   </a>
                 ))}
               </div>

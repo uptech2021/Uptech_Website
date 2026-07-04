@@ -7,7 +7,9 @@ import { Timestamp } from "firebase/firestore";
 interface ApplicationTableProps {
   applications: Application[] | DevelopersClubApplication[];
   handleApplicationUpdate: (id: string, status: string, reason: string) => void;
-  onApplicationClick: (application: Application | DevelopersClubApplication) => void;
+  onApplicationClick: (
+    application: Application | DevelopersClubApplication
+  ) => void;
   applicationType: "job" | "devClub";
 }
 
@@ -20,199 +22,336 @@ const ApplicationTable: React.FC<ApplicationTableProps> = ({
   const [selectedApplication, setSelectedApplication] =
     React.useState<Application | DevelopersClubApplication | null>(null);
 
-  const getStatusColor = (status: string) => {
+  const getStatusClasses = (status: string) => {
     switch (status) {
       case "accepted":
-        return "bg-green-500";
+        return "bg-green-100 text-green-700";
       case "rejected":
-        return "bg-red-500";
+        return "bg-red-100 text-red-700";
       default:
-        return "bg-yellow-500";
+        return "bg-accent/20 text-accent-ink";
     }
   };
 
-  const viewApplication = (application: Application | DevelopersClubApplication) => {
+  const formatDate = (dateApplied: Date | Timestamp | undefined) => {
+    if (dateApplied instanceof Timestamp) {
+      return dateApplied.toDate().toLocaleDateString();
+    }
+    return "Date not available";
+  };
+
+  const viewApplication = (
+    application: Application | DevelopersClubApplication
+  ) => {
     setSelectedApplication(application);
     onApplicationClick(application);
   };
 
   return (
-    <div className="overflow-x-auto bg-white rounded-lg shadow w-full">
-      <div className="min-w-screen bg-gray-100">
-        <div className="w-full">
-          <table className="w-full table-auto">
-            <thead className="bg-gray-50">
-              <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  FirstName
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  LastName
-                </th>
+    <div>
+      {/* Mobile card layout */}
+      <div className="md:hidden divide-y divide-line">
+        {applications.map((application) => (
+          <div
+            key={application.id}
+            onClick={() => viewApplication(application)}
+            className="p-4 hover:bg-mist cursor-pointer transition-colors"
+          >
+            <div className="flex items-start justify-between mb-3">
+              <div>
+                <p className="font-semibold text-ink">
+                  {application.firstName} {application.lastName}
+                </p>
                 {applicationType === "job" ? (
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Position
-                  </th>
+                  <p className="text-sm text-ink-soft mt-0.5">
+                    {(application as Application).position || "N/A"}
+                  </p>
                 ) : (
-                  <>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Interest
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Hours/Week
-                    </th>
-                  </>
+                  <span className="inline-block mt-1 px-2 py-0.5 rounded-full text-xs font-medium bg-brand/10 text-brand">
+                    {(application as DevelopersClubApplication).interestType ===
+                    "app"
+                      ? "App Dev"
+                      : (application as DevelopersClubApplication)
+                            .interestType === "web"
+                        ? "Web Dev"
+                        : "N/A"}
+                  </span>
                 )}
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Contact
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              </div>
+              <span
+                className={`px-3 py-1 text-xs font-semibold rounded-full ${getStatusClasses(
+                  application.status || "pending"
+                )}`}
+              >
+                {application.status || "pending"}
+              </span>
+            </div>
+
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
+              <div>
+                <p className="text-ink-soft text-xs font-semibold uppercase tracking-wider">
                   Email
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                </p>
+                <p className="text-ink truncate">{application.email}</p>
+              </div>
+              <div>
+                <p className="text-ink-soft text-xs font-semibold uppercase tracking-wider">
+                  Contact
+                </p>
+                <p className="text-ink">{application.contactNumber}</p>
+              </div>
+              <div>
+                <p className="text-ink-soft text-xs font-semibold uppercase tracking-wider">
+                  Date
+                </p>
+                <p className="text-ink">
+                  {formatDate(application.dateApplied)}
+                </p>
+              </div>
+              <div>
+                <p className="text-ink-soft text-xs font-semibold uppercase tracking-wider">
                   Resume
-                </th>
-                {applicationType === "job" && (
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Portfolio
-                  </th>
+                </p>
+                {application.resumeFileUrl ? (
+                  <a
+                    href={application.resumeFileUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="text-brand font-medium hover:underline"
+                  >
+                    View
+                  </a>
+                ) : (
+                  <p className="text-ink-soft">N/A</p>
                 )}
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Date Applied
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Status
-                </th>
-                {/* <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Actions
-                </th> */}
-              </tr>
-            </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              {applications.map((application) => (
-                <tr
-                  key={application.id}
-                  onClick={() => viewApplication(application)}
-                  className="hover:bg-gray-100 cursor-pointer"
-                >
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm font-medium text-gray-900">
-                      {application.firstName}
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm font-medium text-gray-900">
-                      {application.lastName}
-                    </div>
-                  </td>
-                  {applicationType === "job" ? (
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">
-                        {(application as Application).position || "N/A"}
-                      </div>
-                    </td>
-                  ) : (
-                    <>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">
-                          <span className="inline-block px-2 py-1 rounded text-xs font-semibold bg-blue-100 text-blue-800">
-                            {(application as DevelopersClubApplication).interestType === "app" 
-                              ? "App Dev" 
-                              : (application as DevelopersClubApplication).interestType === "web" 
-                              ? "Web Dev" 
-                              : "N/A"}
-                          </span>
-                        </div>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">
-                          {(application as DevelopersClubApplication).weeklyHours === "more" 
-                            ? "MORE" 
-                            : (application as DevelopersClubApplication).weeklyHours 
-                            ? `${(application as DevelopersClubApplication).weeklyHours}h` 
-                            : "N/A"}
-                        </div>
-                      </td>
-                    </>
-                  )}
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">
-                      {application.contactNumber}
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">
-                      {application.email}
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    {application.resumeFileUrl ? (
+              </div>
+              {applicationType === "job" && (
+                <div className="col-span-2">
+                  <p className="text-ink-soft text-xs font-semibold uppercase tracking-wider">
+                    Portfolio
+                  </p>
+                  <div className="flex gap-3">
+                    {(application as Application).portfolioFileUrl && (
                       <a
-                        href={application.resumeFileUrl}
+                        href={(application as Application).portfolioFileUrl}
                         target="_blank"
-                        className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="text-brand font-medium hover:underline"
                       >
-                        <i className="fas fa-file-alt mr-2"></i>Resume
+                        File
                       </a>
-                    ) : (
-                      "N/A"
                     )}
-                  </td>
-                  {applicationType === "job" && (
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="flex flex-col space-y-2">
-                        {(application as Application).portfolioFileUrl ? (
-                          <a
-                            href={(application as Application).portfolioFileUrl}
-                            target="_blank"
-                            className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs"
-                          >
-                            <i className="fas fa-file-alt mr-2"></i>Portfolio
-                          </a>
-                        ) : (
-                          ""
-                        )}
-                        {(application as Application).portfolioUrl ? (
-                          <a
-                            href={(application as Application).portfolioUrl}
-                            target="_blank"
-                            className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs"
-                          >
-                            <i className="fas fa-external-link-alt mr-2"></i>
-                            Website
-                          </a>
-                        ) : (
-                          ""
-                        )}
-                        {!(application as Application).portfolioFileUrl &&
-                        !(application as Application).portfolioUrl
-                          ? "N/A"
-                          : ""}
-                      </div>
-                    </td>
-                  )}
+                    {(application as Application).portfolioUrl && (
+                      <a
+                        href={(application as Application).portfolioUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="text-brand font-medium hover:underline"
+                      >
+                        Website
+                      </a>
+                    )}
+                    {!(application as Application).portfolioFileUrl &&
+                      !(application as Application).portfolioUrl && (
+                        <p className="text-ink-soft">N/A</p>
+                      )}
+                  </div>
+                </div>
+              )}
+              {applicationType === "devClub" && (
+                <div>
+                  <p className="text-ink-soft text-xs font-semibold uppercase tracking-wider">
+                    Hours/Week
+                  </p>
+                  <p className="text-ink">
+                    {(application as DevelopersClubApplication).weeklyHours ===
+                    "more"
+                      ? "MORE"
+                      : (application as DevelopersClubApplication).weeklyHours
+                        ? `${(application as DevelopersClubApplication).weeklyHours}h`
+                        : "N/A"}
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Desktop table layout */}
+      <div className="hidden md:block overflow-x-auto">
+        <table className="w-full">
+          <thead>
+            <tr className="bg-mist border-b border-line">
+              <th className="px-6 py-3 text-left text-ink-soft text-xs font-semibold uppercase tracking-wider">
+                First Name
+              </th>
+              <th className="px-6 py-3 text-left text-ink-soft text-xs font-semibold uppercase tracking-wider">
+                Last Name
+              </th>
+              {applicationType === "job" ? (
+                <th className="px-6 py-3 text-left text-ink-soft text-xs font-semibold uppercase tracking-wider">
+                  Position
+                </th>
+              ) : (
+                <>
+                  <th className="px-6 py-3 text-left text-ink-soft text-xs font-semibold uppercase tracking-wider">
+                    Interest
+                  </th>
+                  <th className="px-6 py-3 text-left text-ink-soft text-xs font-semibold uppercase tracking-wider">
+                    Hours/Week
+                  </th>
+                </>
+              )}
+              <th className="px-6 py-3 text-left text-ink-soft text-xs font-semibold uppercase tracking-wider">
+                Contact
+              </th>
+              <th className="px-6 py-3 text-left text-ink-soft text-xs font-semibold uppercase tracking-wider">
+                Email
+              </th>
+              <th className="px-6 py-3 text-left text-ink-soft text-xs font-semibold uppercase tracking-wider">
+                Resume
+              </th>
+              {applicationType === "job" && (
+                <th className="px-6 py-3 text-left text-ink-soft text-xs font-semibold uppercase tracking-wider">
+                  Portfolio
+                </th>
+              )}
+              <th className="px-6 py-3 text-left text-ink-soft text-xs font-semibold uppercase tracking-wider">
+                Date Applied
+              </th>
+              <th className="px-6 py-3 text-left text-ink-soft text-xs font-semibold uppercase tracking-wider">
+                Status
+              </th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-line">
+            {applications.map((application) => (
+              <tr
+                key={application.id}
+                onClick={() => viewApplication(application)}
+                className="bg-paper hover:bg-mist cursor-pointer transition-colors"
+              >
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <span className="text-sm font-medium text-ink">
+                    {application.firstName}
+                  </span>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <span className="text-sm font-medium text-ink">
+                    {application.lastName}
+                  </span>
+                </td>
+                {applicationType === "job" ? (
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">
-                      {application.dateApplied instanceof Timestamp
-                        ? application.dateApplied.toDate().toLocaleDateString()
-                        : "Date not available"}
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <span
-                      className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusColor(
-                        application.status || "pending"
-                      )}`}
-                    >
-                      {application.status || "pending"}
+                    <span className="text-sm text-ink">
+                      {(application as Application).position || "N/A"}
                     </span>
                   </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+                ) : (
+                  <>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <span className="inline-block px-2 py-1 rounded-full text-xs font-medium bg-brand/10 text-brand">
+                        {(application as DevelopersClubApplication)
+                          .interestType === "app"
+                          ? "App Dev"
+                          : (application as DevelopersClubApplication)
+                                .interestType === "web"
+                            ? "Web Dev"
+                            : "N/A"}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <span className="text-sm text-ink">
+                        {(application as DevelopersClubApplication)
+                          .weeklyHours === "more"
+                          ? "MORE"
+                          : (application as DevelopersClubApplication)
+                                .weeklyHours
+                            ? `${(application as DevelopersClubApplication).weeklyHours}h`
+                            : "N/A"}
+                      </span>
+                    </td>
+                  </>
+                )}
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <span className="text-sm text-ink">
+                    {application.contactNumber}
+                  </span>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <span className="text-sm text-ink">{application.email}</span>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  {application.resumeFileUrl ? (
+                    <a
+                      href={application.resumeFileUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="text-sm text-brand font-medium hover:underline"
+                    >
+                      Resume
+                    </a>
+                  ) : (
+                    <span className="text-sm text-ink-soft">N/A</span>
+                  )}
+                </td>
+                {applicationType === "job" && (
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="flex flex-col gap-1">
+                      {(application as Application).portfolioFileUrl && (
+                        <a
+                          href={(application as Application).portfolioFileUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="text-sm text-brand font-medium hover:underline"
+                        >
+                          Portfolio
+                        </a>
+                      )}
+                      {(application as Application).portfolioUrl && (
+                        <a
+                          href={(application as Application).portfolioUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="text-sm text-brand font-medium hover:underline"
+                        >
+                          Website
+                        </a>
+                      )}
+                      {!(application as Application).portfolioFileUrl &&
+                        !(application as Application).portfolioUrl && (
+                          <span className="text-sm text-ink-soft">N/A</span>
+                        )}
+                    </div>
+                  </td>
+                )}
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <span className="text-sm text-ink">
+                    {formatDate(application.dateApplied)}
+                  </span>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <span
+                    className={`px-3 py-1 text-xs font-semibold rounded-full ${getStatusClasses(
+                      application.status || "pending"
+                    )}`}
+                  >
+                    {application.status || "pending"}
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
+
       {selectedApplication && (
         <ApplicationDetailsModal
           application={selectedApplication}

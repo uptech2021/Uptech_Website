@@ -11,35 +11,59 @@ const teamSections = [
   {
     title: "Leadership Team",
     members: [
-      { name: "Rishi Kowlessar", pos: "Chairman / CEO", tag: "Director" },
+      { name: "Rishi Kowlessar", pos: "Founder / CEO / Chairman", tag: "Director" },
       {
-        name: "Kyle Nagee",
-        pos: "Vice Chairman / Senior Software Engineer / Head of Development",
+        name: "K Nagee",
+        pos: "Co-Founder / Director of Software Engineering",
         tag: "Director",
       },
-      { name: "Ethan Ramsahai", pos: "Head of Graphics & Multimedia", tag: "Director" },
       {
-        name: "Jasmine Lightfoot",
-        pos: "Head of Human Resources / Software Developers Club",
+        name: "J Lightfoot",
+        pos: "Director of Human Resources / Director of Uptech Software Developers Club",
+        tag: "Director",
+      },
+      {
+        name: "D Baptiste",
+        pos: "Corporate Secretary",
         tag: "Director",
       },
     ],
   },
   {
-    title: "Development & Design Team",
+    title: "Engineering Team",
     members: [
-      { name: "Raushawn Mitchell", pos: "Senior Software Engineer / Web Lead", tag: "Engineering" },
-      { name: "Amanda Roopnarinesingh", pos: "Graphic / Web / App Designer", tag: "Design" },
-      { name: "Amanda Ramjitsingh", pos: "Assistant Head of Development", tag: "Engineering" },
-      { name: "Zaria Ramsaroop", pos: "Graphic Designer", tag: "Design" },
+      { name: "R Mitchell", pos: "Senior Software Engineer / Web Lead", tag: "Engineering" },
+      { name: "J Edwards", pos: "Senior Software Engineer", tag: "Engineering" },
+      { name: "D Mar", pos: "Senior Trainee Software Engineer", tag: "Engineering" },
+      { name: "C Mitchell", pos: "Junior Software Engineer", tag: "Engineering" },
+      { name: "C Walker", pos: "Junior Trainee Software Engineer", tag: "Engineering" },
+      { name: "C Lee Browne", pos: "Junior Trainee Software Engineer", tag: "Engineering" },
+      { name: "N Logan", pos: "Junior Trainee Software Engineer / Beta Tester", tag: "Engineering" },
+      { name: "A Ramjitsingh", pos: "Assistant to Director Software Engineering", tag: "Engineering" },
+    ],
+  },
+  {
+    title: "Design & Creative Team",
+    members: [
+      { name: "A Roopnarinesingh", pos: "Web / App Designer / Social Media Manager", tag: "Design" },
+      { name: "S Persad", pos: "Graphics Designer / Beta Tester", tag: "Design" },
+      { name: "K Alleyne", pos: "Graphics Designer / Beta Tester", tag: "Design" },
+      { name: "Z Ramsaroop", pos: "Graphic Designer", tag: "Design" },
+      { name: "K Girdiharry", pos: "Graphic Designer / Social Media Assistant", tag: "Design" },
+    ],
+  },
+  {
+    title: "Quality Assurance",
+    members: [
+      { name: "M Khan", pos: "Beta Tester", tag: "QA" },
     ],
   },
   {
     title: "Operations & Cyber Center",
     members: [
       {
-        name: "Mikelle Kerena Kowlessar",
-        pos: "Social Media Manager / Cyber Center Manager",
+        name: "I Oberlin",
+        pos: "Manager - Uptech Business & Cyber Center",
         tag: "Operations",
       },
     ],
@@ -104,6 +128,7 @@ export default function About() {
               width={480}
               height={480}
               className="animate-float w-full max-w-[480px]"
+              style={{ height: "auto" }}
             />
           </div>
         </div>
@@ -272,11 +297,11 @@ export default function About() {
           {teamSections.map((section) => (
             <div key={section.title} className="mt-12 reveal">
               <h3 className="text-[1.2rem] mb-5">{section.title}</h3>
-              <div className={`${section.members.length === 1 ? "flex justify-center" : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"} gap-5`}>
+              <div className={`${section.members.length <= 2 ? "flex flex-wrap justify-center" : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"} gap-5`}>
                 {section.members.map((m) => (
                   <div
                     key={m.name}
-                    className="bg-white/[.08] border border-white/[0.16] rounded-card-sm p-6 text-center"
+                    className="bg-white/[.08] border border-white/[0.16] rounded-card-sm p-6 text-center min-w-[220px]"
                   >
                     <div className="w-16 h-16 rounded-full bg-white/[.12] grid place-items-center font-bold text-lg mx-auto mb-3">
                       {initials(m.name)}

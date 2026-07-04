@@ -116,6 +116,7 @@ export default function Contact() {
                     alt=""
                     width={22}
                     height={22}
+                    style={{ width: "auto", height: "auto" }}
                   />
                 </span>
                 <span>
@@ -239,6 +240,7 @@ export default function Contact() {
                       width={20}
                       height={20}
                       className="w-5 h-5 group-hover:brightness-0 group-hover:invert"
+                      style={{ width: "auto", height: "auto" }}
                     />
                   </a>
                 ))}

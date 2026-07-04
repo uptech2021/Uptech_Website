@@ -42,7 +42,7 @@ export default function Header() {
       >
         <div className="max-w-[1200px] mx-auto px-7 flex items-center justify-between h-[78px]">
           <Link href="/" aria-label="UpTech home">
-            <Image src={uptechLogo} alt="UpTech" width={120} height={34} className="h-[34px] w-auto" />
+            <Image src={uptechLogo} alt="UpTech" width={120} height={34} priority className="h-[34px] w-auto" style={{ width: "auto", height: "auto" }} />
           </Link>
           <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (

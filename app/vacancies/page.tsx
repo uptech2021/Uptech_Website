@@ -90,7 +90,7 @@ export default function VacanciesPage() {
             </div>
           </div>
           <div className="relative flex justify-center reveal lg:order-none order-[-1] max-lg:max-w-[440px] max-lg:mx-auto">
-            <Image src={careerPcImage} alt="Join UpTech" width={480} height={480} className="animate-float" />
+            <Image src={careerPcImage} alt="Join UpTech" width={480} height={480} className="animate-float" style={{ width: "auto", height: "auto" }} />
           </div>
         </div>
         <svg className="block w-full h-auto -mt-px" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true">
@@ -132,7 +132,7 @@ export default function VacanciesPage() {
               </div>
             </div>
             <div className="bg-mist border border-line rounded-card p-8 text-center reveal">
-              <Image src={devClubImage} alt="Developers Club" width={180} height={150} className="animate-float mx-auto mb-5" />
+              <Image src={devClubImage} alt="Developers Club" width={180} height={150} className="animate-float mx-auto mb-5" style={{ width: "auto", height: "auto" }} />
               <h3 className="text-[1.25rem] mb-3">Join Our Developers Club</h3>
               <p className="text-ink-soft text-[.95rem] mb-6">Connect with other developers, improve your skills, and become part of UpTech&apos;s growing technology community.</p>
               <button className="inline-flex items-center gap-2 font-extrabold text-base py-[.92rem] px-[1.6rem] rounded-full bg-accent text-accent-ink shadow-glow cursor-pointer border-0 transition-[transform,box-shadow,background] duration-[180ms] hover:bg-accent-deep hover:-translate-y-0.5 active:translate-y-[1px] whitespace-nowrap" onClick={() => setIsDevClubModalOpen(true)}>Join Developers Club</button>
