@@ -156,7 +156,7 @@ export default function VacanciesPage() {
               <div className="text-center p-10 text-on-blue">There are no vacancies available right now. Please check back soon.</div>
             ) : (
               vacancies.map((v, i) => (
-                <div key={i} className="bg-white/[.08] border border-white/[.16] rounded-card-sm p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 reveal">
+                <div key={i} className="bg-white/[.08] border border-white/[.16] rounded-card-sm p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div>
                     <div className="text-[.78rem] font-extrabold tracking-[.1em] uppercase text-accent mb-1.5">{v.department}</div>
                     <h3 className="text-[1.15rem]">{v.title}</h3>
