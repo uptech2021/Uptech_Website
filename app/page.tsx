@@ -265,7 +265,7 @@ export default function Home() {
               </div>
               <div className="mb-[22px]">
                 <div className="text-[.76rem] font-extrabold tracking-[.1em] uppercase text-brand mb-[5px]">Call or WhatsApp</div>
-                <div className="font-semibold text-[1.02rem]">1-868-710-4296 &middot; 1-868-492-5166</div>
+                <div className="font-semibold text-[1.02rem]">1-868-710-4296</div>
               </div>
               <div className="mb-[22px]">
                 <div className="text-[.76rem] font-extrabold tracking-[.1em] uppercase text-brand mb-[5px]">Cyber Center</div>

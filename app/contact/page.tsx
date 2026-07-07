@@ -192,7 +192,7 @@ export default function Contact() {
                   Call or WhatsApp
                 </div>
                 <div className="font-semibold text-[1.02rem]">
-                  1-868-710-4296 &middot; 1-868-492-5166
+                  1-868-710-4296
                 </div>
               </div>
               <div className="mb-[22px]">
