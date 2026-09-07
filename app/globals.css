@@ -92,3 +92,9 @@ header.scrolled { border-color: #DDE7F7 !important; box-shadow: 0 2px 8px rgba(1
 }
 @keyframes skeleton-loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 .loading-text.skeleton-loader { width: 200px; height: 24px; margin: 10px 0; }
+.input { display:block; width:100%; margin-top:.5rem; border:1px solid #DDE7F7; border-radius:14px; background:#F1F6FF; padding:.75rem 1rem; color:#0E1B33; outline:none; }
+.input:focus { border-color:#448CFF; box-shadow:0 0 0 3px rgba(68,140,255,.18); }
+#notices article { height: 100%; }
+#notices article > div:first-child { aspect-ratio: 16 / 9; height: auto; min-height: 0; }
+#notices article > div:first-child.bg-gradient-to-br { background-image: url('/images/thumbnail.png'); background-size: cover; background-position: center; }
+#notices article > div:first-child.bg-gradient-to-br > svg { background: rgba(14,27,51,.72); border-radius: 999px; padding: .7rem; width: 3.25rem; height: 3.25rem; }

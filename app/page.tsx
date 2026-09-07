@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import LatestNotice from "@/components/LatestNotice";
 import { useReveal } from "@/hooks/useReveal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -85,6 +86,7 @@ export default function Home() {
   return (
     <>
       <Header />
+      <LatestNotice />
 
       {/* HERO */}
       <section className="hero-aura relative overflow-hidden text-white" style={{ background: "var(--field)" }} id="home">

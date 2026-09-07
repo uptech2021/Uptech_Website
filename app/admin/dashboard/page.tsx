@@ -31,7 +31,8 @@ function AdminDashboard() {
 
   const router = useRouter();
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await fetch("/api/auth/session", { method: "DELETE" });
     signOut(auth)
       .then(() => {
         router.push("/admin/login");
@@ -153,6 +154,10 @@ function AdminDashboard() {
   const handleNavClick = (id: string) => {
     if (id === "management") {
       openJobModal();
+    } else if (id === "resources") {
+      router.push("/admin/resources");
+    } else if (id === "staff") {
+      router.push("/admin/staff");
     } else {
       setApplicationType(id as "job" | "devClub");
     }
@@ -277,6 +282,32 @@ function AdminDashboard() {
               </svg>
               <span className="md:hidden lg:inline">Job Management</span>
             </button>
+
+            <div className="mx-3 my-4 border-t border-white/10" />
+
+            <button
+              onClick={() => handleNavClick("resources")}
+              className="w-full flex items-center gap-3 px-3 py-3 rounded-card-sm text-sm font-medium transition-colors md:justify-center lg:justify-start text-white/70 hover:bg-white/5 hover:text-white border-l-[3px] border-transparent"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 flex-shrink-0">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" />
+                <path d="M14 2v6h6" />
+                <path d="M8 13h8M8 17h8" />
+              </svg>
+              <span className="md:hidden lg:inline">Public Resources</span>
+            </button>
+
+            <button
+              onClick={() => handleNavClick("staff")}
+              className="w-full flex items-center gap-3 px-3 py-3 rounded-card-sm text-sm font-medium transition-colors md:justify-center lg:justify-start text-white/70 hover:bg-white/5 hover:text-white border-l-[3px] border-transparent"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 flex-shrink-0">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M19 8v6M22 11h-6" />
+              </svg>
+              <span className="md:hidden lg:inline">Staff Management</span>
+            </button>
           </nav>
         </aside>
 
@@ -372,6 +403,32 @@ function AdminDashboard() {
                 />
               </div>
             </div>
+
+            {/* Super-admin tools */}
+            <section className="grid sm:grid-cols-2 gap-4" aria-label="Administration tools">
+              <button
+                onClick={() => handleNavClick("resources")}
+                className="text-left bg-gradient-to-br from-brand to-brand-deep text-white rounded-card shadow-card p-5 flex items-center justify-between gap-4 hover:-translate-y-0.5 transition-transform"
+              >
+                <div>
+                  <p className="text-on-blue text-xs font-bold uppercase tracking-wider">Public content</p>
+                  <h2 className="text-xl mt-1">Manage Resources</h2>
+                  <p className="text-on-blue text-sm mt-2">Documents, speeches, videos, gallery and notices</p>
+                </div>
+                <span className="text-2xl" aria-hidden="true">&rarr;</span>
+              </button>
+              <button
+                onClick={() => handleNavClick("staff")}
+                className="text-left bg-paper border border-line rounded-card shadow-card p-5 flex items-center justify-between gap-4 hover:-translate-y-0.5 transition-transform"
+              >
+                <div>
+                  <p className="text-brand-700 text-xs font-bold uppercase tracking-wider">Staff portal</p>
+                  <h2 className="text-xl mt-1 text-ink">Manage Staff &amp; Equity</h2>
+                  <p className="text-ink-soft text-sm mt-2">Create accounts and maintain equity allocations</p>
+                </div>
+                <span className="text-2xl text-brand" aria-hidden="true">&rarr;</span>
+              </button>
+            </section>
 
             {/* Stats cards */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">

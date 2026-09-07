@@ -1,0 +1,15 @@
+"use client";
+import PortalGuard from "@/components/PortalGuard";
+import { auth } from "@/lib/firebase";
+import { updatePassword } from "firebase/auth";
+import { Eye, EyeOff } from "lucide-react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export default function Page(){
+  const [a,setA]=useState(""),[b,setB]=useState(""),[msg,setMsg]=useState(""),[busy,setBusy]=useState(false),[showA,setShowA]=useState(false),[showB,setShowB]=useState(false);
+  const router=useRouter();
+  async function go(e:React.FormEvent){e.preventDefault();if(a.length<12)return setMsg("Use at least 12 characters.");if(a!==b)return setMsg("Passwords do not match.");setBusy(true);let passwordUpdated=false;try{if(!auth.currentUser)throw new Error("Please sign in again.");await updatePassword(auth.currentUser,a);passwordUpdated=true;const token=await auth.currentUser.getIdToken(true);const session=await fetch("/api/auth/session",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({token})});if(!session.ok)throw new Error("Your password was changed, but the secure session could not be renewed.");const r=await fetch("/api/staff/password-changed",{method:"POST"});if(!r.ok)throw new Error("Your password was changed, but the account update could not be completed.");router.replace("/staff/dashboard")}catch(error){setMsg(passwordUpdated?`${error instanceof Error?error.message:"Your password was changed."} Sign in with your new password—not the temporary password—and try again.`:error instanceof Error?error.message:"Password could not be changed. Sign in again and retry.")}finally{setBusy(false)}}
+  const field=(label:string,value:string,setValue:(v:string)=>void,show:boolean,toggle:()=>void)=><label className="block font-bold">{label}<span className="relative block mt-2"><input type={show?"text":"password"} value={value} onChange={e=>setValue(e.target.value)} className="w-full border border-line rounded-card-sm p-3 pr-12"/><button type="button" onClick={toggle} aria-label={show?"Hide password":"Show password"} className="absolute right-2 top-1/2 -translate-y-1/2 p-2">{show?<EyeOff className="w-5 h-5"/>:<Eye className="w-5 h-5"/>}</button></span></label>;
+  return <PortalGuard role="staff"><main className="min-h-screen bg-mist grid place-items-center p-4"><div className="max-w-lg bg-white rounded-card border border-line shadow-card p-7 sm:p-10"><h1 className="text-3xl">Create a new password</h1><p className="mt-4 rounded-card-sm bg-amber-50 border border-amber-200 p-4 text-amber-900 font-semibold">You are currently using a temporary password. You must create a new password before continuing.</p><form onSubmit={go} className="space-y-5 mt-6">{field("New password",a,setA,showA,()=>setShowA(x=>!x))}{field("Confirm password",b,setB,showB,()=>setShowB(x=>!x))}<button disabled={busy} className="w-full min-h-12 rounded-full bg-brand text-white font-bold">{busy?"Updating…":"Update password"}</button>{msg&&<p role="alert" className="text-red-600">{msg}</p>}</form></div></main></PortalGuard>
+}

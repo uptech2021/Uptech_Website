@@ -1,56 +1,41 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { doc, getDoc } from 'firebase/firestore';
-import { db } from '@/lib/firebase';
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+
+type AdminSession = { role?: string };
 
 export default function adminAuth(WrappedComponent: React.ComponentType) {
-  const AdminProtectedRoute = (props: any) => {
-    const [isLoading, setIsLoading] = useState(true);
-    const [isAdmin, setIsAdmin] = useState(false);
+  function AdminProtectedRoute(props: Record<string, unknown>) {
+    const [authorized, setAuthorized] = useState(false);
     const router = useRouter();
 
     useEffect(() => {
-      const auth = getAuth();
-      const unsubscribe = onAuthStateChanged(auth, async (user) => {
-        if (user) {
-            console.log("User logged in")
-          try {
-            const userRef = doc(db, 'users', user.uid);
-            const userDoc = await getDoc(userRef);
-            if (userDoc.exists() && userDoc.data()?.isAdmin) {
-                console.log("user is admin")
-                setIsAdmin(true);
-            } else {
-                console.log("user is not admin, redirecting to login...")
-                router.push('/admin/login');
-            }
-          } catch (error) {
-            console.error('Error fetching user document:', error);
-            router.push('/admin/login');
-          }
-        } else {
-          router.push('/admin/login');
-        }
-        setIsLoading(false);
-      });
+      let active = true;
+      fetch("/api/auth/me", { cache: "no-store" })
+        .then(async (response) => {
+          if (!response.ok) throw new Error("Unauthorized");
+          return response.json() as Promise<AdminSession>;
+        })
+        .then((session) => {
+          if (!active) return;
+          if (session.role === "super_admin") setAuthorized(true);
+          else router.replace("/admin/login");
+        })
+        .catch(() => {
+          if (active) router.replace("/admin/login");
+        });
 
-      return () => unsubscribe();
+      return () => { active = false; };
     }, [router]);
 
-    if (isLoading) 
-      return <div>Loading...</div>;
-    
+    if (!authorized) {
+      return <div className="min-h-screen grid place-items-center bg-mist text-ink-soft">Checking administrator access…</div>;
+    }
 
-    // If user isn't admin, don't display the web page
-    if (!isAdmin) 
-      return null; 
-    
-    // Returns the web page
     return <WrappedComponent {...props} />;
-  };
+  }
 
+  AdminProtectedRoute.displayName = `AdminAuth(${WrappedComponent.displayName || WrappedComponent.name || "Component"})`;
   return AdminProtectedRoute;
 }

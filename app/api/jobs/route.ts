@@ -1,12 +1,10 @@
-import { db } from "@/lib/firebase";
+import { adminFirestore } from "@/lib/firebase-admin";
 import { Job } from "@/types/dashboard";
-import { collection, getDocs } from "firebase/firestore";
 import { NextResponse } from "next/server";
 
-const jobsCollection = collection(db, 'jobs')
 export async function GET(){
     try{
-        const snapshot = await getDocs(jobsCollection)
+        const snapshot = await adminFirestore.collection('jobs').get()
         const jobs: Job[] = snapshot.docs.map(doc => ({
             id: doc.id,
             ...doc.data()

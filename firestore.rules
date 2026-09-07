@@ -1,0 +1,17 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function userDoc() { return get(/databases/$(database)/documents/users/$(request.auth.uid)); }
+    function superAdmin() { return signedIn() && (request.auth.token.email == 'uptechincorp@gmail.com' || userDoc().data.role == 'super_admin' || userDoc().data.isAdmin == true); }
+    match /publicResources/{id} { allow read: if resource.data.published == true || superAdmin(); allow write: if superAdmin(); }
+    match /users/{uid} { allow read: if signedIn() && (request.auth.uid == uid || superAdmin()); allow write: if superAdmin(); }
+    match /staffProfiles/{uid} { allow read: if signedIn() && (request.auth.uid == uid || superAdmin()); allow write: if superAdmin(); match /equityHistory/{id} { allow read: if signedIn() && (request.auth.uid == uid || superAdmin()); allow write: if superAdmin(); } }
+    match /auditLogs/{id} { allow read, write: if superAdmin(); }
+    match /counters/{id} { allow read, write: if superAdmin(); }
+    match /applications/{id} { allow read, write: if superAdmin(); }
+    match /developersClubApplications/{id} { allow read, write: if superAdmin(); }
+    match /jobs/{id} { allow read: if true; allow write: if superAdmin(); }
+    match /{document=**} { allow read, write: if false; }
+  }
+}

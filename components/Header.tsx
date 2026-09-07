@@ -13,6 +13,7 @@ const navLinks = [
   { href: "/services", label: "Services" },
   { href: "/about", label: "About" },
   { href: "/vacancies", label: "Join Us" },
+  { href: "/resources", label: "Resources" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -40,16 +41,16 @@ export default function Header() {
         id="site-header"
         className="sticky top-0 z-50 bg-white/[.86] backdrop-blur-[14px] border-b border-transparent transition-[border-color,box-shadow] duration-[250ms]"
       >
-        <div className="max-w-[1200px] mx-auto px-7 flex items-center justify-between h-[78px]">
+        <div className="max-w-[1320px] mx-auto px-5 sm:px-7 flex items-center justify-between gap-5 h-[78px]">
           <Link href="/" aria-label="UpTech home">
-            <Image src={uptechLogo} alt="UpTech" width={120} height={34} priority className="h-[34px] w-auto" style={{ width: "auto", height: "auto" }} />
+            <Image src={uptechLogo} alt="UpTech" width={245} height={55} priority className="w-[210px] 2xl:w-[245px] h-auto shrink-0" />
           </Link>
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden xl:flex flex-1 items-center justify-center gap-5 2xl:gap-7 min-w-0">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`nav-link font-bold text-[.96rem] text-ink py-[.2rem] ${pathname === link.href ? "active text-brand-700" : ""}`}
+                className={`nav-link whitespace-nowrap font-bold text-[.9rem] 2xl:text-[.96rem] text-ink py-[.2rem] ${pathname === link.href ? "active text-brand-700" : ""}`}
               >
                 {link.label}
               </Link>
@@ -58,12 +59,12 @@ export default function Header() {
           <div className="flex items-center gap-[1.3rem]">
             <Link
               href="/contact"
-              className="hidden lg:inline-flex items-center gap-2 font-extrabold text-[.94rem] py-[.7rem] px-[1.3rem] rounded-full bg-accent text-accent-ink shadow-glow cursor-pointer border-0 transition-[transform,box-shadow,background] duration-[180ms] hover:bg-accent-deep hover:-translate-y-0.5 active:translate-y-[1px] whitespace-nowrap"
+              className="hidden xl:inline-flex items-center gap-2 font-extrabold text-[.9rem] 2xl:text-[.94rem] py-[.7rem] px-[1.15rem] 2xl:px-[1.3rem] rounded-full bg-accent text-accent-ink shadow-glow cursor-pointer border-0 transition-[transform,box-shadow,background] duration-[180ms] hover:bg-accent-deep hover:-translate-y-0.5 active:translate-y-[1px] whitespace-nowrap"
             >
               Connect With Us
             </Link>
             <button
-              className="flex lg:hidden flex-col gap-[5px] p-2 bg-transparent border-0 cursor-pointer"
+              className="flex xl:hidden flex-col gap-[5px] p-2 bg-transparent border-0 cursor-pointer"
               onClick={() => setMenuOpen(true)}
               aria-label="Menu"
             >

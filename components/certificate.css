@@ -1,0 +1,25 @@
+.certificate-overlay{position:fixed;inset:0;z-index:1000;background:#edf2fa;color:#112144;display:flex;flex-direction:column;overflow:hidden}
+.certificate-toolbar{padding:12px 16px;background:#fff;border-bottom:1px solid #d5e2fa;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;flex-shrink:0}
+.certificate-toolbar h2{font-size:18px}.certificate-toolbar>div{display:flex;gap:8px;flex-wrap:wrap}
+.certificate-toolbar button{min-height:44px;min-width:44px;padding:8px 12px;border:1px solid #d5e2fa;border-radius:22px;font-size:13px;font-weight:700;background:white}.certificate-toolbar button:disabled{opacity:.4}
+.certificate-viewport{overflow:auto;min-height:0;flex:1;padding:12px;overscroll-behavior:contain}.certificate-message{padding:24px;text-align:center}
+.certificate-size{position:relative;margin:0 auto}.certificate-document{box-sizing:border-box;width:816px;height:1056px;padding:36px 48px 72px;background:white;color:#111;position:relative;transform-origin:top left;overflow:hidden;border:1px solid #dce3ee;box-shadow:0 8px 30px #11214420;display:flex;flex-direction:column;text-align:center;isolation:isolate;font-size:15px;line-height:1.65;font-weight:400}
+.certificate-document header img{width:720px;height:auto;object-fit:contain;margin:0 auto}.certificate-document header p{font-size:15px;margin-top:24px}
+.certificate-reference{font-size:14px;overflow-wrap:anywhere;margin-top:12px}.certificate-reference span{border-bottom:1px dotted #666;padding:0 4px}
+.certificate-body{margin:48px 30px 0;display:flex;flex-direction:column;gap:18px}.certificate-intro{font-size:15px;line-height:1.7}
+.certificate-line{display:flex;align-items:baseline;justify-content:center;gap:8px;flex-wrap:wrap}.certificate-name{font-size:18px;font-weight:600;line-height:1.7;overflow-wrap:anywhere;border-bottom:1px dotted #777;min-width:360px;max-width:100%;flex:1}.certificate-address{font-size:15px;overflow-wrap:anywhere;white-space:pre-line;border-bottom:1px dotted #777;flex:1}
+.certificate-holdings strong{font-size:18px;font-weight:600;border-bottom:1px dotted #777;overflow-wrap:anywhere;max-width:100%}.certificate-period{border-bottom:1px dotted #777;align-self:center;min-width:360px;max-width:100%;overflow-wrap:anywhere}.certificate-updated{margin-top:22px}
+.certificate-document footer{margin-top:auto;padding-top:24px;line-height:1.7}.certificate-disclaimer{margin:0 30px 76px;font-size:12px}.certificate-disclaimer strong{font-size:13px;color:#7f3039;font-weight:700}.certificate-disclaimer p{margin-top:8px}.certificate-document footer small{display:block;font-size:12px}
+.certificate-body-compact{gap:12px;margin-top:32px}.certificate-body-compact .certificate-name{font-size:15px;line-height:1.5}.certificate-body-compact~footer .certificate-disclaimer{margin-bottom:36px}
+.certificate-date-range{display:flex;justify-content:center;align-items:baseline;gap:10px;flex-wrap:wrap;font-size:13px;margin-top:6px}.certificate-date-parts{display:inline-flex;align-items:baseline;gap:8px}.certificate-date-parts>span{white-space:nowrap}.certificate-date-value{display:inline-block;border-bottom:1px dotted #777;padding:0 3px;min-width:25px}
+.certificate-watermarks{position:absolute;inset:0;pointer-events:none;z-index:10;display:flex;flex-direction:column;justify-content:space-around;overflow:hidden}.certificate-watermarks>div{transform:rotate(-27deg);color:rgba(145,38,55,.15);text-align:center;white-space:nowrap}.certificate-watermarks strong{display:block;font-size:104px;letter-spacing:10px;font-weight:900;line-height:1.1}.certificate-watermarks span{font-size:19px;letter-spacing:3px;font-weight:800}
+@page{size:letter portrait;margin:.5in}
+@media print{
+ body.certificate-open{overflow:visible!important;background:white!important}
+ body.certificate-open> :not(.certificate-overlay){display:none!important}
+ .certificate-overlay{position:static!important;display:block!important;background:white!important;overflow:visible!important}
+ .certificate-toolbar{display:none!important}.certificate-viewport{padding:0!important;overflow:visible!important}
+ .certificate-size{width:720px!important;height:932px!important;margin:0!important}
+ .certificate-document{transform:none!important;zoom:.88235294;box-shadow:none!important;break-inside:avoid;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+ .certificate-watermarks{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+}

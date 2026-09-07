@@ -1,0 +1,2 @@
+import { NextResponse } from "next/server"; import { adminFirestore } from "@/lib/firebase-admin"; import { requireRole } from "@/lib/server-auth";
+export async function POST(){const user=await requireRole(["staff"]);if(!user)return NextResponse.json({message:"Forbidden"},{status:403});await adminFirestore.collection("users").doc(user.uid).update({mustChangePassword:false,passwordChangedAt:new Date()});return NextResponse.json({success:true});}
