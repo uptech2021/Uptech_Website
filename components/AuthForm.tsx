@@ -6,6 +6,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Eye,EyeOff } from "lucide-react";
+import { readApiJson } from "@/lib/api-response";
 
 export default function AuthForm({staff=false}:{staff?:boolean}){
   const [email,setEmail]=useState(""),[password,setPassword]=useState(""),[message,setMessage]=useState(""),[busy,setBusy]=useState(false),[reset,setReset]=useState(false),[showPassword,setShowPassword]=useState(false);
@@ -20,8 +21,9 @@ export default function AuthForm({staff=false}:{staff?:boolean}){
       }
       await fetch("/api/auth/session",{method:"DELETE"});
       const credential=await signInWithEmailAndPassword(auth,email,password),token=await credential.user.getIdToken(true);
-      const response=await fetch("/api/auth/session",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({token})}),data=await response.json();
-      if(!response.ok)throw new Error(data.message);
+      const response=await fetch("/api/auth/session",{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({token})});
+      const data=await readApiJson<{message?:string;role?:string;mustChangePassword?:boolean}>(response);
+      if(!response.ok)throw new Error(data.message||"Your server session could not be started.");
       if(staff&&!['staff','hr'].includes(data.role)){await fetch("/api/auth/session",{method:"DELETE"});throw new Error("This login is for member accounts. Use the shared portal login instead.")}
       router.push(['staff','hr'].includes(data.role)?(data.mustChangePassword?"/staff/change-password":"/staff/dashboard"):"/admin/dashboard");
     }catch(error:unknown){setMessage(error instanceof Error?error.message:"We could not complete that request. Check your details and try again.")}
