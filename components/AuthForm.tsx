@@ -24,8 +24,9 @@ export default function AuthForm({staff=false}:{staff?:boolean}){
       const response=await fetch("/api/auth/session",{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({token})});
       const data=await readApiJson<{message?:string;role?:string;mustChangePassword?:boolean}>(response);
       if(!response.ok)throw new Error(data.message||"Your server session could not be started.");
-      if(staff&&!['staff','hr'].includes(data.role)){await fetch("/api/auth/session",{method:"DELETE"});throw new Error("This login is for member accounts. Use the shared portal login instead.")}
-      router.push(['staff','hr'].includes(data.role)?(data.mustChangePassword?"/staff/change-password":"/staff/dashboard"):"/admin/dashboard");
+      const role=typeof data.role==="string"?data.role:"";
+      if(staff&&!['staff','hr'].includes(role)){await fetch("/api/auth/session",{method:"DELETE"});throw new Error("This login is for member accounts. Use the shared portal login instead.")}
+      router.push(['staff','hr'].includes(role)?(data.mustChangePassword?"/staff/change-password":"/staff/dashboard"):"/admin/dashboard");
     }catch(error:unknown){setMessage(error instanceof Error?error.message:"We could not complete that request. Check your details and try again.")}
     finally{setBusy(false)}
   }

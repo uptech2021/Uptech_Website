@@ -588,7 +588,7 @@ function AdminDashboard() {
         <ApplicationDetailsModal
           application={selectedApplication}
           onClose={() => setSelectedApplication(null)}
-          onUpdatettatus={handleApplicationUpdate}
+          onUpdateStatus={handleApplicationUpdate}
           isDevClubApplication={applicationType === "devClub"}
         />
       )}
