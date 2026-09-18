@@ -88,10 +88,10 @@ function Viewer({staffId,autoPrint,close}:{staffId?:string;autoPrint:boolean;clo
     <div ref={viewport} className="certificate-viewport">
       {error?<p role="alert" className="certificate-message">{error}</p>:!record?<p role="status" className="certificate-message">Loading your latest equity record…</p>:<div className="certificate-size" style={{width:816*scale*zoom,height:1056*scale*zoom}}><article className="certificate-document" style={{transform:`scale(${scale*zoom})`}}>
         <div className="certificate-watermarks" aria-hidden="true">{[0,1,2].map(i=><div key={i}><strong>UNOFFICIAL</strong><span>FOR INFORMATIONAL PURPOSES ONLY</span></div>)}</div>
-        <header><img src="/certificate-letterhead.jpg" alt="UpTech Incorporated Ltd. letterhead with USDC and Ourlime branding"/><p>Registered in Trinidad and Tobago, Company No. C2014103003079</p></header>
+        <header><img src="/certificate-letterhead.jpg" alt="UpTech Incorporated Ltd., USDC, and Ourlime letterhead from the Office of the Director of Administration"/><p>Registered in Trinidad and Tobago, Company No. C2014103003079</p></header>
         <div className="certificate-reference">Unofficial Reference: <span>{record.reference}</span>{record.holdingValue.endsWith("Ordinary Shares")&&<> &nbsp; Class: ORDINARY</>}</div>
         <div className={`certificate-body${record.name.length>80||(record.address?.length||0)>120?" certificate-body-compact":""}`}>
-          <p className="certificate-intro">This document reflects that, according to the current records<br/>available in the UpTech Staff Portal:</p>
+          <p className="certificate-intro">This document reflects that, according to the current records<br/>available in the UpTech Member Portal:</p>
           <div className="certificate-line">Name <strong className="certificate-name">{record.name}</strong></div>
           <div className="certificate-line">Of Address <span className="certificate-address">{record.address||"Address on Company Record"}</span></div>
           <div className="certificate-line certificate-holdings">{record.holdingLabel}: <strong>{record.holdingValue}</strong></div>
@@ -99,7 +99,7 @@ function Viewer({staffId,autoPrint,close}:{staffId?:string;autoPrint:boolean;clo
           <p>for the period</p>
           <div className="certificate-date-range"><CertificateDate value={record.startDate} label="Start date"/><span>to</span><CertificateDate value={record.updatedAt} label="Last date updated"/></div>
         </div>
-        <footer><div className="certificate-disclaimer"><strong>UNOFFICIAL COPY - FOR INFORMATIONAL PURPOSES ONLY</strong><p>This document reflects the equity information currently recorded in the UpTech staff portal and is not an officially issued share certificate.</p><p>No official certificate or signature is issued by this portal view.</p></div><small>Registered office: #6 Kowlessar Street, Dalloo Road, Gasparillo, Trinidad &amp; Tobago, W.I.</small></footer>
+        <footer><div className="certificate-disclaimer"><strong>UNOFFICIAL COPY - FOR INFORMATIONAL PURPOSES ONLY</strong><p>This document reflects the equity information currently recorded in the UpTech member portal and is not an officially issued share certificate.</p><p>No official certificate or signature is issued by this portal view.</p></div><small>Registered office: #6 Kowlessar Street, Dalloo Road, Gasparillo, Trinidad &amp; Tobago, W.I.</small></footer>
       </article></div>}
     </div>
   </div>,document.body);

@@ -4,7 +4,7 @@ import { adminAuth, adminFirestore } from "@/lib/firebase-admin";
 export const SESSION_COOKIE = "uptech_session";
 export const SUPER_ADMIN_EMAIL = "uptechincorp@gmail.com";
 
-export type AppRole = "super_admin" | "staff";
+export type AppRole = "super_admin" | "staff" | "hr";
 export type SessionUser = { uid: string; email: string; role: AppRole; mustChangePassword: boolean };
 
 export async function getSessionUser(): Promise<SessionUser | null> {
@@ -16,15 +16,21 @@ export async function getSessionUser(): Promise<SessionUser | null> {
     const data = snap.data() || {};
     const email = (decoded.email || "").toLowerCase();
     const role: AppRole | null = email === SUPER_ADMIN_EMAIL || data.role === "super_admin" || data.isAdmin
-      ? "super_admin" : data.role === "staff" ? "staff" : null;
+      ? "super_admin" : data.role === "hr" ? "hr" : data.role === "staff" ? "staff" : null;
     if (!role || data.accountStatus === "disabled") return null;
     return { uid: decoded.uid, email, role, mustChangePassword: Boolean(data.mustChangePassword) };
   } catch { return null; }
 }
 
+export function isHR(user: SessionUser | null): user is SessionUser {
+  return Boolean(user && user.role === "hr");
+}
+
 export async function requireRole(allowed: AppRole[]) {
   const user = await getSessionUser();
-  return user && allowed.includes(user.role) ? user : null;
+  if (!user) return null;
+  // The super administrator retains its own role while inheriting HR capabilities.
+  return allowed.includes(user.role) || (user.role === "super_admin" && allowed.includes("hr")) ? user : null;
 }
 
 export async function audit(adminUid: string, action: string, targetType: string, targetId: string, details?: object) {

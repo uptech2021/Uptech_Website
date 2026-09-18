@@ -1,0 +1,6 @@
+import { NextRequest,NextResponse } from "next/server";
+import { adminStorage } from "@/lib/firebase-admin";
+import { requireRole } from "@/lib/server-auth";
+import crypto from "crypto";
+const allowed=new Set(["application/pdf","application/msword","application/vnd.openxmlformats-officedocument.wordprocessingml.document","image/jpeg","image/png","image/webp"]);
+export async function POST(req:NextRequest){const user=await requireRole(["staff","hr"]);if(!user)return NextResponse.json({message:"Forbidden"},{status:403});const data=await req.formData(),file=data.get("file");if(!(file instanceof File)||!allowed.has(file.type)||file.size>15*1024*1024)return NextResponse.json({message:"Choose a PDF, Word document, or image up to 15 MB."},{status:400});const safe=file.name.replace(/[^a-zA-Z0-9._-]/g,"-"),token=crypto.randomUUID(),path=`hr/${user.uid}/${Date.now()}-${token}-${safe}`,target=adminStorage.bucket().file(path);await target.save(Buffer.from(await file.arrayBuffer()),{contentType:file.type,metadata:{metadata:{firebaseStorageDownloadTokens:token,uploadedBy:user.uid}}});return NextResponse.json({url:`https://firebasestorage.googleapis.com/v0/b/${adminStorage.bucket().name}/o/${encodeURIComponent(path)}?alt=media&token=${token}`,name:file.name,type:file.type,size:file.size});}

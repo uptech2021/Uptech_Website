@@ -31,7 +31,8 @@ export async function POST(req: NextRequest) {
     const profile = (await ref.get()).data();
     if (!profile || profile.accountStatus === "disabled") return NextResponse.json({ message: "This account is not authorized." }, { status: 403 });
     const session = await adminAuth.createSessionCookie(token, { expiresIn: 1000 * 60 * 60 * 24 * 5 });
-    const response = NextResponse.json({ role: email === SUPER_ADMIN_EMAIL || profile.role === "super_admin" || profile.isAdmin ? "super_admin" : "staff", mustChangePassword: Boolean(profile.mustChangePassword) });
+    const role = email === SUPER_ADMIN_EMAIL || profile.role === "super_admin" || profile.isAdmin ? "super_admin" : profile.role === "hr" ? "hr" : "staff";
+    const response = NextResponse.json({ role, mustChangePassword: Boolean(profile.mustChangePassword) });
     response.cookies.set(SESSION_COOKIE, session, { httpOnly: true, secure: process.env.NODE_ENV === "production", sameSite: "lax", maxAge: 60 * 60 * 24 * 5, path: "/" });
     return response;
   } catch (error) {

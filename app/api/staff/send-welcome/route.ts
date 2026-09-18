@@ -4,7 +4,7 @@ import { staffWelcomeEmail } from "@/lib/staff-welcome-email";
 import { sendSmtpEmail } from "@/lib/smtp";
 
 export async function POST(req: NextRequest) {
-  const admin = await requireRole(["super_admin"]);
+  const admin = await requireRole(["super_admin","hr"]);
   if (!admin) return NextResponse.json({ message: "Forbidden" }, { status: 403 });
 
   try {
@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
     const from=process.env.EMAIL_FROM?.trim()||process.env.EMAIL_USER?.trim();
     if(!from||!process.env.EMAIL_SERVICE||!process.env.EMAIL_USER||!process.env.EMAIL_PASS)
       return NextResponse.json({message:"Email is not configured. Add EMAIL_SERVICE=gmail, EMAIL_USER, EMAIL_PASS, and EMAIL_FROM to .env.local."},{status:503});
-    const result=await sendSmtpEmail({to:email,from,subject:"Your UpTech staff portal account is ready",html:content.html});
+    const result=await sendSmtpEmail({to:email,from,subject:"Your UpTech member portal account is ready",html:content.html});
     if(!result.configured) return NextResponse.json({message:"Email is not configured. Add EMAIL_SERVICE=gmail, EMAIL_USER, EMAIL_PASS, and EMAIL_FROM to .env.local."},{status:503});
 
     await audit(admin.uid,"staff.welcome_email_sent","staff",employeeId,{email,provider:"gmail-smtp"});

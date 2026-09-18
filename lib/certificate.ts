@@ -23,10 +23,14 @@ export function certificateRecord(profile: Record<string, unknown>, referenceSuf
   const updatedAt = recordDate(profile.equityUpdatedAt);
   const unit = profile.equityUnit;
   const raw = profile.currentEquity;
-  const value = typeof raw === "number" && Number.isFinite(raw) && raw >= 0 ? raw : null;
+  const parsed = typeof raw === "number" ? raw : typeof raw === "string" && raw.trim() !== "" ? Number(raw) : Number.NaN;
+  const value = Number.isFinite(parsed) && parsed >= 0 ? parsed : null;
   const percentage = unit === "percentage";
   const shares = unit === "ordinary_shares";
   const valid = value !== null && (!percentage || value <= 100) && (!shares || Number.isSafeInteger(value));
+  const employmentStatus = String(profile.employmentStatus || "active").trim().toLowerCase();
+  const equityStatus = String(profile.equityStatus || "active").trim().toLowerCase();
+  const accountStatus = String(profile.accountStatus || "active").trim().toLowerCase();
   return {
     name: String(profile.legalName || profile.displayName || [profile.firstName, profile.lastName].filter(Boolean).join(" ") || "Name not recorded"),
     reference: `UNOFF-${updatedAt ? updatedAt.slice(0, 4) : "RECORD"}-${referenceSuffix}`,
@@ -37,6 +41,6 @@ export function certificateRecord(profile: Record<string, unknown>, referenceSuf
     effectiveDate: recordDate(profile.equityEffectiveDate),
     period: typeof profile.equityPeriod === "string" ? profile.equityPeriod : null,
     address: profile.showAddressOnCertificate === true && typeof profile.address === "string" ? profile.address : null,
-    active: profile.employmentStatus === "active" && profile.equityStatus !== "revoked" && profile.equityStatus !== "inactive" && profile.accountStatus !== "disabled" && valid,
+    active: employmentStatus === "active" && equityStatus !== "revoked" && equityStatus !== "inactive" && accountStatus !== "disabled" && valid,
   };
 }

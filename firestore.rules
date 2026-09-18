@@ -4,9 +4,17 @@ service cloud.firestore {
     function signedIn() { return request.auth != null; }
     function userDoc() { return get(/databases/$(database)/documents/users/$(request.auth.uid)); }
     function superAdmin() { return signedIn() && (request.auth.token.email == 'uptechincorp@gmail.com' || userDoc().data.role == 'super_admin' || userDoc().data.isAdmin == true); }
+    function staff() { return signedIn() && (userDoc().data.role == 'staff' || userDoc().data.role == 'hr'); }
+    function hr() { return signedIn() && userDoc().data.role == 'hr'; }
     match /publicResources/{id} { allow read: if resource.data.published == true || superAdmin(); allow write: if superAdmin(); }
-    match /users/{uid} { allow read: if signedIn() && (request.auth.uid == uid || superAdmin()); allow write: if superAdmin(); }
-    match /staffProfiles/{uid} { allow read: if signedIn() && (request.auth.uid == uid || superAdmin()); allow write: if superAdmin(); match /equityHistory/{id} { allow read: if signedIn() && (request.auth.uid == uid || superAdmin()); allow write: if superAdmin(); } }
+    match /users/{uid} { allow read: if signedIn() && (request.auth.uid == uid || superAdmin()); allow write: if superAdmin(); match /announcementReads/{id} { allow read, create, update: if signedIn() && request.auth.uid == uid; allow delete: if false; } }
+    match /staffProfiles/{uid} { allow read: if signedIn() && (request.auth.uid == uid || superAdmin() || hr()); allow write: if superAdmin() || hr(); match /equityHistory/{id} { allow read: if signedIn() && (request.auth.uid == uid || superAdmin()); allow write: if superAdmin(); } }
+    match /hrRequests/{id} { allow read: if signedIn() && (resource.data.employeeId == request.auth.uid || hr()); allow create: if staff() && request.resource.data.employeeId == request.auth.uid && request.resource.data.status == 'Pending'; allow update: if hr(); allow delete: if false; }
+    match /leaveRequests/{id} { allow read: if signedIn() && (resource.data.employeeId == request.auth.uid || hr()); allow create: if staff() && request.resource.data.employeeId == request.auth.uid && request.resource.data.status == 'Pending'; allow update: if hr(); allow delete: if false; }
+    match /hrPolicies/{id} { allow read: if staff() && resource.data.active == true || hr(); allow write: if hr(); match /acknowledgements/{uid} { allow read: if request.auth.uid == uid || hr(); allow create, update: if staff() && request.auth.uid == uid; allow delete: if false; } }
+    match /hrDocuments/{id} { allow read: if staff() && resource.data.active == true && resource.data.audience == 'all_staff' || hr(); allow write: if hr(); match /acknowledgements/{uid} { allow read: if request.auth.uid == uid || hr(); allow create, update: if staff() && request.auth.uid == uid; allow delete: if false; } }
+    match /staffAnnouncements/{id} { allow read: if staff() && resource.data.published == true || hr(); allow write: if hr(); }
+    match /staffNotifications/{id} { allow read: if signedIn() && resource.data.employeeId == request.auth.uid; allow write: if hr(); }
     match /auditLogs/{id} { allow read, write: if superAdmin(); }
     match /counters/{id} { allow read, write: if superAdmin(); }
     match /applications/{id} { allow read, write: if superAdmin(); }
