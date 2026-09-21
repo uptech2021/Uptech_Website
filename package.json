@@ -31,6 +31,11 @@
     "react-toastify": "^11.1.0",
     "tinymce": "^8.7.0"
   },
+  "overrides": {
+    "jwks-rsa": {
+      "jose": "4.15.9"
+    }
+  },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@firebase/app-types": "^0.9.3",
