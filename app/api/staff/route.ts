@@ -6,7 +6,17 @@ function tempPassword() { return `${crypto.randomBytes(9).toString("base64url")}
 export async function GET() {
   const user = await requireRole(["super_admin"]); if (!user) return NextResponse.json({ message: "Forbidden" }, { status: 403 });
   const snap = await adminFirestore.collection("staffProfiles").orderBy("createdAt", "desc").limit(200).get();
-  const staff=await Promise.all(snap.docs.map(async d => { const x=d.data(),account=(await adminFirestore.collection("users").doc(d.id).get()).data()||{}; return { id:d.id,...x,role:account.role||"staff",createdAt:x.createdAt?.toDate?.()?.toISOString(),updatedAt:x.updatedAt?.toDate?.()?.toISOString() }; }));return NextResponse.json({staff});
+  const staff=await Promise.all(snap.docs.map(async d => {
+    const [accountSnap,historySnap]=await Promise.all([
+      adminFirestore.collection("users").doc(d.id).get(),
+      d.ref.collection("equityHistory").orderBy("createdAt","desc").limit(50).get(),
+    ]);
+    const x=d.data(),account=accountSnap.data()||{},history=historySnap.docs.map(item=>{
+      const value=item.data();
+      return {id:item.id,...value,createdAt:value.createdAt?.toDate?.()?.toISOString()||null};
+    });
+    return {id:d.id,...x,role:account.role||"staff",createdAt:x.createdAt?.toDate?.()?.toISOString(),updatedAt:x.updatedAt?.toDate?.()?.toISOString(),equityHistory:history};
+  }));return NextResponse.json({staff});
 }
 export async function POST(req: NextRequest) {
   const admin = await requireRole(["super_admin"]); if (!admin) return NextResponse.json({ message: "Forbidden" }, { status: 403 });

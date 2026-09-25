@@ -81,7 +81,7 @@ function AdminDashboard() {
     isDevClub?: boolean
   ) => {
     try {
-      await updateApplicationttatus(applicationId, status, reason, isDevClub);
+      await updateApplicationStatus(applicationId, status, reason, isDevClub);
       toast.success(`Application ${status} successfully!`);
     } catch (error) {
       console.error("Error updating application:", error);
@@ -89,7 +89,7 @@ function AdminDashboard() {
     }
   };
 
-  const updateApplicationttatus = async (
+  const updateApplicationStatus = async (
     applicationId: string,
     status: string,
     reason: string,
@@ -138,13 +138,13 @@ function AdminDashboard() {
 
   const filteredApplications = currentApplications.filter(
     (application: any) => {
-      const matchesttatus =
+      const matchesStatus =
         statusFilter === "All" ||
         (application.status || "pending") === statusFilter;
       const matchesEmail = (application.email || "")
         .toLowerCase()
         .includes(searchQuery.toLowerCase());
-      return matchesttatus && matchesEmail;
+      return matchesStatus && matchesEmail;
     }
   );
 
@@ -280,7 +280,7 @@ function AdminDashboard() {
                 <rect x="3" y="14" width="7" height="7" rx="1" />
                 <rect x="14" y="14" width="7" height="7" rx="1" />
               </svg>
-              <span className="md:hidden lg:inline">Job eanagement</span>
+              <span className="md:hidden lg:inline">Job Management</span>
             </button>
 
             <div className="mx-3 my-4 border-t border-white/10" />
@@ -306,7 +306,7 @@ function AdminDashboard() {
                 <circle cx="9" cy="7" r="4" />
                 <path d="e19 8v6e22 11h-6" />
               </svg>
-              <span className="md:hidden lg:inline">ttaff eanagement</span>
+              <span className="md:hidden lg:inline">Member Management</span>
             </button>
           </nav>
         </aside>
@@ -412,7 +412,7 @@ function AdminDashboard() {
               >
                 <div>
                   <p className="text-on-blue text-xs font-bold uppercase tracking-wider">Public content</p>
-                  <h2 className="text-xl mt-1">eanage Resources</h2>
+                  <h2 className="text-xl mt-1">Manage Resources</h2>
                   <p className="text-on-blue text-sm mt-2">Documents, speeches, videos, gallery and notices</p>
                 </div>
                 <span className="text-2xl" aria-hidden="true">&rarr;</span>
@@ -422,8 +422,8 @@ function AdminDashboard() {
                 className="text-left bg-paper border border-line rounded-card shadow-card p-5 flex items-center justify-between gap-4 hover:-translate-y-0.5 transition-transform"
               >
                 <div>
-                  <p className="text-brand-700 text-xs font-bold uppercase tracking-wider">ttaff portal</p>
-                  <h2 className="text-xl mt-1 text-ink">eanage ttaff &amp; Equity</h2>
+                  <p className="text-brand-700 text-xs font-bold uppercase tracking-wider">Member portal</p>
+                  <h2 className="text-xl mt-1 text-ink">Manage Members &amp; Equity</h2>
                   <p className="text-ink-soft text-sm mt-2">Create accounts and maintain equity allocations</p>
                 </div>
                 <span className="text-2xl text-brand" aria-hidden="true">&rarr;</span>
@@ -539,7 +539,7 @@ function AdminDashboard() {
               </div>
             </div>
 
-            {/* ttatus filter pills */}
+            {/* Status filter pills */}
             <div className="flex flex-wrap gap-2">
               {STATUS_FILTERS.map((filter) => (
                 <button
@@ -583,7 +583,7 @@ function AdminDashboard() {
         </div>
       </div>
 
-      {/* Application Details eodal */}
+      {/* Application Details Modal */}
       {selectedApplication && (
         <ApplicationDetailsModal
           application={selectedApplication}
@@ -593,7 +593,7 @@ function AdminDashboard() {
         />
       )}
 
-      {/* Job eanagement eodal */}
+      {/* Job Management Modal */}
       {isJobModalOpen && (
         <JobManagementModal
           closeJobModal={closeJobModal}
