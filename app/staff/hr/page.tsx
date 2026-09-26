@@ -3,6 +3,8 @@ import StaffShell from "@/components/StaffShell";
 import { useEffect,useMemo,useRef,useState } from "react";
 import { Bell,BookOpenCheck,BriefcaseBusiness,CalendarCheck,CalendarDays,ChevronRight,ClipboardList,FilePlus2,Files,LayoutDashboard,MessagesSquare,NotebookTabs,UserRound,UsersRound } from "lucide-react";
 import { EMPLOYMENT_STATUSES,HR_REQUEST_TYPES,HR_STATUSES,LEAVE_TYPES } from "@/types/hr";
+import { auth } from "@/lib/firebase";
+import { readApiJson } from "@/lib/api-response";
 
 const employeeTabs=["Announcements","My HR","Make Request","My Requests","Request Leave","My Leave","Policies","Member Documents"];
 const managerTabs=["HR Overview","Members","Manage Requests","Manage Leave","Policy Management","HR Documents","Manage Announcements"];
@@ -13,7 +15,19 @@ const tabMeta:Record<string,{description:string;icon:React.ElementType}>={
 export default function Page(){const [data,setData]=useState<any>(),[manage,setManage]=useState<any>(),[tab,setTab]=useState("My HR"),[focusId,setFocusId]=useState(""),[message,setMessage]=useState(""),messageTimer=useRef<ReturnType<typeof setTimeout>|null>(null);
  async function load(){const r=await fetch("/api/hr",{cache:"no-store"}),d=await r.json();setData(d);if(d.isHR){const m=await fetch("/api/hr/manage",{cache:"no-store"});if(m.ok)setManage(await m.json())}}
  useEffect(()=>{load()},[]);const tabs=data?.isHR?[...managerTabs,...employeeTabs]:employeeTabs;
- async function act(url:string,method:string,body:any){setMessage("");if(messageTimer.current)clearTimeout(messageTimer.current);const r=await fetch(url,{method,headers:{"Content-Type":"application/json"},body:JSON.stringify(body)}),d=await r.json();setMessage(r.ok?d.message||"Saved successfully.":d.message||"Something went wrong.");if(r.ok){messageTimer.current=setTimeout(()=>setMessage(""),6000);await load()}return r.ok}
+ async function act(url:string,method:string,body:any){
+  setMessage("");if(messageTimer.current)clearTimeout(messageTimer.current);
+  const send=()=>fetch(url,{method,headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(body)});
+  let response=await send();
+  if((response.status===401||response.status===403)&&auth.currentUser){
+   try{const token=await auth.currentUser.getIdToken(true),session=await fetch("/api/auth/session",{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({token})});if(session.ok)response=await send()}catch(error){console.error("HR session renewal failed",error)}
+  }
+  const data=await readApiJson<{message?:string}>(response).catch(error=>({message:error instanceof Error?error.message:"Something went wrong."}));
+  const unauthorized=response.status===401||response.status===403;
+  setMessage(response.ok?data.message||"Saved successfully.":unauthorized?"Your session expired or no longer has HR access. Sign in again and retry.":data.message||"Something went wrong.");
+  if(response.ok){messageTimer.current=setTimeout(()=>setMessage(""),6000);await load()}
+  return response.ok;
+ }
  useEffect(()=>{if(data?.isHR&&tab==="My HR")setTab("HR Overview")},[data?.isHR]);
  useEffect(()=>{const params=new URLSearchParams(window.location.search),section=params.get("section"),record=params.get("record")||"";if(section&&[...employeeTabs,...managerTabs].includes(section)){setTab(section);setFocusId(record);window.setTimeout(()=>document.getElementById(`hr-record-${record}`)?.scrollIntoView({behavior:"smooth",block:"center"}),250)}},[]);
  useEffect(()=>()=>{if(messageTimer.current)clearTimeout(messageTimer.current)},[]);
