@@ -2,18 +2,20 @@ import { NextRequest, NextResponse } from "next/server";
 import { audit, requireRole } from "@/lib/server-auth";
 import { staffWelcomeEmail } from "@/lib/staff-welcome-email";
 import { sendSmtpEmail } from "@/lib/smtp";
+import { requestOrigin } from "@/lib/request-origin";
 
 export async function POST(req: NextRequest) {
   const admin = await requireRole(["super_admin","hr"]);
   if (!admin) return NextResponse.json({ message: "Forbidden" }, { status: 403 });
 
   try {
-    const { name, email, employeeId, temporaryPassword, loginUrl } = await req.json();
-    if (![name,email,employeeId,temporaryPassword,loginUrl].every(v=>typeof v==="string"&&v.trim())) {
+    const { name, email, employeeId, temporaryPassword } = await req.json();
+    if (![name,email,employeeId,temporaryPassword].every(v=>typeof v==="string"&&v.trim())) {
       return NextResponse.json({ message: "Complete login details are required." }, { status: 400 });
     }
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)||!/^https?:\/\//.test(loginUrl))return NextResponse.json({message:"The recipient email or login link is invalid."},{status:400});
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))return NextResponse.json({message:"The recipient email is invalid."},{status:400});
 
+    const loginUrl=`${requestOrigin(req)}/staff/login`;
     const content=staffWelcomeEmail({name,email,employeeId,temporaryPassword,loginUrl});
     const from=process.env.EMAIL_FROM?.trim()||process.env.EMAIL_USER?.trim();
     if(!from||!process.env.EMAIL_SERVICE||!process.env.EMAIL_USER||!process.env.EMAIL_PASS)
