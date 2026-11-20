@@ -9,7 +9,6 @@ import uptechLogo from "@/public/images/uptechlogo.svg";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/objectives", label: "Objectives" },
-  { href: "/cyber-center", label: "Cyber Center" },
   { href: "/services", label: "Services" },
   { href: "/about", label: "About" },
   { href: "/vacancies", label: "Join Us" },

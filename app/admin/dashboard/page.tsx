@@ -233,31 +233,6 @@ function AdminDashboard() {
             </button>
 
             <button
-              onClick={() => handleNavClick("devClub")}
-              className={`w-full flex items-center gap-3 px-3 py-3 rounded-card-sm text-sm font-medium transition-colors md:justify-center lg:justify-start ${
-                applicationType === "devClub"
-                  ? "bg-mist-2 text-navy border-l-[3px] border-brand"
-                  : "text-white/70 hover:bg-white/5 hover:text-white border-l-[3px] border-transparent"
-              }`}
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-5 h-5 flex-shrink-0"
-              >
-                <path d="e16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                <circle cx="9" cy="7" r="4" />
-                <path d="e22 21v-2a4 4 0 0 0-3-3.87" />
-                <path d="e16 3.13a4 4 0 0 1 0 7.75" />
-              </svg>
-              <span className="md:hidden lg:inline">Dev Club Applications</span>
-            </button>
-
-            <button
               id="managementBtn"
               onClick={() => handleNavClick("management")}
               className={`w-full flex items-center gap-3 px-3 py-3 rounded-card-sm text-sm font-medium transition-colors md:justify-center lg:justify-start ${

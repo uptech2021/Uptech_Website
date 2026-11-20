@@ -195,14 +195,6 @@ export default function Contact() {
                   1-868-710-4296
                 </div>
               </div>
-              <div className="mb-[22px]">
-                <div className="text-[.76rem] font-extrabold tracking-[.1em] uppercase text-brand mb-[5px]">
-                  Cyber Center
-                </div>
-                <div className="font-semibold text-[1.02rem]">
-                  Ramsingh&apos;s Plaza #2, opposite Mid-Center Mall, Chaguanas
-                </div>
-              </div>
               <div className="flex gap-3 mt-[30px]">
                 {[
                   {
@@ -308,29 +300,6 @@ export default function Contact() {
                 {isLoading ? "Sending..." : "Submit"}
               </button>
             </form>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-[88px] max-sm:py-[60px] bg-navy text-white">
-        <div className="max-w-[1200px] mx-auto px-7">
-          <div className="max-w-[760px] mx-auto text-center reveal">
-            <h2 className="text-[clamp(1.9rem,3.4vw,3rem)] font-black tracking-[-0.025em]">
-              Prefer to drop by?
-            </h2>
-            <p className="text-on-blue text-[1.1rem] mt-4 mb-[30px]">
-              Visit the UpTech Cyber Center in Chaguanas — fifth store on the
-              right, downstairs at Ramsingh&apos;s Plaza #2.
-            </p>
-            <a
-              href="https://maps.google.com/?q=Ramsingh's+Plaza+Chaguanas"
-              target="_blank"
-              rel="noopener"
-              className="inline-flex items-center gap-2 font-extrabold text-base py-[.92rem] px-[1.6rem] rounded-full bg-accent text-accent-ink shadow-glow cursor-pointer border-0 transition-[transform,box-shadow,background] duration-[180ms] hover:bg-accent-deep hover:-translate-y-0.5 active:translate-y-[1px] whitespace-nowrap"
-            >
-              Get Directions
-            </a>
           </div>
         </div>
       </section>

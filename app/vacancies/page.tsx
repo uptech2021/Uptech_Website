@@ -9,10 +9,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useReveal } from "@/hooks/useReveal";
 import JobApplicationModal from "@/components/JobApplicationModal";
-import DevClubModal from "@/components/DevelopersClubModal";
 import VacancyDetailsModal from "@/components/VacancyDetailsModal";
 import careerPcImage from "@/public/images/careerPC.svg";
-import devClubImage from "@/public/images/devClub.svg";
 
 type Vacancies = {
   department: string;
@@ -30,7 +28,6 @@ export default function VacanciesPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedDepartment, setSelectedDepartment] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const [isDevClubModalOpen, setIsDevClubModalOpen] = useState(false);
   const [isVacancyDetailsModalOpen, setIsVacancyDetailsModalOpen] = useState(false);
   const [selectedVacancy, setSelectedVacancy] = useState<Vacancies | null>(null);
   const [vacancies, setVacancies] = useState<Vacancies[]>([]);
@@ -63,13 +60,13 @@ export default function VacanciesPage() {
   }, []);
 
   useEffect(() => {
-    if (isVacancyDetailsModalOpen || isModalOpen || isDevClubModalOpen) {
+    if (isVacancyDetailsModalOpen || isModalOpen) {
       document.body.classList.add("no-scroll");
     } else {
       document.body.classList.remove("no-scroll");
     }
     return () => { document.body.classList.remove("no-scroll"); };
-  }, [isVacancyDetailsModalOpen, isModalOpen, isDevClubModalOpen]);
+  }, [isVacancyDetailsModalOpen, isModalOpen]);
 
   return (
     <>
@@ -84,7 +81,6 @@ export default function VacanciesPage() {
             <p className="text-[1.15rem] text-on-blue max-w-[32rem] mb-[30px] leading-[1.6]">At UpTech, you can build experience, work on real digital projects, and develop new skills in a supportive, creative environment.</p>
             <div className="flex flex-wrap gap-[11px]">
               <span className="inline-flex items-center gap-1.5 bg-white/[.13] border border-white/[.22] backdrop-blur-[4px] py-[.55rem] px-[1.1rem] rounded-full font-bold text-[.92rem]"><b className="text-accent">&#x25C6;</b> Careers</span>
-              <span className="inline-flex items-center gap-1.5 bg-white/[.13] border border-white/[.22] backdrop-blur-[4px] py-[.55rem] px-[1.1rem] rounded-full font-bold text-[.92rem]"><b className="text-accent">&#x25C6;</b> Developers Club</span>
               <span className="inline-flex items-center gap-1.5 bg-white/[.13] border border-white/[.22] backdrop-blur-[4px] py-[.55rem] px-[1.1rem] rounded-full font-bold text-[.92rem]"><b className="text-accent">&#x25C6;</b> Growth</span>
               <span className="inline-flex items-center gap-1.5 bg-white/[.13] border border-white/[.22] backdrop-blur-[4px] py-[.55rem] px-[1.1rem] rounded-full font-bold text-[.92rem]"><b className="text-accent">&#x25C6;</b> Innovation</span>
             </div>
@@ -102,44 +98,6 @@ export default function VacanciesPage() {
       <div className="bg-navy text-white text-center py-5 px-6">
         <p className="font-extrabold text-[1.05rem]">Grow your skills, work on <span className="text-accent">real projects</span>, and be part of something meaningful.</p>
       </div>
-
-      {/* DEVELOPERS CLUB */}
-      <section className="py-[88px] max-sm:py-[60px] bg-paper">
-        <div className="max-w-[1200px] mx-auto px-7">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_.9fr] gap-14 items-start">
-            <div className="reveal">
-              <span className="font-extrabold text-[.82rem] tracking-[.16em] uppercase text-brand inline-block mb-3.5">Developers Club</span>
-              <h2 className="text-[clamp(1.9rem,3.4vw,3rem)] font-black tracking-[-0.025em] mb-[18px]">Learn, collaborate, and build real digital solutions.</h2>
-              <p className="text-[1.075rem] text-ink-soft mb-3.5">The UpTech Software Developers Club is a community for people passionate about technology — whether they&apos;re just starting out or already have experience.</p>
-              <p className="text-[1.075rem] text-ink-soft">Members collaborate on real projects, explore new technologies, share knowledge, and grow their skills in a supportive environment.</p>
-              <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-3 mt-6">
-                <div className="flex items-center gap-2.5 font-semibold text-[.95rem]">
-                  <span className="w-[24px] h-[24px] rounded-md bg-mist-2 text-brand grid place-items-center font-bold text-[.8rem] shrink-0">&#x2713;</span>
-                  Learn by doing
-                </div>
-                <div className="flex items-center gap-2.5 font-semibold text-[.95rem]">
-                  <span className="w-[24px] h-[24px] rounded-md bg-mist-2 text-brand grid place-items-center font-bold text-[.8rem] shrink-0">&#x2713;</span>
-                  Work on real projects
-                </div>
-                <div className="flex items-center gap-2.5 font-semibold text-[.95rem]">
-                  <span className="w-[24px] h-[24px] rounded-md bg-mist-2 text-brand grid place-items-center font-bold text-[.8rem] shrink-0">&#x2713;</span>
-                  Build practical skills
-                </div>
-                <div className="flex items-center gap-2.5 font-semibold text-[.95rem]">
-                  <span className="w-[24px] h-[24px] rounded-md bg-mist-2 text-brand grid place-items-center font-bold text-[.8rem] shrink-0">&#x2713;</span>
-                  Grow with a team
-                </div>
-              </div>
-            </div>
-            <div className="bg-mist border border-line rounded-card p-8 text-center reveal">
-              <Image src={devClubImage} alt="Developers Club" width={180} height={150} className="animate-float mx-auto mb-5" style={{ width: "auto", height: "auto" }} />
-              <h3 className="text-[1.25rem] mb-3">Join Our Developers Club</h3>
-              <p className="text-ink-soft text-[.95rem] mb-6">Connect with other developers, improve your skills, and become part of UpTech&apos;s growing technology community.</p>
-              <button className="inline-flex items-center gap-2 font-extrabold text-base py-[.92rem] px-[1.6rem] rounded-full bg-accent text-accent-ink shadow-glow cursor-pointer border-0 transition-[transform,box-shadow,background] duration-[180ms] hover:bg-accent-deep hover:-translate-y-0.5 active:translate-y-[1px] whitespace-nowrap" onClick={() => setIsDevClubModalOpen(true)}>Join Developers Club</button>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* VACANCIES */}
       <section className="py-[88px] max-sm:py-[60px] bg-navy text-white">
@@ -197,12 +155,6 @@ export default function VacanciesPage() {
           department={selectedDepartment}
         />
       )}
-      <DevClubModal
-        isOpen={isDevClubModalOpen}
-        onClose={() => setIsDevClubModalOpen(false)}
-        title="Developers Club Coming Soon!"
-        message="We're working hard to bring you an amazing developers community experience. Stay tuned for the launch!"
-      />
     </>
   );
 }

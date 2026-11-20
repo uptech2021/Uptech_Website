@@ -6,69 +6,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useReveal } from "@/hooks/useReveal";
 import aboutHeroImage from "@/public/images/abgPc.svg";
-
-const teamSections = [
-  {
-    title: "Leadership Team",
-    members: [
-      { name: "Rishi Kowlessar", pos: "Founder / CEO / Chairman", tag: "Director" },
-      {
-        name: "K Nagee",
-        pos: "Co-Founder / Director of Software Engineering",
-        tag: "Director",
-      },
-      {
-        name: "J Lightfoot",
-        pos: "Director of Human Resources / Director of Uptech Software Developers Club",
-        tag: "Director",
-      },
-      {
-        name: "D Baptiste",
-        pos: "Corporate Secretary",
-        tag: "Director",
-      },
-    ],
-  },
-  {
-    title: "Engineering Team",
-    members: [
-      { name: "R Mitchell", pos: "Senior Software Engineer / Web Lead", tag: "Engineering" },
-      { name: "J Edwards", pos: "Senior Software Engineer", tag: "Engineering" },
-      { name: "D Mar", pos: "Senior Trainee Software Engineer", tag: "Engineering" },
-      { name: "C Mitchell", pos: "Junior Software Engineer", tag: "Engineering" },
-      { name: "C Walker", pos: "Junior Trainee Software Engineer", tag: "Engineering" },
-      { name: "C Lee Browne", pos: "Junior Trainee Software Engineer", tag: "Engineering" },
-      { name: "N Logan", pos: "Junior Trainee Software Engineer / Beta Tester", tag: "Engineering" },
-      { name: "A Ramjitsingh", pos: "Assistant to Director Software Engineering", tag: "Engineering" },
-    ],
-  },
-  {
-    title: "Design & Creative Team",
-    members: [
-      { name: "A Roopnarinesingh", pos: "Web / App Designer / Social Media Manager", tag: "Design" },
-      { name: "S Persad", pos: "Graphics Designer / Beta Tester", tag: "Design" },
-      { name: "K Alleyne", pos: "Graphics Designer / Beta Tester", tag: "Design" },
-      { name: "Z Ramsaroop", pos: "Graphic Designer", tag: "Design" },
-      { name: "K Girdiharry", pos: "Graphic Designer / Social Media Assistant", tag: "Design" },
-    ],
-  },
-  {
-    title: "Quality Assurance",
-    members: [
-      { name: "M Khan", pos: "Beta Tester", tag: "QA" },
-    ],
-  },
-  {
-    title: "Operations & Cyber Center",
-    members: [
-      {
-        name: "I Oberlin",
-        pos: "Manager - Uptech Business & Cyber Center",
-        tag: "Operations",
-      },
-    ],
-  },
-];
+import { useEffect, useState } from "react";
+import type { TeamMember } from "@/lib/team";
 
 function initials(name: string) {
   return name
@@ -82,6 +21,9 @@ function initials(name: string) {
 
 export default function About() {
   useReveal();
+  const [team, setTeam] = useState<TeamMember[]>([]);
+  useEffect(() => { fetch("/api/team").then((response) => response.json()).then((data) => setTeam(data.members || [])).catch(() => setTeam([])); }, []);
+  const teamSections = Array.from(new Set(team.map((member) => member.category))).map((title) => ({ title, members: team.filter((member) => member.category === title) }));
 
   return (
     <>
@@ -104,7 +46,7 @@ export default function About() {
             <p className="text-[1.15rem] text-on-blue max-w-[32rem] mb-[30px] leading-[1.6]">
               UpTech Incorporated brings together developers, designers, and digital thinkers to
               create useful technology, support local businesses, and provide practical digital
-              services through both our online brand and Cyber Center.
+              services through a collaborative, forward-thinking team.
             </p>
             <div className="flex gap-2.5 flex-wrap">
               <span className="bg-white/[.13] border border-white/[.22] backdrop-blur-[4px] py-[.55rem] px-[1.1rem] rounded-full font-bold text-[.92rem]">
@@ -173,11 +115,7 @@ export default function About() {
                 software development, web and app design, graphic design, marketing support, and
                 technology assistance.
               </p>
-              <p className="text-[1.075rem] text-ink-soft">
-                Through UpTech Cyber Center, we also provide walk-in support for online shopping,
-                printing, computer assistance, resume creation, study space, virtual court access,
-                and other everyday digital needs.
-              </p>
+              <p className="text-[1.075rem] text-ink-soft">We focus on useful, accessible solutions that help our clients communicate clearly, work efficiently, and grow with confidence.</p>
             </div>
             <div className="bg-mist border border-line rounded-card p-[30px] reveal">
               <h3 className="text-[1.2rem] mb-5">What drives us</h3>
@@ -290,8 +228,7 @@ export default function About() {
               Meet the people behind UpTech
             </h2>
             <p className="text-[1.075rem] text-on-blue mt-3.5">
-              Leadership, software engineering, design, human resources, social media, and Cyber
-              Center operations — together under one roof.
+              Leadership, software engineering, design, human resources, and social media — working together.
             </p>
           </div>
           {teamSections.map((section) => (
@@ -307,10 +244,10 @@ export default function About() {
                       {initials(m.name)}
                     </div>
                     <div className="inline-block bg-accent/20 text-accent text-[.75rem] font-bold px-3 py-[.3rem] rounded-full mb-2">
-                      {m.tag}
+                      {m.category.replace(" Team", "")}
                     </div>
                     <h4 className="text-[1.05rem] font-bold">{m.name}</h4>
-                    <p className="text-on-blue text-[.88rem] mt-1">{m.pos}</p>
+                    <p className="text-on-blue text-[.88rem] mt-1">{m.position}</p>
                   </div>
                 ))}
               </div>
@@ -330,8 +267,7 @@ export default function About() {
               Ready to connect with UpTech?
             </h2>
             <p className="text-on-blue text-[1.1rem] mt-4 mb-[30px]">
-              Whether you need digital services, Cyber Center support, or want to learn more about
-              our work, we&apos;re ready to assist.
+              Whether you need digital services or want to learn more about our work, we&apos;re ready to assist.
             </p>
             <div className="flex gap-3.5 flex-wrap justify-center">
               <Link

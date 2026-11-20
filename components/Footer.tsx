@@ -26,7 +26,6 @@ export default function Footer() {
               <Link href="/services" className="block text-[rgba(234,242,255,.7)] text-[.94rem] mb-[9px] font-medium transition-colors duration-150 hover:text-white">Graphic Design</Link>
               <Link href="/services" className="block text-[rgba(234,242,255,.7)] text-[.94rem] mb-[9px] font-medium transition-colors duration-150 hover:text-white">Marketing</Link>
               <Link href="/services" className="block text-[rgba(234,242,255,.7)] text-[.94rem] mb-[9px] font-medium transition-colors duration-150 hover:text-white">Web / App</Link>
-              <Link href="/cyber-center" className="block text-[rgba(234,242,255,.7)] text-[.94rem] mb-[9px] font-medium transition-colors duration-150 hover:text-white">Cyber Center</Link>
             </div>
             <div>
               <h4 className="text-[.78rem] tracking-[.12em] uppercase text-accent font-extrabold mb-3.5">Contact</h4>
